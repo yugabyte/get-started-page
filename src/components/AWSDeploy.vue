@@ -8,14 +8,8 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Terraform" class="option-tabs">
-          <img src="../assets/terraform-logo.png" width="24" />
-          Terraform
-        </q-tab>
-        <q-tab name="Cloud Formation" class="option-tabs">
-          <img src="../assets/cloudformation-logo.png" width="24" />
-          Cloud Formation
-        </q-tab>
+        <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" />
+        <q-tab name="Cloud Formation" label="Cloud Formation" icon="img:/statics/cloudformation-logo.png" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
           <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">QuickStart Guide</a>
@@ -46,14 +40,8 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Terraform" class="option-tabs">
-          <img src="../assets/terraform-logo.png" width="24" />
-          Terraform
-        </q-tab>
-        <q-tab name="Cloud Formation" class="option-tabs">
-          <img src="../assets/cloudformation-logo.png" width="24" />
-          Cloud Formation
-        </q-tab>
+        <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" />
+        <q-tab name="Cloud Formation" label="Cloud Formation" icon="img:/statics/cloudformation-logo.png" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
           <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">QuickStart Guide</a>

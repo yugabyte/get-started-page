@@ -8,8 +8,8 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Cloud Foundry" label="Cloud Foundry" icon="img:../assets/pivotal-pcf-logo.svg" class="option-tabs" />
-        <q-tab name="Container Service" label="Container Service" icon="img:../assets/pivotal-pks-logo.svg" class="option-tabs"/>
+        <q-tab name="Cloud Foundry" label="Cloud Foundry" icon="img:/statics/pivotal-pcf-logo.svg" class="option-tabs" />
+        <q-tab name="Container Service" label="Container Service" icon="img:/statics/pivotal-pks-logo.svg" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
           <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">QuickStart Guide</a>
@@ -40,8 +40,8 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Cloud Foundry" label="Cloud Foundry" icon="img:../assets/pivotal-pcf-logo.svg" class="option-tabs" />
-        <q-tab name="Container Service" label="Container Service" icon="img:../assets/pivotal-pks-logo.svg" class="option-tabs"/>
+        <q-tab name="Cloud Foundry" label="Cloud Foundry" icon="img:/statics/pivotal-pcf-logo.svg" class="option-tabs" />
+        <q-tab name="Container Service" label="Container Service" icon="img:/statics/pivotal-pks-logo.svg" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
           <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">QuickStart Guide</a>
