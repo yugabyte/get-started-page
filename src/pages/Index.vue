@@ -18,7 +18,7 @@
           @click="() => selectedService = 'cloud'"
         >
           <h3>Try multi-node cluster</h3>
-          <h2>Public Cloud</h2>
+          <h2>Cloud Platforms</h2>
         </div>
       </div>
     </div>

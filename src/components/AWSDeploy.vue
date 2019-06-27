@@ -1,7 +1,7 @@
 <template>
   <div class="install-container">
     <div class="download-section">
-      <h3><img src="../assets/yb-database.png" alt="Yugabyte DB">Yugabyte Database</h3>
+      <h3><img src="../assets/yb-database.png" alt="Yugabyte DB">Yugabyte DB</h3>
       <q-tabs
         v-model="databaseTab" dense class="text-grey"
         active-color="primary"
