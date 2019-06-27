@@ -1,0 +1,296 @@
+<template>
+  <q-layout view="hHr lpR ffr">
+    <q-header v-bind:elevated="pageScrolled" class="header bg-white">
+      <q-toolbar>
+        <q-toolbar-title>
+          <div class="logo">
+            <a href="https://www.yugabyte.com/" class="navbar-brand">
+              <div class="nav-logo scrolled"></div>
+            </a>
+          </div>
+        </q-toolbar-title>
+        <div v-if="!pageScrolled">
+          <a href="https://www.yugabyte.com/enterprise-edition/" class="yb-nav-links" target="_blank" style="color: #202951">
+            <q-btn class="yb-nav-links" flat label="Enterprise" color="#202951"/>
+          </a>
+          <a href="https://www.yugabyte.com/community-edition/" class="yb-nav-links" target="_blank" style="color: #202951">
+            <q-btn flat label="Open Source" />
+          </a>
+          <a href="https://www.yugabyte.com/all-resources/case-studies/" class="yb-nav-links" target="_blank" style="color: #202951">
+            <q-btn flat label="Customers" color="#202951"/>
+          </a>
+          <q-btn flat label="Use Cases" color="#202951">
+            <q-menu>
+          <q-list style="min-width: 100px">
+            <q-item clickable>
+              <a title="Globally Distributed Applications" class="yb-nav-links" target="_blank" href="https://www.yugabyte.com/globally-distributed-applications/">
+                <q-item-section>
+                  Globally Distributed Applications
+                </q-item-section>
+              </a>
+            </q-item>
+            <q-item clickable>
+              <a title="Real-Time Streaming &amp; Analytics" class="yb-nav-links" target="_blank" href="https://www.yugabyte.com/real-time-streaming-and-analytics/">
+                <q-item-section>Real-Time Streaming &amp; Analytics</q-item-section>
+              </a>
+            </q-item>
+            <q-item clickable>
+              <a title="Planet-Scale SQL" class="yb-nav-links" target="_blank" href="https://www.yugabyte.com/planet-scale-sql/">
+                <q-item-section>Planet-Scale SQL</q-item-section>
+              </a>
+            </q-item>
+            <q-item clickable>
+              <a title="Transactional NoSQL" class="yb-nav-links" target="_blank" href="https://www.yugabyte.com/transactional-nosql/">
+                <q-item-section>Transactional NoSQL</q-item-section>
+              </a>
+            </q-item>
+            <q-item clickable>
+              <a title="Distributed Transactional Key-Value Database" class="yb-nav-links" target="_blank" href="https://www.yugabyte.com/distributed-transactional-key-value-database/">
+                <q-item-section>Distributed Transactional Key-Value Database</q-item-section>
+              </a>
+            </q-item>
+          </q-list>
+        </q-menu>
+      </q-btn>
+          <q-btn flat label="Resources" color="#202951">
+            <q-menu>
+          <q-list style="min-width: 100px">
+            <q-item clickable>
+              <a title="Docs" class="yb-nav-links" target="_blank" href="https://docs.yugabyte.com/">
+                <q-item-section>Docs</q-item-section>
+              </a>
+            </q-item>
+            <q-item clickable>
+              <a title="Forum" class="yb-nav-links" target="_blank" href="https://forum.yugabyte.com/">
+                <q-item-section>Forum</q-item-section>
+              </a>
+            </q-item>
+            <q-item clickable>
+              <a title="Slack" class="yb-nav-links" target="_blank" href="http://yugabyte.com/slack">
+                <q-item-section>Slack</q-item-section>
+              </a>
+            </q-item>
+            <q-item clickable>
+              <a title="Blog" class="yb-nav-links" target="_blank" href="https://blog.yugabyte.com/">
+                <q-item-section>Blog</q-item-section>
+              </a>
+            </q-item>
+          </q-list>
+        </q-menu>
+          </q-btn>
+        </div>
+        <q-btn id="side-menu-btn" v-if="pageScrolled" flat round icon="menu" @click="rightDrawerOpen = !rightDrawerOpen" />
+      </q-toolbar>
+    </q-header>
+    <q-drawer v-model="rightDrawerOpen" side="right" bordered>
+      <side-menu></side-menu>
+    </q-drawer>
+
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+
+    <q-footer>
+       <footer class="footer">
+        <div class="container-fluid">
+          <ul class="footer-nav">
+            <li>
+              <div class="logo-white">
+                <img width="132px" height="26px" layout="fixed" src="./ybdocs-white.png" />
+              </div>
+              <div class="copyright">
+                © YugaByte, Inc.
+              </div>
+            </li>
+            <li>
+              <a target="_blank" class="footer-link" href="https://www.yugabyte.com/slack" id="slack-link" rel="noreferrer">Slack</a>
+            </li>
+            <li>
+              <a target="_blank" class="footer-link" href="https://stackoverflow.com/questions/tagged/yugabyte-db" id="stackoverflow-link" rel="noreferrer">StackOverflow</a>
+            </li>
+            <li>
+              <a target="_blank" class="footer-link" href="https://github.com/YugaByte/yugabyte-db" id="github-link" rel="noreferrer">GitHub</a>
+            </li>
+            <li>
+              <div class="footer-title">Address</div>
+              <a href="https://goo.gl/maps/SJ7TCYKbA6jezdfM6" target="_blank" rel="noreferrer" id="office-map">
+                YugaByte, Inc<br class="hidden-xs hidden-sm">
+                771 Vaqueros Ave<br class="hidden-xs hidden-sm">
+                Sunnyvale, CA 94085
+              </a>
+            </li>
+            <li>
+              <div class="footer-title">Contact Us</div>
+              <a href="mailto:hello@yugabyte.com">hello@yugabyte.com</a>
+            </li>
+            <li>
+              <div class="footer-title">Follow Us</div>
+              <div class="footer-social">
+                <a target="_blank" rel="noreferrer" href="https://github.com/yugabyte/yugabyte-db" id="github"><img src="../assets/github-small.svg" alt=""></a>
+                <a target="_blank" rel="noreferrer" href="https://www.twitter.com/yugabyte" id="twitter"><img src="../assets/twitter-small.svg" alt=""></a>
+                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/yugabyte" id="linkedin"><img src="../assets/linkedin-small.svg" alt=""></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </q-footer>
+  </q-layout>
+</template>
+
+<script>
+import SideMenu from './SideMenu'
+
+export default {
+  name: 'MainLayout',
+  data () {
+    return {
+      rightDrawerOpen: false,
+      pageScrolled: false,
+      navLinks: [false, false, false, false]
+    }
+  },
+  methods: {
+    handleScroll: function () {
+      this.pageScrolled = window.scrollY > 0 || window.pageYOffset !== 0
+    },
+    handleNavHover: function (k, v) {
+      console.log('hovering')
+      this.navLinks[k] = v
+    }
+  },
+  created () {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
+  components: {
+    'side-menu': SideMenu
+  }
+}
+</script>
+
+<style>
+body {
+  background-color: #fff;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  min-height: 100%;
+}
+.header {
+  color: #202951;
+}
+.nav-container {
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+}
+.logo {
+  width: 100%;
+  line-height: inherit;
+  background-image: url(./ybdocs-color.png);
+  background-repeat: no-repeat;
+  background-position: left 23px;
+  background-size: auto 33px;
+  height: 75px;
+  margin-left: 19px;
+}
+.logo a {
+  height: 75px;
+  padding: 0;
+  width: 180px;
+  margin-right: 0;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+}
+#side-menu-btn {
+  margin-right: 15px;
+}
+.footer {
+  text-align: left;
+  width: 100%;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #F7F8F9;
+  background: #202951;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 0;
+  font-size: 14px;
+  color: #fff;
+}
+.footer .copyright {
+  padding: 0;
+  margin: 0 60px;
+  color: #7A82AC;
+  font-weight: 300;
+  line-height: 18px;
+  font-size: 13px;
+}
+.footer .logo-white {
+  padding-top: 10px;
+}
+.footer-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.footer-nav > li {
+  padding: 10px 0;
+}
+.footer-nav a {
+  color: #fff;
+  display: block;
+  -webkit-transition: color .3s;
+  transition: color .3s;
+}
+.footer-link {
+  color: #fff;
+  display: block;
+  -webkit-transition: color .3s;
+  transition: color .3s;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+@media (min-width: 1200px) {
+  .container-fluid {
+      max-width: 1140px;
+  }
+}
+@media (max-width: 1199.98px) and (min-width: 576px) {
+  .container-fluid {
+    max-width: 97.5%;
+  }
+}
+.footer .container-fluid {
+  width: 100%;
+  padding: 0 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.footer-title, .footer-social {
+  text-transform: uppercase;
+}
+.footer-title {
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #c72c48;
+  color: #fff;
+}
+.footer-social > a {
+  display: inline-block;
+  padding-right: 15px;
+}
+</style>
