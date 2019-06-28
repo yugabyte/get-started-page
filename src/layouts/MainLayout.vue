@@ -96,7 +96,7 @@
           <ul class="footer-nav">
             <li>
               <div class="logo-white">
-                <img width="132px" height="26px" layout="fixed" src="./ybdocs-white.png" />
+                <img width="150px" height="30px" alt="YugabyteDB logo" src="../assets/yb-logo-white-horizontal.svg" />
               </div>
               <div class="copyright">
                 © YugaByte, Inc.
@@ -126,9 +126,9 @@
             <li>
               <div class="footer-title">Follow Us</div>
               <div class="footer-social">
-                <a target="_blank" rel="noreferrer" href="https://github.com/yugabyte/yugabyte-db" id="github"><img src="../assets/github-small.svg" alt=""></a>
-                <a target="_blank" rel="noreferrer" href="https://www.twitter.com/yugabyte" id="twitter"><img src="../assets/twitter-small.svg" alt=""></a>
-                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/yugabyte" id="linkedin"><img src="../assets/linkedin-small.svg" alt=""></a>
+                <a target="_blank" rel="noreferrer" href="https://github.com/yugabyte/yugabyte-db" id="github"><img src="../assets/github-small.svg" alt="Github link"></a>
+                <a target="_blank" rel="noreferrer" href="https://www.twitter.com/yugabyte" id="twitter"><img src="../assets/twitter-small.svg" alt="Twitter link"></a>
+                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/yugabyte" id="linkedin"><img src="../assets/linkedin-small.svg" alt="LinkedIn link"></a>
               </div>
             </li>
           </ul>
@@ -225,7 +225,7 @@ a {
 }
 .footer .copyright {
   padding: 0;
-  margin: 0 60px;
+  margin: 0 60px 0 42px;
   color: #7A82AC;
   font-weight: 300;
   line-height: 18px;
