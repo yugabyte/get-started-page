@@ -3,81 +3,50 @@
     <q-header v-bind:elevated="pageScrolled" class="header bg-white">
       <q-toolbar>
         <q-toolbar-title>
-          <div class="logo">
+          <div class="logo-container">
+            <a href="https://www.yugabyte.com">
+              <img width="240" height="40" src="../assets/ybdocs-color.png" />
+            </a>
+          </div>
+          <!-- <div class="logo">
             <a href="https://www.yugabyte.com/" class="navbar-brand">
               <div class="nav-logo scrolled"></div>
             </a>
-          </div>
+          </div> -->
         </q-toolbar-title>
         <div v-if="!pageScrolled">
-          <a href="https://www.yugabyte.com/enterprise-edition/" class="yb-nav-links" target="_blank" style="color: #202951">
-            <q-btn class="yb-nav-links" flat label="Enterprise" color="#202951"/>
+          <a href="https://docs.yugabyte.com/" class="yb-nav-links" target="_blank" style="color: #202951">
+            <q-btn class="yb-nav-links" flat label="Docs" color="#202951"/>
           </a>
-          <a href="https://www.yugabyte.com/community-edition/" class="yb-nav-links" target="_blank" style="color: #202951">
-            <q-btn flat label="Open Source" />
-          </a>
-          <a href="https://www.yugabyte.com/all-resources/case-studies/" class="yb-nav-links" target="_blank" style="color: #202951">
-            <q-btn flat label="Customers" color="#202951"/>
-          </a>
-          <q-btn flat label="Use Cases" color="#202951">
-            <q-menu>
-          <q-list style="min-width: 100px">
-            <q-item clickable>
-              <a title="Globally Distributed Applications" class="yb-nav-links" target="_blank" href="https://www.yugabyte.com/globally-distributed-applications/">
-                <q-item-section>
-                  Globally Distributed Applications
-                </q-item-section>
-              </a>
-            </q-item>
-            <q-item clickable>
-              <a title="Real-Time Streaming &amp; Analytics" class="yb-nav-links" target="_blank" href="https://www.yugabyte.com/real-time-streaming-and-analytics/">
-                <q-item-section>Real-Time Streaming &amp; Analytics</q-item-section>
-              </a>
-            </q-item>
-            <q-item clickable>
-              <a title="Planet-Scale SQL" class="yb-nav-links" target="_blank" href="https://www.yugabyte.com/planet-scale-sql/">
-                <q-item-section>Planet-Scale SQL</q-item-section>
-              </a>
-            </q-item>
-            <q-item clickable>
-              <a title="Transactional NoSQL" class="yb-nav-links" target="_blank" href="https://www.yugabyte.com/transactional-nosql/">
-                <q-item-section>Transactional NoSQL</q-item-section>
-              </a>
-            </q-item>
-            <q-item clickable>
-              <a title="Distributed Transactional Key-Value Database" class="yb-nav-links" target="_blank" href="https://www.yugabyte.com/distributed-transactional-key-value-database/">
-                <q-item-section>Distributed Transactional Key-Value Database</q-item-section>
-              </a>
-            </q-item>
-          </q-list>
-        </q-menu>
-      </q-btn>
-          <q-btn flat label="Resources" color="#202951">
-            <q-menu>
-          <q-list style="min-width: 100px">
-            <q-item clickable>
-              <a title="Docs" class="yb-nav-links" target="_blank" href="https://docs.yugabyte.com/">
-                <q-item-section>Docs</q-item-section>
-              </a>
-            </q-item>
-            <q-item clickable>
-              <a title="Forum" class="yb-nav-links" target="_blank" href="https://forum.yugabyte.com/">
-                <q-item-section>Forum</q-item-section>
-              </a>
-            </q-item>
-            <q-item clickable>
-              <a title="Slack" class="yb-nav-links" target="_blank" href="http://yugabyte.com/slack">
-                <q-item-section>Slack</q-item-section>
-              </a>
-            </q-item>
-            <q-item clickable>
-              <a title="Blog" class="yb-nav-links" target="_blank" href="https://blog.yugabyte.com/">
-                <q-item-section>Blog</q-item-section>
-              </a>
-            </q-item>
-          </q-list>
-        </q-menu>
+          <q-btn flat label="Resources" color="#202951" @mouseenter="handleHoverResources">
+            <q-menu :value="hoverResourcesLink" @mouseleave="handleHideMenu">
+              <q-list style="min-width: 100px">
+                <q-item clickable>
+                  <a title="Docs" class="yb-nav-links" target="_blank" href="https://github.com/YugaByte/yugabyte-db">
+                    <q-item-section>Github</q-item-section>
+                  </a>
+                </q-item>
+                <q-item clickable>
+                  <a title="Forum" class="yb-nav-links" target="_blank" href="https://forum.yugabyte.com/">
+                    <q-item-section>Forum</q-item-section>
+                  </a>
+                </q-item>
+                <q-item clickable>
+                  <a title="Slack" class="yb-nav-links" target="_blank" href="http://yugabyte.com/slack">
+                    <q-item-section>Slack</q-item-section>
+                  </a>
+                </q-item>
+                <q-item clickable>
+                  <a title="Blog" class="yb-nav-links" target="_blank" href="https://stackoverflow.com/questions/tagged/yugabyte-db">
+                    <q-item-section>Stack Overflow</q-item-section>
+                  </a>
+                </q-item>
+              </q-list>
+            </q-menu>
           </q-btn>
+          <a href="https://blog.yugabyte.com/" class="yb-nav-links" target="_blank" style="color: #202951">
+            <q-btn class="yb-nav-links" flat label="Blog" color="#202951"/>
+          </a>
         </div>
         <q-btn id="side-menu-btn" v-if="pageScrolled" flat round icon="menu" @click="rightDrawerOpen = !rightDrawerOpen" />
       </q-toolbar>
@@ -147,6 +116,7 @@ export default {
     return {
       rightDrawerOpen: false,
       pageScrolled: false,
+      hoverResourcesLink: false,
       navLinks: [false, false, false, false]
     }
   },
@@ -154,9 +124,11 @@ export default {
     handleScroll: function () {
       this.pageScrolled = window.scrollY > 0 || window.pageYOffset !== 0
     },
-    handleNavHover: function (k, v) {
-      console.log('hovering')
-      this.navLinks[k] = v
+    handleHoverResources: function () {
+      this.hoverResourcesLink = true
+    },
+    handleHideMenu: function () {
+      this.hoverResourcesLink = false
     }
   },
   created () {
@@ -179,6 +151,7 @@ body {
 }
 .header {
   color: #202951;
+  height: 75px;
 }
 .nav-container {
   padding-left: 30px;
@@ -188,12 +161,14 @@ body {
 .logo {
   width: 100%;
   line-height: inherit;
-  background-image: url(./ybdocs-color.png);
   background-repeat: no-repeat;
   background-position: left 23px;
   background-size: auto 33px;
   height: 75px;
   margin-left: 19px;
+}
+.logo-container {
+  padding: 10px 5px 2px 5px;
 }
 .logo a {
   height: 75px;

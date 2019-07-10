@@ -1,7 +1,7 @@
 <template>
   <div class="install-container">
     <div class="download-section">
-      <h3><img src="../assets/yb-database.png" alt="Yugabyte DB">Yugabyte DB</h3>
+      <yb-header type="yb-logo" text="Yugabyte DB"></yb-header>
       <q-tabs
         v-model="databaseTab" dense class="text-grey"
         active-color="primary"
@@ -9,57 +9,27 @@
         align="justify"
       >
         <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" />
-        <q-tab name="Resource Manager" label="Resource Manager" icon="img:/statics/resourcemanager-logo.png" class="option-tabs"/>
+        <q-tab name="Resource Manager" class="option-tabs">
+          <!-- Add child image tag due to non-square icon -->
+          <img width="24" style="margin-bottom: 5px" src="/statics/resourcemanager-logo.png" />
+          Resource Manager
+        </q-tab>
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">QuickStart Guide</a>
+          <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/#terraform">QuickStart Guide</a>
+          <a v-else target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/azure/">QuickStart Guide</a>
         </div>
       </q-tabs>
       <q-separator />
 
       <q-tab-panels v-model="databaseTab" animated>
-        <q-tab-panel name="Terraform" class="bg-grey-3">
-          <pre class="code-container">
-            <code class="pre-helper pre-helper--shell">brew install minio/stable/minio</code>
-          </pre>
+        <q-tab-panel name="Terraform" class="bg-form">
+          <terraform-form code="azureerm" providerName="Azure"></terraform-form>
         </q-tab-panel>
 
         <q-tab-panel name="Resource Manager" class="bg-grey-3">
           <pre class="code-container">
-            <code class="pre-helper pre-helper--shell">wget https://dl.min.io/client/mc/release/darwin-amd64/mc</code>
-            <code class="pre-helper pre-helper--shell">chmod +x mc</code>
-          </pre>
-        </q-tab-panel>
-      </q-tab-panels>
-    </div>
-    <div class="download-section">
-      <h3><img src="../assets/yb-cli.png" alt="Yugabyte DB">Yugabyte Shell</h3>
-      <q-tabs
-        v-model="shellTab" dense class="text-grey"
-        active-color="primary"
-        indicator-color="primary"
-        align="justify"
-      >
-        <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" />
-        <q-tab name="Resource Manager" label="Resource Manager" icon="img:/statics/resourcemanager-logo.png" class="option-tabs"/>
-        <q-space />
-        <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">QuickStart Guide</a>
-        </div>
-      </q-tabs>
-      <q-separator />
-
-      <q-tab-panels v-model="shellTab" animated>
-        <q-tab-panel name="Terraform" class="bg-grey-3">
-          <pre class="code-container">
-            <code class="pre-helper pre-helper--shell">brew install minio/stable/minio</code>
-          </pre>
-        </q-tab-panel>
-
-        <q-tab-panel name="Resource Manager" class="bg-grey-3">
-          <pre class="code-container">
-            <code class="pre-helper pre-helper--shell">wget https://dl.min.io/client/mc/release/darwin-amd64/mc</code>
-            <code class="pre-helper pre-helper--shell">chmod +x mc</code>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in resourceManagerCode" v-bind:key="`azure-rm-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
@@ -68,13 +38,22 @@
 </template>
 
 <script>
+import YBHeader from './YBHeader'
+import dbCode from './snippets/azureRMDeploy'
+import TerraformForm from './TerraformForm'
+
 export default {
   name: 'AzureDeploy',
   data: function () {
     return {
       databaseTab: 'Terraform',
-      shellTab: 'Terraform'
+      shellTab: 'Terraform',
+      resourceManagerCode: dbCode.trim().split('\n')
     }
+  },
+  components: {
+    'yb-header': YBHeader,
+    'terraform-form': TerraformForm
   }
 }
 </script>

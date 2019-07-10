@@ -41,15 +41,7 @@
       <div class="os-install-content">
         <mac-install v-if="selectedOS === 'macos'"></mac-install>
         <linux-install v-if="selectedOS === 'linux'"></linux-install>
-
-        <q-card v-if="selectedOS === 'kubernetes'" class="kubernetes-content">
-          <q-card-section>
-            <q-input label="Access Key" />
-            <q-input label="Secret Key" />
-            <q-input label="Mode" />
-            <q-input label="Size" />
-          </q-card-section>
-        </q-card>
+        <kubernetes-install v-if="selectedOS === 'kubernetes'"></kubernetes-install>
         <docker-install v-if="selectedOS === 'docker'"></docker-install>
       </div>
 
@@ -101,6 +93,45 @@
   </q-page>
 </template>
 
+<script>
+import MacInstall from 'components/MacInstall'
+import LinuxInstall from 'components/LinuxInstall'
+import DockerInstall from 'components/DockerInstall'
+import KubernetesInstall from 'components/KubernetesInstall'
+import AWSDeploy from 'components/AWSDeploy'
+import GCPDeploy from 'components/GCPDeploy'
+import AzureDeploy from 'components/AzureDeploy'
+import PivotalDeploy from 'components/PivotalDeploy'
+import YBButton from 'components/YBButton'
+
+export default {
+  name: 'PageIndex',
+  data: function () {
+    return {
+      selectedService: 'local',
+      selectedOS: 'macos',
+      selectedDeploy: 'aws'
+    }
+  },
+  components: {
+    'mac-install': MacInstall,
+    'linux-install': LinuxInstall,
+    'docker-install': DockerInstall,
+    'kubernetes-install': KubernetesInstall,
+    'yb-button': YBButton,
+    'aws-deploy': AWSDeploy,
+    'gcp-deploy': GCPDeploy,
+    'azure-deploy': AzureDeploy,
+    'pivotal-deploy': PivotalDeploy
+  },
+  methods: {
+    handleSelectDeploy: function (deploy) {
+      this.selectedDeploy = deploy
+    }
+  }
+}
+</script>
+
 <style>
 .content {
   text-align: center;
@@ -117,6 +148,17 @@
   margin-right: auto;
   margin-left: auto;
   text-align: left;
+}
+.q-panel > div {
+  height: 100%;
+  min-width: 100%;
+  width: fit-content;
+}
+.bg-form {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 60px;
 }
 .service-options {
   display: flex;
@@ -169,9 +211,6 @@ h3.overview-statement {
   margin-right: auto;
   padding-left: 120px;
   padding-right: 120px;
-  margin-bottom: 60px;
-}
-.kubernetes-content {
   margin-bottom: 60px;
 }
 #cloud-cluster-content .cloud-selection-container {
@@ -242,7 +281,7 @@ h3.overview-statement {
   height: 97px;
 }
 #gcp-header-btn {
-  padding-top: 30px;
+  padding-top: 18px;
   height: 97px;
 }
 #aws-header-btn img {
@@ -255,40 +294,3 @@ h3.overview-statement {
   border: 1px solid #f75721;
 }
 </style>
-
-<script>
-import MacInstall from 'components/MacInstall'
-import LinuxInstall from 'components/LinuxInstall'
-import DockerInstall from 'components/DockerInstall'
-import AWSDeploy from 'components/AWSDeploy'
-import GCPDeploy from 'components/GCPDeploy'
-import AzureDeploy from 'components/AzureDeploy'
-import PivotalDeploy from 'components/PivotalDeploy'
-import YBButton from 'components/YBButton'
-
-export default {
-  name: 'PageIndex',
-  data: function () {
-    return {
-      selectedService: 'local',
-      selectedOS: 'macos',
-      selectedDeploy: 'aws'
-    }
-  },
-  components: {
-    'mac-install': MacInstall,
-    'linux-install': LinuxInstall,
-    'docker-install': DockerInstall,
-    'yb-button': YBButton,
-    'aws-deploy': AWSDeploy,
-    'gcp-deploy': GCPDeploy,
-    'azure-deploy': AzureDeploy,
-    'pivotal-deploy': PivotalDeploy
-  },
-  methods: {
-    handleSelectDeploy: function (deploy) {
-      this.selectedDeploy = deploy
-    }
-  }
-}
-</script>

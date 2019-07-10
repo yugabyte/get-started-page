@@ -1,14 +1,13 @@
 <template>
   <div class="install-container">
     <div class="download-section">
-      <h3><img src="../assets/yb-database.png" alt="Yugabyte DB">Yugabyte DB</h3>
+      <yb-header type="yb-logo" text="Yugabyte DB"></yb-header>
       <q-tabs
         v-model="databaseTab" dense class="text-grey"
         active-color="primary"
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="brew" label="brew" class="option-tabs" />
         <q-tab name="x64" label="X64" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
@@ -18,29 +17,21 @@
       <q-separator />
 
       <q-tab-panels v-model="databaseTab" animated>
-        <q-tab-panel name="brew" class="bg-grey-3">
-          <pre class="code-container">
-            <code class="pre-helper pre-helper--shell">brew install minio/stable/minio</code>
-          </pre>
-        </q-tab-panel>
-
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
-            <code class="pre-helper pre-helper--shell">wget https://dl.min.io/client/mc/release/darwin-amd64/mc</code>
-            <code class="pre-helper pre-helper--shell">chmod +x mc</code>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbBashLines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
     </div>
     <div class="download-section">
-      <h3><img src="../assets/yb-cli.png" alt="Yugabyte DB">Yugabyte Shell</h3>
+      <yb-header type="yb-shell" text="Yugabyte Shell"></yb-header>
       <q-tabs
         v-model="shellTab" dense class="text-grey"
         active-color="primary"
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="brew" label="brew" class="option-tabs" />
         <q-tab name="x64" label="X64" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
@@ -50,16 +41,9 @@
       <q-separator />
 
       <q-tab-panels v-model="shellTab" animated>
-        <q-tab-panel name="brew" class="bg-grey-3">
-          <pre class="code-container">
-            <code class="pre-helper pre-helper--shell">brew install minio/stable/minio</code>
-          </pre>
-        </q-tab-panel>
-
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
-            <code class="pre-helper pre-helper--shell">wget https://dl.min.io/client/mc/release/darwin-amd64/mc</code>
-            <code class="pre-helper pre-helper--shell">chmod +x mc</code>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
@@ -68,13 +52,22 @@
 </template>
 
 <script>
+import dbCode from './snippets/linuxDbBash'
+import shellCode from './snippets/linuxShellBash'
+import YBHeader from './YBHeader'
+
 export default {
   name: 'LinuxInstall',
   data: function () {
     return {
-      databaseTab: 'brew',
-      shellTab: 'brew'
+      databaseTab: 'x64',
+      shellTab: 'x64',
+      dbBashLines: dbCode.trim().split('\n'),
+      shellBashLines: shellCode.trim().split('\n')
     }
+  },
+  components: {
+    'yb-header': YBHeader
   }
 }
 </script>
