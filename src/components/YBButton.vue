@@ -49,6 +49,9 @@ a.download-nav-btn {
   padding: 25px 0;
   background-color: #fff;
 }
+a.download-nav-btn:hover {
+  background-color: #e7e7e7;
+}
 a.download-nav-btn.active {
   color: #2d2d2d;
   border: 1px solid #f75721;
