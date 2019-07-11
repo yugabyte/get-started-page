@@ -24,16 +24,16 @@
     </div>
     <div v-if="selectedService === 'local'" id="local-cluster-content" class="content">
       <div class="os-selection-container">
-        <yb-button label="MacOS" :active="selectedOS === 'macos'" v-bind:handleClick="() => handleSelectOS('macos')">
+        <yb-button label="MacOS" :active="selectedOS === 'macos'" v-bind:handleClick="() => handleSelectSection('macos')">
           <img src="../assets/macos-icon.svg" />
         </yb-button>
-        <yb-button label="Linux" :active="selectedOS === 'linux'" v-bind:handleClick="() => handleSelectOS('linux')">
+        <yb-button label="Linux" :active="selectedOS === 'linux'" v-bind:handleClick="() => handleSelectSection('linux')">
           <img src="../assets/linux-icon.svg" />
         </yb-button>
-        <yb-button label="Kubernetes" :active="selectedOS === 'kubernetes'" v-bind:handleClick="() => handleSelectOS('kubernetes')">
+        <yb-button label="Kubernetes" :active="selectedOS === 'kubernetes'" v-bind:handleClick="() => handleSelectSection('kubernetes')">
           <img src="../assets/kubernetes-icon.svg" />
         </yb-button>
-        <yb-button label="Docker" :active="selectedOS === 'docker'" v-bind:handleClick="() => handleSelectOS('docker')">
+        <yb-button label="Docker" :active="selectedOS === 'docker'" v-bind:handleClick="() => handleSelectSection('docker')">
           <img src="../assets/docker-icon.png" />
         </yb-button>
       </div>
@@ -51,7 +51,7 @@
         <div>
           <q-btn id="aws-header-btn"
             :class="selectedDeploy === 'aws' ? 'cloud-providers-container active' : 'cloud-providers-container'"
-            v-on:click="handleSelectDeploy('aws')"
+            v-on:click="handleSelectSection('aws')"
           >
             <div><img width="95" src="../assets/aws-logo-black.png" /></div>
           </q-btn>
@@ -59,7 +59,7 @@
         <div>
           <q-btn id="gcp-header-btn"
             :class="selectedDeploy === 'gcp' ? 'cloud-providers-container active' : 'cloud-providers-container'"
-            v-on:click="handleSelectDeploy('gcp')"
+            v-on:click="handleSelectSection('gcp')"
           >
             <img width="200" src="../assets/gcp-logo.svg" />
           </q-btn>
@@ -67,7 +67,7 @@
         <div>
           <q-btn  id="azure-header-btn"
             :class="selectedDeploy === 'azure' ? 'cloud-providers-container active' : 'cloud-providers-container'"
-            v-on:click="handleSelectDeploy('azure')"
+            v-on:click="handleSelectSection('azure')"
           >
             <img width="220" src="../assets/azure-logo-small.png" />
           </q-btn>
@@ -75,7 +75,7 @@
         <div>
           <q-btn id="pivotal-header-btn"
             :class="selectedDeploy === 'pivotal' ? 'cloud-providers-container active' : 'cloud-providers-container'"
-            v-on:click="handleSelectDeploy('pivotal')"
+            v-on:click="handleSelectSection('pivotal')"
           >
             <div><img width="150" src="../assets/pivotal.svg" /></div>
           </q-btn>
@@ -112,9 +112,7 @@ export default {
     return {
       selectedService: 'local',
       selectedOS: 'macos',
-      selectedDeploy: 'aws',
-      localInstallation: ['macos', 'linux', 'kubernetes', 'docker'],
-      cloudProviders: ['aws', 'gcp', 'azure', 'pivotal']
+      selectedDeploy: 'aws'
     }
   },
   components: {
@@ -129,22 +127,17 @@ export default {
     'pivotal-deploy': PivotalDeploy
   },
   methods: {
-    handleSelectOS: function (os) {
-      this.selectedOS = os
+    handleSelectSection: function (section) {
+      if (this.selectedService === 'local') {
+        this.selectedOS = section
+      } else {
+        this.selectedDeploy = section
+      }
+
       event({
         eventCategory: 'Install-Page',
-        eventAction: 'click.local',
-        eventLabel: `User clicked ${os} section button`,
-        eventValue: this.localInstallation.indexOf(os)
-      })
-    },
-    handleSelectDeploy: function (deploy) {
-      this.selectedDeploy = deploy
-      event({
-        eventCategory: 'Install-Page',
-        eventAction: 'click.cloud',
-        eventLabel: `User clicked ${deploy} section button`,
-        eventValue: this.cloudProviders.indexOf(deploy)
+        eventAction: `click.${this.selectedService}.${section}`,
+        eventLabel: `User clicked ${section} section button`
       })
     }
   }

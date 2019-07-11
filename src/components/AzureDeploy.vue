@@ -8,8 +8,8 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('Terraform')" />
-        <q-tab name="Resource Manager" class="option-tabs" v-on:click="sendAnalytics('Resource Manager')">
+        <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
+        <q-tab name="Resource Manager" class="option-tabs" v-on:click="sendAnalytics('resource-manager')">
           <!-- Add child image tag due to non-square icon -->
           <img width="24" style="margin-bottom: 5px" src="/statics/resourcemanager-logo.png" />
           Resource Manager
@@ -49,7 +49,6 @@ export default {
   data: function () {
     return {
       databaseTab: 'Terraform',
-      deployServices: ['Terraform', 'Resource Manager'],
       resourceManagerCode: dbCode.trim().split('\n')
     }
   },
@@ -61,9 +60,8 @@ export default {
     sendAnalytics: function (service) {
       event({
         eventCategory: 'Install-Page',
-        eventAction: 'click.azure.service',
-        eventLabel: `User clicked Azure ${service} section button`,
-        eventValue: this.deployServices.indexOf(service)
+        eventAction: `click.azure.${service}`,
+        eventLabel: `User clicked Azure ${service} section button`
       })
     }
   }
