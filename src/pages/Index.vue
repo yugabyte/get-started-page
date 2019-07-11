@@ -24,16 +24,16 @@
     </div>
     <div v-if="selectedService === 'local'" id="local-cluster-content" class="content">
       <div class="os-selection-container">
-        <yb-button label="MacOS" :active="selectedOS === 'macos'" v-on:click="handleSelectOS('macos')">
+        <yb-button label="MacOS" :active="selectedOS === 'macos'" v-bind:handleClick="() => handleSelectOS('macos')">
           <img src="../assets/macos-icon.svg" />
         </yb-button>
-        <yb-button label="Linux" :active="selectedOS === 'linux'" v-on:click="handleSelectOS('linux')">
+        <yb-button label="Linux" :active="selectedOS === 'linux'" v-bind:handleClick="() => handleSelectOS('linux')">
           <img src="../assets/linux-icon.svg" />
         </yb-button>
-        <yb-button label="Kubernetes" :active="selectedOS === 'kubernetes'" v-on:click="handleSelectOS('kubernetes')">
+        <yb-button label="Kubernetes" :active="selectedOS === 'kubernetes'" v-bind:handleClick="() => handleSelectOS('kubernetes')">
           <img src="../assets/kubernetes-icon.svg" />
         </yb-button>
-        <yb-button label="Docker" :active="selectedOS === 'docker'" v-on:click="handleSelectOS('docker')">
+        <yb-button label="Docker" :active="selectedOS === 'docker'" v-bind:handleClick="() => handleSelectOS('docker')">
           <img src="../assets/docker-icon.png" />
         </yb-button>
       </div>
