@@ -8,8 +8,8 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Cloud Foundry" label="Cloud Foundry" icon="img:/statics/pivotal-pcf-logo.svg" class="option-tabs" />
-        <!-- <q-tab name="Container Service" label="Container Service" icon="img:/statics/pivotal-pks-logo.svg" class="option-tabs"/> -->
+        <q-tab name="Cloud Foundry" label="Cloud Foundry" icon="img:/statics/pivotal-pcf-logo.svg" class="option-tabs" v-on:click="sendAnalytics('Cloud Foundry')" />
+        <!-- <q-tab name="Container Service" label="Container Service" icon="img:/statics/pivotal-pks-logo.svg" class="option-tabs" v-on:click="sendAnalytics('Container Service')" /> -->
         <q-space />
         <div class="quickstart-container">
           <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">QuickStart Guide</a>
@@ -39,17 +39,29 @@
 import YBHeader from './YBHeader'
 import cfCode from './snippets/pivotalCFDeploy'
 
+import { event } from 'vue-analytics'
+
 export default {
   name: 'PivotalDeploy',
   data: function () {
     return {
       databaseTab: 'Cloud Foundry',
-      shellTab: 'Cloud Foundry',
+      deployServices: ['Cloud Foundry'],
       cfBashLines: cfCode.trim().split('\n')
     }
   },
   components: {
     'yb-header': YBHeader
+  },
+  methods: {
+    sendAnalytics: function (service) {
+      event({
+        eventCategory: 'Install-Page',
+        eventAction: 'click.pivotal.service',
+        eventLabel: `User clicked Pivotal ${service} section button`,
+        eventValue: this.deployServices.indexOf(service)
+      })
+    }
   }
 }
 </script>

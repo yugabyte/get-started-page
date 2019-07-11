@@ -168,7 +168,7 @@ body {
   margin-left: 19px;
 }
 .logo-container {
-  padding: 10px 5px 2px 5px;
+  padding: 17px 5px 2px 5px;
 }
 .logo a {
   height: 75px;

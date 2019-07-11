@@ -8,8 +8,8 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" />
-        <q-tab name="Cloud Formation" label="Cloud Formation" icon="img:/statics/cloudformation-logo.png" class="option-tabs"/>
+        <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('Terraform')" />
+        <q-tab name="Cloud Formation" label="Cloud Formation" icon="img:/statics/cloudformation-logo.png" class="option-tabs" v-on:click="sendAnalytics('Cloud Formation')" />
         <q-space />
         <div class="quickstart-container">
           <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/#terraform">QuickStart Guide</a>
@@ -38,17 +38,30 @@ import YBHeader from './YBHeader'
 import TerraformForm from './TerraformForm'
 import cfCode from './snippets/awsCFDeploy'
 
+import { event } from 'vue-analytics'
+
 export default {
   name: 'AWSDeploy',
   data: function () {
     return {
       databaseTab: 'Terraform',
+      deployServices: ['Terraform', 'Cloud Formation'],
       cfBashLines: cfCode.trim().split('\n')
     }
   },
   components: {
     'yb-header': YBHeader,
     'terraform-form': TerraformForm
+  },
+  methods: {
+    sendAnalytics: function (service) {
+      event({
+        eventCategory: 'Install-Page',
+        eventAction: 'click.aws.service',
+        eventLabel: `User clicked AWS ${service} section button`,
+        eventValue: this.deployServices.indexOf(service)
+      })
+    }
   }
 }
 </script>

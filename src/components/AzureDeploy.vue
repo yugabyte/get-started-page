@@ -8,8 +8,8 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" />
-        <q-tab name="Resource Manager" class="option-tabs">
+        <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('Terraform')" />
+        <q-tab name="Resource Manager" class="option-tabs" v-on:click="sendAnalytics('Resource Manager')">
           <!-- Add child image tag due to non-square icon -->
           <img width="24" style="margin-bottom: 5px" src="/statics/resourcemanager-logo.png" />
           Resource Manager
@@ -42,18 +42,30 @@ import YBHeader from './YBHeader'
 import dbCode from './snippets/azureRMDeploy'
 import TerraformForm from './TerraformForm'
 
+import { event } from 'vue-analytics'
+
 export default {
   name: 'AzureDeploy',
   data: function () {
     return {
       databaseTab: 'Terraform',
-      shellTab: 'Terraform',
+      deployServices: ['Terraform', 'Resource Manager'],
       resourceManagerCode: dbCode.trim().split('\n')
     }
   },
   components: {
     'yb-header': YBHeader,
     'terraform-form': TerraformForm
+  },
+  methods: {
+    sendAnalytics: function (service) {
+      event({
+        eventCategory: 'Install-Page',
+        eventAction: 'click.azure.service',
+        eventLabel: `User clicked Azure ${service} section button`,
+        eventValue: this.deployServices.indexOf(service)
+      })
+    }
   }
 }
 </script>
