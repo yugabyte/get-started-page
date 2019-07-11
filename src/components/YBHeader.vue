@@ -1,5 +1,9 @@
 <template>
-  <h3><img :src="imgSource" :alt="text">{{ text }}</h3>
+  <h3>
+    <img v-if="type === 'yb-logo'" src="../assets/ybsymbol_original.png" :alt="text" />
+    <img v-else src="../assets/yb-cli.png" :alt="text" />
+    {{ text }}
+  </h3>
 </template>
 
 <script>
@@ -13,11 +17,6 @@ export default {
     text: {
       type: String,
       default: ''
-    }
-  },
-  data: function () {
-    return {
-      imgSource: this.type === 'yb-logo' ? '../assets/ybsymbol_original.png' : '../assets/yb-cli.png'
     }
   }
 }
