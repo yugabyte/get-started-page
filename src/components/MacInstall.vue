@@ -19,10 +19,14 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
+            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="() => copyToClipboard(dbBashLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbBashLines" v-bind:key="`mac-db-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
+      <div class="quickstart-container mobile-view">
+        <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Quick-Start Guide</a>
+      </div>
     </div>
     <div class="download-section">
       <yb-header type="yb-shell" text="Yugabyte Shell"></yb-header>
@@ -43,10 +47,14 @@
       <q-tab-panels v-model="shellTab" animated>
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
+            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="() => copyToClipboard(shellBashLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`mac-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
+      <div class="quickstart-container mobile-view">
+        <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/create-local-cluster/">Quick-Start Guide</a>
+      </div>
     </div>
   </div>
 </template>
@@ -55,6 +63,7 @@
 import dbCode from './snippets/macDbBash'
 import shellCode from './snippets/macShellBash'
 import YBHeader from './YBHeader'
+import { copyToClipboard } from './helpers'
 
 export default {
   name: 'MacInstall',
@@ -68,6 +77,9 @@ export default {
   },
   components: {
     'yb-header': YBHeader
+  },
+  methods: {
+    copyToClipboard: copyToClipboard
   }
 }
 </script>
@@ -78,6 +90,7 @@ export default {
 }
 .download-section {
   margin-bottom: 80px;
+  position: relative;
 }
 .option-tabs {
   max-width: 200px;
@@ -117,5 +130,31 @@ export default {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+.code-container .copy-code-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  visibility: hidden;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+.code-container:hover .copy-code-btn {
+  visibility: visible;
+}
+.quickstart-container {
+  margin-right: 15px;
+}
+.quickstart-container.mobile-view {
+  margin: 15px;
+  display: none;
+}
+
+@media only screen and (max-width: 632px) {
+  .quickstart-container {
+    display: none;
+  }
+  .quickstart-container.mobile-view {
+    display: block;
+  }
 }
 </style>

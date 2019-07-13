@@ -21,6 +21,7 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="Cloud Formation" class="bg-grey-3">
           <pre class="code-container">
+            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(cfBashLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in cfBashLines" v-bind:key="`aws-cf-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
@@ -28,6 +29,10 @@
           <terraform-form code="aws" providerName="AWS"></terraform-form>
         </q-tab-panel>
       </q-tab-panels>
+      <div class="quickstart-container mobile-view">
+        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://github.com/YugaByte/terraform-aws-yugabyte">Quick-Start Guide</a>
+        <a v-else target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/">Quick-Start Guide</a>
+      </div>
     </div>
   </div>
 </template>
@@ -37,6 +42,7 @@ import YBHeader from './YBHeader'
 import TerraformForm from './TerraformForm'
 import cfCode from './snippets/awsCFDeploy'
 
+import { copyToClipboard } from './helpers'
 import { event } from 'vue-analytics'
 
 export default {
@@ -58,7 +64,8 @@ export default {
         eventAction: `click.aws.${service}`,
         eventLabel: `User clicked AWS ${service} section button`
       })
-    }
+    },
+    copyToClipboard: copyToClipboard
   }
 }
 </script>

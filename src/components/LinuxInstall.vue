@@ -19,10 +19,14 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
+            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="() => copyToClipboard(dbBashLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbBashLines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
+      <div class="quickstart-container mobile-view">
+        <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">Quick-Start Guide</a>
+      </div>
     </div>
     <div class="download-section">
       <yb-header type="yb-shell" text="Yugabyte Shell"></yb-header>
@@ -43,10 +47,14 @@
       <q-tab-panels v-model="shellTab" animated>
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
+            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="() => copyToClipboard(shellBashLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
+      <div class="quickstart-container mobile-view">
+          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">Quick-Start Guide</a>
+        </div>
     </div>
   </div>
 </template>
@@ -55,6 +63,7 @@
 import dbCode from './snippets/linuxDbBash'
 import shellCode from './snippets/linuxShellBash'
 import YBHeader from './YBHeader'
+import { copyToClipboard } from './helpers'
 
 export default {
   name: 'LinuxInstall',
@@ -68,6 +77,9 @@ export default {
   },
   components: {
     'yb-header': YBHeader
+  },
+  methods: {
+    copyToClipboard: copyToClipboard
   }
 }
 </script>

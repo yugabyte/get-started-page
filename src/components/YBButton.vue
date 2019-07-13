@@ -33,8 +33,8 @@ export default {
 <style scoped>
 a.download-nav-btn {
   cursor: pointer;
-  -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.15);
-  box-shadow: 0 5px 15px rgba(0,0,0,.15);
+  -webkit-box-shadow: 0 2px 6px 0 rgba(0,0,0,.1);
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,.1);
   z-index: 1;
   flex: 1 1 0;
   color: #727272;

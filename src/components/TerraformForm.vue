@@ -22,14 +22,15 @@
       <q-btn color="primary" label="Generate" @click="handleButtonClick" />
     </div>
     <div v-if="sampleConfigFile" id="sample-config-block">
-      <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="handleCopyClipboard"/>
+      <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(sampleConfigFile)"/>
       <pre>{{ sampleConfigFile }}</pre>
     </div>
     <div class="config-form-header">
       Create cluster
     </div>
     <div class="bg-grey-3">
-      <pre class="code-container">
+      <pre class="code-container" id="exec-code-block">
+        <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(terraformBashLines.join('\n'))"/>
         <code class="pre-helper pre-helper--shell" v-for="(line, index) in terraformBashLines" v-bind:key="`terraform-${index}`">{{ line }}</code>
       </pre>
     </div>
@@ -38,6 +39,7 @@
 
 <script>
 import terraformCode, { generateConfig } from './snippets/terraformDeploy'
+import { copyToClipboard } from './helpers'
 
 export default {
   name: 'TerraformForm',
@@ -69,20 +71,7 @@ export default {
         this.subnetIdsInput
       )
     },
-    handleCopyClipboard: function () {
-      var textArea = document.createElement('textarea')
-      textArea.value = this.sampleConfigFile
-      document.body.appendChild(textArea)
-      textArea.focus({ preventScroll: true })
-      textArea.select()
-
-      try {
-        document.execCommand('copy')
-      } catch (err) {
-        console.error('Unable to copy to clipboard')
-      }
-      document.body.removeChild(textArea)
-    }
+    copyToClipboard: copyToClipboard
   },
   props: {
     code: {
@@ -98,7 +87,7 @@ export default {
 
 <style>
 .config-form-container {
-  margin-bottom: 30px;
+  margin-bottom: 45px;
 }
 .config-form-container .form-control {
   margin-bottom: 20px;
@@ -111,7 +100,7 @@ export default {
   color: #0064b8;
   font-family: Mark,sans-serif;
   font-weight: 500;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-size: 18px;
   position: relative;
 }
@@ -128,8 +117,22 @@ export default {
   position: absolute;
   right: 100px;
   visibility: hidden;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 #sample-config-block:hover .copy-code-btn {
+  visibility: visible;
+}
+#exec-code-block {
+  position: relative;
+}
+#exec-code-block .copy-code-btn {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  visibility: hidden;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+#exec-code-block:hover .copy-code-btn {
   visibility: visible;
 }
 </style>

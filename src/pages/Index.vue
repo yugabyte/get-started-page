@@ -8,26 +8,17 @@
     </section>
     <ul id="dropdown-options-container">
       <li>
-        <div>
-          <span>Service:</span>
-          <q-select style="width: 300px"
-            filled
-            label="Service"
-            v-model="selectedService"
-            :options="serviceOptions" />
-        </div>
+        <q-select style="width: 300px"
+          filled
+          label="Service"
+          v-model="selectedService"
+          :options="serviceOptions" />
       </li>
       <li v-if="selectedService.value === 'local'">
-        <div>
-          <span>Platform:</span>
-          <q-select style="width: 300px" filled label="Platform" v-model="selectedPlatform" :options="platformOptions" />
-        </div>
+        <q-select style="width: 300px" filled label="Platform" v-model="selectedPlatform" :options="platformOptions" />
       </li>
       <li v-else-if="selectedService.value === 'cloud'">
-        <div>
-          <span>Cloud Provider:</span>
-          <q-select style="width: 300px" filled label="Cloud Provider" v-model="selectedDeploy" :options="deployOptions" />
-        </div>
+        <q-select style="width: 300px" filled label="Cloud Provider" v-model="selectedDeploy" :options="deployOptions" />
       </li>
     </ul>
     <div class="service-tabs-container">
@@ -79,7 +70,7 @@
     <div v-else-if="selectedService.value === 'cloud'" id="cloud-cluster-content" class="content">
       <div class="cloud-selection-container">
         <div>
-          <q-btn :ripple="false" id="aws-header-btn"
+          <q-btn :ripple="false" class="testing" id="aws-header-btn"
             :class="selectedDeploy.value === 'aws' ? 'cloud-providers-container active' : 'cloud-providers-container'"
             v-on:click="handleSelectSection(deployOptions[0])"
           >
@@ -338,6 +329,9 @@ h3.overview-statement {
   padding-left: 0;
   display: none;
 }
+#dropdown-options-container li {
+  margin-bottom: 15px;
+}
 .service-tabs-container {
   width: 100%;
 }
@@ -354,7 +348,7 @@ h3.overview-statement {
     overflow-x: scroll;
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 632px) {
   #dropdown-options-container {
     display: block;
   }
@@ -425,6 +419,12 @@ h3.overview-statement {
   margin-left: 15px;
   margin-right: 15px;
   height: 97px;
+}
+/* Overrides Quasar */
+.cloud-selection-container button {
+  -webkit-box-shadow: 0 2px 6px 0 rgba(0,0,0,.1);
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,.1);
+  border: 1px solid #e2e2e2;
 }
 #gcp-header-btn {
   padding-top: 18px;

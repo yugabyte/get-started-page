@@ -176,7 +176,7 @@ body {
   display: none;
 }
 .logo-container {
-  padding: 17px 5px 2px 60px;
+  padding: 17px 5px 17px 60px;
 }
 .logo a {
   height: 75px;
@@ -191,7 +191,6 @@ a {
 }
 #side-menu-btn {
   margin-right: 15px;
-  margin-top: 10px;
 }
 .footer {
   text-align: left;
@@ -278,7 +277,7 @@ a {
     display: none;
   }
   .logo-container {
-    padding: 17px 5px 2px 20px;
+    padding: 17px 5px 17px 20px;
   }
 }
 @media (max-width: 500px) {
@@ -289,7 +288,7 @@ a {
     display: block;
   }
   .logo-container {
-    padding: 5px 5px 0 10px;
+    padding: 7px 5px 7px 10px;
   }
   .footer-items[data-footer="address"], .footer-items[data-footer="contact-us"] {
     display: none;

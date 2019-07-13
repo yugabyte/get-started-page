@@ -20,16 +20,21 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="Cloud Foundry" class="bg-grey-3">
           <pre class="code-container">
+            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(cfBashLines)"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in cfBashLines" v-bind:key="`pivotal-cf-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
 
         <q-tab-panel name="PKS" class="bg-grey-3">
           <pre class="code-container">
+            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(cfBashLines)"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in cfBashLines" v-bind:key="`pivotal-cf-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
+      <div class="quickstart-container mobile-view">
+        <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">Quick-Start Guide</a>
+      </div>
     </div>
   </div>
 </template>
@@ -38,6 +43,7 @@
 import YBHeader from './YBHeader'
 import cfCode from './snippets/pivotalCFDeploy'
 
+import { copyToClipboard } from './helpers'
 import { event } from 'vue-analytics'
 
 export default {
@@ -58,7 +64,8 @@ export default {
         eventAction: `click.pivotal.${service}`,
         eventLabel: `User clicked Pivotal ${service} section button`
       })
-    }
+    },
+    copyToClipboard: copyToClipboard
   }
 }
 </script>

@@ -28,6 +28,10 @@
           <terraform-form code="google" providerName="Google Cloud Platform"></terraform-form>
         </q-tab-panel>
       </q-tab-panels>
+      <div class="quickstart-container mobile-view">
+        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://github.com/YugaByte/terraform-gcp-yugabyte">Quick-Start Guide</a>
+        <a v-else target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/gcp/">Quick-Start Guide</a>
+      </div>
     </div>
   </div>
 </template>
