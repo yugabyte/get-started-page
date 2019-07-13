@@ -8,11 +8,11 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Cloud Foundry" label="Cloud Foundry" icon="img:/statics/pivotal-pcf-logo.svg" class="option-tabs" />
-        <!-- <q-tab name="Container Service" label="Container Service" icon="img:/statics/pivotal-pks-logo.svg" class="option-tabs"/> -->
+        <q-tab name="Cloud Foundry" label="Pivotal Cloud Foundry (PCF)" icon="img:/statics/pivotal-pcf-logo.svg" class="option-tabs pivotal-tab" v-on:click="sendAnalytics('cloud-foundry')" />
+        <q-tab name="PKS" label="Pivotal Container Service (PKS)" icon="img:/statics/pivotal-pks-logo.svg" class="option-tabs pivotal-tab" v-on:click="sendAnalytics('container-service')" />
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">QuickStart Guide</a>
+          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -20,17 +20,21 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="Cloud Foundry" class="bg-grey-3">
           <pre class="code-container">
+            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(cfBashLines)"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in cfBashLines" v-bind:key="`pivotal-cf-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
 
-        <!-- <q-tab-panel name="Container Service" class="bg-grey-3">
+        <q-tab-panel name="PKS" class="bg-grey-3">
           <pre class="code-container">
-            <code class="pre-helper pre-helper--shell">wget https://dl.min.io/client/mc/release/darwin-amd64/mc</code>
-            <code class="pre-helper pre-helper--shell">chmod +x mc</code>
+            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(cfBashLines)"/>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in cfBashLines" v-bind:key="`pivotal-cf-${index}`">{{ line }}</code>
           </pre>
-        </q-tab-panel> -->
+        </q-tab-panel>
       </q-tab-panels>
+      <div class="quickstart-container mobile-view">
+        <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">Quick-Start Guide</a>
+      </div>
     </div>
   </div>
 </template>
@@ -39,17 +43,35 @@
 import YBHeader from './YBHeader'
 import cfCode from './snippets/pivotalCFDeploy'
 
+import { copyToClipboard } from './helpers'
+import { event } from 'vue-analytics'
+
 export default {
   name: 'PivotalDeploy',
   data: function () {
     return {
       databaseTab: 'Cloud Foundry',
-      shellTab: 'Cloud Foundry',
       cfBashLines: cfCode.trim().split('\n')
     }
   },
   components: {
     'yb-header': YBHeader
+  },
+  methods: {
+    sendAnalytics: function (service) {
+      event({
+        eventCategory: 'Install-Page',
+        eventAction: `click.pivotal.${service}`,
+        eventLabel: `User clicked Pivotal ${service} section button`
+      })
+    },
+    copyToClipboard: copyToClipboard
   }
 }
 </script>
+
+<style>
+.option-tabs.pivotal-tab {
+  max-width: 300px;
+}
+</style>

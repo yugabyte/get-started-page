@@ -1,9 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueAnalytics from 'vue-analytics'
 
 import routes from './routes'
 
 Vue.use(VueRouter)
+Vue.use(VueAnalytics, {
+  id: 'UA-104956980-3'
+  // debug: {
+  //   enabled: true,
+  //   sendHitTask: false
+  // }
+})
 
 /*
  * If not building with SSR mode, you can

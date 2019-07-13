@@ -1,7 +1,5 @@
 const code = `
-wget https://downloads.yugabyte.com/yb-docker-ctl
-chmod +x yb-docker-ctl
-./bin/yb-ctl create
+docker exec -it yb-tserver-n1 /home/yugabyte/bin/ysqlsh -h yb-tserver-n1
 `
 
 export default code
