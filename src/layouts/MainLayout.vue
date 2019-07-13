@@ -5,7 +5,8 @@
         <q-toolbar-title>
           <div class="logo-container">
             <a href="https://www.yugabyte.com">
-              <img width="240" height="40" src="../assets/ybdocs-color.png" />
+              <img id="yb-logo-symbol" width="60" height="60" src="../assets/ybsymbol-original.png" />
+              <img id="yb-logo-full" width="240" height="40" src="../assets/ybdocs-color.png" />
             </a>
           </div>
           <!-- <div class="logo">
@@ -14,7 +15,7 @@
             </a>
           </div> -->
         </q-toolbar-title>
-        <div v-if="!pageScrolled">
+        <div id="yb-main-navbar">
           <a href="https://docs.yugabyte.com/" class="yb-nav-links" target="_blank" style="color: #202951">
             <q-btn class="yb-nav-links" flat label="Docs" color="#202951"/>
           </a>
@@ -48,7 +49,7 @@
             <q-btn class="yb-nav-links" flat label="Blog" color="#202951"/>
           </a>
         </div>
-        <q-btn id="side-menu-btn" v-if="pageScrolled" flat round icon="menu" @click="rightDrawerOpen = !rightDrawerOpen" />
+        <q-btn id="side-menu-btn" flat round icon="menu" @click="rightDrawerOpen = !rightDrawerOpen" />
       </q-toolbar>
     </q-header>
     <q-drawer v-model="rightDrawerOpen" side="right" bordered>
@@ -60,50 +61,50 @@
     </q-page-container>
 
     <q-footer>
-       <footer class="footer">
-        <div class="container-fluid">
-          <ul class="footer-nav">
-            <li>
-              <div class="logo-white">
-                <img width="150px" height="30px" alt="YugabyteDB logo" src="../assets/yb-logo-white-horizontal.svg" />
-              </div>
-              <div class="copyright">
-                © YugaByte, Inc.
-              </div>
-            </li>
-            <li>
-              <a target="_blank" class="footer-link" href="https://www.yugabyte.com/slack" id="slack-link" rel="noreferrer">Slack</a>
-            </li>
-            <li>
-              <a target="_blank" class="footer-link" href="https://stackoverflow.com/questions/tagged/yugabyte-db" id="stackoverflow-link" rel="noreferrer">StackOverflow</a>
-            </li>
-            <li>
-              <a target="_blank" class="footer-link" href="https://github.com/YugaByte/yugabyte-db" id="github-link" rel="noreferrer">GitHub</a>
-            </li>
-            <li>
-              <div class="footer-title">Address</div>
-              <a href="https://goo.gl/maps/SJ7TCYKbA6jezdfM6" target="_blank" rel="noreferrer" id="office-map">
-                YugaByte, Inc<br class="hidden-xs hidden-sm">
-                771 Vaqueros Ave<br class="hidden-xs hidden-sm">
-                Sunnyvale, CA 94085
-              </a>
-            </li>
-            <li>
-              <div class="footer-title">Contact Us</div>
-              <a href="mailto:hello@yugabyte.com">hello@yugabyte.com</a>
-            </li>
-            <li>
-              <div class="footer-title">Follow Us</div>
-              <div class="footer-social">
-                <a target="_blank" rel="noreferrer" href="https://github.com/yugabyte/yugabyte-db" id="github"><img src="../assets/github-small.svg" alt="Github link"></a>
-                <a target="_blank" rel="noreferrer" href="https://www.twitter.com/yugabyte" id="twitter"><img src="../assets/twitter-small.svg" alt="Twitter link"></a>
-                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/yugabyte" id="linkedin"><img src="../assets/linkedin-small.svg" alt="LinkedIn link"></a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </footer>
-    </q-footer>
+        <footer class="footer">
+          <div class="container-fluid">
+            <ul class="footer-nav">
+              <li class="footer-items" >
+                <div class="logo-white">
+                  <img width="150px" height="30px" alt="YugabyteDB logo" src="../assets/yb-logo-white-horizontal.svg" />
+                </div>
+                <div class="copyright">
+                  © YugaByte, Inc.
+                </div>
+              </li>
+              <li class="footer-items" data-footer="community-links">
+                <a target="_blank" class="footer-link" href="https://www.yugabyte.com/slack" id="slack-link" rel="noreferrer">Slack</a>
+              </li>
+              <li class="footer-items" data-footer="community-links">
+                <a target="_blank" class="footer-link" href="https://stackoverflow.com/questions/tagged/yugabyte-db" id="stackoverflow-link" rel="noreferrer">StackOverflow</a>
+              </li>
+              <li class="footer-items" data-footer="community-links">
+                <a target="_blank" class="footer-link" href="https://github.com/YugaByte/yugabyte-db" id="github-link" rel="noreferrer">GitHub</a>
+              </li>
+              <li class="footer-items" data-footer="address">
+                <div class="footer-title">Address</div>
+                <a href="https://goo.gl/maps/SJ7TCYKbA6jezdfM6" target="_blank" rel="noreferrer" id="office-map">
+                  YugaByte, Inc<br class="hidden-xs hidden-sm">
+                  771 Vaqueros Ave<br class="hidden-xs hidden-sm">
+                  Sunnyvale, CA 94085
+                </a>
+              </li>
+              <li class="footer-items" data-footer="contact-us">
+                <div class="footer-title">Contact Us</div>
+                <a href="mailto:hello@yugabyte.com">hello@yugabyte.com</a>
+              </li>
+              <li class="footer-items" >
+                <div class="footer-title">Follow Us</div>
+                <div class="footer-social">
+                  <a target="_blank" rel="noreferrer" href="https://github.com/yugabyte/yugabyte-db" id="github"><img src="../assets/github-small.svg" alt="Github link"></a>
+                  <a target="_blank" rel="noreferrer" href="https://www.twitter.com/yugabyte" id="twitter"><img src="../assets/twitter-small.svg" alt="Twitter link"></a>
+                  <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/yugabyte" id="linkedin"><img src="../assets/linkedin-small.svg" alt="LinkedIn link"></a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </footer>
+      </q-footer>
   </q-layout>
 </template>
 
@@ -134,7 +135,7 @@ export default {
   created () {
     window.addEventListener('scroll', this.handleScroll)
   },
-  destroyed () {
+  beforeDestroy () {
     window.removeEventListener('scroll', this.handleScroll)
   },
   components: {
@@ -152,6 +153,7 @@ body {
 .header {
   color: #202951;
   height: 75px;
+  border-bottom: 1px solid #ccc;
 }
 .nav-container {
   padding-left: 30px;
@@ -167,8 +169,14 @@ body {
   height: 75px;
   margin-left: 19px;
 }
+#yb-logo-full, #yb-main-navbar {
+  display: block;
+}
+#yb-logo-symbol, #side-menu-btn {
+  display: none;
+}
 .logo-container {
-  padding: 17px 5px 2px 5px;
+  padding: 17px 5px 2px 60px;
 }
 .logo a {
   height: 75px;
@@ -179,9 +187,11 @@ body {
 a {
   background-color: transparent;
   text-decoration: none;
+  cursor: pointer;
 }
 #side-menu-btn {
   margin-right: 15px;
+  margin-top: 10px;
 }
 .footer {
   text-align: left;
@@ -222,7 +232,7 @@ a {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-.footer-nav > li {
+.footer-nav li.footer-items {
   padding: 10px 0;
 }
 .footer-nav a {
@@ -244,11 +254,48 @@ a {
       max-width: 1140px;
   }
 }
-@media (max-width: 1199.98px) and (min-width: 576px) {
+@media (max-width: 1199.98px) {
+  .footer-items[data-footer="address"] {
+    display: none;
+  }
   .container-fluid {
     max-width: 97.5%;
   }
 }
+@media (max-width: 880px) {
+  .footer-items[data-footer="contact-us"] {
+    display: none;
+  }
+}
+@media (max-width: 650px) {
+  .footer-items[data-footer="community-links"] {
+    display: none;
+  }
+  #side-menu-btn {
+    display: block;
+  }
+  #yb-main-navbar {
+    display: none;
+  }
+  .logo-container {
+    padding: 17px 5px 2px 20px;
+  }
+}
+@media (max-width: 500px) {
+  #yb-logo-full {
+    display: none;
+  }
+  #yb-logo-symbol {
+    display: block;
+  }
+  .logo-container {
+    padding: 5px 5px 0 10px;
+  }
+  .footer-items[data-footer="address"], .footer-items[data-footer="contact-us"] {
+    display: none;
+  }
+}
+
 .footer .container-fluid {
   width: 100%;
   padding: 0 30px;

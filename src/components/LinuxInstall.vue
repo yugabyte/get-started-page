@@ -11,7 +11,7 @@
         <q-tab name="x64" label="X64" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">QuickStart Guide</a>
+          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -35,7 +35,7 @@
         <q-tab name="x64" label="X64" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">QuickStart Guide</a>
+          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />

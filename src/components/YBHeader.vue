@@ -1,6 +1,6 @@
 <template>
   <h3>
-    <img v-if="type === 'yb-logo'" src="../assets/ybsymbol_original.png" :alt="text" />
+    <img v-if="type === 'yb-logo'" src="../assets/ybsymbol-original.png" :alt="text" />
     <img v-else src="../assets/yb-cli.png" :alt="text" />
     {{ text }}
   </h3>

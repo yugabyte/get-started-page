@@ -8,17 +8,53 @@
         indicator-color="primary"
         align="justify"
       >
+        <q-tab name="Helm" label="Helm" class="option-tabs"/>
+        <q-tab name="YAML" label="YAML" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/">QuickStart Guide</a>
+          <a v-if="databaseTab === 'YAML'" target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/#kubernetes">Quick-Start Guide</a>
+          <a v-else target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/helm-chart/">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />
 
       <q-tab-panels v-model="databaseTab" animated>
-        <q-tab-panel name="default" class="bg-grey-3">
+        <q-tab-panel name="Helm" class="bg-grey-3">
           <pre class="code-container">
-            <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbBashLines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbHelmLines" v-bind:key="`kubernetes-helm-${index}`">{{ line }}</code>
+          </pre>
+        </q-tab-panel>
+        <q-tab-panel name="YAML" class="bg-grey-3">
+          <pre class="code-container">
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbYamlLines" v-bind:key="`kubernetes-yaml-${index}`">{{ line }}</code>
+          </pre>
+        </q-tab-panel>
+      </q-tab-panels>
+    </div>
+    <div class="download-section">
+      <yb-header type="yb-shell" text="Yugabyte Shell"></yb-header>
+      <q-tabs
+        v-model="shellTab" dense class="text-grey"
+        active-color="primary"
+        indicator-color="primary"
+        align="justify"
+      >
+        <q-space />
+        <div class="quickstart-container">
+          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Quick-Start Guide</a>
+        </div>
+      </q-tabs>
+      <q-separator />
+
+      <q-tab-panels v-model="shellTab" animated>
+        <q-tab-panel name="Helm" class="bg-grey-3">
+          <pre class="code-container">
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`kubernetes-shell-${index}`">{{ line }}</code>
+          </pre>
+        </q-tab-panel>
+        <q-tab-panel name="YAML" class="bg-grey-3">
+          <pre class="code-container">
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`kubernetes-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
@@ -27,15 +63,19 @@
 </template>
 
 <script>
-import dbCode from './snippets/kubernetesDbBash'
+import { helm, yaml } from './snippets/kubernetesDbBash'
+import shellCode from './snippets/kubernetesShellBash'
 import YBHeader from './YBHeader'
 
 export default {
   name: 'KubernetesInstall',
   data: function () {
     return {
-      databaseTab: 'default',
-      dbBashLines: dbCode.trim().split('\n')
+      databaseTab: 'Helm',
+      shellTab: 'Helm',
+      dbHelmLines: helm.trim().split('\n'),
+      dbYamlLines: yaml.trim().split('\n'),
+      shellBashLines: shellCode.trim().split('\n')
     }
   },
   components: {

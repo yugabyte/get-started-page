@@ -10,7 +10,7 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/#docker">QuickStart Guide</a>
+          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/#docker">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -33,7 +33,7 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/yb-docker-ctl/">QuickStart Guide</a>
+          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />

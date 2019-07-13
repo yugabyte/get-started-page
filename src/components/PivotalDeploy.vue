@@ -8,11 +8,11 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Cloud Foundry" label="Cloud Foundry" icon="img:/statics/pivotal-pcf-logo.svg" class="option-tabs" v-on:click="sendAnalytics('cloud-foundry')" />
-        <!-- <q-tab name="Container Service" label="Container Service" icon="img:/statics/pivotal-pks-logo.svg" class="option-tabs" v-on:click="sendAnalytics('container-service')" /> -->
+        <q-tab name="Cloud Foundry" label="Pivotal Cloud Foundry (PCF)" icon="img:/statics/pivotal-pcf-logo.svg" class="option-tabs pivotal-tab" v-on:click="sendAnalytics('cloud-foundry')" />
+        <q-tab name="PKS" label="Pivotal Container Service (PKS)" icon="img:/statics/pivotal-pks-logo.svg" class="option-tabs pivotal-tab" v-on:click="sendAnalytics('container-service')" />
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">QuickStart Guide</a>
+          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -24,12 +24,11 @@
           </pre>
         </q-tab-panel>
 
-        <!-- <q-tab-panel name="Container Service" class="bg-grey-3">
+        <q-tab-panel name="PKS" class="bg-grey-3">
           <pre class="code-container">
-            <code class="pre-helper pre-helper--shell">wget https://dl.min.io/client/mc/release/darwin-amd64/mc</code>
-            <code class="pre-helper pre-helper--shell">chmod +x mc</code>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in cfBashLines" v-bind:key="`pivotal-cf-${index}`">{{ line }}</code>
           </pre>
-        </q-tab-panel> -->
+        </q-tab-panel>
       </q-tab-panels>
     </div>
   </div>
@@ -63,3 +62,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.option-tabs.pivotal-tab {
+  max-width: 300px;
+}
+</style>

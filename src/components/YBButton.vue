@@ -47,6 +47,7 @@ a.download-nav-btn {
   transition: color .3s,box-shadow .3s,border-color .3s;
   transition: color .3s,box-shadow .3s,border-color .3s,-webkit-box-shadow .3s;
   padding: 25px 0;
+  min-width: 130px;
   background-color: #fff;
 }
 a.download-nav-btn:hover {

@@ -6,76 +6,106 @@
         <h1>Get Started</h1>
       </div>
     </section>
-    <div style="width: 100%">
+    <ul id="dropdown-options-container">
+      <li>
+        <div>
+          <span>Service:</span>
+          <q-select style="width: 300px"
+            filled
+            label="Service"
+            v-model="selectedService"
+            :options="serviceOptions" />
+        </div>
+      </li>
+      <li v-if="selectedService.value === 'local'">
+        <div>
+          <span>Platform:</span>
+          <q-select style="width: 300px" filled label="Platform" v-model="selectedPlatform" :options="platformOptions" />
+        </div>
+      </li>
+      <li v-else-if="selectedService.value === 'cloud'">
+        <div>
+          <span>Cloud Provider:</span>
+          <q-select style="width: 300px" filled label="Cloud Provider" v-model="selectedDeploy" :options="deployOptions" />
+        </div>
+      </li>
+    </ul>
+    <div class="service-tabs-container">
       <div class="service-options">
-        <div :class="selectedService === 'local' ? 'service-cluster-option active' : 'service-cluster-option'"
-          @click="() => selectedService = 'local'"
+        <div :class="selectedService.value === 'local' ? 'service-cluster-option active' : 'service-cluster-option'"
+          @click="() => selectedService = serviceOptions[0]"
         >
-          <h3>Try a local cluster</h3>
+          <h3>Local Install</h3>
           <h2>Download</h2>
         </div>
-        <div :class="selectedService === 'cloud' ? 'service-cluster-option active' : 'service-cluster-option'"
-          @click="() => selectedService = 'cloud'"
+        <div :class="selectedService.value === 'cloud' ? 'service-cluster-option active' : 'service-cluster-option'"
+          @click="() => selectedService = serviceOptions[1]"
         >
-          <h3>Try multi-node cluster</h3>
-          <h2>Cloud Platforms</h2>
+          <h3>Multi-node cluster</h3>
+          <h2>Deploy</h2>
+        </div>
+        <div :class="selectedService.value === 'managed' ? 'service-cluster-option active' : 'service-cluster-option'"
+          @click="() => selectedService = serviceOptions[2]"
+        >
+          <h3>Fully Managed Service</h3>
+          <h2>Sign up</h2>
         </div>
       </div>
     </div>
-    <div v-if="selectedService === 'local'" id="local-cluster-content" class="content">
+    <div v-if="selectedService.value === 'local'" id="local-cluster-content" class="content">
       <div class="os-selection-container">
-        <yb-button label="MacOS" :active="selectedOS === 'macos'" v-bind:handleClick="() => handleSelectSection('macos')">
+        <yb-button label="MacOS" :active="selectedPlatform.value === 'macos'" v-bind:handleClick="() => handleSelectSection(this.platformOptions[0])">
           <img src="../assets/macos-icon.svg" />
         </yb-button>
-        <yb-button label="Linux" :active="selectedOS === 'linux'" v-bind:handleClick="() => handleSelectSection('linux')">
+        <yb-button label="Linux" :active="selectedPlatform.value === 'linux'" v-bind:handleClick="() => handleSelectSection(this.platformOptions[1])">
           <img src="../assets/linux-icon.svg" />
         </yb-button>
-        <yb-button label="Kubernetes" :active="selectedOS === 'kubernetes'" v-bind:handleClick="() => handleSelectSection('kubernetes')">
+        <yb-button label="Kubernetes" :active="selectedPlatform.value === 'kubernetes'" v-bind:handleClick="() => handleSelectSection(this.platformOptions[2])">
           <img src="../assets/kubernetes-icon.svg" />
         </yb-button>
-        <yb-button label="Docker" :active="selectedOS === 'docker'" v-bind:handleClick="() => handleSelectSection('docker')">
+        <yb-button label="Docker" :active="selectedPlatform.value === 'docker'" v-bind:handleClick="() => handleSelectSection(this.platformOptions[3])">
           <img src="../assets/docker-icon.png" />
         </yb-button>
       </div>
 
       <div class="os-install-content">
-        <mac-install v-if="selectedOS === 'macos'"></mac-install>
-        <linux-install v-if="selectedOS === 'linux'"></linux-install>
-        <kubernetes-install v-if="selectedOS === 'kubernetes'"></kubernetes-install>
-        <docker-install v-if="selectedOS === 'docker'"></docker-install>
+        <mac-install v-if="selectedPlatform.value === 'macos'"></mac-install>
+        <linux-install v-if="selectedPlatform.value === 'linux'"></linux-install>
+        <kubernetes-install v-if="selectedPlatform.value === 'kubernetes'"></kubernetes-install>
+        <docker-install v-if="selectedPlatform.value === 'docker'"></docker-install>
       </div>
 
     </div>
-    <div v-else id="cloud-cluster-content" class="content">
+    <div v-else-if="selectedService.value === 'cloud'" id="cloud-cluster-content" class="content">
       <div class="cloud-selection-container">
         <div>
-          <q-btn id="aws-header-btn"
-            :class="selectedDeploy === 'aws' ? 'cloud-providers-container active' : 'cloud-providers-container'"
-            v-on:click="handleSelectSection('aws')"
+          <q-btn :ripple="false" id="aws-header-btn"
+            :class="selectedDeploy.value === 'aws' ? 'cloud-providers-container active' : 'cloud-providers-container'"
+            v-on:click="handleSelectSection(deployOptions[0])"
           >
             <div><img width="95" src="../assets/aws-logo-black.png" /></div>
           </q-btn>
         </div>
         <div>
-          <q-btn id="gcp-header-btn"
-            :class="selectedDeploy === 'gcp' ? 'cloud-providers-container active' : 'cloud-providers-container'"
-            v-on:click="handleSelectSection('gcp')"
+          <q-btn :ripple="false" id="gcp-header-btn"
+            :class="selectedDeploy.value === 'gcp' ? 'cloud-providers-container active' : 'cloud-providers-container'"
+            v-on:click="handleSelectSection(deployOptions[1])"
           >
             <img width="200" src="../assets/gcp-logo.svg" />
           </q-btn>
         </div>
         <div>
-          <q-btn  id="azure-header-btn"
-            :class="selectedDeploy === 'azure' ? 'cloud-providers-container active' : 'cloud-providers-container'"
-            v-on:click="handleSelectSection('azure')"
+          <q-btn :ripple="false" id="azure-header-btn"
+            :class="selectedDeploy.value === 'azure' ? 'cloud-providers-container active' : 'cloud-providers-container'"
+            v-on:click="handleSelectSection(deployOptions[2])"
           >
             <img width="220" src="../assets/azure-logo-small.png" />
           </q-btn>
         </div>
         <div>
-          <q-btn id="pivotal-header-btn"
-            :class="selectedDeploy === 'pivotal' ? 'cloud-providers-container active' : 'cloud-providers-container'"
-            v-on:click="handleSelectSection('pivotal')"
+          <q-btn :ripple="false" id="pivotal-header-btn"
+            :class="selectedDeploy.value === 'pivotal' ? 'cloud-providers-container active' : 'cloud-providers-container'"
+            v-on:click="handleSelectSection(deployOptions[3])"
           >
             <div><img width="150" src="../assets/pivotal.svg" /></div>
           </q-btn>
@@ -83,12 +113,22 @@
       </div>
 
       <div class="os-install-content">
-        <aws-deploy v-if="selectedDeploy === 'aws'"></aws-deploy>
-        <gcp-deploy v-if="selectedDeploy === 'gcp'"></gcp-deploy>
-        <azure-deploy v-if="selectedDeploy === 'azure'"></azure-deploy>
-        <pivotal-deploy v-if="selectedDeploy === 'pivotal'"></pivotal-deploy>
+        <aws-deploy v-if="selectedDeploy.value === 'aws'"></aws-deploy>
+        <gcp-deploy v-if="selectedDeploy.value === 'gcp'"></gcp-deploy>
+        <azure-deploy v-if="selectedDeploy.value === 'azure'"></azure-deploy>
+        <pivotal-deploy v-if="selectedDeploy.value === 'pivotal'"></pivotal-deploy>
       </div>
-
+    </div>
+    <div v-else id="managed-cluster-content" class="content">
+      <div class="managed-cluster-container">
+        <div>
+          <p>Want to learn more about our fully managed clusters?</p>
+          <p>Click the Sign Up to be redirected.</p>
+        </div>
+        <a href="https://yugabyte.com/cloud" target="_blank">
+          <q-btn label="Sign up"></q-btn>
+        </a>
+      </div>
     </div>
   </q-page>
 </template>
@@ -110,9 +150,68 @@ export default {
   name: 'PageIndex',
   data: function () {
     return {
-      selectedService: 'local',
-      selectedOS: 'macos',
-      selectedDeploy: 'aws'
+      selectedService: {
+        label: 'Local Install',
+        value: 'local'
+      },
+      selectedPlatform: {
+        label: 'MacOS',
+        value: 'macos'
+      },
+      selectedDeploy: {
+        label: 'Amazon Web Services',
+        value: 'aws'
+      },
+      serviceOptions: [
+        {
+          label: 'Local Install',
+          value: 'local'
+        },
+        {
+          label: 'Multi-Node Cluster',
+          value: 'cloud'
+        },
+        {
+          label: 'Fully Managed Service',
+          value: 'managed'
+        }
+      ],
+      platformOptions: [
+        {
+          label: 'MacOS',
+          value: 'macos'
+        },
+        {
+          label: 'Linux',
+          value: 'linux'
+        },
+        {
+          label: 'Kubernetes',
+          value: 'kubernetes'
+        },
+        {
+          label: 'Docker',
+          value: 'docker'
+        }
+      ],
+      deployOptions: [
+        {
+          label: 'Amazon Web Services',
+          value: 'aws'
+        },
+        {
+          label: 'Google Cloud Platform',
+          value: 'gcp'
+        },
+        {
+          label: 'Microsoft Azure',
+          value: 'azure'
+        },
+        {
+          label: 'Pivotal',
+          value: 'pivotal'
+        }
+      ]
     }
   },
   components: {
@@ -128,16 +227,16 @@ export default {
   },
   methods: {
     handleSelectSection: function (section) {
-      if (this.selectedService === 'local') {
-        this.selectedOS = section
+      if (this.selectedService.value === 'local') {
+        this.selectedPlatform = section
       } else {
         this.selectedDeploy = section
       }
 
       event({
         eventCategory: 'Install-Page',
-        eventAction: `click.${this.selectedService}.${section}`,
-        eventLabel: `User clicked ${section} section button`
+        eventAction: `click.${this.selectedService.value}.${section.value}`,
+        eventLabel: `User clicked ${section.value} section button`
       })
     }
   }
@@ -149,10 +248,11 @@ export default {
   text-align: center;
   width: 100%;
   padding-bottom: 180px;
+  padding-top: 30px;
   box-shadow: 0 0 30px 0 rgba(57, 84, 109, 0.14);
 }
 .hero-overview {
-  padding: 90px 0 30px;
+  padding: 60px 0 20px;
 }
 .overview-container {
   padding-right: 15px;
@@ -197,11 +297,11 @@ export default {
 }
 
 .overview-container h1 {
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 700;
   margin: 0;
-  padding: 15px 0;
-  margin-bottom: 30px;
+  padding: 0;
+  margin-bottom: 20px;
   line-height: 70px;
 }
 h3.overview-statement {
@@ -225,11 +325,45 @@ h3.overview-statement {
   padding-right: 120px;
   margin-bottom: 60px;
 }
+@media (max-width: 850px) {
+  .os-selection-container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+#dropdown-options-container {
+  max-width: 500px;
+  margin-bottom: 30px;
+  list-style: none;
+  padding-left: 0;
+  display: none;
+}
+.service-tabs-container {
+  width: 100%;
+}
 #cloud-cluster-content .cloud-selection-container {
   display: flex;
   justify-content: space-between;
   max-width: 1080px;
-  margin: 60px auto;
+  margin: 40px auto;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+@media (max-width: 1150px) {
+  #cloud-cluster-content .cloud-selection-container {
+    overflow-x: scroll;
+  }
+}
+@media (max-width: 500px) {
+  #dropdown-options-container {
+    display: block;
+  }
+  .os-selection-container, #cloud-cluster-content .cloud-selection-container {
+    display: none;
+  }
+  .service-tabs-container {
+    display: none;
+  }
 }
 .os-install-content {
   max-width: 1080px;
@@ -304,5 +438,10 @@ h3.overview-statement {
 }
 .cloud-providers-container.active {
   border: 1px solid #f75721;
+}
+.managed-cluster-container {
+  min-height: 380px;
+  padding-top: 70px;
+  font-size: 18px;
 }
 </style>

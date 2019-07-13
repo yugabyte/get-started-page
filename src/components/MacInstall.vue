@@ -11,7 +11,7 @@
         <q-tab name="x64" label="X64" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">QuickStart Guide</a>
+          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -35,7 +35,7 @@
         <q-tab name="x64" label="X64" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/create-local-cluster/">QuickStart Guide</a>
+          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/create-local-cluster/">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />
