@@ -441,7 +441,7 @@ h3.overview-statement {
   border: 1px solid #f75721;
 }
 .managed-cluster-container {
-  padding-top: 40px;
+  padding: 40px 0;
   font-size: 18px;
 }
 </style>
