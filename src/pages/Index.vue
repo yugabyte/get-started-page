@@ -239,6 +239,7 @@ export default {
   text-align: center;
   width: 100%;
   padding-bottom: 180px;
+  flex: 1 1 auto;
   padding-top: 30px;
   box-shadow: 0 0 30px 0 rgba(57, 84, 109, 0.14);
 }
@@ -440,8 +441,7 @@ h3.overview-statement {
   border: 1px solid #f75721;
 }
 .managed-cluster-container {
-  min-height: 380px;
-  padding-top: 70px;
+  padding-top: 40px;
   font-size: 18px;
 }
 </style>

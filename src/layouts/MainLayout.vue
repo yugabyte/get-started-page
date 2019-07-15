@@ -56,7 +56,7 @@
       <side-menu></side-menu>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container id="page-content-container">
       <router-view />
     </q-page-container>
 
@@ -183,6 +183,11 @@ body {
   padding: 0;
   width: 180px;
   margin-right: 0;
+}
+#page-content-container > * {
+  display: flex;
+  height: 100%;
+  flex-flow: column;
 }
 a {
   background-color: transparent;
