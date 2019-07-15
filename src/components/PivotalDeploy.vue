@@ -12,7 +12,8 @@
         <q-tab name="PKS" label="Pivotal Container Service (PKS)" icon="img:/statics/pivotal-pks-logo.svg" class="option-tabs pivotal-tab" v-on:click="sendAnalytics('container-service')" />
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">Quick-Start Guide</a>
+          <a v-if="databaseTab === 'Cloud Foundry'" target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">Quick-Start Guide</a>
+          <a v-else target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://blog.yugabyte.com/getting-started-yugabytedb-database-pivotal-container-service-pks/">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -27,8 +28,8 @@
 
         <q-tab-panel name="PKS" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(cfBashLines)"/>
-            <code class="pre-helper pre-helper--shell" v-for="(line, index) in cfBashLines" v-bind:key="`pivotal-cf-${index}`">{{ line }}</code>
+            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(csBashLines)"/>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in csBashLines" v-bind:key="`pivotal-cf-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
@@ -41,7 +42,7 @@
 
 <script>
 import YBHeader from './YBHeader'
-import cfCode from './snippets/pivotalCFDeploy'
+import { cloudFoundryCode, containerServiceCode } from './snippets/pivotalCFDeploy'
 
 import { copyToClipboard } from './helpers'
 import { event } from 'vue-analytics'
@@ -51,7 +52,8 @@ export default {
   data: function () {
     return {
       databaseTab: 'Cloud Foundry',
-      cfBashLines: cfCode.trim().split('\n')
+      cfBashLines: cloudFoundryCode.split('\n'),
+      csBashLines: containerServiceCode.split('\n')
     }
   },
   components: {
