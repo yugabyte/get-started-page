@@ -15,8 +15,8 @@
         <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
         <q-space />
         <div class="quickstart-container">
-          <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://github.com/YugaByte/terraform-azure-yugabyte">Quick-Start Guide</a>
-          <a v-else target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/azure/">Quick-Start Guide</a>
+          <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/YugaByte/terraform-azure-yugabyte">Quick-Start Guide</a>
+          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/azure/">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -32,8 +32,8 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://github.com/YugaByte/terraform-azure-yugabyte">Quick-Start Guide</a>
-        <a v-else target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/azure/">Quick-Start Guide</a>
+        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/YugaByte/terraform-azure-yugabyte">Quick-Start Guide</a>
+        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/azure/">Quick-Start Guide</a>
       </div>
     </div>
   </div>

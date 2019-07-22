@@ -7,9 +7,10 @@ module.exports = function (ctx) {
     boot: [
     ],
 
-    css: [
-      'app.styl'
-    ],
+    // css: [
+    //   'app.styl'
+    // ],
+
     rules: [
       {
        test: /\.svg$/,
@@ -80,7 +81,8 @@ module.exports = function (ctx) {
       vueRouterMode: 'history',
       // vueCompiler: true,
       gzip: true,
-      // analyze: true,
+      analyze: true,
+      preloadChunks: false,
       // extractCSS: false,
       extendWebpack (cfg) {
         cfg.module.rules.push({
@@ -88,7 +90,7 @@ module.exports = function (ctx) {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /node_modules/
-        })
+        });
       }
     },
 
@@ -109,9 +111,9 @@ module.exports = function (ctx) {
       // workboxPluginMode: 'InjectManifest',
       // workboxOptions: {}, // only for NON InjectManifest
       manifest: {
-        // name: 'Quasar App',
-        // short_name: 'Quasar-PWA',
-        // description: 'Best PWA App in town!',
+        name: 'Download YugaByte DB',
+        short_name: 'YugaByte DB',
+        description: 'Get Started with YugaByte DB, install on your local cluster or deploy on your cloud provider.',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

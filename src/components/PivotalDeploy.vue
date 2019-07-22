@@ -12,8 +12,8 @@
         <q-tab name="PKS" label="Pivotal Container Service (PKS)" icon="img:/statics/pivotal-pks-logo.svg" class="option-tabs pivotal-tab" v-on:click="sendAnalytics('container-service')" />
         <q-space />
         <div class="quickstart-container">
-          <a v-if="databaseTab === 'Cloud Foundry'" target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">Quick-Start Guide</a>
-          <a v-else target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://blog.yugabyte.com/getting-started-yugabytedb-database-pivotal-container-service-pks/">Quick-Start Guide</a>
+          <a v-if="databaseTab === 'Cloud Foundry'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">Quick-Start Guide</a>
+          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://blog.yugabyte.com/getting-started-yugabytedb-database-pivotal-container-service-pks/">Quick-Start Guide</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -34,7 +34,7 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a target="_blank" rel="noreferrer" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">Quick-Start Guide</a>
+        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">Quick-Start Guide</a>
       </div>
     </div>
   </div>

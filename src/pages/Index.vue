@@ -297,7 +297,7 @@ export default {
   line-height: 70px;
 }
 h3.overview-statement {
-  color: #f75821;
+  color: #ff4200;
   font-size: 18px !important;
   line-height: 1.78 !important;
   text-transform: uppercase;
