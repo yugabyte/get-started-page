@@ -184,6 +184,28 @@ body {
   width: 180px;
   margin-right: 0;
 }
+@media (max-width: 650px) {
+  #side-menu-btn {
+    display: block;
+  }
+  #yb-main-navbar {
+    display: none;
+  }
+  .logo-container {
+    padding: 17px 5px 17px 20px;
+  }
+}
+@media (max-width: 500px) {
+  #yb-logo-full {
+    display: none;
+  }
+  #yb-logo-symbol {
+    display: block;
+  }
+  .logo-container {
+    padding: 7px 5px 7px 10px;
+  }
+}
 #page-content-container > * {
   display: flex;
   height: 100%;
