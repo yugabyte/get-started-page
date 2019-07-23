@@ -1,4 +1,6 @@
 // Configuration for your app
+const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function (ctx) {
   return {
@@ -8,7 +10,7 @@ module.exports = function (ctx) {
     ],
 
     // css: [
-    //   'app.styl'
+    //   'layout.css'
     // ],
 
     rules: [
@@ -81,9 +83,9 @@ module.exports = function (ctx) {
       vueRouterMode: 'history',
       // vueCompiler: true,
       gzip: true,
-      analyze: true,
+      // analyze: true,
       preloadChunks: false,
-      // extractCSS: false,
+      extractCSS: false,
       extendWebpack (cfg) {
         cfg.module.rules.push({
           enforce: 'pre',
@@ -91,6 +93,11 @@ module.exports = function (ctx) {
           loader: 'eslint-loader',
           exclude: /node_modules/
         });
+        // const htmlPlugin = cfg.plugins.filter(x => x instanceof HtmlWebpackPlugin)[0];
+        // console.log(htmlPlugin);
+        // htmlPlugin.options.preload = ['**/*.css'];
+        // htmlPlugin.options.prefetch = ['**/*.js'];
+        cfg.plugins.push(new ResourceHintWebpackPlugin());
       }
     },
 

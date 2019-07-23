@@ -71,9 +71,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.option-tabs.pivotal-tab {
-  max-width: 300px;
-}
-</style>

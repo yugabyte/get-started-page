@@ -56,10 +56,3 @@ export default {
   name: 'SideMenu'
 }
 </script>
-
-<style>
-.yb-nav-links {
-  text-decoration: none;
-  color: inherit;
-}
-</style>

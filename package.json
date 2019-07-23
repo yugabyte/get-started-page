@@ -1,8 +1,8 @@
 {
   "name": "vue-install-page",
   "version": "0.0.1",
-  "description": "Get Started with YugaByte DB, install on your local cluster or deploy on your cloud provider.",
-  "productName": "Yugabyte DB Install",
+  "description": "High-Performance Distributed SQL database for global apps. Install on any production environment.",
+  "productName": "Yugabyte DB | Download",
   "cordovaId": "org.cordova.quasar.app",
   "author": "Andrew Cai <andrew@yugabyte.com>",
   "private": true,
@@ -27,6 +27,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "lodash": ">=4.17.13",
     "mini-css-extract-plugin": "^0.8.0",
+    "resource-hints-webpack-plugin": "0.0.2",
     "vue-svg-loader": "^0.12.0"
   },
   "engines": {

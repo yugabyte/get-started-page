@@ -21,21 +21,3 @@ export default {
   }
 }
 </script>
-
-<style>
-h3 {
-  font-size: 19px;
-  text-transform: uppercase;
-  color: #f75821;
-  margin: 0 0 10px;
-  line-height: 1.2;
-  font-weight: 700;
-}
-
-h3 img {
-  max-width: 40px;
-  max-height: 40px;
-  vertical-align: middle;
-  margin-right: 10px;
-}
-</style>
