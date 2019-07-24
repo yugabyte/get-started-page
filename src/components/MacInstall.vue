@@ -1,7 +1,7 @@
 <template>
   <div class="install-container">
     <div class="download-section">
-      <yb-header type="yb-logo" text="Yugabyte DB"></yb-header>
+      <yb-header type="yb-logo" text="DB Server"></yb-header>
       <q-tabs
         v-model="databaseTab" dense class="text-grey"
         active-color="primary"
@@ -11,7 +11,7 @@
         <q-tab name="x64" label="X64" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/create-local-cluster/">Quick-Start Guide</a>
+          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/create-local-cluster/#macos">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -25,11 +25,11 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/create-local-cluster/">Quick-Start Guide</a>
+        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/create-local-cluster/#macos">Complete Docs</a>
       </div>
     </div>
     <div class="download-section">
-      <yb-header type="yb-shell" text="Yugabyte Shell"></yb-header>
+      <yb-header type="yb-shell" text="SQL Shell"></yb-header>
       <q-tabs
         v-model="shellTab" dense class="text-grey"
         active-color="primary"
@@ -39,7 +39,7 @@
         <q-tab name="x64" label="X64" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Quick-Start Guide</a>
+          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -53,7 +53,7 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Quick-Start Guide</a>
+        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Complete Docs</a>
       </div>
     </div>
   </div>
@@ -135,7 +135,7 @@ export default {
   position: absolute;
   top: 20px;
   right: 30px;
-  visibility: hidden;
+  visibility: visible;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 .code-container:hover .copy-code-btn {

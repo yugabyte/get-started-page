@@ -4,6 +4,7 @@
       <div class="overview-container">
         <h3 class="overview-statement">The leading high-performance distributed SQL database</h3>
         <h1>Get Started</h1>
+        <h8>YugaByte DB server and SQL shell are released under open source Apache 2.0 license</h8>
       </div>
     </section>
     <ul id="dropdown-options-container">
@@ -45,7 +46,7 @@
     </div>
     <div v-if="selectedService.value === 'local'" id="local-cluster-content" class="content">
       <div class="os-selection-container">
-        <yb-button label="MacOS" :active="selectedPlatform.value === 'macos'" v-bind:handleClick="() => handleSelectSection(this.platformOptions[0])">
+        <yb-button label="macOS" :active="selectedPlatform.value === 'macos'" v-bind:handleClick="() => handleSelectSection(this.platformOptions[0])">
           <img src="../assets/macos-icon.svg" />
         </yb-button>
         <yb-button label="Linux" :active="selectedPlatform.value === 'linux'" v-bind:handleClick="() => handleSelectSection(this.platformOptions[1])">
@@ -113,10 +114,9 @@
     <div v-else id="managed-cluster-content" class="content">
       <div class="managed-cluster-container">
         <div>
-          <p>Want to learn more about our fully managed clusters?</p>
-          <p>Click the Sign Up to be redirected.</p>
+          <p>Experience our fully-managed cloud service using the link below.</p>
         </div>
-        <a href="https://yugabyte.com/cloud" target="_blank">
+        <a href="https://www.yugabyte.com/cloud" target="_blank">
           <q-btn label="Sign up"></q-btn>
         </a>
       </div>
@@ -146,7 +146,7 @@ export default {
         value: 'local'
       },
       selectedPlatform: {
-        label: 'MacOS',
+        label: 'macOS',
         value: 'macos'
       },
       selectedDeploy: {
@@ -169,7 +169,7 @@ export default {
       ],
       platformOptions: [
         {
-          label: 'MacOS',
+          label: 'macOS',
           value: 'macos'
         },
         {

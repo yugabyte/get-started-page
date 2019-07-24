@@ -1,7 +1,7 @@
 <template>
   <h3>
-    <img v-if="type === 'yb-logo'" src="../assets/ybsymbol-original.jpg" :alt="text" />
-    <img v-else src="../assets/yb-cli.jpg" :alt="text" />
+    <img v-if="type === 'yb-logo'" src="../assets/yb-server.png" :alt="text" />
+    <img v-else src="../assets/yb-cli.png" :alt="text" />
     {{ text }}
   </h3>
 </template>
