@@ -1,7 +1,7 @@
 <template>
   <div class="install-container">
     <div class="download-section">
-      <yb-header type="yb-logo" text="Yugabyte DB"></yb-header>
+      <yb-header type="yb-logo" text="DB Server"></yb-header>
       <q-tabs
         v-model="databaseTab" dense class="text-grey"
         active-color="primary"
@@ -12,8 +12,8 @@
         <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
         <q-space />
         <div class="quickstart-container">
-          <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/YugaByte/terraform-aws-yugabyte">Quick-Start Guide</a>
-          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/">Quick-Start Guide</a>
+          <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/YugaByte/terraform-aws-yugabyte">Complete Docs</a>
+          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -30,8 +30,8 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/YugaByte/terraform-aws-yugabyte">Quick-Start Guide</a>
-        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/">Quick-Start Guide</a>
+        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/YugaByte/terraform-aws-yugabyte">Complete Docs</a>
+        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/">Complete Docs</a>
       </div>
     </div>
   </div>

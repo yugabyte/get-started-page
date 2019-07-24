@@ -1,7 +1,7 @@
 <template>
   <div class="install-container">
     <div class="download-section">
-      <yb-header type="yb-logo" text="Yugabyte DB"></yb-header>
+      <yb-header type="yb-logo" text="DB Server"></yb-header>
       <q-tabs
         v-model="databaseTab" dense class="text-grey"
         active-color="primary"
@@ -12,8 +12,8 @@
         <q-tab name="YAML" label="YAML" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
-          <a v-if="databaseTab === 'YAML'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/#kubernetes">Quick-Start Guide</a>
-          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/helm-chart/">Quick-Start Guide</a>
+          <a v-if="databaseTab === 'YAML'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/#kubernetes">Complete Docs</a>
+          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/helm-chart/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -33,12 +33,12 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a v-if="databaseTab === 'YAML'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/#kubernetes">Quick-Start Guide</a>
-        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/helm-chart/">Quick-Start Guide</a>
+        <a v-if="databaseTab === 'YAML'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/#kubernetes">Complete Docs</a>
+        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/helm-chart/">Complete Docs</a>
       </div>
     </div>
     <div class="download-section">
-      <yb-header type="yb-shell" text="Yugabyte Shell"></yb-header>
+      <yb-header type="yb-shell" text="SQL Shell"></yb-header>
       <q-tabs
         v-model="shellTab" dense class="text-grey"
         active-color="primary"
@@ -47,7 +47,7 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Quick-Start Guide</a>
+          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -67,7 +67,7 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Quick-Start Guide</a>
+        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Complete Docs</a>
       </div>
     </div>
   </div>

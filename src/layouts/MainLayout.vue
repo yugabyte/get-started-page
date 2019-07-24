@@ -5,7 +5,7 @@
         <q-toolbar-title>
           <div class="logo-container">
             <a href="https://www.yugabyte.com" target="_blank" rel="noopener">
-              <img id="yb-logo-symbol" width="60" height="60" alt="YugaByte DB Logo" src="../assets/ybsymbol-original.jpg" />
+              <img id="yb-logo-symbol" width="240" height="40" alt="YugaByte DB Logo" src="../assets/ybdocs-color.png" />
               <img id="yb-logo-full" width="240" height="40" alt="YugaByte DB Logo" src="../assets/ybdocs-color.png" />
             </a>
           </div>
@@ -19,34 +19,11 @@
           <a href="https://docs.yugabyte.com/" class="yb-nav-links" target="_blank" rel="noopener" style="color: #202951">
             <q-btn class="yb-nav-links" flat label="Docs" color="#202951"/>
           </a>
-          <q-btn flat label="Resources" color="#202951" @mouseenter="handleHoverResources">
-            <q-menu :value="hoverResourcesLink" @mouseleave="handleHideMenu">
-              <q-list style="min-width: 100px">
-                <q-item clickable>
-                  <a title="Docs" class="yb-nav-links" target="_blank" rel="noopener" href="https://github.com/YugaByte/yugabyte-db">
-                    <q-item-section>Github</q-item-section>
-                  </a>
-                </q-item>
-                <q-item clickable>
-                  <a title="Forum" class="yb-nav-links" target="_blank" rel="noopener" href="https://forum.yugabyte.com/">
-                    <q-item-section>Forum</q-item-section>
-                  </a>
-                </q-item>
-                <q-item clickable>
-                  <a title="Slack" class="yb-nav-links" target="_blank" rel="noopener" href="http://yugabyte.com/slack">
-                    <q-item-section>Slack</q-item-section>
-                  </a>
-                </q-item>
-                <q-item clickable>
-                  <a title="Blog" class="yb-nav-links" target="_blank" rel="noopener" href="https://stackoverflow.com/questions/tagged/yugabyte-db">
-                    <q-item-section>Stack Overflow</q-item-section>
-                  </a>
-                </q-item>
-              </q-list>
-            </q-menu>
-          </q-btn>
           <a href="https://blog.yugabyte.com/" class="yb-nav-links" target="_blank" rel="noopener" style="color: #202951">
             <q-btn class="yb-nav-links" flat label="Blog" color="#202951"/>
+          </a>
+          <a href="/" class="yb-nav-links" rel="noopener" style="color: #ff4200">
+            <q-btn class="yb-nav-links" flat label="Download" color="#202951"/>
           </a>
         </div>
         <q-btn id="side-menu-btn" aria-label="Side Menu button" flat round icon="menu" @click="rightDrawerOpen = !rightDrawerOpen" />
@@ -66,17 +43,17 @@
             <ul class="footer-nav">
               <li class="footer-items" >
                 <div class="logo-white">
-                  <img width="150px" height="30px" alt="YugabyteDB logo" src="../assets/yb-logo-white-horizontal.svg" />
+                  <img width="150px" height="30px" alt="YugaByte DB logo" src="../assets/yb-logo-white-horizontal.svg" />
                 </div>
                 <div class="copyright">
-                  © YugaByte, Inc.
+                  © 2019 YugaByte, Inc.
                 </div>
               </li>
               <li class="footer-items" data-footer="community-links">
-                <a target="_blank" class="footer-link" href="https://www.yugabyte.com/slack" id="slack-link" rel="noopener">Slack</a>
+                <a target="_blank" class="footer-link" href="https://www.yugabyte.com/about" id="slack-link" rel="noopener">About</a>
               </li>
               <li class="footer-items" data-footer="community-links">
-                <a target="_blank" class="footer-link" href="https://stackoverflow.com/questions/tagged/yugabyte-db" id="stackoverflow-link" rel="noopener">StackOverflow</a>
+                <a target="_blank" class="footer-link" href="https://www.yugabyte.com/yugabytedb" id="slack-link" rel="noopener">Open Source</a>
               </li>
               <li class="footer-items" data-footer="community-links">
                 <a target="_blank" class="footer-link" href="https://github.com/YugaByte/yugabyte-db" id="github-link" rel="noopener">GitHub</a>
@@ -84,14 +61,10 @@
               <li class="footer-items" data-footer="address">
                 <div class="footer-title">Address</div>
                 <a href="https://goo.gl/maps/SJ7TCYKbA6jezdfM6" target="_blank" rel="noopener" id="office-map">
-                  YugaByte, Inc<br class="hidden-xs hidden-sm">
                   771 Vaqueros Ave<br class="hidden-xs hidden-sm">
-                  Sunnyvale, CA 94085
+                  Sunnyvale, CA 94085 <br class="hidden-xs hidden-sm">
+                  United States
                 </a>
-              </li>
-              <li class="footer-items" data-footer="contact-us">
-                <div class="footer-title">Contact Us</div>
-                <a href="mailto:sales@yugabyte.com" rel="noopener">sales@yugabyte.com</a>
               </li>
               <li class="footer-items" >
                 <div class="footer-title">Follow Us</div>
@@ -229,7 +202,7 @@ a {
   box-shadow: 0 0 30px 0 rgba(57, 84, 109, 0.14);
 }
 .hero-overview {
-  padding: 60px 0 20px;
+  padding: 30px 0 20px;
 }
 .overview-container {
   padding-right: 15px;
@@ -295,7 +268,7 @@ h3.overview-statement {
   display: flex;
   justify-content: space-between;
   max-width: 1080px;
-  margin-top: 60px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 120px;
