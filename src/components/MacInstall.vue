@@ -25,7 +25,7 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/create-local-cluster/">Complete Docs</a>
+        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/create-local-cluster/#macos">Complete Docs</a>
       </div>
     </div>
     <div class="download-section">
