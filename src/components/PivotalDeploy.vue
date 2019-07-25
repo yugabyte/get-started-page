@@ -21,14 +21,14 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="Cloud Foundry" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(cfBashLines.join('\n'))"/>
+            <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(cfBashLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in cfBashLines" v-bind:key="`pivotal-cf-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
 
         <q-tab-panel name="PKS" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(csBashLines.join('\n'))"/>
+            <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(csBashLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in csBashLines" v-bind:key="`pivotal-cf-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>

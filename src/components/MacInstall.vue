@@ -19,7 +19,7 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="() => copyToClipboard(dbBashLines.join('\n'))"/>
+            <q-btn class="copy-code-btn" flat label="Copy" @click="() => copyToClipboard(dbBashLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbBashLines" v-bind:key="`mac-db-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
@@ -47,7 +47,7 @@
       <q-tab-panels v-model="shellTab" animated>
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="() => copyToClipboard(shellBashLines.join('\n'))"/>
+            <q-btn class="copy-code-btn" flat label="Copy" @click="() => copyToClipboard(shellBashLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`mac-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
@@ -106,7 +106,7 @@ export default {
     margin-left: 4px;
 }
 .code-container {
-  padding: 20px 60px;
+  padding: 0px 30px;
   line-height: 0.5;
   text-align: left;
   margin: 0;
@@ -117,6 +117,7 @@ export default {
   display: block;
   padding-left: 20px;
   line-height: 1.5;
+  font-size: 16px;
 }
 .pre-helper--shell:before {
     content: '$ ';
@@ -135,11 +136,16 @@ export default {
   position: absolute;
   top: 20px;
   right: 30px;
+  z-index: 100;
   visibility: visible;
+  background-color: #fff;
+  color: #F75821;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
-.code-container:hover .copy-code-btn {
-  visibility: visible;
+
+.copy-code-btn:hover {
+  color: white;
+  background-color: #F75821;
 }
 .quickstart-container {
   margin-right: 15px;

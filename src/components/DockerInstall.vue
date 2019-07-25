@@ -18,7 +18,7 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="default" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(dbBashLines.join('\n'))"/>
+            <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(dbBashLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbBashLines" v-bind:key="`docker-db-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
@@ -45,7 +45,7 @@
       <q-tab-panels v-model="shellTab" animated>
         <q-tab-panel name="default" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(shellBashLines.join('\n'))"/>
+            <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(shellBashLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`docker-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>

@@ -22,7 +22,7 @@
       <q-btn color="primary" label="Generate" @click="handleButtonClick" />
     </div>
     <div v-if="sampleConfigFile" id="sample-config-block">
-      <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(sampleConfigFile)"/>
+      <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(sampleConfigFile)"/>
       <pre>{{ sampleConfigFile }}</pre>
     </div>
     <div class="config-form-header">
@@ -30,7 +30,7 @@
     </div>
     <div class="bg-grey-3">
       <pre class="code-container" id="exec-code-block">
-        <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(terraformBashLines.join('\n'))"/>
+        <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(terraformBashLines.join('\n'))"/>
         <code class="pre-helper pre-helper--shell" v-for="(line, index) in terraformBashLines" v-bind:key="`terraform-${index}`">{{ line }}</code>
       </pre>
     </div>

@@ -21,13 +21,13 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="Helm" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(dbHelmLines.join('\n'))"/>
+            <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(dbHelmLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbHelmLines" v-bind:key="`kubernetes-helm-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
         <q-tab-panel name="YAML" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(dbYamlLines.join('\n'))"/>
+            <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(dbYamlLines.join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbYamlLines" v-bind:key="`kubernetes-yaml-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
@@ -55,13 +55,13 @@
       <q-tab-panels v-model="shellTab" animated>
         <q-tab-panel name="Helm" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(shellBashLines.slice(1).join('\n'))"/>
+            <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(shellBashLines.slice(1).join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`kubernetes-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
         <q-tab-panel name="YAML" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" push color="white" text-color="primary" label="Copy" @click="copyToClipboard(shellBashLines.slice(1).join('\n'))"/>
+            <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(shellBashLines.slice(1).join('\n'))"/>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`kubernetes-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>

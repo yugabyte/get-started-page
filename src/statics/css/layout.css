@@ -19,9 +19,8 @@
   color: #fff;
 }
 .footer .copyright {
-  padding: 0;
-  margin: 0 60px 0 42px;
-  color: #cdced0;
+  display: inline-block;
+  color: #fff;
   font-weight: 300;
   line-height: 18px;
   font-size: 13px;
@@ -100,7 +99,7 @@
 .footer-title {
   padding-bottom: 8px;
   margin-bottom: 15px;
-  border-bottom: 1px solid #c72c48;
+  border-bottom: 1px solid #f95000;
   color: #fff;
 }
 .footer-social > a {
@@ -171,7 +170,6 @@
   border: 1px solid #e2e2e2;
 }
 #gcp-header-btn {
-  padding-top: 18px;
   height: 97px;
 }
 #aws-header-btn img {
@@ -219,15 +217,18 @@
   padding: 30px;
   background-color: #eee;
   margin-bottom: 30px;
+  position: relative;
 }
 #sample-config-block .copy-code-btn {
   position: absolute;
-  right: 100px;
-  visibility: hidden;
+  right: 30px;
+  background-color: #fff;
+  color: #F75821;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
-#sample-config-block:hover .copy-code-btn {
-  visibility: visible;
+#sample-config-block .copy-code-btn:hover {
+  background-color: #F75821;
+  color: white;
 }
 #exec-code-block {
   position: relative;
@@ -235,10 +236,12 @@
 #exec-code-block .copy-code-btn {
   position: absolute;
   right: 30px;
+  background-color: #fff;
+  color: #F75821;
   top: 20px;
-  visibility: hidden;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
-#exec-code-block:hover .copy-code-btn {
-  visibility: visible;
+#exec-code-block .copy-code-btn:hover {
+  color: white;
+  background-color: #F75821;
 }

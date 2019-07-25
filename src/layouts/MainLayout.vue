@@ -6,7 +6,6 @@
           <div class="logo-container">
             <a href="https://www.yugabyte.com" target="_blank" rel="noopener">
               <img id="yb-logo-symbol" width="240" height="40" alt="YugaByte DB Logo" src="../assets/ybdocs-color.png" />
-              <img id="yb-logo-full" width="240" height="40" alt="YugaByte DB Logo" src="../assets/ybdocs-color.png" />
             </a>
           </div>
           <!-- <div class="logo">
@@ -36,27 +35,31 @@
     <q-page-container id="page-content-container">
       <router-view />
     </q-page-container>
-
-    <q-footer>
+      <q-footer>
         <footer class="footer">
+          <a href="https://www.yugabyte.com/slack" class="help-footer-btn">
+            <img width="28" src="../assets/slack-mark-white.svg" />
+            <div class="cta-community-link">Join us on Slack</div>
+          </a>
           <div class="container-fluid">
             <ul class="footer-nav">
               <li class="footer-items" >
                 <div class="logo-white">
-                  <img width="150px" height="30px" alt="YugaByte DB logo" src="../assets/yb-logo-white-horizontal.svg" />
+                  <img width="50px" height="30px" alt="YugaByte DB logo" src="../assets/ybsymbol-white.svg" />
+                  <div class="copyright">
+                    <div style="margin-bottom: 3px">© 2019 YugaByte, Inc.</div>
+                    <a href="https://www.yugabyte.com/privacy-policy/">Privacy Policy</a>
+                  </div>
                 </div>
-                <div class="copyright">
-                  © 2019 YugaByte, Inc.
-                </div>
               </li>
               <li class="footer-items" data-footer="community-links">
-                <a target="_blank" class="footer-link" href="https://www.yugabyte.com/about" id="slack-link" rel="noopener">About</a>
+                <a target="_blank" class="footer-link" href="https://www.yugabyte.com/about" rel="noopener">About</a>
               </li>
               <li class="footer-items" data-footer="community-links">
-                <a target="_blank" class="footer-link" href="https://www.yugabyte.com/yugabytedb" id="slack-link" rel="noopener">Open Source</a>
+                <a target="_blank" class="footer-link" href="https://www.yugabyte.com/yugabytedb" rel="noopener">Open Source</a>
               </li>
               <li class="footer-items" data-footer="community-links">
-                <a target="_blank" class="footer-link" href="https://github.com/YugaByte/yugabyte-db" id="github-link" rel="noopener">GitHub</a>
+                <a target="_blank" class="footer-link" href="https://github.com/YugaByte/yugabyte-db" rel="noopener">GitHub</a>
               </li>
               <li class="footer-items" data-footer="address">
                 <div class="footer-title">Address</div>
@@ -98,6 +101,11 @@ export default {
     handleScroll: function () {
       this.pageScrolled = window.scrollY > 0 || window.pageYOffset !== 0
     },
+    handleResizeWidth: function (e) {
+      if (e.target.outerWidth > 650) {
+        this.rightDrawerOpen = false
+      }
+    },
     handleHoverResources: function () {
       this.hoverResourcesLink = true
     },
@@ -107,9 +115,11 @@ export default {
   },
   created () {
     window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('resize', this.handleResizeWidth)
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.handleScroll)
+    window.addEventListener('resize', this.handleResizeWidth)
   },
   components: {
     'side-menu': SideMenu
@@ -120,8 +130,13 @@ export default {
 <style>
 body {
   background-color: #fff;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   min-height: 100%;
+}
+body, input {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+pre, code {
+  font-family: 'Inconsolata', 'Courier New', 'Courier', monospace;
 }
 .header {
   color: #202951;
@@ -142,11 +157,8 @@ body {
   height: 75px;
   margin-left: 19px;
 }
-#yb-logo-full, #yb-main-navbar {
+#yb-main-navbar {
   display: block;
-}
-#yb-logo-symbol, #side-menu-btn {
-  display: none;
 }
 .logo-container {
   padding: 17px 5px 17px 60px;
@@ -157,6 +169,17 @@ body {
   width: 180px;
   margin-right: 0;
 }
+#side-menu-btn {
+  margin-right: 15px;
+  margin-top: -3px;
+  display: none;
+}
+
+.side-menu-navlink {
+  display: block;
+  text-align: center;
+}
+
 @media (max-width: 650px) {
   #side-menu-btn {
     display: block;
@@ -169,11 +192,8 @@ body {
   }
 }
 @media (max-width: 500px) {
-  #yb-logo-full {
-    display: none;
-  }
   #yb-logo-symbol {
-    display: block;
+    margin: 15px 0;
   }
   .logo-container {
     padding: 7px 5px 7px 10px;
@@ -189,14 +209,13 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
-#side-menu-btn {
-  margin-right: 15px;
-}
 
 .content {
   text-align: center;
   width: 100%;
   padding-bottom: 180px;
+  padding-left: 30px;
+  padding-right: 30px;
   flex: 1 1 auto;
   padding-top: 30px;
   box-shadow: 0 0 30px 0 rgba(57, 84, 109, 0.14);
@@ -237,12 +256,12 @@ a {
 }
 @media (min-width: 992px) {
   .overview-container, .service-options {
-      width: 970px;
+      width: 850px;
   }
 }
 @media (min-width: 1200px) {
   .overview-container, .service-options {
-    width: 1170px;
+    width: 1050px;
   }
 }
 
@@ -275,6 +294,30 @@ h3.overview-statement {
   padding-right: 120px;
   margin-bottom: 60px;
 }
+
+/* Floating footer tab */
+.footer .help-footer-btn {
+  position: fixed;
+  bottom: 0;
+  right: 60px;
+  height: 40px;
+  width: 165px;
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 4px 4px 0 0;
+  font-size: 14px;
+  background-color: #f75821;
+  cursor: pointer;
+  z-index: 10;
+  text-decoration: none;
+}
+
+.help-footer-btn .cta-community-link {
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: 9px;
+}
+
 @media (max-width: 850px) {
   .os-selection-container {
     padding-left: 30px;
@@ -315,6 +358,12 @@ h3.overview-statement {
     display: none;
   }
   .service-tabs-container {
+    display: none;
+  }
+  .footer .help-footer-btn {
+    width: 50px;
+  }
+  .help-footer-btn .cta-community-link {
     display: none;
   }
 }

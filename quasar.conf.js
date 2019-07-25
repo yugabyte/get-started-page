@@ -9,9 +9,9 @@ module.exports = function (ctx) {
     boot: [
     ],
 
-    // css: [
-    //   'layout.css'
-    // ],
+    css: [
+      'app.styl'
+    ],
 
     rules: [
       {
