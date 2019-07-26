@@ -4,7 +4,8 @@ wget https://raw.githubusercontent.com/YugaByte/yugabyte-db/master/cloud/kuberne
 `
 
 export const helm = `
-git clone https://github.com/YugaByte/yugabyte-db.git
-cd ./yugabyte-db/cloud/kubernetes/helm/
-kubectl create -f yugabyte-rbac.yaml
+kubectl create -f https://raw.githubusercontent.com/YugaByte/charts/master/stable/yugabyte/yugabyte-rbac.yaml
+helm repo add yugabytedb https://charts.yugabyte.com
+helm repo update
+helm install yugabytedb/yugabyte --namespace yb-demo --name yb-demo --wait
 `
