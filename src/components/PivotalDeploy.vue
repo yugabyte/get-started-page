@@ -13,7 +13,7 @@
         <q-space />
         <div class="quickstart-container">
           <a v-if="databaseTab === 'Cloud Foundry'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/pivotal-cloud-foundry/">Complete Docs</a>
-          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://blog.yugabyte.com/getting-started-yugabytedb-database-pivotal-container-service-pks/">Complete Docs</a>
+          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.pivotal.io/partners/yugabyte-db/installing.html">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
