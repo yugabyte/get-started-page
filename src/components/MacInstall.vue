@@ -106,6 +106,7 @@ export default {
     margin-left: 4px;
 }
 .code-container {
+  background-color: #F7F8F9;
   padding: 0px 30px;
   line-height: 0.5;
   text-align: left;
