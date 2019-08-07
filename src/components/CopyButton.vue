@@ -35,7 +35,7 @@ export default {
   visibility: visible;
   background-color: #fff;
   color: #F75821;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Rubik', Helvetica, Arial, sans-serif;
   width: 72px;
 }
 

@@ -47,7 +47,7 @@
       <q-tab-panels v-model="shellTab" animated>
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
-            <copy-button :text="shellBashLines"></copy-button>
+            <copy-button :text="shellBashLines.slice(1)"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>

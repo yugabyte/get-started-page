@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="config-form-header">
+    <h3 class="config-form-header">
       Generate config file
-    </div>
+    </h3>
     <div class="config-form-container">
       <div class="form-control">
         <div class="row config-form-row">
@@ -25,9 +25,9 @@
       <copy-button :text="sampleConfigFile"></copy-button>
       <pre>{{ sampleConfigFile }}</pre>
     </div>
-    <div class="config-form-header">
+    <h3 class="config-form-header">
       Create cluster
-    </div>
+    </h3>
     <div class="bg-grey-3">
       <pre class="code-container" id="exec-code-block">
         <copy-button :text="terraformBashLines"></copy-button>

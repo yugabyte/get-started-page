@@ -133,7 +133,11 @@ body {
   min-height: 100%;
 }
 body, input {
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+h1, h2, h3, h4, h5 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
 }
 pre, code {
   font-family: 'Inconsolata', 'Courier New', 'Courier', monospace;
@@ -270,7 +274,6 @@ a {
 
 .overview-container h1 {
   font-size: 50px;
-  font-weight: 700;
   margin: 0;
   padding: 0;
   margin-bottom: 20px;
@@ -383,7 +386,6 @@ h3 {
   color: #f75821;
   margin: 0 0 10px;
   line-height: 1.2;
-  font-weight: 700;
 }
 
 h3 img {
