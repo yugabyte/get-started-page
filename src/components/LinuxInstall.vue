@@ -19,7 +19,7 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" flat label="Copy" @click="() => copyToClipboard(dbBashLines.join('\n'))"/>
+            <copy-button :text="dbBashLines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbBashLines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
@@ -47,7 +47,7 @@
       <q-tab-panels v-model="shellTab" animated>
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" flat label="Copy" @click="() => copyToClipboard(shellBashLines.join('\n'))"/>
+            <copy-button :text="shellBashLines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
@@ -63,7 +63,7 @@
 import dbCode from './snippets/linuxDbBash'
 import shellCode from './snippets/linuxShellBash'
 import YBHeader from './YBHeader'
-import { copyToClipboard } from './helpers'
+import CopyButton from './CopyButton'
 
 export default {
   name: 'LinuxInstall',
@@ -76,10 +76,8 @@ export default {
     }
   },
   components: {
-    'yb-header': YBHeader
-  },
-  methods: {
-    copyToClipboard: copyToClipboard
+    'yb-header': YBHeader,
+    'copy-button': CopyButton
   }
 }
 </script>

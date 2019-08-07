@@ -21,7 +21,7 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="Cloud Formation" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(cfBashLines.join('\n'))"/>
+            <copy-button :text="cfBashLines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in cfBashLines" v-bind:key="`aws-cf-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
@@ -42,7 +42,7 @@ import YBHeader from './YBHeader'
 import TerraformForm from './TerraformForm'
 import cfCode from './snippets/awsCFDeploy'
 
-import { copyToClipboard } from './helpers'
+import CopyButton from './CopyButton'
 import { event } from 'vue-analytics'
 
 export default {
@@ -55,7 +55,8 @@ export default {
   },
   components: {
     'yb-header': YBHeader,
-    'terraform-form': TerraformForm
+    'terraform-form': TerraformForm,
+    'copy-button': CopyButton
   },
   methods: {
     sendAnalytics: function (service) {
@@ -64,8 +65,7 @@ export default {
         eventAction: `click.aws.${service}`,
         eventLabel: `User clicked AWS ${service} section button`
       })
-    },
-    copyToClipboard: copyToClipboard
+    }
   }
 }
 </script>

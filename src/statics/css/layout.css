@@ -220,30 +220,10 @@
   position: relative;
 }
 #sample-config-block .copy-code-btn {
-  position: absolute;
   right: 30px;
-  background-color: #fff;
-  color: #F75821;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-}
-#sample-config-block .copy-code-btn:hover {
-  background-color: #F75821;
-  color: white;
 }
 #exec-code-block {
   position: relative;
-}
-#exec-code-block .copy-code-btn {
-  position: absolute;
-  right: 30px;
-  background-color: #fff;
-  color: #F75821;
-  top: 20px;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-}
-#exec-code-block .copy-code-btn:hover {
-  color: white;
-  background-color: #F75821;
 }
 
 .sign-up-btn {

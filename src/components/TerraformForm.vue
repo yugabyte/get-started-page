@@ -22,7 +22,7 @@
       <q-btn color="primary" label="Generate" @click="handleButtonClick" />
     </div>
     <div v-if="sampleConfigFile" id="sample-config-block">
-      <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(sampleConfigFile)"/>
+      <copy-button :text="sampleConfigFile"></copy-button>
       <pre>{{ sampleConfigFile }}</pre>
     </div>
     <div class="config-form-header">
@@ -30,7 +30,7 @@
     </div>
     <div class="bg-grey-3">
       <pre class="code-container" id="exec-code-block">
-        <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(terraformBashLines.join('\n'))"/>
+        <copy-button :text="terraformBashLines"></copy-button>
         <code class="pre-helper pre-helper--shell" v-for="(line, index) in terraformBashLines" v-bind:key="`terraform-${index}`">{{ line }}</code>
       </pre>
     </div>
@@ -39,7 +39,7 @@
 
 <script>
 import terraformCode, { generateConfig } from './snippets/terraformDeploy'
-import { copyToClipboard } from './helpers'
+import CopyButton from './CopyButton'
 
 export default {
   name: 'TerraformForm',
@@ -58,6 +58,9 @@ export default {
       terraformBashLines: terraformCode.trim().split('\n')
     }
   },
+  components: {
+    'copy-button': CopyButton
+  },
   methods: {
     handleButtonClick: function () {
       this.sampleConfigFile = generateConfig(
@@ -70,8 +73,7 @@ export default {
         this.vpcIdInput,
         this.subnetIdsInput
       )
-    },
-    copyToClipboard: copyToClipboard
+    }
   },
   props: {
     code: {

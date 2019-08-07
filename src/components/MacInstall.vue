@@ -19,7 +19,7 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" flat label="Copy" @click="() => copyToClipboard(dbBashLines.join('\n'))"/>
+            <copy-button :text="dbBashLines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbBashLines" v-bind:key="`mac-db-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
@@ -47,7 +47,7 @@
       <q-tab-panels v-model="shellTab" animated>
         <q-tab-panel name="x64" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" flat label="Copy" @click="() => copyToClipboard(shellBashLines.join('\n'))"/>
+            <copy-button :text="shellBashLines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`mac-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
@@ -63,7 +63,7 @@
 import dbCode from './snippets/macDbBash'
 import shellCode from './snippets/macShellBash'
 import YBHeader from './YBHeader'
-import { copyToClipboard } from './helpers'
+import CopyButton from './CopyButton'
 
 export default {
   name: 'MacInstall',
@@ -76,10 +76,8 @@ export default {
     }
   },
   components: {
-    'yb-header': YBHeader
-  },
-  methods: {
-    copyToClipboard: copyToClipboard
+    'yb-header': YBHeader,
+    'copy-button': CopyButton
   }
 }
 </script>
@@ -133,21 +131,7 @@ export default {
   -ms-user-select: none;
   user-select: none;
 }
-.code-container .copy-code-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  z-index: 100;
-  visibility: visible;
-  background-color: #fff;
-  color: #F75821;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-}
 
-.copy-code-btn:hover {
-  color: white;
-  background-color: #F75821;
-}
 .quickstart-container {
   margin-right: 15px;
 }

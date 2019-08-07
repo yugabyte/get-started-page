@@ -21,14 +21,14 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="Cloud Foundry" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(cfBashLines.join('\n'))"/>
+            <copy-button :text="cfBashLines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in cfBashLines" v-bind:key="`pivotal-cf-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
 
         <q-tab-panel name="PKS" class="bg-grey-3">
           <pre class="code-container">
-            <q-btn class="copy-code-btn" flat label="Copy" @click="copyToClipboard(csBashLines.join('\n'))"/>
+            <copy-button :text="csBashLines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in csBashLines" v-bind:key="`pivotal-cf-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
@@ -44,7 +44,7 @@
 import YBHeader from './YBHeader'
 import { cloudFoundryCode, containerServiceCode } from './snippets/pivotalCFDeploy'
 
-import { copyToClipboard } from './helpers'
+import CopyButton from './CopyButton'
 import { event } from 'vue-analytics'
 
 export default {
@@ -57,7 +57,8 @@ export default {
     }
   },
   components: {
-    'yb-header': YBHeader
+    'yb-header': YBHeader,
+    'copy-button': CopyButton
   },
   methods: {
     sendAnalytics: function (service) {
@@ -66,8 +67,7 @@ export default {
         eventAction: `click.pivotal.${service}`,
         eventLabel: `User clicked Pivotal ${service} section button`
       })
-    },
-    copyToClipboard: copyToClipboard
+    }
   }
 }
 </script>
