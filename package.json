@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "quasar dev",
     "build": "quasar build",
-    "publish": "npm run build && aws s3 rm s3://install.yugabyte.com --recursive && aws s3 sync dist/spa s3://install.yugabyte.com",
+    "publish": "npm run build && aws s3 sync dist/spa s3://install.yugabyte.com",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
