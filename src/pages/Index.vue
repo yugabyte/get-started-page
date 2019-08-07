@@ -135,7 +135,7 @@ import AzureDeploy from 'components/AzureDeploy'
 import PivotalDeploy from 'components/PivotalDeploy'
 import YBButton from 'components/YBButton'
 
-import { event } from 'vue-analytics'
+import { event, page } from 'vue-analytics'
 
 export default {
   name: 'PageIndex',
@@ -238,6 +238,9 @@ export default {
         eventLabel: `User clicked ${this.selectedService.label}`
       })
     }
+  },
+  mounted: function () {
+    page('/') // Send pageview stat to Google Analytics
   }
 }
 </script>
