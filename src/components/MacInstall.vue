@@ -94,7 +94,7 @@ export default {
   max-width: 200px;
 }
 #macos-quickstart-link {
-  color: #0045ec;
+  color: #322965;
   width: 150px;
   text-decoration: none;
 }

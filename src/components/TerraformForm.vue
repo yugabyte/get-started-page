@@ -19,7 +19,7 @@
         </div>
           <q-input label="Subnet IDs" v-model="subnetIdsInput"/>
         </div>
-      <q-btn color="primary" label="Generate" @click="handleButtonClick" />
+      <q-btn color="secondary" label="Generate" @click="handleButtonClick" />
     </div>
     <div v-if="sampleConfigFile" id="sample-config-block">
       <copy-button :text="sampleConfigFile"></copy-button>

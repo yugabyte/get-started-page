@@ -144,7 +144,7 @@
   cursor: pointer;
 }
 .service-cluster-option.active h2{
-  color: #0064b8;
+  color: #322965;
 }
 .deploy-header {
   background-color: #fff;
@@ -202,7 +202,7 @@
   justify-content: space-between;
 }
 .config-form-header {
-  color: #0064b8;
+  color: #322965;
   font-family: Mark,sans-serif;
   font-weight: 500;
   margin-bottom: 30px;

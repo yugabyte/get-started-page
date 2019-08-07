@@ -117,7 +117,7 @@
           <p>Experience our fully-managed cloud service using the link below.</p>
         </div>
         <a href="https://www.yugabyte.com/cloud" target="_blank">
-          <q-btn size="24px" class="sign-up-btn" color="primary" label="Sign up"></q-btn>
+          <q-btn size="24px" class="sign-up-btn" color="secondary" label="Sign up"></q-btn>
         </a>
       </div>
     </div>

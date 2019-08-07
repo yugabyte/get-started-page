@@ -230,6 +230,9 @@ a {
   margin-left: auto;
   text-align: left;
 }
+.overview-container p {
+  color: #322965;
+}
 .q-panel > div {
   height: 100%;
   min-width: 100%;
