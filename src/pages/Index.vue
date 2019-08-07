@@ -25,19 +25,19 @@
     <div class="service-tabs-container">
       <div class="service-options">
         <div :class="selectedService.value === 'local' ? 'service-cluster-option active' : 'service-cluster-option'"
-          @click="() => selectedService = serviceOptions[0]"
+          @click="clickServiceTab(0)"
         >
           <h3>Local Install</h3>
           <h2>Download</h2>
         </div>
         <div :class="selectedService.value === 'cloud' ? 'service-cluster-option active' : 'service-cluster-option'"
-          @click="() => selectedService = serviceOptions[1]"
+          @click="clickServiceTab(1)"
         >
           <h3>Multi-node cluster</h3>
           <h2>Deploy</h2>
         </div>
         <div :class="selectedService.value === 'managed' ? 'service-cluster-option active' : 'service-cluster-option'"
-          @click="() => selectedService = serviceOptions[2]"
+          @click="clickServiceTab(2)"
         >
           <h3>Fully Managed Service</h3>
           <h2>Sign up</h2>
@@ -228,6 +228,14 @@ export default {
         eventCategory: 'Install-Page',
         eventAction: `click.${this.selectedService.value}.${section.value}`,
         eventLabel: `User clicked ${section.value} section button`
+      })
+    },
+    clickServiceTab: function (index) {
+      this.selectedService = this.serviceOptions[index]
+      event({
+        eventCategory: 'Install-Page',
+        eventAction: `click.${this.selectedService.value}.tab`,
+        eventLabel: `User clicked ${this.selectedService.label}`
       })
     }
   }
