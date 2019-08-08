@@ -185,6 +185,12 @@
   font-size: 18px;
 }
 
+@media (max-width: 400px) {
+  .managed-cluster-container {
+    padding: 15px 0 100px 0;
+  }
+}
+
 .option-tabs.pivotal-tab {
   max-width: 300px;
 }
