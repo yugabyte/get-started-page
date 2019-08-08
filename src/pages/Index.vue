@@ -40,7 +40,7 @@
           @click="clickServiceTab(2)"
         >
           <h3>Fully Managed Service</h3>
-          <h2>Sign up</h2>
+          <h2>Sign Up</h2>
         </div>
       </div>
     </div>
@@ -117,7 +117,7 @@
           <p>Experience our fully-managed cloud service using the link below.</p>
         </div>
         <a href="https://www.yugabyte.com/cloud" target="_blank">
-          <q-btn size="24px" class="sign-up-btn" color="secondary" label="Sign up"></q-btn>
+          <q-btn size="24px" class="sign-up-btn" color="secondary" label="Sign Up"></q-btn>
         </a>
       </div>
     </div>
@@ -140,69 +140,114 @@ import { event, page } from 'vue-analytics'
 export default {
   name: 'PageIndex',
   data: function () {
-    return {
-      selectedService: {
+    const serviceOptions = [
+      {
         label: 'Local Install',
         value: 'local'
       },
-      selectedPlatform: {
+      {
+        label: 'Multi-Node Cluster',
+        value: 'cloud'
+      },
+      {
+        label: 'Fully Managed Service',
+        value: 'managed'
+      }
+    ]
+    const platformOptions = [
+      {
         label: 'macOS',
         value: 'macos'
       },
-      selectedDeploy: {
+      {
+        label: 'Linux',
+        value: 'linux'
+      },
+      {
+        label: 'Kubernetes',
+        value: 'kubernetes'
+      },
+      {
+        label: 'Docker',
+        value: 'docker'
+      }
+    ]
+    const deployOptions = [
+      {
         label: 'Amazon Web Services',
         value: 'aws'
       },
-      serviceOptions: [
-        {
-          label: 'Local Install',
-          value: 'local'
-        },
-        {
-          label: 'Multi-Node Cluster',
-          value: 'cloud'
-        },
-        {
-          label: 'Fully Managed Service',
-          value: 'managed'
-        }
-      ],
-      platformOptions: [
-        {
-          label: 'macOS',
-          value: 'macos'
-        },
-        {
-          label: 'Linux',
-          value: 'linux'
-        },
-        {
-          label: 'Kubernetes',
-          value: 'kubernetes'
-        },
-        {
-          label: 'Docker',
-          value: 'docker'
-        }
-      ],
-      deployOptions: [
-        {
-          label: 'Amazon Web Services',
-          value: 'aws'
-        },
-        {
-          label: 'Google Cloud Platform',
-          value: 'gcp'
-        },
-        {
-          label: 'Microsoft Azure',
-          value: 'azure'
-        },
-        {
-          label: 'Pivotal',
-          value: 'pivotal'
-        }
-      ]
+      {
+        label: 'Google Cloud Platform',
+        value: 'gcp'
+      },
+      {
+        label: 'Microsoft Azure',
+        value: 'azure'
+      },
+      {
+        label: 'Pivotal',
+        value: 'pivotal'
+      }
+    ]
+    let selectedService = serviceOptions[0]
+    let selectedPlatform = platformOptions[0]
+    let selectedDeploy = deployOptions[0]
+
+    if (this.$route.params.service) {
+      switch (this.$route.params.service) {
+        case 'cloud':
+          selectedService = serviceOptions[1]
+          break
+        case 'managed':
+          selectedService = serviceOptions[2]
+          break
+        default:
+          selectedService = serviceOptions[0]
+      }
+    }
+    if (this.$route.hash) {
+      switch (this.$route.hash) {
+        case '#macos':
+          selectedPlatform = platformOptions[0]
+          break
+        case '#linux':
+          selectedPlatform = platformOptions[1]
+          break
+        case '#kubernetes':
+          selectedPlatform = platformOptions[2]
+          break
+        case '#docker':
+          selectedPlatform = platformOptions[3]
+          break
+        case '#aws':
+          selectedDeploy = deployOptions[0]
+          break
+        case '#gcp':
+          selectedDeploy = deployOptions[1]
+          break
+        case '#azure':
+          selectedDeploy = deployOptions[2]
+          break
+        case '#pivotal':
+          selectedDeploy = deployOptions[3]
+          break
+        default:
+          break
+      }
+    }
+
+    return {
+      selectedService,
+      serviceOptions,
+      selectedPlatform,
+      platformOptions,
+      selectedDeploy,
+      deployOptions,
+
+      // Dirty means a tab or button was clicked
+      dirty: false,
+      scrolled: false
     }
   },
   components: {
@@ -216,6 +261,7 @@ export default {
     'azure-deploy': AzureDeploy,
     'pivotal-deploy': PivotalDeploy
   },
+  props: ['onScroll'],
   methods: {
     handleSelectSection: function (section) {
       if (this.selectedService.value === 'local') {
@@ -223,7 +269,8 @@ export default {
       } else {
         this.selectedDeploy = section
       }
-
+      window.history.pushState('platform', '', `${window.location.pathname}#${section.value}`)
+      this.dirty = true
       event({
         eventCategory: 'Install-Page',
         eventAction: `click.${this.selectedService.value}.${section.value}`,
@@ -232,15 +279,45 @@ export default {
     },
     clickServiceTab: function (index) {
       this.selectedService = this.serviceOptions[index]
+      window.history.pushState('service', '', this.selectedService.value)
+      this.dirty = true
       event({
         eventCategory: 'Install-Page',
         eventAction: `click.${this.selectedService.value}.tab`,
         eventLabel: `User clicked ${this.selectedService.label}`
       })
+    },
+    scrollContent: function () {
+      if (!this.dirty && !this.scrolled) {
+        if (this.selectedService.value === 'local') {
+          event({
+            eventCategory: 'Install-Page',
+            eventAction: `click.local.${this.selectedPlatform.value}`,
+            eventLabel: `User clicked ${this.selectedPlatform.value} section button`
+          })
+        } else if (this.selectedService.value === 'cloud') {
+          event({
+            eventCategory: 'Install-Page',
+            eventAction: `click.cloud.${this.selectedDeploy.value}`,
+            eventLabel: `User clicked ${this.selectedDeploy.value} section button`
+          })
+        }
+        this.scrolled = true
+      }
+      if (this.onScroll) {
+        // Execute callback from parent if available
+        this.onScroll()
+      }
     }
   },
   mounted: function () {
     page('/') // Send pageview stat to Google Analytics
+  },
+  beforeMount () {
+    window.addEventListener('scroll', this.scrollContent)
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.scrollContent)
   }
 }
 </script>

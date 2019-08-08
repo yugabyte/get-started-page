@@ -33,7 +33,7 @@
     </q-drawer>
 
     <q-page-container id="page-content-container">
-      <router-view />
+      <router-view :onScroll="handleScroll"/>
     </q-page-container>
       <q-footer>
         <footer class="footer">
@@ -114,11 +114,9 @@ export default {
     }
   },
   created () {
-    window.addEventListener('scroll', this.handleScroll)
     window.addEventListener('resize', this.handleResizeWidth)
   },
   beforeDestroy () {
-    window.removeEventListener('scroll', this.handleScroll)
     window.addEventListener('resize', this.handleResizeWidth)
   },
   components: {
