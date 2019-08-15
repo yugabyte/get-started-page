@@ -212,6 +212,9 @@
   font-size: 18px;
   position: relative;
 }
+.config-form-header:not(:first-child) {
+  margin-top: 30px;
+}
 .config-form-row .form-input {
   min-width: 300px;
   flex-basis: 45%;

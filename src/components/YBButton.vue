@@ -39,9 +39,9 @@ a.download-nav-btn {
   flex: 1 1 0;
   color: #727272;
   border: 1px solid #e2e2e2;
-  border-radius: 5px;
+  border-radius: 0.3em;
   font-size: 17px;
-  margin: 0 12px;
+  margin: 0 1.5em;
   -webkit-transition: color .3s,border-color .3s,-webkit-box-shadow .3s;
   transition: color .3s,border-color .3s,-webkit-box-shadow .3s;
   transition: color .3s,box-shadow .3s,border-color .3s;

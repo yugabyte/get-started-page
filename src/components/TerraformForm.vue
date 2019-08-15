@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 class="config-form-header">
-      Generate config file
+      1. Generate config file
     </h3>
     <div class="config-form-container">
       <div class="form-control">
@@ -26,11 +26,11 @@
       <pre>{{ sampleConfigFile }}</pre>
     </div>
     <h3 class="config-form-header">
-      Create cluster
+      2. Create cluster
     </h3>
-    <div class="bg-grey-3">
+    <div class="bg-grey-3 q-tab-panel code-relative">
+      <copy-button :text="terraformBashLines"></copy-button>
       <pre class="code-container" id="exec-code-block">
-        <copy-button :text="terraformBashLines"></copy-button>
         <code class="pre-helper pre-helper--shell" v-for="(line, index) in terraformBashLines" v-bind:key="`terraform-${index}`">{{ line }}</code>
       </pre>
     </div>

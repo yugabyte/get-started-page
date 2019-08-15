@@ -56,12 +56,77 @@
         <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Complete Docs</a>
       </div>
     </div>
+    <div class="download-section">
+      <yb-header type="yb-logo" text="Explore Distributed SQL"></yb-header>
+      <q-tabs
+        v-model="databaseTab" dense class="text-grey"
+        active-color="primary"
+        indicator-color="primary"
+        align="justify"
+      >
+        <q-space />
+        <div class="quickstart-container">
+          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/explore-ysql/#macos">Complete Docs</a>
+        </div>
+      </q-tabs>
+      <q-separator />
+
+      <q-tab-panels v-model="exploreYSQL" animated>
+        <q-tab-panel name="default" class="bg-form">
+          <div>
+            <h3 class="config-form-header">
+              1. Download Sample Schema
+            </h3>
+            <div class="bg-grey-3 q-tab-panel code-relative">
+              <pre class="code-container">
+                <copy-button :text="ysqlBashLines"></copy-button>
+                <code class="pre-helper pre-helper--shell" v-for="(line, index) in ysqlBashLines" v-bind:key="`ysql-${index}`">{{ line }}</code>
+              </pre>
+            </div>
+            <h3 class="config-form-header">
+              2. Load Data
+            </h3>
+            <div class="bg-grey-3 q-tab-panel code-relative">
+              <pre class="code-container">
+                <copy-button :text="pgQueries"></copy-button>
+                <code class="pre-helper pre-helper--postgres" v-for="(line, index) in pgQueries" v-bind:key="`postgres-${index}`">{{ line }}</code>
+              </pre>
+            </div>
+            <div class="bg-grey-3 q-tab-panel code-relative">
+              <pre class="code-container">
+                <copy-button :text="ybDemoQueries"></copy-button>
+                <code class="pre-helper pre-helper--yb_demo" v-for="(line, index) in ybDemoQueries" v-bind:key="`yb-demo-${index}`">{{ line }}</code>
+              </pre>
+            </div>
+            <h3 class="config-form-header">
+              3. Run Queries
+            </h3>
+            <div class="bg-grey-3 q-tab-panel code-relative">
+              <pre class="code-container">
+                <copy-button :text="sampleQueryCount"></copy-button>
+                <code class="pre-helper pre-helper--yb_demo">{{ sampleQueryCount }}</code>
+                <code class="pre-helper"> id  |           title            | category |      price       | rating
+-----+----------------------------+----------+------------------+--------
+  22 | Enormous Marble Shoes      | Gizmo    | 21.4245199604423 |    4.2
+  38 | Lightweight Leather Gloves | Gadget   | 44.0462485589292 |    3.8
+ 162 | Gorgeous Copper Knife      | Gadget   | 22.3785988001101 |    3.3
+ 174 | Rustic Iron Keyboard       | Gadget   | 74.4095392945406 |    4.4
+  46 | Rustic Linen Keyboard      | Gadget   | 78.6996782532274 |      4
+(5 rows)
+                </code>
+              </pre>
+            </div>
+          </div>
+        </q-tab-panel>
+      </q-tab-panels>
+      <div class="quickstart-container mobile-view">
+        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/explore-ysql/#macos">Complete Docs</a>
+      </div>
+    </div>
   </div>
 </template>
-
 <script>
-import dbCode from './snippets/macDbBash'
-import shellCode from './snippets/macShellBash'
+import { dbServerCode, sqlShellCode, ysqlCode, pgCommands, ybDemoCommands } from './snippets/macCode'
 import YBHeader from './YBHeader'
 import CopyButton from './CopyButton'
 
@@ -71,8 +136,13 @@ export default {
     return {
       databaseTab: 'x64',
       shellTab: 'x64',
-      dbBashLines: dbCode.trim().split('\n'),
-      shellBashLines: shellCode.trim().split('\n')
+      exploreYSQL: 'default',
+      dbBashLines: dbServerCode.trim().split('\n'),
+      shellBashLines: sqlShellCode.trim().split('\n'),
+      ysqlBashLines: ysqlCode.trim().split('\n'),
+      pgQueries: pgCommands.trim().split('\n'),
+      ybDemoQueries: ybDemoCommands.trim().split('\n'),
+      sampleQueryCount: 'SELECT id, title, category, price, rating FROM products LIMIT 5;'
     }
   },
   components: {
@@ -105,21 +175,44 @@ export default {
 }
 .code-container {
   background-color: #F7F8F9;
-  padding: 0px 30px;
+  margin: 0 90px 0 30px;
   line-height: 0.5;
   text-align: left;
-  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.code-relative {
+  position: relative;
+  width: 958px;
 }
 .pre-helper {
   color: #3e3e3e;
   position: relative;
   display: block;
-  padding-left: 20px;
   line-height: 1.5;
   font-size: 16px;
 }
+
+.pre-helper--shell {
+  padding-left: 20px;
+}
 .pre-helper--shell:before {
     content: '$ ';
+}
+
+.pre-helper--postgres {
+  padding-left: 90px;
+}
+.pre-helper--postgres:before {
+    content: 'postgres=> ';
+}
+
+.pre-helper--yb_demo {
+  padding-left: 85px;
+}
+.pre-helper--yb_demo:before {
+    content: 'yb_demo=> ';
 }
 
 .pre-helper:before {

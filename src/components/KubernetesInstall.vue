@@ -64,13 +64,75 @@
         <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Complete Docs</a>
       </div>
     </div>
+    <div class="download-section">
+      <yb-header type="yb-logo" text="Explore Distributed SQL"></yb-header>
+      <q-tabs
+        v-model="shellTab" dense class="text-grey"
+        active-color="primary"
+        indicator-color="primary"
+        align="justify"
+      >
+        <q-space />
+        <div class="quickstart-container">
+          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/explore-ysql/#kubernetes">Complete Docs</a>
+        </div>
+      </q-tabs>
+      <q-separator />
+
+      <q-tab-panels v-model="exploreYSQL" animated>
+        <q-tab-panel name="default" class="bg-form">
+          <div>
+            <h3 class="config-form-header">
+              1. Download Sample Schema
+            </h3>
+            <div class="bg-grey-3 q-tab-panel code-relative">
+              <pre class="code-container">
+                <copy-button :text="ysqlBashLines"></copy-button>
+                <code class="pre-helper pre-helper--shell" v-for="(line, index) in ysqlBashLines" v-bind:key="`ysql-${index}`">{{ line }}</code>
+              </pre>
+            </div>
+            <h3 class="config-form-header">
+              2. Load Data
+            </h3>
+            <div class="bg-grey-3 q-tab-panel code-relative">
+              <pre class="code-container">
+                <copy-button :text="pgQueries"></copy-button>
+                <code class="pre-helper pre-helper--postgres" v-for="(line, index) in pgQueries" v-bind:key="`postgres-${index}`">{{ line }}</code>
+              </pre>
+            </div>
+            <div class="bg-grey-3 q-tab-panel code-relative">
+              <pre class="code-container">
+                <copy-button :text="ybDemoQueries"></copy-button>
+                <code class="pre-helper pre-helper--yb_demo" v-for="(line, index) in ybDemoQueries" v-bind:key="`yb-demo-${index}`">{{ line }}</code>
+              </pre>
+            </div>
+            <h3 class="config-form-header">
+              3. Run Queries
+            </h3>
+            <div class="bg-grey-3 q-tab-panel code-relative">
+              <pre class="code-container">
+                <copy-button :text="sampleQueryId"></copy-button>
+                <code class="pre-helper pre-helper--yb_demo">{{ sampleQueryId }}</code>
+                <code class="pre-helper"> id | category  |      price       | quantity
+----+-----------+------------------+----------
+  2 | Doohickey | 70.0798961307176 |     5000
+(1 row)
+                </code>
+              </pre>
+            </div>
+          </div>
+        </q-tab-panel>
+      </q-tab-panels>
+      <div class="quickstart-container mobile-view">
+        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/explore-ysql/#kubernetes">Complete Docs</a>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { helm, yaml } from './snippets/kubernetesDbBash'
+import { helmDbServerCode, yamlDbServerCode, sqlShellCode, ysqlCode, pgCommands, ybDemoCommands } from './snippets/kubernetesCode'
 import CopyButton from './CopyButton'
-import shellCode from './snippets/kubernetesShellBash'
 import YBHeader from './YBHeader'
 
 export default {
@@ -79,9 +141,14 @@ export default {
     return {
       databaseTab: 'Helm',
       shellTab: 'Helm',
-      dbHelmLines: helm.trim().split('\n'),
-      dbYamlLines: yaml.trim().split('\n'),
-      shellBashLines: shellCode.trim().split('\n')
+      exploreYSQL: 'default',
+      dbHelmLines: helmDbServerCode.trim().split('\n'),
+      dbYamlLines: yamlDbServerCode.trim().split('\n'),
+      shellBashLines: sqlShellCode.trim().split('\n'),
+      ysqlBashLines: ysqlCode.trim().split('\n'),
+      pgQueries: pgCommands.trim().split('\n'),
+      ybDemoQueries: ybDemoCommands.trim().split('\n'),
+      sampleQueryId: 'SELECT id, category, price, quantity FROM products WHERE id=2;'
     }
   },
   components: {

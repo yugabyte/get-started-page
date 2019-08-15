@@ -19,11 +19,6 @@
       <q-separator />
 
       <q-tab-panels v-model="databaseTab" animated>
-        <!-- <q-tab-panel name="Cloud Deployment" class="bg-grey-3">
-          <pre class="code-container">
-            <code class="pre-helper pre-helper--shell" v-for="(line, index) in cloudDeploymentCode" v-bind:key="`gcp-cd-${index}`">{{ line }}</code>
-          </pre>
-        </q-tab-panel> -->
         <q-tab-panel name="Terraform" class="bg-form">
           <terraform-form code="google" providerName="Google Cloud Platform"></terraform-form>
         </q-tab-panel>
