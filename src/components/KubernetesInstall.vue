@@ -65,7 +65,7 @@
       </div>
     </div>
     <div class="download-section">
-      <yb-header type="yb-logo" text="Explore Distributed SQL"></yb-header>
+      <yb-header type="yb-logo" text="Distributed SQL in Action"></yb-header>
       <q-tabs
         v-model="shellTab" dense class="text-grey"
         active-color="primary"
@@ -113,11 +113,6 @@
               <pre class="code-container">
                 <copy-button :text="sampleQueryId"></copy-button>
                 <code class="pre-helper pre-helper--yb_demo">{{ sampleQueryId }}</code>
-                <code class="pre-helper"> id | category  |      price       | quantity
-----+-----------+------------------+----------
-  2 | Doohickey | 70.0798961307176 |     5000
-(1 row)
-                </code>
               </pre>
             </div>
           </div>
@@ -148,7 +143,7 @@ export default {
       ysqlBashLines: ysqlCode.trim().split('\n'),
       pgQueries: pgCommands.trim().split('\n'),
       ybDemoQueries: ybDemoCommands.trim().split('\n'),
-      sampleQueryId: 'SELECT id, category, price, quantity FROM products WHERE id=2;'
+      sampleQueryId: 'SELECT users.id, users.name, users.email, orders.id, orders.total FROM orders INNER JOIN users ON orders.user_id=users.id LIMIT 10;'
     }
   },
   components: {

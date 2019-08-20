@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="download-section">
-      <yb-header type="yb-logo" text="Explore Distributed SQL"></yb-header>
+      <yb-header type="yb-logo" text="Distributed SQL in Action"></yb-header>
       <q-tabs
         v-model="databaseTab" dense class="text-grey"
         active-color="primary"
@@ -105,15 +105,6 @@
               <pre class="code-container">
                 <copy-button :text="sampleQueryCount"></copy-button>
                 <code class="pre-helper pre-helper--yb_demo">{{ sampleQueryCount }}</code>
-                <code class="pre-helper"> id  |           title            | category |      price       | rating
------+----------------------------+----------+------------------+--------
-  22 | Enormous Marble Shoes      | Gizmo    | 21.4245199604423 |    4.2
-  38 | Lightweight Leather Gloves | Gadget   | 44.0462485589292 |    3.8
- 162 | Gorgeous Copper Knife      | Gadget   | 22.3785988001101 |    3.3
- 174 | Rustic Iron Keyboard       | Gadget   | 74.4095392945406 |    4.4
-  46 | Rustic Linen Keyboard      | Gadget   | 78.6996782532274 |      4
-(5 rows)
-                </code>
               </pre>
             </div>
           </div>
@@ -142,7 +133,7 @@ export default {
       ysqlBashLines: ysqlCode.trim().split('\n'),
       pgQueries: pgCommands.trim().split('\n'),
       ybDemoQueries: ybDemoCommands.trim().split('\n'),
-      sampleQueryCount: 'SELECT id, title, category, price, rating FROM products LIMIT 5;'
+      sampleQueryCount: 'SELECT users.id, users.name, users.email, orders.id, orders.total FROM orders INNER JOIN users ON orders.user_id=users.id LIMIT 10;'
     }
   },
   components: {
