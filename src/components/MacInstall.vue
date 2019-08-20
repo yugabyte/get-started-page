@@ -171,7 +171,7 @@ export default {
   text-align: left;
   padding: 0;
   overflow-y: hidden;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 .code-relative {
   position: relative;
