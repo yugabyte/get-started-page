@@ -57,7 +57,7 @@
         </div>
     </div>
     <div class="download-section">
-      <yb-header type="yb-logo" text="Explore Distributed SQL"></yb-header>
+      <yb-header type="yb-logo" text="Distributed SQL in Action"></yb-header>
       <q-tabs
         v-model="databaseTab" dense class="text-grey"
         active-color="primary"
@@ -105,19 +105,6 @@
               <pre class="code-container">
                 <copy-button :text="sampleQueryTables"></copy-button>
                 <code class="pre-helper pre-helper--yb_demo">{{ sampleQueryTables }}</code>
-                <code class="pre-helper">                    Table "public.products"
-   Column   |            Type             | Collation | Nullable |               Default
-------------+-----------------------------+-----------+----------+--------------------------------------
- id         | bigint                      |           | not null | nextval('products_id_seq'::regclass)
- created_at | timestamp without time zone |           |          |
- category   | text                        |           |          |
- ean        | text                        |           |          |
- price      | double precision            |           |          |
- quantity   | integer                     |           |          | 5000
- rating     | double precision            |           |          |
- title      | text                        |           |          |
- vendor     | text                        |           |          |
-                </code>
               </pre>
             </div>
           </div>
@@ -147,7 +134,7 @@ export default {
       ysqlBashLines: ysqlCode.trim().split('\n'),
       pgQueries: pgCommands.trim().split('\n'),
       ybDemoQueries: ybDemoCommands.trim().split('\n'),
-      sampleQueryTables: '\\d products'
+      sampleQueryTables: 'SELECT users.id, users.name, users.email, orders.id, orders.total FROM orders INNER JOIN users ON orders.user_id=users.id LIMIT 10;'
     }
   },
   components: {

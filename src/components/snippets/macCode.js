@@ -13,7 +13,7 @@ export const ysqlCode = `
 wget https://raw.githubusercontent.com/YugaByte/yb-sql-workshop/master/query-using-bi-tools/schema.sql
 wget https://github.com/YugaByte/yb-sql-workshop/raw/master/query-using-bi-tools/sample-data.tgz
 tar zxvf sample-data.tgz
-./bin/ysqlsh --echo-queries
+./bin/ysqlsh
 `
 
 export const pgCommands = `

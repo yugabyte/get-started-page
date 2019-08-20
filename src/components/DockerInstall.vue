@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="download-section">
-      <yb-header type="yb-logo" text="Explore Distributed SQL"></yb-header>
+      <yb-header type="yb-logo" text="Distributed SQL in Action"></yb-header>
       <q-tabs
         v-model="databaseTab" dense class="text-grey"
         active-color="primary"
@@ -103,20 +103,6 @@
               <pre class="code-container">
                 <copy-button :text="sampleQueryUsers"></copy-button>
                 <code class="pre-helper pre-helper--yb_demo">{{ sampleQueryUsers }}</code>
-                <code class="pre-helper">  id  |        name         |             email             |  id   |      total
-------+---------------------+-------------------------------+-------+------------------
-  616 | Rex Thiel           | rex-thiel@gmail.com           |  4443 | 101.414602060277
- 2289 | Alanis Kovacek      | alanis.kovacek@yahoo.com      | 17195 | 71.8499366564206
-   37 | Jaleel Collins      | jaleel.collins@gmail.com      |   212 | 38.8821451022809
- 2164 | Cordia Farrell      | cordia.farrell@gmail.com      | 16223 | 37.7489430287531
- 1528 | Donny Murazik       | murazik-donny@hotmail.com     | 11546 | 52.3082273751586
- 1389 | Henriette O'Connell | connell-o-henriette@yahoo.com | 10551 | 69.3117644687696
- 2408 | Blake Jast          | jast.blake@hotmail.com        | 18149 | 150.788925887077
- 1201 | Kaycee Keebler      | kaycee-keebler@gmail.com      |  8937 | 48.3440955866708
- 1421 | Cornell Cartwright  | cornell-cartwright@gmail.com  | 10772 | 191.867670306882
-  523 | Deonte Hoeger       | hoeger.deonte@hotmail.com     |  3710 | 71.4010754169826
-(10 rows)
-                </code>
               </pre>
             </div>
           </div>
