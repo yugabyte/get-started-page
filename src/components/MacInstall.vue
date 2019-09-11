@@ -11,7 +11,7 @@
         <q-tab name="x64" label="X64" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/create-local-cluster/#macos">Complete Docs</a>
+          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/#macos">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
