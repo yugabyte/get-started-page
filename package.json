@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "quasar dev",
-    "build": "quasar build",
+    "build": "quasar build && cp _redirects dist/spa/",
     "publish": "npm run build && aws s3 sync dist/spa s3://install.yugabyte.com",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"

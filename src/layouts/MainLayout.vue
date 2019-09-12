@@ -8,11 +8,6 @@
               <img id="yb-logo-symbol" width="240" height="40" alt="YugaByte DB Logo" src="../assets/ybdocs-color.png" />
             </a>
           </div>
-          <!-- <div class="logo">
-            <a href="https://www.yugabyte.com/" class="navbar-brand" target="_blank" rel="noopener">
-              <div class="nav-logo scrolled"></div>
-            </a>
-          </div> -->
         </q-toolbar-title>
         <div id="yb-main-navbar">
           <a href="https://docs.yugabyte.com/" class="yb-nav-links" target="_blank" rel="noopener" style="color: #202951">
