@@ -87,7 +87,7 @@
             <div class="bg-grey-3 q-tab-panel code-relative">
               <pre class="code-container">
                 <copy-button :text="pgQueries"></copy-button>
-                <code class="pre-helper pre-helper--postgres" v-for="(line, index) in pgQueries" v-bind:key="`postgres-${index}`">{{ line }}</code>
+                <code class="pre-helper pre-helper--yugabyte" v-for="(line, index) in pgQueries" v-bind:key="`yugabyte-${index}`">{{ line }}</code>
               </pre>
             </div>
             <div class="bg-grey-3 q-tab-panel code-relative">

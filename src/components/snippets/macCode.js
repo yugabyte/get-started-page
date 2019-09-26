@@ -5,7 +5,7 @@ tar xvfz yugabyte-2.0.0.0-darwin.tar.gz && cd yugabyte-2.0.0.0/
 `
 
 export const sqlShellCode = `
-# Make sure you have downloaded and untarred the tar.gz as shown above
+# Make sure you have downloaded and extracted the tar.gz as shown above
 ./bin/ysqlsh
 `
 
@@ -18,7 +18,7 @@ tar zxvf sample-data.tgz
 
 export const pgCommands = `
 CREATE DATABASE yb_demo;
-GRANT ALL ON DATABASE yb_demo to postgres;
+GRANT ALL ON DATABASE yb_demo to yugabyte;
 \\c yb_demo;
 `
 

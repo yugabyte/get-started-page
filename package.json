@@ -2,7 +2,7 @@
   "name": "vue-install-page",
   "version": "0.0.1",
   "description": "Open-source, cloud-native, high-performance distributed SQL database for global, internet-scale apps.",
-  "productName": "Download | YugaByte DB",
+  "productName": "Download | YugabyteDB",
   "cordovaId": "org.cordova.quasar.app",
   "author": "Andrew Cai <andrew@yugabyte.com>",
   "private": true,

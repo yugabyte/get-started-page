@@ -31,7 +31,7 @@ kubectl exec -it yb-tserver-0 /home/yugabyte/bin/ysqlsh -- -h yb-tserver-0  --ec
 
 export const pgCommands = `
 CREATE DATABASE yb_demo;
-GRANT ALL ON DATABASE yb_demo to postgres;
+GRANT ALL ON DATABASE yb_demo to yugabyte;
 \\c yb_demo;
 `
 

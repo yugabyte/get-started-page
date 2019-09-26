@@ -5,7 +5,7 @@
         <q-toolbar-title>
           <div class="logo-container">
             <a href="https://www.yugabyte.com" target="_blank" rel="noopener">
-              <img id="yb-logo-symbol" width="240" height="40" alt="YugaByte DB Logo" src="../assets/ybdocs-color.png" />
+              <img id="yb-logo-symbol" width="240" height="40" alt="YugabyteDB Logo" src="../assets/ybdocs-color.png" />
             </a>
           </div>
         </q-toolbar-title>
@@ -40,7 +40,7 @@
             <ul class="footer-nav">
               <li class="footer-items" >
                 <div class="logo-white">
-                  <img width="50px" height="30px" alt="YugaByte DB logo" src="../assets/ybsymbol-white.svg" />
+                  <img width="50px" height="30px" alt="YugabyteDB logo" src="../assets/ybsymbol-white.svg" />
                   <div class="copyright">
                     <div style="margin-bottom: 3px">© 2019 YugaByte, Inc.</div>
                     <a href="https://www.yugabyte.com/privacy-policy/">Privacy Policy</a>

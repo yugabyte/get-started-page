@@ -23,7 +23,7 @@ docker exec -it yb-tserver-n1 /home/yugabyte/bin/ysqlsh -h yb-tserver-n1  --echo
 
 export const pgCommands = `
 CREATE DATABASE yb_demo;
-GRANT ALL ON DATABASE yb_demo to postgres;
+GRANT ALL ON DATABASE yb_demo to yugabyte;
 \\c yb_demo;
 `
 

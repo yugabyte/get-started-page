@@ -42,7 +42,7 @@ module "yugabyte-db-cluster" {
   vpc_id = "${vpcId}"
   subnet_ids = [${subnetIdStr}]
 
-  # Replication factor of the YugaByte DB cluster.
+  # Replication factor of the YugabyteDB cluster.
   replication_factor = "3"
 
   # The number of nodes in the cluster, this cannot be lower than the replication factor.

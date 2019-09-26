@@ -118,9 +118,9 @@ module.exports = function (ctx) {
       // workboxPluginMode: 'InjectManifest',
       // workboxOptions: {}, // only for NON InjectManifest
       manifest: {
-        name: 'Download YugaByte DB',
-        short_name: 'YugaByte DB',
-        description: 'Get Started with YugaByte DB, install on your local cluster or deploy on your cloud provider.',
+        name: 'Download YugabyteDB',
+        short_name: 'YugabyteDB',
+        description: 'Get started with YugaByteDB, install on your local cluster or deploy on your cloud provider.',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

@@ -3,8 +3,8 @@
     <section class="hero-overview">
       <div class="overview-container">
         <h3 class="overview-statement">The leading high-performance distributed SQL database</h3>
-        <h1>Get Started</h1>
-        <p>YugaByte DB server and SQL shell are released under open source Apache 2.0 license</p>
+        <h1>Get started</h1>
+        <p>YugabyteDB server and SQL shell are released under open source Apache 2.0 license</p>
       </div>
     </section>
     <ul id="dropdown-options-container">

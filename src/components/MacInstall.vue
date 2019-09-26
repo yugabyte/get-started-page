@@ -89,7 +89,7 @@
             <div class="bg-grey-3 q-tab-panel code-relative">
               <pre class="code-container">
                 <copy-button :text="pgQueries"></copy-button>
-                <code class="pre-helper pre-helper--postgres" v-for="(line, index) in pgQueries" v-bind:key="`postgres-${index}`">{{ line }}</code>
+                <code class="pre-helper pre-helper--yugabyte" v-for="(line, index) in pgQueries" v-bind:key="`yugabyte-${index}`">{{ line }}</code>
               </pre>
             </div>
             <div class="bg-grey-3 q-tab-panel code-relative">
@@ -192,18 +192,18 @@ export default {
     content: '$ ';
 }
 
-.pre-helper--postgres {
+.pre-helper--yugabyte {
   padding-left: 90px;
 }
-.pre-helper--postgres:before {
-    content: 'postgres=> ';
+.pre-helper--yugabyte:before {
+    content: 'yugabyte=# ';
 }
 
 .pre-helper--yb_demo {
   padding-left: 85px;
 }
 .pre-helper--yb_demo:before {
-    content: 'yb_demo=> ';
+    content: 'yb_demo=# ';
 }
 
 .pre-helper:before {
