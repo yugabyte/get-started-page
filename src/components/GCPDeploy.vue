@@ -8,7 +8,7 @@
         indicator-color="primary"
         align="justify"
       >
-        <!-- <q-tab name="Cloud Deployment" label="Cloud Deployment" icon="img:/statics/clouddeployment-logo.svg" class="option-tabs" v-on:click="sendAnalytics('cloud-deployment')" /> -->
+        <q-tab name="Cloud Deployment" label="Cloud Deployment" icon="img:/statics/clouddeployment-logo.svg" class="option-tabs" v-on:click="sendAnalytics('cloud-deployment')" />
         <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
         <q-space />
         <div class="quickstart-container">
@@ -19,6 +19,12 @@
       <q-separator />
 
       <q-tab-panels v-model="databaseTab" animated>
+        <q-tab-panel name="Cloud Deployment" class="bg-grey-3">
+          <pre class="code-container">
+            <copy-button :text="cfBashLines"></copy-button>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in cloudDeploymentCode" v-bind:key="`gcp-dm-${index}`">{{ line }}</code>
+          </pre>
+        </q-tab-panel>
         <q-tab-panel name="Terraform" class="bg-form">
           <terraform-form code="google" providerName="Google Cloud Platform"></terraform-form>
         </q-tab-panel>
@@ -35,6 +41,7 @@
 import YBHeader from './YBHeader'
 import TerraformForm from './TerraformForm'
 import dbCode from './snippets/gcpCDDeploy'
+import CopyButton from './CopyButton'
 
 import { event } from 'vue-analytics'
 
@@ -42,13 +49,14 @@ export default {
   name: 'GCPDeploy',
   data: function () {
     return {
-      databaseTab: 'Terraform',
+      databaseTab: 'Cloud Deployment',
       cloudDeploymentCode: dbCode.trim().split('\n')
     }
   },
   components: {
     'yb-header': YBHeader,
-    'terraform-form': TerraformForm
+    'terraform-form': TerraformForm,
+    'copy-button': CopyButton
   },
   methods: {
     sendAnalytics: function (service) {

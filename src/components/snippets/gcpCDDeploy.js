@@ -1,7 +1,7 @@
 const code = `
-gcloud container clusters create yugabyte
-kubectl create -f https://raw.githubusercontent.com/YugaByte/yugabyte-db/master/cloud/kubernetes/yugabyte-statefulset.yaml
-kubectl exec -it yb-tserver-0 bin/cqlsh
+git clone https://github.com/YugaByte/gcp-deployment-manager.git
+cd gcp-deployment-manager
+gcloud deployment-manager deployments create <your-deployment-name> --config=yugabyte-deployment.yaml
 `
 
 export default code
