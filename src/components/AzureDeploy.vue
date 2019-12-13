@@ -24,7 +24,7 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="Resource Manager" class="bg-grey-3">
           <pre class="code-container">
-            <copy-button :text="cfBashLines"></copy-button>
+            <copy-button :text="resourceManagerCode"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in resourceManagerCode" v-bind:key="`azure-rm-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>

@@ -21,7 +21,7 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="Cloud Deployment" class="bg-grey-3">
           <pre class="code-container">
-            <copy-button :text="cfBashLines"></copy-button>
+            <copy-button :text="cloudDeploymentCode"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in cloudDeploymentCode" v-bind:key="`gcp-dm-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
