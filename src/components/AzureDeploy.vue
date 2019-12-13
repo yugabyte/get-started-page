@@ -8,10 +8,10 @@
         indicator-color="primary"
         align="justify"
       >
-        <!-- <q-tab name="Resource Manager" class="option-tabs" v-on:click="sendAnalytics('resource-manager')">
+        <q-tab name="Resource Manager" class="option-tabs" v-on:click="sendAnalytics('resource-manager')">
             <img width="24" style="margin-bottom: 5px" src="/statics/resourcemanager-logo.png" />
             Resource Manager
-          </q-tab> -->
+          </q-tab>
         <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
         <q-space />
         <div class="quickstart-container">
@@ -22,11 +22,12 @@
       <q-separator />
 
       <q-tab-panels v-model="databaseTab" animated>
-        <!-- <q-tab-panel name="Resource Manager" class="bg-grey-3">
+        <q-tab-panel name="Resource Manager" class="bg-grey-3">
           <pre class="code-container">
+            <copy-button :text="resourceManagerCode"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in resourceManagerCode" v-bind:key="`azure-rm-${index}`">{{ line }}</code>
           </pre>
-        </q-tab-panel> -->
+        </q-tab-panel>
         <q-tab-panel name="Terraform" class="bg-form">
           <terraform-form code="azureerm" providerName="Azure"></terraform-form>
         </q-tab-panel>
@@ -43,6 +44,7 @@
 import YBHeader from './YBHeader'
 import dbCode from './snippets/azureRMDeploy'
 import TerraformForm from './TerraformForm'
+import CopyButton from './CopyButton'
 
 import { event } from 'vue-analytics'
 
@@ -50,13 +52,14 @@ export default {
   name: 'AzureDeploy',
   data: function () {
     return {
-      databaseTab: 'Terraform',
+      databaseTab: 'Resource Manager',
       resourceManagerCode: dbCode.trim().split('\n')
     }
   },
   components: {
     'yb-header': YBHeader,
-    'terraform-form': TerraformForm
+    'terraform-form': TerraformForm,
+    'copy-button': CopyButton
   },
   methods: {
     sendAnalytics: function (service) {

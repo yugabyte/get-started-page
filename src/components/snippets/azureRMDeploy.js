@@ -1,8 +1,9 @@
 const code = `
-az group create --name yb-eastus-resource
-az aks create --resource-group yb-eastus-resource --name yb-aks-cluster --node-count 3 --generate-ssh-keys
-az aks get-credentials --resource-group yb-eastus-resource --name yb-aks-cluster
-kubectl create -f https://raw.githubusercontent.com/YugaByte/yugabyte-db/master/cloud/kubernetes/yugabyte-statefulset.yaml
+ssh-keygen -f yugabyte-key
+git clone https://github.com/YugaByte/azure-resource-manager.git
+cd azure-resource-manager
+az group create --name yb-demo -l <region>
+az group deployment create --resource-group yb-demo --template-file yugabyte_deployment.json --parameters ClusterName='yb-demo' SshUser='centos' YBVersion='2.0.7.0' SshKeypair='<contents of yugabyte-key.pub>'
 `
 
 export default code
