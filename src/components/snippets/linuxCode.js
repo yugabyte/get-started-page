@@ -1,6 +1,6 @@
 export const dbServerCode = `
-wget https://downloads.yugabyte.com/yugabyte-2.0.7.0-linux.tar.gz
-tar xvfz yugabyte-2.0.7.0-linux.tar.gz && cd yugabyte-2.0.7.0/
+wget https://downloads.yugabyte.com/yugabyte-2.0.8.0-linux.tar.gz
+tar xvfz yugabyte-2.0.8.0-linux.tar.gz && cd yugabyte-2.0.8.0/
 ./bin/post_install.sh
 ./bin/yb-ctl create
 `
