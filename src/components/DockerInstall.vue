@@ -88,7 +88,7 @@
               </pre>
             </div>
             <h3 class="config-form-header">
-              3. Run Queries
+              2. Run Queries
             </h3>
             <div class="bg-grey-3 q-tab-panel code-relative">
               <pre class="code-container">
@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import { dbServerCode, sqlShellCode, ysqlCode, pgCommands, ybDemoCommands } from './snippets/dockerCode'
+import { dbServerCode, sqlShellCode, pgCommands, ybDemoCommands } from './snippets/dockerCode'
 import YBHeader from './YBHeader'
 import CopyButton from './CopyButton'
 
@@ -120,7 +120,6 @@ export default {
       exploreYSQL: 'default',
       dbBashLines: dbServerCode.trim().split('\n'),
       shellBashLines: sqlShellCode.trim().split('\n'),
-      ysqlBashLines: ysqlCode.trim().split('\n'),
       pgQueries: pgCommands.trim().split('\n'),
       ybDemoQueries: ybDemoCommands.trim().split('\n'),
       sampleQueryUsers: 'SELECT users.id, users.name, users.email, orders.id, orders.total FROM orders INNER JOIN users ON orders.user_id=users.id LIMIT 10;'

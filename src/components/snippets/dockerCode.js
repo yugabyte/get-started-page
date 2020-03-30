@@ -9,9 +9,6 @@ export const sqlShellCode = `
 docker exec -it yugabyte /home/yugabyte/bin/ysqlsh
 `
 
-export const ysqlCode = `
-`
-
 export const pgCommands = `
 CREATE DATABASE yb_demo;
 \\c yb_demo;
