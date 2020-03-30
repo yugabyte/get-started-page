@@ -24,7 +24,7 @@ export const generateConfig = (
 
 module "yugabyte-db-cluster" {
   # The source module used for creating AWS clusters.
-  source = "github.com/YugaByte/terraform-aws-yugabyte"
+  source = "github.com/yugabyte/terraform-aws-yugabyte"
 
   # The name of the cluster to be created, change as per need.
   cluster_name = "test-cluster"

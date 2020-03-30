@@ -8,12 +8,12 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Helm" label="Helm" class="option-tabs"/>
+        <q-tab name="Helm" label="Helm 3" class="option-tabs"/>
         <q-tab name="YAML" label="YAML" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
-          <a v-if="databaseTab === 'YAML'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/#kubernetes">Complete Docs</a>
-          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/helm-chart/">Complete Docs</a>
+          <a v-if="databaseTab === 'YAML'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/kubernetes">Complete Docs</a>
+          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/kubernetes/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -83,16 +83,7 @@
         <q-tab-panel name="default" class="bg-form">
           <div>
             <h3 class="config-form-header">
-              1. Download Sample Schema
-            </h3>
-            <div class="bg-grey-3 q-tab-panel code-relative">
-              <pre class="code-container">
-                <copy-button :text="ysqlBashLines"></copy-button>
-                <code class="pre-helper pre-helper--shell" v-for="(line, index) in ysqlBashLines" v-bind:key="`ysql-${index}`">{{ line }}</code>
-              </pre>
-            </div>
-            <h3 class="config-form-header">
-              2. Load Data
+              1. Load Sample Dataset
             </h3>
             <div class="bg-grey-3 q-tab-panel code-relative">
               <pre class="code-container">

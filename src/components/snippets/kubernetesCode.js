@@ -1,14 +1,18 @@
 export const yamlDbServerCode = `
-wget https://raw.githubusercontent.com/YugaByte/yugabyte-db/master/cloud/kubernetes/yugabyte-statefulset-rf-1.yaml
+minikube start --memory=8192 --cpus=4 --disk-size=40g --vm-driver=virtualbox
+wget https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/cloud/kubernetes/yugabyte-statefulset-rf-1.yaml
 kubectl apply -f yugabyte-statefulset-rf-1.yaml
 `
 
 export const helmDbServerCode = `
-kubectl create -f https://raw.githubusercontent.com/YugaByte/charts/master/stable/yugabyte/yugabyte-rbac.yaml
-helm init --service-account yugabyte-helm --upgrade --wait
+minikube start --memory=8192 --cpus=4 --disk-size=40g --vm-driver=virtualbox
 helm repo add yugabytedb https://charts.yugabyte.com
 helm repo update
-helm install yugabytedb/yugabyte --wait --namespace yb-demo --name yb-demo --set "disableYsql=false"
+kubectl create namespace yb-demo
+helm install yb-demo yugabytedb/yugabyte \
+--set resource.master.requests.cpu=0.5,resource.master.requests.memory=0.5Gi,\
+resource.tserver.requests.cpu=0.5,resource.tserver.requests.memory=0.5Gi,\
+replicas.master=1,replicas.tserver=1 --namespace yb-demo
 `
 
 export const sqlShellCode = `
@@ -17,8 +21,8 @@ kubectl exec -n yb-demo -it yb-tserver-0 /home/yugabyte/bin/ysqlsh -- -h yb-tser
 `
 
 export const ysqlCode = `
-wget https://raw.githubusercontent.com/YugaByte/yb-sql-workshop/master/query-using-bi-tools/schema.sql
-wget https://github.com/YugaByte/yb-sql-workshop/raw/master/query-using-bi-tools/sample-data.tgz
+wget https://raw.githubusercontent.com/yugabyte/yb-sql-workshop/master/query-using-bi-tools/schema.sql
+wget https://github.com/yugabyte/yb-sql-workshop/raw/master/query-using-bi-tools/sample-data.tgz
 tar zxvf sample-data.tgz
 kubectl cp ./schema.sql yb-tserver-n1:/home/yugabyte/.
 kubectl exec -it yb-tserver-n1 bash && mkdir data
@@ -31,14 +35,13 @@ kubectl exec -it yb-tserver-0 /home/yugabyte/bin/ysqlsh -- -h yb-tserver-0  --ec
 
 export const pgCommands = `
 CREATE DATABASE yb_demo;
-GRANT ALL ON DATABASE yb_demo to yugabyte;
 \\c yb_demo;
 `
 
 export const ybDemoCommands = `
-\\i 'schema.sql';
-\\i 'data/products.sql'
-\\i 'data/users.sql'
-\\i 'data/orders.sql'
-\\i 'data/reviews.sql'
+\\i share/schema.sql
+\\i share/products.sql
+\\i share/users.sql
+\\i share/orders.sql
+\\i share/reviews.sql
 `
