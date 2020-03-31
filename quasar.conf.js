@@ -120,7 +120,7 @@ module.exports = function (ctx) {
       manifest: {
         name: 'Download YugabyteDB',
         short_name: 'YugabyteDB',
-        description: 'Get started with YugaByteDB, install on your local cluster or deploy on your cloud provider.',
+        description: 'Get started with YugabyteDB, install on your local cluster or deploy on your cloud provider.',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

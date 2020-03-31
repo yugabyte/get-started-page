@@ -42,7 +42,7 @@
                 <div class="logo-white">
                   <img width="50px" height="30px" alt="YugabyteDB logo" src="../assets/ybsymbol-white.svg" />
                   <div class="copyright">
-                    <div style="margin-bottom: 3px">© 2019 YugaByte, Inc.</div>
+                    <div style="margin-bottom: 3px">© 2020 Yugabyte, Inc.</div>
                     <a href="https://www.yugabyte.com/privacy-policy/">Privacy Policy</a>
                   </div>
                 </div>
@@ -54,7 +54,7 @@
                 <a target="_blank" class="footer-link" href="https://www.yugabyte.com/yugabytedb" rel="noopener">Open Source</a>
               </li>
               <li class="footer-items" data-footer="community-links">
-                <a target="_blank" class="footer-link" href="https://github.com/YugaByte/yugabyte-db" rel="noopener">GitHub</a>
+                <a target="_blank" class="footer-link" href="https://github.com/yugabyte/yugabyte-db" rel="noopener">GitHub</a>
               </li>
               <li class="footer-items" data-footer="address">
                 <div class="footer-title">Address</div>

@@ -39,7 +39,7 @@
         <div :class="selectedService.value === 'managed' ? 'service-cluster-option active' : 'service-cluster-option'"
           @click="clickServiceTab(2)"
         >
-          <h3>Fully Managed Service</h3>
+          <h3>Fully-Managed Cloud</h3>
           <h2>Sign Up</h2>
         </div>
       </div>
@@ -150,7 +150,7 @@ export default {
         value: 'cloud'
       },
       {
-        label: 'Fully Managed Service',
+        label: 'Fully-Managed Cloud',
         value: 'managed'
       }
     ]
