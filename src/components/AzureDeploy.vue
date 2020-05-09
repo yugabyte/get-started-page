@@ -29,7 +29,7 @@
           </pre>
         </q-tab-panel>
         <q-tab-panel name="Terraform" class="bg-form">
-          <terraform-form code="azureerm" providerName="Azure"></terraform-form>
+          <terraform-form code="azurerm" providerName="Azure"></terraform-form>
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">

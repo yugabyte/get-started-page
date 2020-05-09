@@ -5,20 +5,55 @@
     </h3>
     <div class="config-form-container">
       <div class="form-control">
-        <div class="row config-form-row">
-          <q-input class="form-input" :label="`${providerName} Access Key`" v-model="accessKeyInput"/>
-          <q-input class="form-input" :label="`${providerName} Secret Key`" v-model="secretKeyInput"/>
-        </div>
-        <div class="row config-form-row">
-          <q-input class="form-input" label="SSH Keypair" v-model="sshKeyPairInput"/>
-          <q-input class="form-input" label="SSH Key Path" v-model="sshKeyPathInput"/>
-        </div>
+        <template v-if="this.code == 'azurerm'">
           <div class="row config-form-row">
-          <q-input class="form-input" label="Security Group Id" v-model="securityGroupIdInput"/>
-          <q-input class="form-input" label="VPC ID" v-model="vpcIdInput"/>
-        </div>
-          <q-input label="Subnet IDs" v-model="subnetIdsInput"/>
-        </div>
+            <q-input class="form-input" label="Azure Subscription ID" v-model="azureSubIdInput"/>
+            <q-input class="form-input" label="Azure Client ID" v-model="azureClientIdInput"/>
+          </div>
+          <div class="row config-form-row">
+            <q-input class="form-input" label="Azure Client Secret" v-model="azureClientSecretInput"/>
+            <q-input class="form-input" label="Azure Tenant ID" v-model="azureTenantIdInput"/>
+          </div>
+          <div class="row config-form-row">
+            <q-input class="form-input" label="SSH Public Key" v-model="sshPubInput"/>
+            <q-input class="form-input" label="SSH Private Key" v-model="sshPrivateInput"/>
+          </div>
+          <div class="row config-form-row">
+            <q-input class="form-input" label="SSH Username" v-model="sshUserInput"/>
+            <q-input class="form-input" label="VPC Region" v-model="vpcRegionInput"/>
+          </div>
+        </template>
+        <template v-else-if="this.code == 'google'">
+          <div>
+            <q-input class="form-input" label="GCP Credential File" v-model="gcpCredentialFile"/>
+          </div>
+          <div class="row config-form-row">
+            <q-input class="form-input" label="SSH Public Key" v-model="sshPubInput"/>
+            <q-input class="form-input" label="SSH Private Key" v-model="sshPrivateInput"/>
+          </div>
+          <div class="row config-form-row">
+            <q-input class="form-input" label="SSH Username" v-model="sshUserInput"/>
+            <q-input class="form-input" label="VPC ID" v-model="vpcRegionInput"/>
+          </div>
+        </template>
+        <template v-else>
+          <div class="row config-form-row">
+            <q-input class="form-input" label="AWS Access Key" v-model="accessKeyInput"/>
+            <q-input class="form-input" label="AWS Secret Key" v-model="secretKeyInput"/>
+          </div>
+          <div class="row config-form-row">
+            <q-input class="form-input" label="SSH Keypair" v-model="sshKeyPairInput"/>
+            <q-input class="form-input" label="SSH Key Path" v-model="sshKeyPathInput"/>
+          </div>
+          <div class="row config-form-row">
+            <q-input class="form-input" label="Security Group Id" v-model="securityGroupIdInput"/>
+            <q-input class="form-input" label="VPC ID" v-model="vpcIdInput"/>
+          </div>
+          <div>
+            <q-input label="Subnet IDs" v-model="subnetIdsInput"/>
+          </div>
+        </template>
+      </div>
       <q-btn color="secondary" label="Generate" @click="handleButtonClick" />
     </div>
     <div v-if="sampleConfigFile" id="sample-config-block">
@@ -38,7 +73,7 @@
 </template>
 
 <script>
-import terraformCode, { generateConfig } from './snippets/terraformDeploy'
+import terraformCode, { generateAwsConfig, generateAzureConfig, generateGCPConfig } from './snippets/terraformDeploy'
 import CopyButton from './CopyButton'
 
 export default {
@@ -54,6 +89,17 @@ export default {
       vpcIdInput: undefined,
       subnetIdsInput: undefined,
 
+      azureSubIdInput: undefined,
+      azureClientIdInput: undefined,
+      azureClientSecretInput: undefined,
+      azureTenantIdInput: undefined,
+      sshPubInput: undefined,
+      sshPrivateInput: undefined,
+      sshUserInput: undefined,
+      vpcRegionInput: undefined,
+
+      gcpCredentialFile: undefined,
+
       sampleConfigFile: '',
       terraformBashLines: terraformCode.trim().split('\n')
     }
@@ -63,16 +109,36 @@ export default {
   },
   methods: {
     handleButtonClick: function () {
-      this.sampleConfigFile = generateConfig(
-        this.code,
-        this.accessKeyInput,
-        this.secretKeyInput,
-        this.sshKeyPairInput,
-        this.sshKeyPathInput,
-        this.securityGroupIdInput,
-        this.vpcIdInput,
-        this.subnetIdsInput
-      )
+      if (this.code === 'aws') {
+        this.sampleConfigFile = generateAwsConfig(
+          this.accessKeyInput,
+          this.secretKeyInput,
+          this.sshKeyPairInput,
+          this.sshKeyPathInput,
+          this.securityGroupIdInput,
+          this.vpcIdInput,
+          this.subnetIdsInput
+        )
+      } else if (this.code === 'azurerm') {
+        this.sampleConfigFile = generateAzureConfig(
+          this.azureSubIdInput,
+          this.azureClientIdInput,
+          this.azureClientSecretInput,
+          this.azureTenantIdInput,
+          this.sshPubInput,
+          this.sshPrivateInput,
+          this.sshUserInput,
+          this.vpcRegionInput
+        )
+      } else if (this.code === 'google') {
+        this.sampleConfigFile = generateGCPConfig(
+          this.gcpCredentialFile,
+          this.sshPubInput,
+          this.sshPrivateInput,
+          this.sshUserInput,
+          this.vpcRegionInput
+        )
+      }
     }
   },
   props: {

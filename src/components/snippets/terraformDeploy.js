@@ -1,5 +1,5 @@
-export const generateConfig = (
-  provider, // List of providers here: https://www.terraform.io/docs/providers/index.html
+// List of providers here: https://www.terraform.io/docs/providers/index.html
+export const generateAwsConfig = (
   accessKey = 'ACCESS_KEY_HERE',
   secretKey = 'SECRET_KEY_HERE',
   sshKeyPair = 'SSH_KEYPAIR_HERE',
@@ -15,7 +15,7 @@ export const generateConfig = (
     }
     return trimmed
   }).join(',')
-  return `provider "${provider}" {
+  return `provider "aws" {
   # Configure your AWS account credentials here.
   access_key = "${accessKey}"
   secret_key = "${secretKey}"
@@ -48,6 +48,86 @@ module "yugabyte-db-cluster" {
   # The number of nodes in the cluster, this cannot be lower than the replication factor.
   num_instances = "3"
 }`
+}
+
+export const generateAzureConfig = (
+  subId = 'AZURE_SUBSCRIPTION_ID',
+  clientId = 'AZURE_CLIENT_ID',
+  clientSecret = 'AZURE_CLIENT_SECRET',
+  tenantId = 'AZURE_TENANT_ID',
+  sshPublic = 'SSH_PUBLIC_KEY_HERE',
+  sshPrivate = 'SSH_PRIVATE_KEY_HERE',
+  sshUser = 'SSH_USER_NAME_HERE',
+  vpcRegion = 'YOUR_VPC_REGION'
+) => {
+  return `provider "azurerm" {
+    # Provide your Azure Creadentilals 
+    subscription_id = "${subId}"
+    client_id       = "${clientId}"
+    client_secret   = "${clientSecret}"
+    tenant_id       = "${tenantId}"
+  }
+
+  module "yugabyte-db-cluster" {
+    source = "github.com/YugaByte/terraform-azure-yugabyte.git"
+    
+    # The name of the cluster to be created.
+    cluster_name = "test-yugabyte"
+    
+    # key pair.
+    ssh_private_key = "${sshPrivate}"
+    ssh_public_key = "${sshPublic}"
+    ssh_user = "${sshUser}"
+    
+    # The region name where the nodes should be spawned.
+    region_name = "${vpcRegion}"
+    
+    # The name of resource  group in which all Azure resource will be created. 
+    resource_group = "test-yugabyte"
+    
+    # Replication factor.
+    replication_factor = "3"
+    
+    # The number of nodes in the cluster, this cannot be lower than the replication factor.
+    node_count = "3"
+  }`
+}
+
+export const generateGCPConfig = (
+  credentialFile = 'FILE_NAME',
+  sshPublic = 'SSH_PUBLIC_KEY_HERE',
+  sshPrivate = 'SSH_PRIVATE_KEY_HERE',
+  sshUser = 'SSH_USER_NAME_HERE',
+  vpcRegion = 'YOUR_VPC_REGION'
+) => {
+  return `provider "google" {
+    # Provide your GCP Creadentilals 
+    credentials = "\${file("${credentialFile}")}"
+
+    # The name of your GCP project 
+    project = "yugabyte-pcf"
+  }
+
+  module "yugabyte-db-cluster" {
+    source = "github.com/YugaByte/terraform-gcp-yugabyte.git"
+    
+    # The name of the cluster to be created.
+    cluster_name = "test-yugabyte"
+    
+    # key pair.
+    ssh_private_key = "${sshPrivate}"
+    ssh_public_key = "${sshPublic}"
+    ssh_user = "${sshUser}"
+    
+    # The region name where the nodes should be spawned.
+    region_name = "${vpcRegion}"
+    
+    # Replication factor.
+    replication_factor = "3"
+    
+    # The number of nodes in the cluster, this cannot be lower than the replication factor.
+    node_count = "3"
+  }`
 }
 
 const code = `
