@@ -1,6 +1,6 @@
 export const dbServerCode = `
-wget https://downloads.yugabyte.com/yugabyte-2.1.8.2-darwin.tar.gz
-tar xvfz yugabyte-2.1.8.2-darwin.tar.gz && cd yugabyte-2.1.8.2/
+wget https://downloads.yugabyte.com/yugabyte-2.2.0.0-darwin.tar.gz
+tar xvfz yugabyte-2.2.0.0-darwin.tar.gz && cd yugabyte-2.2.0.0/
 ./bin/yb-ctl create
 `
 
