@@ -2,7 +2,7 @@ export const dbServerCode = `
 wget https://downloads.yugabyte.com/yugabyte-2.2.0.0-linux.tar.gz
 tar xvfz yugabyte-2.2.0.0-linux.tar.gz && cd yugabyte-2.2.0.0/
 ./bin/post_install.sh
-./bin/yb-ctl create
+./bin/yugabyted start
 `
 
 export const sqlShellCode = `
