@@ -10,6 +10,7 @@
       >
         <q-tab name="Cloud Deployment" label="Cloud Deployment" icon="img:/statics/clouddeployment-logo.svg" class="option-tabs" v-on:click="sendAnalytics('cloud-deployment')" />
         <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
+        <q-tab name="GKE" label="Google Kubernetes Engine" icon="img:/statics/gke.png" class="option-tabs wide" v-on:click="sendAnalytics('gke')" />
         <q-space />
         <div class="quickstart-container">
           <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-gcp-yugabyte">Complete Docs</a>
@@ -28,6 +29,12 @@
         <q-tab-panel name="Terraform" class="bg-form">
           <terraform-form code="google" providerName="Google Cloud Platform"></terraform-form>
         </q-tab-panel>
+        <q-tab-panel name="GKE" class="bg-grey-3">
+          <pre class="code-container">
+            <copy-button :text="gkeBashLines"></copy-button>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in gkeBashLines" v-bind:key="`gcp-dm-${index}`">{{ line }}</code>
+          </pre>
+        </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-gcp-yugabyte">Complete Docs</a>
@@ -40,7 +47,7 @@
 <script>
 import YBHeader from './YBHeader'
 import TerraformForm from './TerraformForm'
-import dbCode from './snippets/gcpCDDeploy'
+import { deploymentManagerCode, gkeClusterCode } from './snippets/gcpCDDeploy'
 import CopyButton from './CopyButton'
 
 import { event } from 'vue-analytics'
@@ -50,7 +57,8 @@ export default {
   data: function () {
     return {
       databaseTab: 'Cloud Deployment',
-      cloudDeploymentCode: dbCode.trim().split('\n')
+      cloudDeploymentCode: deploymentManagerCode.trim().split('\n'),
+      gkeBashLines: gkeClusterCode.trim().split('\n')
     }
   },
   components: {

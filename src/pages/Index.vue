@@ -61,8 +61,8 @@
       </div>
 
       <div class="os-install-content">
-        <mac-install v-if="selectedPlatform.value === 'macos'"></mac-install>
-        <linux-install v-if="selectedPlatform.value === 'linux'"></linux-install>
+        <mac-install v-if="selectedPlatform.value === 'macos'" :version="version"></mac-install>
+        <linux-install v-if="selectedPlatform.value === 'linux'" :version="version"></linux-install>
         <kubernetes-install v-if="selectedPlatform.value === 'kubernetes'"></kubernetes-install>
         <docker-install v-if="selectedPlatform.value === 'docker'"></docker-install>
       </div>
@@ -261,7 +261,7 @@ export default {
     'azure-deploy': AzureDeploy,
     'pivotal-deploy': PivotalDeploy
   },
-  props: ['onScroll'],
+  props: ['onScroll', 'version'],
   methods: {
     handleSelectSection: function (section) {
       if (this.selectedService.value === 'local') {

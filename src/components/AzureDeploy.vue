@@ -13,6 +13,7 @@
             Resource Manager
           </q-tab>
         <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
+        <q-tab name="AKS" label="Azure Kubernetes Service" icon="img:/statics/aks.svg" class="option-tabs wide" v-on:click="sendAnalytics('AKS')" />
         <q-space />
         <div class="quickstart-container">
           <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-azure-yugabyte">Complete Docs</a>
@@ -24,12 +25,18 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="Resource Manager" class="bg-grey-3">
           <pre class="code-container">
-            <copy-button :text="resourceManagerCode"></copy-button>
-            <code class="pre-helper pre-helper--shell" v-for="(line, index) in resourceManagerCode" v-bind:key="`azure-rm-${index}`">{{ line }}</code>
+            <copy-button :text="rmBashLines"></copy-button>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in rmBashLines" v-bind:key="`azure-rm-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
         <q-tab-panel name="Terraform" class="bg-form">
           <terraform-form code="azurerm" providerName="Azure"></terraform-form>
+        </q-tab-panel>
+        <q-tab-panel name="AKS" class="bg-grey-3">
+          <pre class="code-container">
+            <copy-button :text="aksBashLines"></copy-button>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in aksBashLines" v-bind:key="`azure-rm-${index}`">{{ line }}</code>
+          </pre>
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
@@ -42,7 +49,7 @@
 
 <script>
 import YBHeader from './YBHeader'
-import dbCode from './snippets/azureRMDeploy'
+import { resourceManagerCode, aksServerCode } from './snippets/azureRMDeploy'
 import TerraformForm from './TerraformForm'
 import CopyButton from './CopyButton'
 
@@ -53,7 +60,8 @@ export default {
   data: function () {
     return {
       databaseTab: 'Resource Manager',
-      resourceManagerCode: dbCode.trim().split('\n')
+      rmBashLines: resourceManagerCode.trim().split('\n'),
+      aksBashLines: aksServerCode.trim().split('\n')
     }
   },
   components: {

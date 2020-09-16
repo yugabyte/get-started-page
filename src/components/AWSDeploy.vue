@@ -10,6 +10,7 @@
       >
         <q-tab name="Cloud Formation" label="Cloud Formation" icon="img:/statics/cloudformation-logo.png" class="option-tabs" v-on:click="sendAnalytics('cloud-formation')" />
         <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
+        <q-tab name="EKS" label="Elastic Kubernetes Service " icon="img:/statics/amazon-eks.png" class="option-tabs wide" v-on:click="sendAnalytics('eks')" />
         <q-space />
         <div class="quickstart-container">
           <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-aws-yugabyte">Complete Docs</a>
@@ -28,6 +29,12 @@
         <q-tab-panel name="Terraform" class="bg-form">
           <terraform-form code="aws" providerName="AWS"></terraform-form>
         </q-tab-panel>
+        <q-tab-panel name="EKS" class="bg-grey-3">
+          <pre class="code-container">
+            <copy-button :text="eksBashLines"></copy-button>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in eksBashLines" v-bind:key="`aws-cf-${index}`">{{ line }}</code>
+          </pre>
+        </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-aws-yugabyte">Complete Docs</a>
@@ -40,7 +47,7 @@
 <script>
 import YBHeader from './YBHeader'
 import TerraformForm from './TerraformForm'
-import cfCode from './snippets/awsCFDeploy'
+import { eksServerCode, cloudFormationCode } from './snippets/awsCFDeploy'
 
 import CopyButton from './CopyButton'
 import { event } from 'vue-analytics'
@@ -50,7 +57,8 @@ export default {
   data: function () {
     return {
       databaseTab: 'Cloud Formation',
-      cfBashLines: cfCode.trim().split('\n')
+      cfBashLines: cloudFormationCode.trim().split('\n'),
+      eksBashLines: eksServerCode.trim().split('\n')
     }
   },
   components: {
