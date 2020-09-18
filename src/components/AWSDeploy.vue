@@ -14,6 +14,7 @@
         <q-space />
         <div class="quickstart-container">
           <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-aws-yugabyte">Complete Docs</a>
+          <a v-else-if="databaseTab === 'EKS'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/multi-zone/eks/helm-chart/">Complete Docs</a>
           <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/">Complete Docs</a>
         </div>
       </q-tabs>
@@ -38,6 +39,7 @@
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-aws-yugabyte">Complete Docs</a>
+        <a v-else-if="databaseTab === 'EKS'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/multi-zone/eks/helm-chart/">Complete Docs</a>
         <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/">Complete Docs</a>
       </div>
     </div>
@@ -57,8 +59,12 @@ export default {
   data: function () {
     return {
       databaseTab: 'Cloud Formation',
-      cfBashLines: cloudFormationCode.trim().split('\n'),
       eksBashLines: eksServerCode.trim().split('\n')
+    }
+  },
+  computed: {
+    cfBashLines: function () {
+      return cloudFormationCode(this.version.version).trim().split('\n')
     }
   },
   components: {
@@ -66,6 +72,7 @@ export default {
     'terraform-form': TerraformForm,
     'copy-button': CopyButton
   },
+  props: ['version'],
   methods: {
     sendAnalytics: function (service) {
       event({

@@ -2,6 +2,7 @@
     {
         "name": "latest",
         "display": "v2.3 (Latest)",
+        "version": "2.3.0.0",
         "assets": {
             "macPkg": "yugabyte-2.3.0.0-darwin.tar.gz",            
             "linuxPkg": "yugabyte-2.3.0.0-linux.tar.gz",
@@ -11,6 +12,7 @@
     {
         "name": "stable",
         "display": "v2.2 (Stable)",
+        "version": "2.2.2.0",
         "assets": {
             "macPkg": "yugabyte-2.2.2.0-darwin.tar.gz",            
             "linuxPkg": "yugabyte-2.2.2.0-linux.tar.gz",

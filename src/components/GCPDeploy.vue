@@ -14,6 +14,7 @@
         <q-space />
         <div class="quickstart-container">
           <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-gcp-yugabyte">Complete Docs</a>
+          <a v-else-if="databaseTab === 'GKE'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/multi-zone/gke/helm-chart/">Complete Docs</a>
           <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/gcp/">Complete Docs</a>
         </div>
       </q-tabs>
@@ -38,6 +39,7 @@
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-gcp-yugabyte">Complete Docs</a>
+        <a v-else-if="databaseTab === 'GKE'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/multi-zone/gke/helm-chart/">Complete Docs</a>
         <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/gcp/">Complete Docs</a>
       </div>
     </div>

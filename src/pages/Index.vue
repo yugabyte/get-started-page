@@ -95,20 +95,21 @@
           </q-btn>
         </div>
         <div>
-          <q-btn :ripple="false" id="pivotal-header-btn"
-            :class="selectedDeploy.value === 'pivotal' ? 'cloud-providers-container active' : 'cloud-providers-container'"
+          <q-btn :ripple="false"
+            :class="selectedDeploy.value === 'k8s-operator' ? 'cloud-providers-container active' : 'cloud-providers-container'"
             v-on:click="handleSelectSection(deployOptions[3])"
           >
-            <div><img width="150" src="../assets/pivotal.svg" /></div>
+            <img width="50" src="../assets/k8s-logo.png" />
+            <div>Kubernetes Operator</div>
           </q-btn>
         </div>
       </div>
 
       <div class="os-install-content">
-        <aws-deploy v-if="selectedDeploy.value === 'aws'"></aws-deploy>
+        <aws-deploy v-if="selectedDeploy.value === 'aws'" :version="version"></aws-deploy>
         <gcp-deploy v-if="selectedDeploy.value === 'gcp'"></gcp-deploy>
         <azure-deploy v-if="selectedDeploy.value === 'azure'"></azure-deploy>
-        <pivotal-deploy v-if="selectedDeploy.value === 'pivotal'"></pivotal-deploy>
+        <kubernetes-operator v-if="selectedDeploy.value === 'k8s-operator'"></kubernetes-operator>
       </div>
     </div>
     <div v-else id="managed-cluster-content" class="content">
@@ -132,7 +133,7 @@ import KubernetesInstall from 'components/KubernetesInstall'
 import AWSDeploy from 'components/AWSDeploy'
 import GCPDeploy from 'components/GCPDeploy'
 import AzureDeploy from 'components/AzureDeploy'
-import PivotalDeploy from 'components/PivotalDeploy'
+import KubernetesOperator from 'components/KubernetesOperator'
 import YBButton from 'components/YBButton'
 
 import { event, page } from 'vue-analytics'
@@ -186,8 +187,8 @@ export default {
         value: 'azure'
       },
       {
-        label: 'Pivotal',
-        value: 'pivotal'
+        label: 'Kubernetes Operator',
+        value: 'k8s-operator'
       }
     ]
     let selectedService = serviceOptions[0]
@@ -229,7 +230,7 @@ export default {
         case '#azure':
           selectedDeploy = deployOptions[2]
           break
-        case '#pivotal':
+        case '#k8s-operator':
           selectedDeploy = deployOptions[3]
           break
         default:
@@ -259,7 +260,7 @@ export default {
     'aws-deploy': AWSDeploy,
     'gcp-deploy': GCPDeploy,
     'azure-deploy': AzureDeploy,
-    'pivotal-deploy': PivotalDeploy
+    'kubernetes-operator': KubernetesOperator
   },
   props: ['onScroll', 'version'],
   methods: {

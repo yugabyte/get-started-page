@@ -10,8 +10,6 @@
       >
         <q-tab name="Helm" label="Helm 3" class="option-tabs"/>
         <q-tab name="YAML" label="YAML" class="option-tabs"/>
-        <q-tab name="K8sOperator" label="K8s Operator" class="option-tabs"/>
-        <q-tab name="OperatorHub" label="Operator Hub" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
           <a v-if="databaseTab === 'YAML'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/kubernetes">Complete Docs</a>
@@ -31,18 +29,6 @@
           <pre class="code-container">
             <copy-button :text="dbYamlLines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbYamlLines" v-bind:key="`kubernetes-yaml-${index}`">{{ line }}</code>
-          </pre>
-        </q-tab-panel>
-        <q-tab-panel name="K8sOperator" class="bg-grey-3">
-          <pre class="code-container">
-            <copy-button :text="dbK8sOperator"></copy-button>
-            <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbK8sOperator" v-bind:key="`kubernetes-yaml-${index}`">{{ line }}</code>
-          </pre>
-        </q-tab-panel>
-        <q-tab-panel name="OperatorHub" class="bg-grey-3">
-          <pre class="code-container">
-            <copy-button :text="opHubLines"></copy-button>
-            <code class="pre-helper pre-helper--shell" v-for="(line, index) in opHubLines" v-bind:key="`kubernetes-yaml-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
@@ -131,7 +117,7 @@
 </template>
 
 <script>
-import { helmDbServerCode, yamlDbServerCode, k8sOpServerCode, opHubServerCode, sqlShellCode, pgCommands, ybDemoCommands } from './snippets/kubernetesCode'
+import { helmDbServerCode, yamlDbServerCode, sqlShellCode, pgCommands, ybDemoCommands } from './snippets/kubernetesCode'
 import CopyButton from './CopyButton'
 import YBHeader from './YBHeader'
 
@@ -144,8 +130,6 @@ export default {
       exploreYSQL: 'default',
       dbHelmLines: helmDbServerCode.trim().split('\n'),
       dbYamlLines: yamlDbServerCode.trim().split('\n'),
-      dbK8sOperator: k8sOpServerCode.trim().split('\n'),
-      opHubLines: opHubServerCode.trim().split('\n'),
       shellBashLines: sqlShellCode.trim().split('\n'),
       pgQueries: pgCommands.trim().split('\n'),
       ybDemoQueries: ybDemoCommands.trim().split('\n'),
