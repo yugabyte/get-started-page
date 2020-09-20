@@ -114,12 +114,7 @@
     </div>
     <div v-else id="managed-cluster-content" class="content">
       <div class="managed-cluster-container">
-        <div>
-          <p>Experience our fully-managed cloud service using the link below.</p>
-        </div>
-        <a href="https://cloud.yugabyte.com/register" target="_blank">
-          <q-btn size="24px" class="sign-up-btn" color="secondary" label="Sign Up"></q-btn>
-        </a>
+        <iframe src="http://cloud.yugabyte.com/register" title="Sign up for Yugabyte Cloud" width="900" height="850" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-scripts allow-forms" />
       </div>
     </div>
   </q-page>

@@ -17,4 +17,21 @@ az aks create \
 --enable-addons monitoring \
 --generate-ssh-keys
 az aks get-credentials --resource-group yugabytedbRG --name yugabytedbAKSCluster
+helm repo add yugabytedb https://charts.yugabyte.com
+helm repo update
+kubectl create namespace yb-demo
+helm install yb-demo -n yb-demo yugabytedb/yugabyte \
+ --set storage.master.count=1 \
+ --set storage.tserver.count=1 \
+ --set storage.master.storageClass=default \
+ --set storage.tserver.storageClass=default \
+ --set resource.master.requests.cpu=1 \
+ --set resource.master.requests.memory=1Gi \
+ --set resource.tserver.requests.cpu=1 \
+ --set resource.tserver.requests.memory=1Gi \
+ --set resource.master.limits.cpu=1 \
+ --set resource.master.limits.memory=1Gi \
+ --set resource.tserver.limits.cpu=1 \
+ --set resource.tserver.limits.memory=1Gi \
+ --timeout=15m
 `

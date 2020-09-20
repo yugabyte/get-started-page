@@ -1,150 +1,100 @@
 <template>
   <div>
-    <template v-if="this.code == 'eks'">
-      <h3 class="config-form-header">
-        1. Create a EKS cluster
-      </h3>
+    <h3 class="config-form-header">
+      1. Create a {{code.toUpperCase()}} cluster
+    </h3>
+    <template v-if="code == 'eks'">
       <div class="bg-grey-3 q-tab-panel code-relative">
-        <copy-button :text="terraformBashLines"></copy-button>
+        <copy-button :text="createEKSClusterCmd"></copy-button>
         <pre class="code-container" id="exec-code-block">
-          <code class="pre-helper pre-helper--shell" v-for="(line, index) in terraformBashLines" v-bind:key="`terraform-${index}`">{{ line }}</code>
+          <code class="pre-helper pre-helper--shell">{{createEKSClusterCmd}}</code>
         </pre>
       </div>
     </template>
-    <template v-else-if="this.code == 'gke'">
-      <h3 class="config-form-header">
-        1. Create a GKE cluster
-      </h3>
+    <template v-else-if="code == 'gke'">
       <div class="bg-grey-3 q-tab-panel code-relative">
-        <copy-button :text="terraformBashLines"></copy-button>
+        <copy-button :text="createGKEClusterLines"></copy-button>
         <pre class="code-container" id="exec-code-block">
-          <code class="pre-helper pre-helper--shell" v-for="(line, index) in terraformBashLines" v-bind:key="`terraform-${index}`">{{ line }}</code>
+          <code class="pre-helper pre-helper--shell">{{createGKEClusterLines}}</code>
         </pre>
       </div>
-          <div>
-            <q-input class="form-input" label="GCP Credential File" v-model="gcpCredentialFile"/>
-          </div>
-          <div class="row config-form-row">
-            <q-input class="form-input" label="SSH Public Key" v-model="sshPubInput"/>
-            <q-input class="form-input" label="SSH Private Key" v-model="sshPrivateInput"/>
-          </div>
-          <div class="row config-form-row">
-            <q-input class="form-input" label="SSH Username" v-model="sshUserInput"/>
-            <q-input class="form-input" label="VPC ID" v-model="vpcRegionInput"/>
-          </div>
-        </template>
-        <template v-else>
-          <div class="row config-form-row">
-            <q-input class="form-input" label="AWS Access Key" v-model="accessKeyInput"/>
-            <q-input class="form-input" label="AWS Secret Key" v-model="secretKeyInput"/>
-          </div>
-          <div class="row config-form-row">
-            <q-input class="form-input" label="SSH Keypair" v-model="sshKeyPairInput"/>
-            <q-input class="form-input" label="SSH Key Path" v-model="sshKeyPathInput"/>
-          </div>
-          <div class="row config-form-row">
-            <q-input class="form-input" label="Security Group Id" v-model="securityGroupIdInput"/>
-            <q-input class="form-input" label="VPC ID" v-model="vpcIdInput"/>
-          </div>
-          <div>
-            <q-input label="Subnet IDs" v-model="subnetIdsInput"/>
-          </div>
-        </template>
+    </template>
+    <h3 class="config-form-header">
+      2. Create a storage configuration
+    </h3>
+    <template v-if="code == 'eks'">
+      <div class="sample-config-block">
+        <copy-button :text="eksStorageFile"></copy-button>
+        <pre>{{ eksStorageFile }}</pre>
       </div>
-      <q-btn color="secondary" label="Generate" @click="handleButtonClick" />
-    </div>
-    <div v-if="sampleConfigFile" id="sample-config-block">
-      <copy-button :text="sampleConfigFile"></copy-button>
-      <pre>{{ sampleConfigFile }}</pre>
+    </template>
+    <template v-else-if="code == 'gke'">
+      <div class="sample-config-block">
+        <copy-button :text="gkeStorageFile"></copy-button>
+        <pre>{{ gkeStorageFile }}</pre>
+      </div>
+    </template>
+    <p>Apply above configuration to your cluster</p>
+    <div class="bg-grey-3 q-tab-panel code-relative">
+      <pre class="code-container" id="exec-code-block">
+        <code class="pre-helper pre-helper--shell">kubectl apply -f &lt;STORAGE_FILE&gt;.yaml</code>
+      </pre>
     </div>
     <h3 class="config-form-header">
-      2. Create cluster
+      3. Create override files per zone
+    </h3>
+    <template v-if="code == 'eks'">
+      <p>Copy the contents below to a file named <code>overrides-us-east-1a.yaml</code>. Repeat for each zone.</p>
+      <div class="sample-config-block">
+        <copy-button :text="eksOverridesFile"></copy-button>
+        <pre>{{ eksOverridesFile }}</pre>
+      </div>
+    </template>
+    <template v-else-if="code == 'gke'">
+      <p>Copy the contents below to a file named <code>overrides-us-central1-a.yaml</code>. Repeat for each zone.</p>
+      <div class="sample-config-block">
+        <copy-button :text="gkeOverridesFile"></copy-button>
+        <pre>{{ gkeOverridesFile }}</pre>
+      </div>
+    </template>
+    <h3 class="config-form-header">
+      4. Create YugabyteDB cluster
     </h3>
     <div class="bg-grey-3 q-tab-panel code-relative">
-      <copy-button :text="terraformBashLines"></copy-button>
+      <copy-button :text="eksInstallYBCode"></copy-button>
       <pre class="code-container" id="exec-code-block">
-        <code class="pre-helper pre-helper--shell" v-for="(line, index) in terraformBashLines" v-bind:key="`terraform-${index}`">{{ line }}</code>
+        <code class="pre-helper pre-helper--shell" v-for="(line, index) in eksInstallYBCode" v-bind:key="`install-yb-${index}`">{{ line }}</code>
       </pre>
     </div>
   </div>
 </template>
 
 <script>
-import terraformCode, { generateAwsConfig, generateAzureConfig, generateGCPConfig } from './snippets/terraformDeploy'
+import { createEKSClusterCmd, eksStorageFile, eksOverridesFile, eksInstallYBCode } from './snippets/awsCFDeploy'
+import { createGKEClusterLines, gkeStorageFile, gkeOverridesFile, gkeInstallYBCode } from './snippets/gcpCDDeploy'
 import CopyButton from './CopyButton'
 
 export default {
-  name: 'TerraformForm',
+  name: 'CloudManagedK8s',
   data: function () {
     return {
-      /* Input form bindings */
-      accessKeyInput: undefined,
-      secretKeyInput: undefined,
-      sshKeyPairInput: undefined,
-      sshKeyPathInput: undefined,
-      securityGroupIdInput: undefined,
-      vpcIdInput: undefined,
-      subnetIdsInput: undefined,
-
-      azureSubIdInput: undefined,
-      azureClientIdInput: undefined,
-      azureClientSecretInput: undefined,
-      azureTenantIdInput: undefined,
-      sshPubInput: undefined,
-      sshPrivateInput: undefined,
-      sshUserInput: undefined,
-      vpcRegionInput: undefined,
-
-      gcpCredentialFile: undefined,
-
-      sampleConfigFile: '',
-      terraformBashLines: terraformCode.trim().split('\n')
+      createEKSClusterCmd,
+      eksStorageFile,
+      eksOverridesFile,
+      createGKEClusterLines,
+      gkeStorageFile,
+      gkeOverridesFile,
+      eksInstallYBCode: eksInstallYBCode.trim().split('\n'),
+      gkeInstallYBCode: gkeInstallYBCode.trim().split('\n')
     }
   },
   components: {
     'copy-button': CopyButton
   },
-  methods: {
-    handleButtonClick: function () {
-      if (this.code === 'aws') {
-        this.sampleConfigFile = generateAwsConfig(
-          this.accessKeyInput,
-          this.secretKeyInput,
-          this.sshKeyPairInput,
-          this.sshKeyPathInput,
-          this.securityGroupIdInput,
-          this.vpcIdInput,
-          this.subnetIdsInput
-        )
-      } else if (this.code === 'azurerm') {
-        this.sampleConfigFile = generateAzureConfig(
-          this.azureSubIdInput,
-          this.azureClientIdInput,
-          this.azureClientSecretInput,
-          this.azureTenantIdInput,
-          this.sshPubInput,
-          this.sshPrivateInput,
-          this.sshUserInput,
-          this.vpcRegionInput
-        )
-      } else if (this.code === 'google') {
-        this.sampleConfigFile = generateGCPConfig(
-          this.gcpCredentialFile,
-          this.sshPubInput,
-          this.sshPrivateInput,
-          this.sshUserInput,
-          this.vpcRegionInput
-        )
-      }
-    }
-  },
   props: {
     code: {
       type: String,
       required: true
-    },
-    providerName: {
-      type: String
     }
   }
 }

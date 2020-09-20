@@ -130,6 +130,44 @@ export const generateGCPConfig = (
   }`
 }
 
+export const generateEKSCreateNode = (
+  regionInput = 'AWS_REGION_HERE',
+  zoneListInput = 'ZONE_1A,ZONE_1B,ZONE_1C',
+  nodeGroup = 'AWS_NODE_GROUP_HERE',
+  machineType = 'YOUR_MACHINE_TYPE'
+) => {
+  return `
+    eksctl create cluster \
+--name yb-multizone \
+--version 1.14 \
+--region ${regionInput} \
+--zones ${zoneListInput} \
+--nodegroup-name ${nodeGroup} \
+--node-type ${machineType} \
+--nodes 3 \
+--nodes-min 1 \
+--nodes-max 4 \
+--managed
+  `
+}
+
+export const generateEKSStorageYaml = (
+  nodePrefix = 'standard',
+  regionInput = 'us-east-1a,us-east-1b,us-east-1c',
+  storageType = 'gp2'
+) => {
+  return regionInput.split(',').map(zone => `
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: ${nodePrefix}-${zone}
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: ${storageType}
+  zone: ${zone}
+`).join('\n---\n')
+}
+
 const code = `
 terraform init
 terraform apply

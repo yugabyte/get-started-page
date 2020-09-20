@@ -30,11 +30,8 @@
         <q-tab-panel name="Terraform" class="bg-form">
           <terraform-form code="aws" providerName="AWS"></terraform-form>
         </q-tab-panel>
-        <q-tab-panel name="EKS" class="bg-grey-3">
-          <pre class="code-container">
-            <copy-button :text="eksBashLines"></copy-button>
-            <code class="pre-helper pre-helper--shell" v-for="(line, index) in eksBashLines" v-bind:key="`aws-cf-${index}`">{{ line }}</code>
-          </pre>
+        <q-tab-panel name="EKS" class="bg-form">
+          <cloud-managed-k8s code="eks"></cloud-managed-k8s>
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
@@ -49,6 +46,7 @@
 <script>
 import YBHeader from './YBHeader'
 import TerraformForm from './TerraformForm'
+import CloudManagedK8s from './CloudManagedK8s'
 import { eksServerCode, cloudFormationCode } from './snippets/awsCFDeploy'
 
 import CopyButton from './CopyButton'
@@ -70,6 +68,7 @@ export default {
   components: {
     'yb-header': YBHeader,
     'terraform-form': TerraformForm,
+    'cloud-managed-k8s': CloudManagedK8s,
     'copy-button': CopyButton
   },
   props: ['version'],

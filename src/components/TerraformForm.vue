@@ -56,7 +56,7 @@
       </div>
       <q-btn color="secondary" label="Generate" @click="handleButtonClick" />
     </div>
-    <div v-if="sampleConfigFile" id="sample-config-block">
+    <div v-if="sampleConfigFile" class="sample-config-block">
       <copy-button :text="sampleConfigFile"></copy-button>
       <pre>{{ sampleConfigFile }}</pre>
     </div>
