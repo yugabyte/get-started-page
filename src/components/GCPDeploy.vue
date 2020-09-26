@@ -47,7 +47,7 @@
 import YBHeader from './YBHeader'
 import TerraformForm from './TerraformForm'
 import CloudManagedK8s from './CloudManagedK8s'
-import { deploymentManagerCode, gkeClusterCode } from './snippets/gcpCDDeploy'
+import { deploymentManagerCode } from './snippets/gcpCDDeploy'
 import CopyButton from './CopyButton'
 
 import { event } from 'vue-analytics'
@@ -57,8 +57,7 @@ export default {
   data: function () {
     return {
       databaseTab: 'Cloud Deployment',
-      cloudDeploymentCode: deploymentManagerCode.trim().split('\n'),
-      gkeBashLines: gkeClusterCode.trim().split('\n')
+      cloudDeploymentCode: deploymentManagerCode.trim().split('\n')
     }
   },
   components: {

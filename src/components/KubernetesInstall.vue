@@ -128,14 +128,21 @@ export default {
       databaseTab: 'Helm',
       shellTab: 'Helm',
       exploreYSQL: 'default',
-      dbHelmLines: helmDbServerCode.trim().split('\n'),
-      dbYamlLines: yamlDbServerCode.trim().split('\n'),
       shellBashLines: sqlShellCode.trim().split('\n'),
       pgQueries: pgCommands.trim().split('\n'),
       ybDemoQueries: ybDemoCommands.trim().split('\n'),
       sampleQueryId: 'SELECT users.id, users.name, users.email, orders.id, orders.total FROM orders INNER JOIN users ON orders.user_id=users.id LIMIT 10;'
     }
   },
+  computed: {
+    dbHelmLines: function () {
+      return helmDbServerCode(this.version.versionShort).trim().split('\n')
+    },
+    dbYamlLines: function () {
+      return yamlDbServerCode(this.version.appVersion).trim().split('\n')
+    }
+  },
+  props: ['version'],
   components: {
     'yb-header': YBHeader,
     'copy-button': CopyButton

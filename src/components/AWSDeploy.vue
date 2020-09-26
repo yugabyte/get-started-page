@@ -28,10 +28,10 @@
           </pre>
         </q-tab-panel>
         <q-tab-panel name="Terraform" class="bg-form">
-          <terraform-form code="aws" providerName="AWS"></terraform-form>
+          <terraform-form code="aws" providerName="AWS" :version="version"></terraform-form>
         </q-tab-panel>
         <q-tab-panel name="EKS" class="bg-form">
-          <cloud-managed-k8s code="eks"></cloud-managed-k8s>
+          <cloud-managed-k8s code="eks" :version="version"></cloud-managed-k8s>
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
@@ -47,7 +47,7 @@
 import YBHeader from './YBHeader'
 import TerraformForm from './TerraformForm'
 import CloudManagedK8s from './CloudManagedK8s'
-import { eksServerCode, cloudFormationCode } from './snippets/awsCFDeploy'
+import { cloudFormationCode } from './snippets/awsCFDeploy'
 
 import CopyButton from './CopyButton'
 import { event } from 'vue-analytics'
@@ -56,8 +56,7 @@ export default {
   name: 'AWSDeploy',
   data: function () {
     return {
-      databaseTab: 'Cloud Formation',
-      eksBashLines: eksServerCode.trim().split('\n')
+      databaseTab: 'Cloud Formation'
     }
   },
   computed: {

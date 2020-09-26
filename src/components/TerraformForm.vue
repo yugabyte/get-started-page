@@ -111,6 +111,7 @@ export default {
     handleButtonClick: function () {
       if (this.code === 'aws') {
         this.sampleConfigFile = generateAwsConfig(
+          this.version.version,
           this.accessKeyInput,
           this.secretKeyInput,
           this.sshKeyPairInput,
@@ -147,6 +148,9 @@ export default {
       required: true
     },
     providerName: {
+      type: String
+    },
+    version: {
       type: String
     }
   }

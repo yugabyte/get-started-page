@@ -62,8 +62,12 @@ export default {
   data: function () {
     return {
       databaseTab: 'Resource Manager',
-      rmBashLines: resourceManagerCode.trim().split('\n'),
       aksBashLines: aksServerCode.trim().split('\n')
+    }
+  },
+  computed: {
+    rmBashLines: function () {
+      return resourceManagerCode(this.version.version).trim().split('\n')
     }
   },
   components: {
@@ -71,6 +75,7 @@ export default {
     'terraform-form': TerraformForm,
     'copy-button': CopyButton
   },
+  props: ['version'],
   methods: {
     sendAnalytics: function (service) {
       event({

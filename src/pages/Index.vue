@@ -63,8 +63,8 @@
       <div class="os-install-content">
         <mac-install v-if="selectedPlatform.value === 'macos'" :version="version"></mac-install>
         <linux-install v-if="selectedPlatform.value === 'linux'" :version="version"></linux-install>
-        <kubernetes-install v-if="selectedPlatform.value === 'kubernetes'"></kubernetes-install>
-        <docker-install v-if="selectedPlatform.value === 'docker'"></docker-install>
+        <kubernetes-install v-if="selectedPlatform.value === 'kubernetes'" :version="version"></kubernetes-install>
+        <docker-install v-if="selectedPlatform.value === 'docker'" :version="version"></docker-install>
       </div>
 
     </div>
@@ -108,7 +108,7 @@
       <div class="os-install-content">
         <aws-deploy v-if="selectedDeploy.value === 'aws'" :version="version"></aws-deploy>
         <gcp-deploy v-if="selectedDeploy.value === 'gcp'"></gcp-deploy>
-        <azure-deploy v-if="selectedDeploy.value === 'azure'"></azure-deploy>
+        <azure-deploy v-if="selectedDeploy.value === 'azure'" :version="version"></azure-deploy>
         <kubernetes-operator v-if="selectedDeploy.value === 'k8s-operator'"></kubernetes-operator>
       </div>
     </div>

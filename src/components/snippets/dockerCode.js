@@ -1,7 +1,7 @@
-export const dbServerCode = `
-docker pull yugabytedb/yugabyte:latest
+export const dbServerCode = (version) => `
+docker pull yugabytedb/yugabyte:${version}
 docker run -d --name yugabyte  -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042\
- yugabytedb/yugabyte:latest bin/yugabyted start\
+ yugabytedb/yugabyte:${version} bin/yugabyted start\
  --daemon=false --ui=false
 `
 

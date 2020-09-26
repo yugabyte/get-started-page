@@ -1,5 +1,6 @@
 // List of providers here: https://www.terraform.io/docs/providers/index.html
 export const generateAwsConfig = (
+  version = 'YB_VERSION_HERE',
   accessKey = 'ACCESS_KEY_HERE',
   secretKey = 'SECRET_KEY_HERE',
   sshKeyPair = 'SSH_KEYPAIR_HERE',
@@ -28,6 +29,9 @@ module "yugabyte-db-cluster" {
 
   # The name of the cluster to be created, change as per need.
   cluster_name = "test-cluster"
+
+  # Version of yugabyte
+  yb_version = "${version}"
 
   # Existing custom security group to be passed so that we can connect to the instances.
   # Make sure this security group allows your local machine to SSH into these instances.
@@ -139,7 +143,7 @@ export const generateEKSCreateNode = (
   return `
     eksctl create cluster \
 --name yb-multizone \
---version 1.14 \
+--version 1.17 \
 --region ${regionInput} \
 --zones ${zoneListInput} \
 --nodegroup-name ${nodeGroup} \
