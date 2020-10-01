@@ -174,9 +174,6 @@
 #aws-header-btn img {
   margin-top: 5px;
 }
-#pivotal-header-btn img {
-  margin-top: 15px;
-}
 .cloud-providers-container.active {
   border: 1px solid #f75721;
 }
@@ -191,7 +188,7 @@
   }
 }
 
-.option-tabs.pivotal-tab {
+.option-tabs.k8s-op-tab {
   max-width: 300px;
 }
 
@@ -219,13 +216,13 @@
   min-width: 300px;
   flex-basis: 45%;
 }
-#sample-config-block {
+.sample-config-block {
   padding: 30px;
   background-color: #eee;
   margin-bottom: 30px;
   position: relative;
 }
-#sample-config-block .copy-code-btn {
+.sample-config-block .copy-code-btn {
   right: 30px;
 }
 #exec-code-block {

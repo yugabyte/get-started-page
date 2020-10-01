@@ -13,10 +13,12 @@
             Resource Manager
           </q-tab>
         <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
+        <q-tab name="AKS" label="Azure Kubernetes Service" icon="img:/statics/aks.svg" class="option-tabs wide" v-on:click="sendAnalytics('AKS')" />
         <q-space />
         <div class="quickstart-container">
           <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-azure-yugabyte">Complete Docs</a>
-          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/azure/">Complete Docs</a>
+          <a v-else-if="databaseTab === 'Resource Manager'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/azure/">Complete Docs</a>
+          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/single-zone/aks/helm-chart/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -24,17 +26,24 @@
       <q-tab-panels v-model="databaseTab" animated>
         <q-tab-panel name="Resource Manager" class="bg-grey-3">
           <pre class="code-container">
-            <copy-button :text="resourceManagerCode"></copy-button>
-            <code class="pre-helper pre-helper--shell" v-for="(line, index) in resourceManagerCode" v-bind:key="`azure-rm-${index}`">{{ line }}</code>
+            <copy-button :text="rmBashLines"></copy-button>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in rmBashLines" v-bind:key="`azure-rm-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
         <q-tab-panel name="Terraform" class="bg-form">
           <terraform-form code="azurerm" providerName="Azure"></terraform-form>
         </q-tab-panel>
+        <q-tab-panel name="AKS" class="bg-grey-3">
+          <pre class="code-container">
+            <copy-button :text="aksBashLines"></copy-button>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in aksBashLines" v-bind:key="`azure-rm-${index}`">{{ line }}</code>
+          </pre>
+        </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-azure-yugabyte">Complete Docs</a>
-        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/azure/">Complete Docs</a>
+        <a v-else-if="databaseTab === 'Resource Manager'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/azure/">Complete Docs</a>
+        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/single-zone/aks/helm-chart/">Complete Docs</a>
       </div>
     </div>
   </div>
@@ -42,7 +51,7 @@
 
 <script>
 import YBHeader from './YBHeader'
-import dbCode from './snippets/azureRMDeploy'
+import { resourceManagerCode, aksServerCode } from './snippets/azureRMDeploy'
 import TerraformForm from './TerraformForm'
 import CopyButton from './CopyButton'
 
@@ -53,7 +62,12 @@ export default {
   data: function () {
     return {
       databaseTab: 'Resource Manager',
-      resourceManagerCode: dbCode.trim().split('\n')
+      aksBashLines: aksServerCode.trim().split('\n')
+    }
+  },
+  computed: {
+    rmBashLines: function () {
+      return resourceManagerCode(this.version.version).trim().split('\n')
     }
   },
   components: {
@@ -61,6 +75,7 @@ export default {
     'terraform-form': TerraformForm,
     'copy-button': CopyButton
   },
+  props: ['version'],
   methods: {
     sendAnalytics: function (service) {
       event({
