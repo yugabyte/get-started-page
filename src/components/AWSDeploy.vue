@@ -10,11 +10,9 @@
       >
         <q-tab name="Cloud Formation" label="Cloud Formation" icon="img:/statics/cloudformation-logo.png" class="option-tabs" v-on:click="sendAnalytics('cloud-formation')" />
         <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
-        <q-tab name="EKS" label="Elastic Kubernetes Service " icon="img:/statics/amazon-eks.png" class="option-tabs wide" v-on:click="sendAnalytics('eks')" />
         <q-space />
         <div class="quickstart-container">
           <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-aws-yugabyte">Complete Docs</a>
-          <a v-else-if="databaseTab === 'EKS'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/multi-zone/eks/helm-chart/">Complete Docs</a>
           <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/">Complete Docs</a>
         </div>
       </q-tabs>
@@ -28,15 +26,11 @@
           </pre>
         </q-tab-panel>
         <q-tab-panel name="Terraform" class="bg-form">
-          <terraform-form code="aws" providerName="AWS" :version="version"></terraform-form>
-        </q-tab-panel>
-        <q-tab-panel name="EKS" class="bg-form">
-          <cloud-managed-k8s code="eks" :version="version"></cloud-managed-k8s>
+          <terraform-form code="aws" providerName="AWS"></terraform-form>
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-aws-yugabyte">Complete Docs</a>
-        <a v-else-if="databaseTab === 'EKS'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/multi-zone/eks/helm-chart/">Complete Docs</a>
         <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/">Complete Docs</a>
       </div>
     </div>
@@ -46,8 +40,7 @@
 <script>
 import YBHeader from './YBHeader'
 import TerraformForm from './TerraformForm'
-import CloudManagedK8s from './CloudManagedK8s'
-import { cloudFormationCode } from './snippets/awsCFDeploy'
+import cfCode from './snippets/awsCFDeploy'
 
 import CopyButton from './CopyButton'
 import { event } from 'vue-analytics'
@@ -56,21 +49,15 @@ export default {
   name: 'AWSDeploy',
   data: function () {
     return {
-      databaseTab: 'Cloud Formation'
-    }
-  },
-  computed: {
-    cfBashLines: function () {
-      return cloudFormationCode(this.version.version).trim().split('\n')
+      databaseTab: 'Cloud Formation',
+      cfBashLines: cfCode.trim().split('\n')
     }
   },
   components: {
     'yb-header': YBHeader,
     'terraform-form': TerraformForm,
-    'cloud-managed-k8s': CloudManagedK8s,
     'copy-button': CopyButton
   },
-  props: ['version'],
   methods: {
     sendAnalytics: function (service) {
       event({

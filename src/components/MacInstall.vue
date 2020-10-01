@@ -114,21 +114,16 @@ import CopyButton from './CopyButton'
 
 export default {
   name: 'MacInstall',
-  props: ['version'],
   data: function () {
     return {
       databaseTab: 'x64',
       shellTab: 'x64',
       exploreYSQL: 'default',
+      dbBashLines: dbServerCode.trim().split('\n'),
       shellBashLines: sqlShellCode.trim().split('\n'),
       pgQueries: pgCommands.trim().split('\n'),
       ybDemoQueries: ybDemoCommands.trim().split('\n'),
       sampleQueryCount: 'SELECT users.id, users.name, users.email, orders.id, orders.total FROM orders INNER JOIN users ON orders.user_id=users.id LIMIT 10;'
-    }
-  },
-  computed: {
-    dbBashLines: function () {
-      return dbServerCode(this.version.version).trim().split('\n')
     }
   },
   components: {
@@ -148,9 +143,6 @@ export default {
 }
 .option-tabs {
   max-width: 200px;
-}
-.option-tabs.wide {
-  max-width: fit-content;
 }
 #macos-quickstart-link {
   color: #322965;

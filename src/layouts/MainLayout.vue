@@ -10,15 +10,6 @@
           </div>
         </q-toolbar-title>
         <div id="yb-main-navbar">
-          <q-btn-dropdown color="primary" :label="currentVersion.display" class="version-dropdown" ref="versionDropdown">
-            <q-list>
-              <q-item v-for="v in versionList" v-bind:key="v.name" clickable @click="() => handleVersionSwitch(v.name)">
-                <q-item-section :data-version="v.name">
-                  <q-item-label>{{ v.display }}</q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
           <a href="https://docs.yugabyte.com/" class="yb-nav-links" target="_blank" rel="noopener" style="color: #202951">
             <q-btn class="yb-nav-links" flat label="Docs" color="#202951"/>
           </a>
@@ -37,7 +28,7 @@
     </q-drawer>
 
     <q-page-container id="page-content-container">
-      <router-view :onScroll="handleScroll" :version="currentVersion" />
+      <router-view :onScroll="handleScroll"/>
     </q-page-container>
       <q-footer>
         <footer class="footer">
@@ -89,15 +80,12 @@
 </template>
 
 <script>
-import versionList from '../components/snippets/version.json'
 import SideMenu from './SideMenu'
 
 export default {
   name: 'MainLayout',
   data () {
     return {
-      versionList: versionList,
-      currentVersion: versionList[0],
       rightDrawerOpen: false,
       pageScrolled: false,
       hoverResourcesLink: false,
@@ -118,11 +106,6 @@ export default {
     },
     handleHideMenu: function () {
       this.hoverResourcesLink = false
-    },
-    handleVersionSwitch: function (version) {
-      const newVersion = versionList.find(v => v.name === version)
-      this.currentVersion = newVersion
-      this.$refs.versionDropdown.hide()
     }
   },
   created () {
@@ -173,10 +156,6 @@ pre, code {
 }
 #yb-main-navbar {
   display: block;
-}
-
-#yb-main-navbar .version-dropdown {
-  margin-right: 30px;
 }
 .logo-container {
   padding: 17px 5px 17px 60px;

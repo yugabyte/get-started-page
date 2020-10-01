@@ -120,16 +120,11 @@ export default {
       databaseTab: 'x64',
       shellTab: 'x64',
       exploreYSQL: 'default',
+      dbBashLines: dbServerCode.trim().split('\n'),
       shellBashLines: sqlShellCode.trim().split('\n'),
       pgQueries: pgCommands.trim().split('\n'),
       ybDemoQueries: ybDemoCommands.trim().split('\n'),
       sampleQueryTables: 'SELECT users.id, users.name, users.email, orders.id, orders.total FROM orders INNER JOIN users ON orders.user_id=users.id LIMIT 10;'
-    }
-  },
-  props: ['version'],
-  computed: {
-    dbBashLines: function () {
-      return dbServerCode(this.version.version).trim().split('\n')
     }
   },
   components: {
