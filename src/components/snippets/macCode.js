@@ -21,4 +21,3 @@ export const ybDemoCommands = `
 \\i share/orders.sql
 \\i share/reviews.sql
 `
- 
