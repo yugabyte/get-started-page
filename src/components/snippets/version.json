@@ -1,0 +1,23 @@
+[
+    {
+        "name": "latest",
+        "display": "v2.3 (Latest)",
+        "version": "2.3.2.0",
+        "versionShort": "2.3.2",
+        "appVersion": "latest"
+    },
+    {
+        "name": "stable",
+        "display": "v2.2 (Stable)",
+        "version": "2.2.3.0",
+        "versionShort": "2.2.3",
+        "appVersion": "2.2.3.0-b34"
+    },
+    {
+        "name": "v2.1",
+        "display": "v2.1 (Earlier)",
+        "version": "2.1.0.0",
+        "versionShort": "2.1.0",
+        "appVersion": "2.1.10.0-b3"
+    }
+]

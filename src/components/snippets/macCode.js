@@ -1,6 +1,6 @@
-export const dbServerCode = `
-wget https://downloads.yugabyte.com/yugabyte-2.3.2.0-darwin.tar.gz
-tar xvfz yugabyte-2.3.2.0-darwin.tar.gz && cd yugabyte-2.3.2.0/
+export const dbServerCode = (version) => `
+wget https://downloads.yugabyte.com/yugabyte-${version}-darwin.tar.gz
+tar xvfz yugabyte-${version}-darwin.tar.gz && cd yugabyte-${version}/
 ./bin/yugabyted start
 `
 
@@ -21,4 +21,3 @@ export const ybDemoCommands = `
 \\i share/orders.sql
 \\i share/reviews.sql
 `
- 

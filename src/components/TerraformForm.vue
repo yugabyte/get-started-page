@@ -56,7 +56,7 @@
       </div>
       <q-btn color="secondary" label="Generate" @click="handleButtonClick" />
     </div>
-    <div v-if="sampleConfigFile" id="sample-config-block">
+    <div v-if="sampleConfigFile" class="sample-config-block">
       <copy-button :text="sampleConfigFile"></copy-button>
       <pre>{{ sampleConfigFile }}</pre>
     </div>
@@ -111,6 +111,7 @@ export default {
     handleButtonClick: function () {
       if (this.code === 'aws') {
         this.sampleConfigFile = generateAwsConfig(
+          this.version.version,
           this.accessKeyInput,
           this.secretKeyInput,
           this.sshKeyPairInput,
@@ -147,6 +148,9 @@ export default {
       required: true
     },
     providerName: {
+      type: String
+    },
+    version: {
       type: String
     }
   }
