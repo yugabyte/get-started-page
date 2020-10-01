@@ -6,7 +6,7 @@ az group create --name yb-demo -l <region>
 az group deployment create --resource-group yb-demo --template-file yugabyte_deployment.json --parameters ClusterName='yb-demo' SshUser='centos' YBVersion='${version}' SshKeypair='<contents of yugabyte-key.pub>'
 `
 
-export const aksServerCode = `
+export const aksServerCode = (version) => `
 az login
 az group create --name yugabytedbRG --location westus
 az aks create \
@@ -20,18 +20,18 @@ az aks get-credentials --resource-group yugabytedbRG --name yugabytedbAKSCluster
 helm repo add yugabytedb https://charts.yugabyte.com
 helm repo update
 kubectl create namespace yb-demo
-helm install yb-demo -n yb-demo yugabytedb/yugabyte \
- --set storage.master.count=1 \
- --set storage.tserver.count=1 \
- --set storage.master.storageClass=default \
- --set storage.tserver.storageClass=default \
- --set resource.master.requests.cpu=1 \
- --set resource.master.requests.memory=1Gi \
- --set resource.tserver.requests.cpu=1 \
- --set resource.tserver.requests.memory=1Gi \
- --set resource.master.limits.cpu=1 \
- --set resource.master.limits.memory=1Gi \
- --set resource.tserver.limits.cpu=1 \
- --set resource.tserver.limits.memory=1Gi \
- --timeout=15m
+helm install --version=${version} yb-demo -n yb-demo yugabytedb/yugabyte \
+--set storage.master.count=1 \
+--set storage.tserver.count=1 \
+--set storage.master.storageClass=default \
+--set storage.tserver.storageClass=default \
+--set resource.master.requests.cpu=1 \
+--set resource.master.requests.memory=1Gi \
+--set resource.tserver.requests.cpu=1 \
+--set resource.tserver.requests.memory=1Gi \
+--set resource.master.limits.cpu=1 \
+--set resource.master.limits.memory=1Gi \
+--set resource.tserver.limits.cpu=1 \
+--set resource.tserver.limits.memory=1Gi \
+--timeout=15m
 `

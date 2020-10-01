@@ -61,13 +61,15 @@ export default {
   name: 'AzureDeploy',
   data: function () {
     return {
-      databaseTab: 'Resource Manager',
-      aksBashLines: aksServerCode.trim().split('\n')
+      databaseTab: 'Resource Manager'
     }
   },
   computed: {
     rmBashLines: function () {
       return resourceManagerCode(this.version.version).trim().split('\n')
+    },
+    aksBashLines: function () {
+      return aksServerCode(this.version.version).trim().split('\n')
     }
   },
   components: {
