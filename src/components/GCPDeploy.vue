@@ -31,7 +31,7 @@
           <terraform-form code="google" providerName="Google Cloud Platform"></terraform-form>
         </q-tab-panel>
         <q-tab-panel name="GKE" class="bg-form">
-          <cloud-managed-k8s code="gke"></cloud-managed-k8s>
+          <cloud-managed-k8s code="gke" :version="version"></cloud-managed-k8s>
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
@@ -66,6 +66,7 @@ export default {
     'cloud-managed-k8s': CloudManagedK8s,
     'copy-button': CopyButton
   },
+  props: ['version'],
   methods: {
     sendAnalytics: function (service) {
       event({

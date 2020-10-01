@@ -1,6 +1,6 @@
-export const dbServerCode = (pkg, dir) => `
-wget https://downloads.yugabyte.com/${pkg}
-tar xvfz ${pkg} && cd ${dir}/
+export const dbServerCode = (version) => `
+wget https://downloads.yugabyte.com/yugabyte-${version}-linux.tar.gz
+tar xvfz yugabyte-${version}-linux.tar.gz && cd yugabyte-${version}/
 ./bin/post_install.sh
 ./bin/yugabyted start
 `

@@ -129,7 +129,7 @@ export default {
   props: ['version'],
   computed: {
     dbBashLines: function () {
-      return dbServerCode(this.version.assets.linuxPkg, this.version.assets.packageDir).trim().split('\n')
+      return dbServerCode(this.version.version).trim().split('\n')
     }
   },
   components: {

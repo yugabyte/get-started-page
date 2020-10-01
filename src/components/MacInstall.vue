@@ -128,7 +128,7 @@ export default {
   },
   computed: {
     dbBashLines: function () {
-      return dbServerCode(this.version.assets.macPkg, this.version.assets.packageDir).trim().split('\n')
+      return dbServerCode(this.version.version).trim().split('\n')
     }
   },
   components: {

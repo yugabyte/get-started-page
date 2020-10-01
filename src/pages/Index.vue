@@ -107,7 +107,7 @@
 
       <div class="os-install-content">
         <aws-deploy v-if="selectedDeploy.value === 'aws'" :version="version"></aws-deploy>
-        <gcp-deploy v-if="selectedDeploy.value === 'gcp'"></gcp-deploy>
+        <gcp-deploy v-if="selectedDeploy.value === 'gcp'" :version="version"></gcp-deploy>
         <azure-deploy v-if="selectedDeploy.value === 'azure'" :version="version"></azure-deploy>
         <kubernetes-operator v-if="selectedDeploy.value === 'k8s-operator'"></kubernetes-operator>
       </div>
