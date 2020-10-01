@@ -52,11 +52,18 @@ export default {
   name: 'KubernetesOperator',
   data: function () {
     return {
-      databaseTab: 'YugabyteDB Operator',
-      dbK8sOperator: k8sOpServerCode.trim().split('\n'),
-      opHubLines: opHubServerCode.trim().split('\n')
+      databaseTab: 'YugabyteDB Operator'
     }
   },
+  computed: {
+    dbK8sOperator: function () {
+      return k8sOpServerCode(this.version.appVersion).trim().split('\n')
+    },
+    opHubLines: function () {
+      return opHubServerCode(this.version.appVersion).trim().split('\n')
+    }
+  },
+  props: ['version'],
   components: {
     'yb-header': YBHeader,
     'copy-button': CopyButton

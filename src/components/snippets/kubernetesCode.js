@@ -4,7 +4,7 @@ export const yamlDbServerCode = (version) => {
 curl  https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/cloud/kubernetes/yugabyte-statefulset-rf-1.yaml | sed 's/image: yugabytedb\\/yugabyte\\:latest/image: yugabytedb\\/yugabyte:${version}/g' | kubectl  apply -f -`
   } else {
     return `minikube start --memory=8192 --cpus=4 --disk-size=40g --vm-driver=virtualbox
-curl  https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/cloud/kubernetes/yugabyte-statefulset-rf-1.yaml | kubectl  apply -f -`
+curl  https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/cloud/kubernetes/yugabyte-statefulset-rf-1.yaml | kubectl apply -f -`
   }
 }
 

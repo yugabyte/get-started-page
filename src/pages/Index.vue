@@ -109,12 +109,12 @@
         <aws-deploy v-if="selectedDeploy.value === 'aws'" :version="version"></aws-deploy>
         <gcp-deploy v-if="selectedDeploy.value === 'gcp'" :version="version"></gcp-deploy>
         <azure-deploy v-if="selectedDeploy.value === 'azure'" :version="version"></azure-deploy>
-        <kubernetes-operator v-if="selectedDeploy.value === 'k8s-operator'"></kubernetes-operator>
+        <kubernetes-operator v-if="selectedDeploy.value === 'k8s-operator'" :version="version"></kubernetes-operator>
       </div>
     </div>
     <div v-else id="managed-cluster-content" class="content">
       <div class="managed-cluster-container">
-        <iframe src="http://cloud.yugabyte.com/register" title="Sign up for Yugabyte Cloud" width="900" height="850" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-scripts allow-forms" />
+        <iframe src="https://cloud.yugabyte.com/register" title="Sign up for Yugabyte Cloud" width="900" height="850" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-scripts allow-forms" />
       </div>
     </div>
   </q-page>
