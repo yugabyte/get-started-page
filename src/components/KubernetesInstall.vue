@@ -136,7 +136,7 @@ export default {
   },
   computed: {
     dbHelmLines: function () {
-      return helmDbServerCode(this.version.versionShort).trim().split('\n')
+      return helmDbServerCode(this.version.appVersion).trim().split('\n')
     },
     dbYamlLines: function () {
       return yamlDbServerCode(this.version.appVersion).trim().split('\n')

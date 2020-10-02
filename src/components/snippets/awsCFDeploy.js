@@ -6,7 +6,7 @@ aws cloudformation create-stack --stack-name <stack-name> --template-body file:/
 export const eksInstallYBCode = (version) => `helm repo add yugabytedb https://charts.yugabyte.com
 helm repo update
 kubectl create namespace yb-demo
-helm install --version=${version} yb-demo -n yb-demo yugabytedb/yugabyte \
+helm install yb-demo -n yb-demo yugabytedb/yugabyte \
 --set storage.master.count=1 \
 --set storage.tserver.count=1 \
 --set storage.master.storageClass=default \
@@ -19,5 +19,6 @@ helm install --version=${version} yb-demo -n yb-demo yugabytedb/yugabyte \
 --set resource.master.limits.memory=1Gi \
 --set resource.tserver.limits.cpu=1 \
 --set resource.tserver.limits.memory=1Gi \
+--set Image.tag=${version} \
 --timeout=15m
 `

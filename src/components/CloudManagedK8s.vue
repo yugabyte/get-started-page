@@ -28,7 +28,7 @@ export default {
   name: 'CloudManagedK8s',
   computed: {
     ybInstallCode: function () {
-      return eksInstallYBCode(this.version.versionShort).trim().split('\n')
+      return eksInstallYBCode(this.version.appVersion).trim().split('\n')
     }
   },
   props: ['code', 'version'],

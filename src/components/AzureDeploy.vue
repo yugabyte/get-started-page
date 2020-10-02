@@ -69,7 +69,7 @@ export default {
       return resourceManagerCode(this.version.version).trim().split('\n')
     },
     aksBashLines: function () {
-      return aksServerCode(this.version.version).trim().split('\n')
+      return aksServerCode(this.version.appVersion).trim().split('\n')
     }
   },
   components: {
