@@ -1,10 +1,17 @@
 [
     {
         "name": "latest",
-        "display": "v2.3 (Latest)",
+        "display": "v2.5 (Latest)",
+        "version": "2.5.0.0",
+        "versionShort": "2.5.0",
+        "appVersion": "latest"
+    },
+    {
+        "name": "v2.3 (Earlier)",
+        "display": "v2.3",
         "version": "2.3.3.0",
         "versionShort": "2.3.3",
-        "appVersion": "latest"
+        "appVersion": "2.3.3.0-b106"
     },
     {
         "name": "stable",
@@ -12,12 +19,5 @@
         "version": "2.2.3.0",
         "versionShort": "2.2.3",
         "appVersion": "2.2.3.0-b35"
-    },
-    {
-        "name": "v2.1",
-        "display": "v2.1 (Earlier)",
-        "version": "2.1.0.0",
-        "versionShort": "2.1.0",
-        "appVersion": "2.1.10.0-b3"
     }
 ]
