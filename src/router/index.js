@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueGtag from "vue-gtag";
+import VueGtag from 'vue-gtag'
 
 import routes from './routes'
 
@@ -13,7 +13,7 @@ Vue.use(VueGtag, {
       send_page_view: false
     }
   }
-});
+})
 
 /*
  * If not building with SSR mode, you can

@@ -306,7 +306,7 @@ export default {
   },
   mounted: function () {
     this.$gtag.pageview({
-      page_path: '/',
+      page_path: '/'
     }) // Send pageview stat to Google Analytics
   },
   beforeMount () {
