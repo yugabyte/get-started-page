@@ -1,17 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueAnalytics from 'vue-analytics'
+import VueGtag from "vue-gtag";
 
 import routes from './routes'
 
 Vue.use(VueRouter)
-Vue.use(VueAnalytics, {
-  id: 'UA-104956980-8'
-  // debug: {
-  //   enabled: true,
-  //   sendHitTask: false
-  // }
-})
+Vue.use(VueGtag, {
+  config: {
+    id: 'UA-104956980-8',
+    // Avoid sending first page hit on load, to avoid counting pages twice
+    params: {
+      send_page_view: false
+    }
+  }
+});
 
 /*
  * If not building with SSR mode, you can

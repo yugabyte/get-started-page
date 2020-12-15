@@ -16,7 +16,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "quasar": "^1.0.0-beta.0",
-    "vue-analytics": "^5.17.0"
+    "vue-gtag": "^1.10.0"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0-beta.0",

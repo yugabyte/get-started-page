@@ -50,8 +50,6 @@ import CloudManagedK8s from './CloudManagedK8s'
 import { deploymentManagerCode } from './snippets/gcpCDDeploy'
 import CopyButton from './CopyButton'
 
-import { event } from 'vue-analytics'
-
 export default {
   name: 'GCPDeploy',
   data: function () {
@@ -69,10 +67,10 @@ export default {
   props: ['version'],
   methods: {
     sendAnalytics: function (service) {
-      event({
-        eventCategory: 'Install-Page',
-        eventAction: `click.gcp.${service}`,
-        eventLabel: `User clicked GCP ${service} section button`
+      this.$gtag.event('click', {
+        'event_category': 'Install-Page',
+        'value': `click.gcp.${service}`,
+        'event_label': `User clicked GCP ${service} section button`
       })
     }
   }

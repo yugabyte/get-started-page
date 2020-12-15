@@ -46,7 +46,6 @@ import YBHeader from './YBHeader'
 import { k8sOpServerCode, opHubServerCode } from './snippets/k8sOperatorDeploy'
 
 import CopyButton from './CopyButton'
-import { event } from 'vue-analytics'
 
 export default {
   name: 'KubernetesOperator',
@@ -70,10 +69,10 @@ export default {
   },
   methods: {
     sendAnalytics: function (service) {
-      event({
-        eventCategory: 'Install-Page',
-        eventAction: `click.k8s-operator.${service}`,
-        eventLabel: `User clicked Pivotal ${service} section button`
+      this.$gtag.event('click', {
+        'event_category': 'Install-Page',
+        'value': `click.k8s-operator.${service}`,
+        'event_label': `User clicked K8s Operator ${service} section button`
       })
     }
   }

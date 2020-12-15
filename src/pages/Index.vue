@@ -131,8 +131,6 @@ import AzureDeploy from 'components/AzureDeploy'
 import KubernetesOperator from 'components/KubernetesOperator'
 import YBButton from 'components/YBButton'
 
-import { event, page } from 'vue-analytics'
-
 export default {
   name: 'PageIndex',
   data: function () {
@@ -267,35 +265,35 @@ export default {
       }
       window.history.pushState('platform', '', `${window.location.pathname}#${section.value}`)
       this.dirty = true
-      event({
-        eventCategory: 'Install-Page',
-        eventAction: `click.${this.selectedService.value}.${section.value}`,
-        eventLabel: `User clicked ${section.value} section button`
+      this.$gtag.event('click', {
+        'event_category': 'Install-Page',
+        'value': `click.${this.selectedService.value}.${section.value}`,
+        'event_label': `User clicked ${section.value} section button`
       })
     },
     clickServiceTab: function (index) {
       this.selectedService = this.serviceOptions[index]
       window.history.pushState('service', '', this.selectedService.value)
       this.dirty = true
-      event({
-        eventCategory: 'Install-Page',
-        eventAction: `click.${this.selectedService.value}.tab`,
-        eventLabel: `User clicked ${this.selectedService.label}`
+      this.$gtag.event('click', {
+        'event_category': 'Install-Page',
+        'value': `click.${this.selectedService.value}.tab`,
+        'event_label': `User clicked ${this.selectedService.label}`
       })
     },
     scrollContent: function () {
       if (!this.dirty && !this.scrolled) {
         if (this.selectedService.value === 'local') {
-          event({
-            eventCategory: 'Install-Page',
-            eventAction: `click.local.${this.selectedPlatform.value}`,
-            eventLabel: `User clicked ${this.selectedPlatform.value} section button`
+          this.$gtag.event('click', {
+            'event_category': 'Install-Page',
+            'value': `click.local.${this.selectedPlatform.value}`,
+            'event_label': `User clicked ${this.selectedPlatform.value} section button`
           })
         } else if (this.selectedService.value === 'cloud') {
-          event({
-            eventCategory: 'Install-Page',
-            eventAction: `click.cloud.${this.selectedDeploy.value}`,
-            eventLabel: `User clicked ${this.selectedDeploy.value} section button`
+          this.$gtag.event('click', {
+            'event_category': 'Install-Page',
+            'value': `click.cloud.${this.selectedDeploy.value}`,
+            'event_label': `User clicked ${this.selectedDeploy.value} section button`
           })
         }
         this.scrolled = true
@@ -307,7 +305,9 @@ export default {
     }
   },
   mounted: function () {
-    page('/') // Send pageview stat to Google Analytics
+    this.$gtag.pageview({
+      page_path: '/',
+    }) // Send pageview stat to Google Analytics
   },
   beforeMount () {
     window.addEventListener('scroll', this.scrollContent)

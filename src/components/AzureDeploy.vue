@@ -55,8 +55,6 @@ import { resourceManagerCode, aksServerCode } from './snippets/azureRMDeploy'
 import TerraformForm from './TerraformForm'
 import CopyButton from './CopyButton'
 
-import { event } from 'vue-analytics'
-
 export default {
   name: 'AzureDeploy',
   data: function () {
@@ -80,10 +78,10 @@ export default {
   props: ['version'],
   methods: {
     sendAnalytics: function (service) {
-      event({
-        eventCategory: 'Install-Page',
-        eventAction: `click.azure.${service}`,
-        eventLabel: `User clicked Azure ${service} section button`
+      this.$gtag.event('click', {
+        'event_category': 'Install-Page',
+        'value': `click.azure.${service}`,
+        'event_label': `User clicked Azure ${service} section button`
       })
     }
   }
