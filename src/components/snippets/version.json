@@ -15,9 +15,9 @@
     },
     {
         "name": "stable",
-        "display": "v2.2 (Stable)",
-        "version": "2.2.5.0",
-        "versionShort": "2.2.5",
-        "appVersion": "2.2.5.0-b2"
+        "display": "v2.4 (Stable)",
+        "version": "2.4.1.0",
+        "versionShort": "2.4.1",
+        "appVersion": "2.4.1.0-b18"
     }
 ]
