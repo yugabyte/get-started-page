@@ -11,13 +11,13 @@
         "display": "v2.4 (Stable)",
         "version": "2.4.1.0",
         "versionShort": "2.4.1",
-        "appVersion": "2.4.1.0-b20"
+        "appVersion": "2.4.1.0-b24"
     },
     {
-        "name": "v2.3 (Earlier)",
-        "display": "v2.3",
-        "version": "2.3.3.0",
-        "versionShort": "2.3.3",
-        "appVersion": "2.3.3.0-b106"
+        "name": "v2.2 (Earlier)",
+        "display": "v2.2",
+        "version": "2.2.6.0",
+        "versionShort": "2.2.6",
+        "appVersion": "2.2.6.0-b4"
     }
 ]
