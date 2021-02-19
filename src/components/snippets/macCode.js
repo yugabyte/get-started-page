@@ -1,5 +1,5 @@
 export const dbServerCode = (version) => `
-wget https://downloads.yugabyte.com/yugabyte-${version}-darwin.tar.gz
+curl -O https://downloads.yugabyte.com/yugabyte-${version}-darwin.tar.gz
 tar xvfz yugabyte-${version}-darwin.tar.gz && cd yugabyte-${version}/
 ./bin/yugabyted start
 `
