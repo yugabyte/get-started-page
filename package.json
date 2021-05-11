@@ -28,7 +28,7 @@
     "lodash": ">=4.17.21",
     "mini-css-extract-plugin": "^0.8.0",
     "resource-hints-webpack-plugin": "0.0.2",
-    "serialize-javascript": ">=2.1.1",
+    "serialize-javascript": ">=3.1.0",
     "set-value": ">=2.0.1",
     "vue-svg-loader": "^0.12.0"
   },
