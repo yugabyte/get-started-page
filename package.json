@@ -14,28 +14,25 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
-    "quasar": "^1.0.0-beta.0",
-    "vue-gtag": "^1.10.0"
+    "@quasar/extras": "1.10.7",
+    "eslint-loader": "^4.0.2",
+    "quasar": "1.15.20",
+    "vue-gtag": "1.16.1"
   },
   "devDependencies": {
-    "@quasar/app": "^1.0.0-beta.0",
-    "@vue/eslint-config-standard": "^4.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.10.0",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-vue": "^5.0.0",
-    "lodash": ">=4.17.21",
-    "mini-css-extract-plugin": "^0.8.0",
+    "@quasar/app": "1.9.6",
+    "@vue/eslint-config-standard": "4.0.0",
+    "babel-eslint": "10.1.0",
+    "eslint": "5.10.0",
+    "eslint-plugin-vue": "5.2.3",
+    "mini-css-extract-plugin": "0.8.2",
     "resource-hints-webpack-plugin": "0.0.2",
-    "serialize-javascript": ">=2.1.1",
-    "set-value": ">=2.0.1",
-    "vue-svg-loader": "^0.12.0"
+    "vue-svg-loader": "0.16.0"
   },
   "engines": {
-    "node": ">= 8.9.0",
-    "npm": ">= 5.6.0",
-    "yarn": ">= 1.6.0"
+    "node": ">= 12.18.3",
+    "npm": ">= 6.14.11",
+    "yarn": ">= 1.22.5"    
   },
   "browserslist": [
     "last 1 version, not dead, ie >= 11"

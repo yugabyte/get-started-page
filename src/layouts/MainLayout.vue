@@ -319,7 +319,7 @@ h3.overview-statement {
 .footer .help-footer-btn {
   position: fixed;
   bottom: 0;
-  right: 60px;
+  right: 120px;
   height: 40px;
   width: 165px;
   padding: 5px 10px;

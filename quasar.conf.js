@@ -1,6 +1,5 @@
 // Configuration for your app
 const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function (ctx) {
   return {
@@ -92,12 +91,8 @@ module.exports = function (ctx) {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /node_modules/
-        });
-        // const htmlPlugin = cfg.plugins.filter(x => x instanceof HtmlWebpackPlugin)[0];
-        // console.log(htmlPlugin);
-        // htmlPlugin.options.preload = ['**/*.css'];
-        // htmlPlugin.options.prefetch = ['**/*.js'];
+          exclude: /(node_modules|quasar)/
+        })
         cfg.plugins.push(new ResourceHintWebpackPlugin());
       }
     },

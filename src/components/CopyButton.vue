@@ -1,5 +1,5 @@
 <template>
-  <q-btn :class="copyClicked ? 'copy-code-btn active' : 'copy-code-btn'" flat :label="copyClicked ? null: 'Copy'" :icon="copyClicked ? 'check' : null" @click="copyText(text)"/>
+  <q-btn :class="copyClicked ? 'copy-code-btn active' : 'copy-code-btn'" flat :label="copyClicked ? null: 'Copy'" :icon="copyClicked ? 'check' : undefined" @click="copyText(text)"/>
 </template>
 
 <script>

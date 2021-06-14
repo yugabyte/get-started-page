@@ -91,7 +91,7 @@
             :class="selectedDeploy.value === 'azure' ? 'cloud-providers-container active' : 'cloud-providers-container'"
             v-on:click="handleSelectSection(deployOptions[2])"
           >
-            <img width="220" src="../assets/azure-logo-small.png" />
+            <img width="220" src="../assets/microsoft-azure.svg" />
           </q-btn>
         </div>
         <div>
