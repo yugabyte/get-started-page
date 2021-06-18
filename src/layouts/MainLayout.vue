@@ -68,8 +68,8 @@
               <li class="footer-items" data-footer="address">
                 <div class="footer-title">Address</div>
                 <a href="https://goo.gl/maps/SJ7TCYKbA6jezdfM6" target="_blank" rel="noopener" id="office-map">
-                  771 Vaqueros Ave<br class="hidden-xs hidden-sm">
-                  Sunnyvale, CA 94085 <br class="hidden-xs hidden-sm">
+                  100 S. Murphy Avenue, Suite 200<br class="hidden-xs hidden-sm">
+                  Sunnyvale, CA 94086 <br class="hidden-xs hidden-sm">
                   United States
                 </a>
               </li>
