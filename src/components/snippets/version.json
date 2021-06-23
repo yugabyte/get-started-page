@@ -9,9 +9,9 @@
     {
         "name": "stable",
         "display": "v2.4 (Stable)",
-        "version": "2.4.4.0",
-        "versionShort": "2.4.4",
-        "appVersion": "2.4.4.0-b7"
+        "version": "2.4.5.0",
+        "versionShort": "2.4.5",
+        "appVersion": "2.4.5.0-b20"
     },
     {
         "name": "v2.2 (Earlier)",
