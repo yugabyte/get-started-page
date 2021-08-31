@@ -1,9 +1,9 @@
 [
     {
         "name": "latest",
-        "display": "v2.7 (Latest)",
-        "version": "2.7.2.0",
-        "versionShort": "2.7.2",
+        "display": "v2.9 (Latest)",
+        "version": "2.9.0.0",
+        "versionShort": "2.9.0",
         "appVersion": "latest"
     },
     {
