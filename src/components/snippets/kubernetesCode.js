@@ -1,10 +1,12 @@
 export const yamlDbServerCode = (version) => {
   if (version !== 'latest') {
     return `minikube start --memory=8192 --cpus=4 --disk-size=40g --vm-driver=virtualbox
-curl  https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/cloud/kubernetes/yugabyte-statefulset-rf-1.yaml | sed 's/image: yugabytedb\\/yugabyte\\:latest/image: yugabytedb\\/yugabyte:${version}/g' | kubectl  apply -f -`
+kubectl create namespace yb-demo
+curl  https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/cloud/kubernetes/yugabyte-statefulset-rf-1.yaml | sed 's/image: yugabytedb\\/yugabyte\\:latest/image: yugabytedb\\/yugabyte:${version}/g' | kubectl  apply --namespace='yb-demo' -f -`
   } else {
     return `minikube start --memory=8192 --cpus=4 --disk-size=40g --vm-driver=virtualbox
-curl  https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/cloud/kubernetes/yugabyte-statefulset-rf-1.yaml | kubectl apply -f -`
+kubectl create namespace yb-demo
+curl  https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/cloud/kubernetes/yugabyte-statefulset-rf-1.yaml | kubectl apply --namespace='yb-demo' -f -`
   }
 }
 
