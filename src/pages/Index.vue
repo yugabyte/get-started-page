@@ -114,7 +114,7 @@
     </div>
     <div v-else id="managed-cluster-content" class="content">
       <div class="managed-cluster-container">
-        <iframe src="https://cloud.yugabyte.com/register" title="Sign up for Yugabyte Cloud" width="900" height="850" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-scripts allow-forms" />
+        <iframe src="https://cloud.yugabyte.com/signup" title="Sign up for Yugabyte Cloud" width="900" height="850" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-scripts allow-forms" />
       </div>
     </div>
   </q-page>
