@@ -2,16 +2,16 @@
     {
         "name": "latest",
         "display": "v2.9 (Latest)",
-        "version": "2.9.0.0",
-        "versionShort": "2.9.0",
+        "version": "2.9.1.0",
+        "versionShort": "2.9.1",
         "appVersion": "latest"
     },
     {
         "name": "stable",
         "display": "v2.6 (Stable)",
-        "version": "2.6.4.0",
-        "versionShort": "2.6.4",
-        "appVersion": "2.6.4.0-b3"
+        "version": "2.6.5.0",
+        "versionShort": "2.6.5",
+        "appVersion": "2.6.5.0-b4"
     },
     {
         "name": "v2.4 (Earlier)",
