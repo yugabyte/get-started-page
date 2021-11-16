@@ -8,16 +8,16 @@
     },
     {
         "name": "stable",
-        "display": "v2.6 (Stable)",
+        "display": "v2.8 (Stable)",
+        "version": "2.8.0.0",
+        "versionShort": "2.8.0",
+        "appVersion": "2.8.0.0-b37"
+    },
+    {
+        "name": "v2.6 (Earlier)",
+        "display": "v2.6",
         "version": "2.6.5.0",
         "versionShort": "2.6.5",
         "appVersion": "2.6.5.0-b4"
-    },
-    {
-        "name": "v2.4 (Earlier)",
-        "display": "v2.4",
-        "version": "2.4.7.0",
-        "versionShort": "2.4.7",
-        "appVersion": "2.4.7.0-b7"
     }
 ]
