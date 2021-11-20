@@ -8,7 +8,8 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="x64" label="X64" class="option-tabs"/>
+        <q-tab name="x86" label="X86" class="option-tabs"/>
+        <q-tab name="aarch64" label="AARCH64" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
           <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/linux">Complete Docs</a>
@@ -17,10 +18,16 @@
       <q-separator />
 
       <q-tab-panels v-model="databaseTab" animated>
-        <q-tab-panel name="x64" class="bg-grey-3">
+        <q-tab-panel name="x86" class="bg-grey-3">
           <pre class="code-container">
             <copy-button :text="dbBashLines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbBashLines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
+          </pre>
+        </q-tab-panel>
+        <q-tab-panel name="aarch64" class="bg-grey-3">
+          <pre class="code-container">
+            <copy-button :text="dbAarch64Lines"></copy-button>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbAarch64Lines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
@@ -36,7 +43,7 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="x64" label="X64" class="option-tabs"/>
+        <q-tab name="all" label="ALL ARCHITECTURES" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
           <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/admin/ysqlsh/">Complete Docs</a>
@@ -45,7 +52,7 @@
       <q-separator />
 
       <q-tab-panels v-model="shellTab" animated>
-        <q-tab-panel name="x64" class="bg-grey-3">
+        <q-tab-panel name="all" class="bg-grey-3">
           <pre class="code-container">
             <copy-button :text="shellBashLines.slice(1)"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in shellBashLines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
@@ -109,7 +116,7 @@
 </template>
 
 <script>
-import { dbServerCode, sqlShellCode, pgCommands, ybDemoCommands } from './snippets/linuxCode'
+import { dbServerCode, dbAarch64Code, sqlShellCode, pgCommands, ybDemoCommands } from './snippets/linuxCode'
 import YBHeader from './YBHeader'
 import CopyButton from './CopyButton'
 
@@ -117,8 +124,8 @@ export default {
   name: 'LinuxInstall',
   data: function () {
     return {
-      databaseTab: 'x64',
-      shellTab: 'x64',
+      databaseTab: 'x86',
+      shellTab: 'all',
       exploreYSQL: 'default',
       shellBashLines: sqlShellCode.trim().split('\n'),
       pgQueries: pgCommands.trim().split('\n'),
@@ -129,7 +136,10 @@ export default {
   props: ['version'],
   computed: {
     dbBashLines: function () {
-      return dbServerCode(this.version.version).trim().split('\n')
+      return dbServerCode(this.version.version, this.version.appVersion).trim().split('\n')
+    },
+    dbAarch64Lines: function () {
+      return dbAarch64Code(this.version.version, this.version.appVersion).trim().split('\n')
     }
   },
   components: {

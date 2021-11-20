@@ -128,7 +128,7 @@ export default {
   },
   computed: {
     dbBashLines: function () {
-      return dbServerCode(this.version.version).trim().split('\n')
+      return dbServerCode(this.version.version, this.version.appVersion).trim().split('\n')
     }
   },
   components: {

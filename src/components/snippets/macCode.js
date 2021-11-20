@@ -1,6 +1,6 @@
-export const dbServerCode = (version) => `
-curl -O https://downloads.yugabyte.com/yugabyte-${version}-darwin.tar.gz
-tar xvfz yugabyte-${version}-darwin.tar.gz && cd yugabyte-${version}/
+export const dbServerCode = (version, appVersion) => `
+curl -O https://downloads.yugabyte.com/releases/${version}/yugabyte-${appVersion}-darwin-x86_64.tar.gz
+tar xvfz yugabyte-${appVersion}-darwin-x86_64.tar.gz && cd yugabyte-${version}/
 ./bin/yugabyted start
 `
 
