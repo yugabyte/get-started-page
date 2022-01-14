@@ -9,15 +9,15 @@
     {
         "name": "stable",
         "display": "v2.8 (Stable)",
-        "version": "2.8.0.0",
-        "versionShort": "2.8.0",
-        "appVersion": "2.8.0.0-b37"
+        "version": "2.8.1.0",
+        "versionShort": "2.8.1",
+        "appVersion": "2.8.1.0-b37"
     },
     {
         "name": "v2.6 (Earlier)",
         "display": "v2.6",
-        "version": "2.6.8.0",
-        "versionShort": "2.6.8",
-        "appVersion": "2.6.8.0-b15"
+        "version": "2.6.9.0",
+        "versionShort": "2.6.9",
+        "appVersion": "2.6.9.0-b1"
     }
 ]
