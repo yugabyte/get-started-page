@@ -9,7 +9,10 @@
         align="justify"
       >
         <q-tab name="x86" label="X86" class="option-tabs"/>
+        <!-- aarch64 REMOVED FOR 2.8.2.0 due to a build bug -->
+        <!--
         <q-tab name="aarch64" label="AARCH64" class="option-tabs"/>
+        -->
         <q-space />
         <div class="quickstart-container">
           <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/linux">Complete Docs</a>
@@ -24,12 +27,15 @@
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbBashLines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
+        <!-- aarch64 REMOVED FOR 2.8.2.0 due to a build bug -->
+        <!--
         <q-tab-panel name="aarch64" class="bg-grey-3">
           <pre class="code-container">
             <copy-button :text="dbAarch64Lines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbAarch64Lines" v-bind:key="`linux-shell-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
+        -->
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/quick-start/install/#linux">Complete Docs</a>
