@@ -1,10 +1,10 @@
 [
     {
         "name": "latest",
-        "display": "v2.11 (Latest)",
-        "version": "2.11.2.0",
-        "versionShort": "2.11.2",
-        "appVersion": "2.11.2.0-b89"
+        "display": "v2.13 (Latest)",
+        "version": "2.13.0.0",
+        "versionShort": "2.13.0",
+        "appVersion": "2.13.0.0-b42"
     },
     {
         "name": "stable",
