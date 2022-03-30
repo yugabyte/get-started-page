@@ -51,7 +51,7 @@
                 <div class="logo-white">
                   <img width="50px" height="30px" alt="YugabyteDB logo" src="../assets/ybsymbol-white.svg" />
                   <div class="copyright">
-                    <div style="margin-bottom: 3px">© 2020 Yugabyte, Inc.</div>
+                    <div style="margin-bottom: 3px">© {{(new Date()).getFullYear()}} Yugabyte, Inc.</div>
                     <a href="https://www.yugabyte.com/privacy-policy/">Privacy Policy</a>
                   </div>
                 </div>
