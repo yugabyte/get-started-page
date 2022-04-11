@@ -14,8 +14,8 @@
         <q-space />
         <div class="quickstart-container">
           <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-aws-yugabyte">Complete Docs</a>
-          <a v-else-if="databaseTab === 'EKS'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/multi-zone/eks/helm-chart/">Complete Docs</a>
-          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/">Complete Docs</a>
+          <a v-else-if="databaseTab === 'EKS'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/eks/helm-chart/">Complete Docs</a>
+          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -36,8 +36,8 @@
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-aws-yugabyte">Complete Docs</a>
-        <a v-else-if="databaseTab === 'EKS'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/multi-zone/eks/helm-chart/">Complete Docs</a>
-        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/public-clouds/aws/">Complete Docs</a>
+        <a v-else-if="databaseTab === 'EKS'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/eks/helm-chart/">Complete Docs</a>
+        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/">Complete Docs</a>
       </div>
     </div>
   </div>
