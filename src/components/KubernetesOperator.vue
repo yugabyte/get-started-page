@@ -12,8 +12,8 @@
         <q-tab name="Operator Hub" label="Operator Hub" icon="img:/statics/openshift-logo.png" class="option-tabs k8s-op-tab" v-on:click="sendAnalytics('operator-hub')" />
         <q-space />
         <div class="quickstart-container">
-          <a v-if="databaseTab === 'YugabyteDB Operator'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/single-zone/oss/yugabyte-operator/">Complete Docs</a>
-          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/single-zone/oss/operator-hub/">Complete Docs</a>
+          <a v-if="databaseTab === 'YugabyteDB Operator'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/oss/yugabyte-operator/">Complete Docs</a>
+          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/oss/operator-hub/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -34,8 +34,8 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a v-if="databaseTab === 'YugabyteDB Operator'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/single-zone/oss/yugabyte-operator/">Complete Docs</a>
-        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/latest/deploy/kubernetes/single-zone/oss/operator-hub/">Complete Docs</a>
+        <a v-if="databaseTab === 'YugabyteDB Operator'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/oss/yugabyte-operator/">Complete Docs</a>
+        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/oss/operator-hub/">Complete Docs</a>
       </div>
     </div>
   </div>
