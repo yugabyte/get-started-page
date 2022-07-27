@@ -10,7 +10,7 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/install/docker">Complete Docs</a>
+          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/docker/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -24,7 +24,7 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/install/#docker">Complete Docs</a>
+        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/docker/">Complete Docs</a>
       </div>
     </div>
     <div class="download-section">
@@ -64,7 +64,7 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/explore/ysql/#docker">Complete Docs</a>
+          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/develop/build-apps/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -100,7 +100,7 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/explore/ysql/#docker">Complete Docs</a>
+        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/develop/build-apps/">Complete Docs</a>
       </div>
     </div>
   </div>
