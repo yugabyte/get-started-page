@@ -37,7 +37,7 @@
       <div class="quickstart-container mobile-view">
         <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/terraform/">Complete Docs</a>
         <a v-else-if="databaseTab === 'GKE'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/gke/helm-chart/">Complete Docs</a>
-        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/">Complete Docs</a>
+        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/gcp-deployment-manager/">Complete Docs</a>
       </div>
     </div>
   </div>
