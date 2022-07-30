@@ -64,7 +64,7 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/develop/build-apps/">Complete Docs</a>
+          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/sample-data/retail-analytics/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
