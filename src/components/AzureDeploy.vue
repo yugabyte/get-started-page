@@ -16,7 +16,7 @@
         <q-tab name="AKS" label="Azure Kubernetes Service" icon="img:/statics/aks.svg" class="option-tabs wide" v-on:click="sendAnalytics('AKS')" />
         <q-space />
         <div class="quickstart-container">
-          <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-azure-yugabyte">Complete Docs</a>
+          <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/terraform/">Complete Docs</a>
           <a v-else-if="databaseTab === 'Resource Manager'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/">Complete Docs</a>
           <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/aks/helm-chart/">Complete Docs</a>
         </div>
@@ -41,7 +41,7 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-azure-yugabyte">Complete Docs</a>
+        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/terraform/">Complete Docs</a>
         <a v-else-if="databaseTab === 'Resource Manager'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/">Complete Docs</a>
         <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/aks/helm-chart/">Complete Docs</a>
       </div>

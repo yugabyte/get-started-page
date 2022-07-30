@@ -12,8 +12,8 @@
         <q-tab name="YAML" label="YAML" class="option-tabs"/>
         <q-space />
         <div class="quickstart-container">
-          <a v-if="databaseTab === 'YAML'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/install/kubernetes">Complete Docs</a>
-          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/install/kubernetes/">Complete Docs</a>
+          <a v-if="databaseTab === 'YAML'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/kubernetes/">Complete Docs</a>
+          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/kubernetes/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -33,7 +33,7 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a v-if="databaseTab === 'YAML'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/install/#kubernetes">Complete Docs</a>
+        <a v-if="databaseTab === 'YAML'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/kubernetes/">Complete Docs</a>
         <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/helm-chart/">Complete Docs</a>
       </div>
     </div>
@@ -74,7 +74,7 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/explore/ysql/#kubernetes">Complete Docs</a>
+          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/sample-data/retail-analytics/">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
@@ -110,7 +110,7 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/explore/ysql/#kubernetes">Complete Docs</a>
+        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/develop/build-apps/">Complete Docs</a>
       </div>
     </div>
   </div>

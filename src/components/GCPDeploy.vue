@@ -13,7 +13,7 @@
         <q-tab name="GKE" label="Google Kubernetes Engine" icon="img:/statics/gke.png" class="option-tabs wide" v-on:click="sendAnalytics('gke')" />
         <q-space />
         <div class="quickstart-container">
-          <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-gcp-yugabyte">Complete Docs</a>
+          <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/terraform/">Complete Docs</a>
           <a v-else-if="databaseTab === 'GKE'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/gke/helm-chart/">Complete Docs</a>
           <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/">Complete Docs</a>
         </div>
@@ -35,9 +35,9 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://github.com/yugabyte/terraform-gcp-yugabyte">Complete Docs</a>
+        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/terraform/">Complete Docs</a>
         <a v-else-if="databaseTab === 'GKE'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/gke/helm-chart/">Complete Docs</a>
-        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/">Complete Docs</a>
+        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/gcp-deployment-manager/">Complete Docs</a>
       </div>
     </div>
   </div>
