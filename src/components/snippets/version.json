@@ -14,8 +14,15 @@
         "appVersion": "2.14.3.1-b1"
     },
     {
-        "name": "v2.12 (Earlier)",
-        "display": "v2.12",
+        "name": "v2.99",
+        "display": "v2.99 (LTS)",
+        "version": "2.99.0.0",
+        "versionShort": "2.99.0",
+        "appVersion": "2.99.0.0-b1"
+    },
+    {
+        "name": "v2.12",
+        "display": "v2.12 (Earlier)",
         "version": "2.12.10.0",
         "versionShort": "2.12.10",
         "appVersion": "2.12.10.0-b41"
