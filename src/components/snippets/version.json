@@ -19,5 +19,12 @@
         "version": "2.12.10.0",
         "versionShort": "2.12.10",
         "appVersion": "2.12.10.0-b41"
+    },
+    {
+        "name": "v2.99 (LTS)",
+        "display": "v2.99",
+        "version": "2.99.0.0",
+        "versionShort": "2.99.0",
+        "appVersion": "2.99.0.0-b1"
     }
 ]
