@@ -1,6 +1,6 @@
 {
   "name": "get-started",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Open-source, cloud-native, high-performance distributed SQL database for global, internet-scale apps.",
   "productName": "Yugabyte Getting Started Page",
   "author": "Andrew Cai <andrew@yugabyte.com>",
