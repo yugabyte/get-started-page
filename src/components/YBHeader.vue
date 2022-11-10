@@ -8,16 +8,16 @@
 
 <script>
 export default {
-  name: 'YBHeader',
+  name: 'YBHeader.vue',
   props: {
     type: {
       type: String,
-      required: true
+      required: true,
     },
     text: {
       type: String,
-      default: ''
-    }
-  }
-}
+      default: '',
+    },
+  },
+};
 </script>

@@ -3,22 +3,65 @@
     <div class="download-section">
       <yb-header type="yb-logo" text="DB Server"></yb-header>
       <q-tabs
-        v-model="databaseTab" dense class="text-grey"
+        v-model="databaseTab"
+        dense
+        class="text-grey"
         active-color="primary"
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Resource Manager" class="option-tabs" v-on:click="sendAnalytics('resource-manager')">
-            <img width="24" style="margin-bottom: 5px" src="/statics/resourcemanager-logo.png" />
-            Resource Manager
-          </q-tab>
-        <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
-        <q-tab name="AKS" label="Azure Kubernetes Service" icon="img:/statics/aks.svg" class="option-tabs wide" v-on:click="sendAnalytics('AKS')" />
+        <q-tab
+          name="Resource Manager"
+          class="option-tabs"
+          v-on:click="sendAnalytics('resource-manager')"
+        >
+          <img
+            width="24"
+            style="margin-bottom: 5px"
+            src="../assets/resourcemanager-logo.png"
+          />
+          Resource Manager
+        </q-tab>
+        <q-tab
+          name="Terraform"
+          label="Terraform"
+          icon="img:src/assets/terraform-logo.png"
+          class="option-tabs"
+          v-on:click="sendAnalytics('terraform')"
+        />
+        <q-tab
+          name="AKS"
+          label="Azure Kubernetes Service"
+          icon="img:src/assets/aks.svg"
+          class="option-tabs wide"
+          v-on:click="sendAnalytics('AKS')"
+        />
         <q-space />
         <div class="quickstart-container">
-          <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/terraform/">Complete Docs</a>
-          <a v-else-if="databaseTab === 'Resource Manager'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/">Complete Docs</a>
-          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/aks/helm-chart/">Complete Docs</a>
+          <a
+            v-if="databaseTab === 'Terraform'"
+            target="_blank"
+            rel="noopener"
+            id="macos-quickstart-link"
+            href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/terraform/"
+            >Complete Docs</a
+          >
+          <a
+            v-else-if="databaseTab === 'Resource Manager'"
+            target="_blank"
+            rel="noopener"
+            id="macos-quickstart-link"
+            href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/"
+            >Complete Docs</a
+          >
+          <a
+            v-else
+            target="_blank"
+            rel="noopener"
+            id="macos-quickstart-link"
+            href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/aks/helm-chart/"
+            >Complete Docs</a
+          >
         </div>
       </q-tabs>
       <q-separator />
@@ -41,49 +84,71 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/terraform/">Complete Docs</a>
-        <a v-else-if="databaseTab === 'Resource Manager'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/">Complete Docs</a>
-        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/aks/helm-chart/">Complete Docs</a>
+        <a
+          v-if="databaseTab === 'Terraform'"
+          target="_blank"
+          rel="noopener"
+          id="macos-quickstart-link"
+          href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/terraform/"
+          >Complete Docs</a
+        >
+        <a
+          v-else-if="databaseTab === 'Resource Manager'"
+          target="_blank"
+          rel="noopener"
+          id="macos-quickstart-link"
+          href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/"
+          >Complete Docs</a
+        >
+        <a
+          v-else
+          target="_blank"
+          rel="noopener"
+          id="macos-quickstart-link"
+          href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/aks/helm-chart/"
+          >Complete Docs</a
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import YBHeader from './YBHeader'
-import { resourceManagerCode, aksServerCode } from './snippets/azureRMDeploy'
-import TerraformForm from './TerraformForm'
-import CopyButton from './CopyButton'
+import { event } from 'vue-gtag';
+import YBHeader from './YBHeader.vue';
+import { resourceManagerCode, aksServerCode } from './snippets/azureRMDeploy';
+import TerraformForm from './TerraformForm.vue';
+import CopyButton from './CopyButton.vue';
 
 export default {
   name: 'AzureDeploy',
   data: function () {
     return {
-      databaseTab: 'Resource Manager'
-    }
+      databaseTab: 'Resource Manager',
+    };
   },
   computed: {
     rmBashLines: function () {
-      return resourceManagerCode(this.version.version).trim().split('\n')
+      return resourceManagerCode(this.version.version).trim().split('\n');
     },
     aksBashLines: function () {
-      return aksServerCode(this.version.appVersion).trim().split('\n')
-    }
+      return aksServerCode(this.version.appVersion).trim().split('\n');
+    },
   },
   components: {
     'yb-header': YBHeader,
     'terraform-form': TerraformForm,
-    'copy-button': CopyButton
+    'copy-button': CopyButton,
   },
   props: ['version'],
   methods: {
     sendAnalytics: function (service) {
-      this.$gtag.event('click', {
-        'event_category': 'Install-Page',
-        'value': `click.azure.${service}`,
-        'event_label': `User clicked Azure ${service} section button`
-      })
-    }
-  }
-}
+      event('click', {
+        event_category: 'Install-Page',
+        value: `click.azure.${service}`,
+        event_label: `User clicked Azure ${service} section button`,
+      });
+    },
+  },
+};
 </script>

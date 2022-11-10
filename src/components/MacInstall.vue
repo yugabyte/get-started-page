@@ -3,15 +3,23 @@
     <div class="download-section">
       <yb-header type="yb-logo" text="DB Server"></yb-header>
       <q-tabs
-        v-model="databaseTab" dense class="text-grey"
+        v-model="databaseTab"
+        dense
+        class="text-grey"
         active-color="primary"
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="x64" label="X64" class="option-tabs"/>
+        <q-tab name="x64" label="X64" class="option-tabs" />
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/">Complete Docs</a>
+          <a
+            target="_blank"
+            rel="noopener"
+            id="macos-quickstart-link"
+            href="https://docs.yugabyte.com/preview/quick-start/"
+            >Complete Docs</a
+          >
         </div>
       </q-tabs>
       <q-separator />
@@ -25,21 +33,35 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/quick-start/install/#create-a-local-cluster">Complete Docs</a>
+        <a
+          target="_blank"
+          rel="noopener"
+          id="macos-quickstart-link"
+          href="https://docs.yugabyte.com/preview/quick-start/install/#create-a-local-cluster"
+          >Complete Docs</a
+        >
       </div>
     </div>
     <div class="download-section">
       <yb-header type="yb-shell" text="SQL Shell"></yb-header>
       <q-tabs
-        v-model="shellTab" dense class="text-grey"
+        v-model="shellTab"
+        dense
+        class="text-grey"
         active-color="primary"
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="x64" label="X64" class="option-tabs"/>
+        <q-tab name="x64" label="X64" class="option-tabs" />
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/admin/ysqlsh/">Complete Docs</a>
+          <a
+            target="_blank"
+            rel="noopener"
+            id="macos-quickstart-link"
+            href="https://docs.yugabyte.com/preview/admin/ysqlsh/"
+            >Complete Docs</a
+          >
         </div>
       </q-tabs>
       <q-separator />
@@ -53,20 +75,34 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/admin/ysqlsh/">Complete Docs</a>
+        <a
+          target="_blank"
+          rel="noopener"
+          id="macos-quickstart-link"
+          href="https://docs.yugabyte.com/preview/admin/ysqlsh/"
+          >Complete Docs</a
+        >
       </div>
     </div>
     <div class="download-section">
       <yb-header type="yb-logo" text="Distributed SQL in Action"></yb-header>
       <q-tabs
-        v-model="databaseTab" dense class="text-grey"
+        v-model="databaseTab"
+        dense
+        class="text-grey"
         active-color="primary"
         indicator-color="primary"
         align="justify"
       >
         <q-space />
         <div class="quickstart-container">
-          <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/sample-data/retail-analytics/">Complete Docs</a>
+          <a
+            target="_blank"
+            rel="noopener"
+            id="macos-quickstart-link"
+            href="https://docs.yugabyte.com/preview/sample-data/retail-analytics/"
+            >Complete Docs</a
+          >
         </div>
       </q-tabs>
       <q-separator />
@@ -74,9 +110,7 @@
       <q-tab-panels v-model="exploreYSQL" animated>
         <q-tab-panel name="default" class="bg-form">
           <div>
-            <h3 class="config-form-header">
-              1. Load Sample Dataset
-            </h3>
+            <h3 class="config-form-header">1. Load Sample Dataset</h3>
             <div class="bg-grey-3 q-tab-panel code-relative">
               <pre class="code-container">
                 <copy-button :text="pgQueries"></copy-button>
@@ -89,9 +123,7 @@
                 <code class="pre-helper pre-helper--yb_demo" v-for="(line, index) in ybDemoQueries" v-bind:key="`yb-demo-${index}`">{{ line }}</code>
               </pre>
             </div>
-            <h3 class="config-form-header">
-              2. Run Queries
-            </h3>
+            <h3 class="config-form-header">2. Run Queries</h3>
             <div class="bg-grey-3 q-tab-panel code-relative">
               <pre class="code-container">
                 <copy-button :text="sampleQueryCount"></copy-button>
@@ -102,15 +134,26 @@
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/develop/build-apps/">Complete Docs</a>
+        <a
+          target="_blank"
+          rel="noopener"
+          id="macos-quickstart-link"
+          href="https://docs.yugabyte.com/preview/develop/build-apps/"
+          >Complete Docs</a
+        >
       </div>
     </div>
   </div>
 </template>
 <script>
-import { dbServerCode, sqlShellCode, pgCommands, ybDemoCommands } from './snippets/macCode'
-import YBHeader from './YBHeader'
-import CopyButton from './CopyButton'
+import {
+  dbServerCode,
+  sqlShellCode,
+  pgCommands,
+  ybDemoCommands,
+} from './snippets/macCode';
+import YBHeader from './YBHeader.vue';
+import CopyButton from './CopyButton.vue';
 
 export default {
   name: 'MacInstall',
@@ -123,19 +166,22 @@ export default {
       shellBashLines: sqlShellCode.trim().split('\n'),
       pgQueries: pgCommands.trim().split('\n'),
       ybDemoQueries: ybDemoCommands.trim().split('\n'),
-      sampleQueryCount: 'SELECT users.id, users.name, users.email, orders.id, orders.total FROM orders INNER JOIN users ON orders.user_id=users.id LIMIT 10;'
-    }
+      sampleQueryCount:
+        'SELECT users.id, users.name, users.email, orders.id, orders.total FROM orders INNER JOIN users ON orders.user_id=users.id LIMIT 10;',
+    };
   },
   computed: {
     dbBashLines: function () {
-      return dbServerCode(this.version.version, this.version.appVersion).trim().split('\n')
-    }
+      return dbServerCode(this.version.version, this.version.appVersion)
+        .trim()
+        .split('\n');
+    },
   },
   components: {
     'yb-header': YBHeader,
-    'copy-button': CopyButton
-  }
-}
+    'copy-button': CopyButton,
+  },
+};
 </script>
 
 <style>
@@ -160,10 +206,10 @@ export default {
 #macos-quickstart-link::after {
   content: '\203a';
   font-size: 20px;
-    margin-left: 4px;
+  margin-left: 4px;
 }
 .code-container {
-  background-color: #F7F8F9;
+  background-color: #f7f8f9;
   margin: 0 90px 0 30px;
   line-height: 0.5;
   text-align: left;
@@ -187,21 +233,21 @@ export default {
   padding-left: 20px;
 }
 .pre-helper--shell:before {
-    content: '$ ';
+  content: '$ ';
 }
 
 .pre-helper--yugabyte {
-  padding-left: 90px;
+  padding-left: 102px;
 }
 .pre-helper--yugabyte:before {
-    content: 'yugabyte=# ';
+  content: 'yugabyte=# ';
 }
 
 .pre-helper--yb_demo {
-  padding-left: 85px;
+  padding-left: 95px;
 }
 .pre-helper--yb_demo:before {
-    content: 'yb_demo=# ';
+  content: 'yb_demo=# ';
 }
 
 .pre-helper:before {

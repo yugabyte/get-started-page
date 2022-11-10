@@ -1,16 +1,14 @@
 <template>
   <div>
     <h3 class="config-form-header">
-      1. Create a {{code.toUpperCase()}} cluster
+      1. Create a {{ code.toUpperCase() }} cluster
     </h3>
     <div class="bg-grey-3 q-tab-panel code-relative">
       <pre class="code-container" id="exec-code-block">
         <code class="pre-helper"># See our docs for more info on how to setup your cluster</code>
       </pre>
     </div>
-    <h3 class="config-form-header">
-      2. Create a YugabyteDB Cluster
-    </h3>
+    <h3 class="config-form-header">2. Create a YugabyteDB Cluster</h3>
     <div class="bg-grey-3 q-tab-panel code-relative">
       <copy-button :text="ybInstallCode"></copy-button>
       <pre class="code-container" id="exec-code-block">
@@ -21,19 +19,19 @@
 </template>
 
 <script>
-import { eksInstallYBCode } from './snippets/awsCFDeploy'
-import CopyButton from './CopyButton'
+import { eksInstallYBCode } from './snippets/awsCFDeploy';
+import CopyButton from './CopyButton.vue';
 
 export default {
-  name: 'CloudManagedK8s',
+  name: 'CloudManagedK8s.vue',
   computed: {
     ybInstallCode: function () {
-      return eksInstallYBCode(this.version.appVersion).trim().split('\n')
-    }
+      return eksInstallYBCode(this.version.appVersion).trim().split('\n');
+    },
   },
   props: ['code', 'version'],
   components: {
-    'copy-button': CopyButton
-  }
-}
+    'copy-button': CopyButton,
+  },
+};
 </script>

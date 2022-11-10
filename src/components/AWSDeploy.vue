@@ -3,19 +3,60 @@
     <div class="download-section">
       <yb-header type="yb-logo" text="DB Server"></yb-header>
       <q-tabs
-        v-model="databaseTab" dense class="text-grey"
+        v-model="databaseTab"
+        dense
+        class="text-grey"
         active-color="primary"
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="Cloud Formation" label="Cloud Formation" icon="img:/statics/cloudformation-logo.png" class="option-tabs" v-on:click="sendAnalytics('cloud-formation')" />
-        <q-tab name="Terraform" label="Terraform" icon="img:/statics/terraform-logo.png" class="option-tabs" v-on:click="sendAnalytics('terraform')" />
-        <q-tab name="EKS" label="Elastic Kubernetes Service " icon="img:/statics/amazon-eks.png" class="option-tabs wide" v-on:click="sendAnalytics('eks')" />
+        <q-tab
+          name="Cloud Formation"
+          label="Cloud Formation"
+          icon="img:src/assets/cloudformation-logo.png"
+          class="option-tabs"
+          v-on:click="sendAnalytics('cloud-formation')"
+        />
+        <q-tab
+          name="Terraform"
+          label="Terraform"
+          icon="img:src/assets/terraform-logo.png"
+          class="option-tabs"
+          v-on:click="sendAnalytics('terraform')"
+        />
+        <q-tab
+          name="EKS"
+          label="Elastic Kubernetes Service "
+          icon="img:src/assets/amazon-eks.png"
+          class="option-tabs wide"
+          v-on:click="sendAnalytics('eks')"
+        />
         <q-space />
         <div class="quickstart-container">
-          <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/terraform/">Complete Docs</a>
-          <a v-else-if="databaseTab === 'EKS'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/eks/helm-chart/">Complete Docs</a>
-          <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/cloudformation/">Complete Docs</a>
+          <a
+            v-if="databaseTab === 'Terraform'"
+            target="_blank"
+            rel="noopener"
+            id="macos-quickstart-link"
+            href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/terraform/"
+            >Complete Docs</a
+          >
+          <a
+            v-else-if="databaseTab === 'EKS'"
+            target="_blank"
+            rel="noopener"
+            id="macos-quickstart-link"
+            href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/eks/helm-chart/"
+            >Complete Docs</a
+          >
+          <a
+            v-else
+            target="_blank"
+            rel="noopener"
+            id="macos-quickstart-link"
+            href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/cloudformation/"
+            >Complete Docs</a
+          >
         </div>
       </q-tabs>
       <q-separator />
@@ -28,56 +69,82 @@
           </pre>
         </q-tab-panel>
         <q-tab-panel name="Terraform" class="bg-form">
-          <terraform-form code="aws" providerName="AWS" :version="version"></terraform-form>
+          <terraform-form
+            code="aws"
+            providerName="AWS"
+            :version="version"
+          ></terraform-form>
         </q-tab-panel>
         <q-tab-panel name="EKS" class="bg-form">
           <cloud-managed-k8s code="eks" :version="version"></cloud-managed-k8s>
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
-        <a v-if="databaseTab === 'Terraform'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/terraform/">Complete Docs</a>
-        <a v-else-if="databaseTab === 'EKS'" target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/eks/helm-chart/">Complete Docs</a>
-        <a v-else target="_blank" rel="noopener" id="macos-quickstart-link" href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/cloudformation/">Complete Docs</a>
+        <a
+          v-if="databaseTab === 'Terraform'"
+          target="_blank"
+          rel="noopener"
+          id="macos-quickstart-link"
+          href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/terraform/"
+          >Complete Docs</a
+        >
+        <a
+          v-else-if="databaseTab === 'EKS'"
+          target="_blank"
+          rel="noopener"
+          id="macos-quickstart-link"
+          href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/eks/helm-chart/"
+          >Complete Docs</a
+        >
+        <a
+          v-else
+          target="_blank"
+          rel="noopener"
+          id="macos-quickstart-link"
+          href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/cloudformation/"
+          >Complete Docs</a
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import YBHeader from './YBHeader'
-import TerraformForm from './TerraformForm'
-import CloudManagedK8s from './CloudManagedK8s'
-import { cloudFormationCode } from './snippets/awsCFDeploy'
+import { event } from 'vue-gtag';
+import YBHeader from './YBHeader.vue';
+import TerraformForm from './TerraformForm.vue';
+import CloudManagedK8s from './CloudManagedK8s.vue';
+import { cloudFormationCode } from './snippets/awsCFDeploy';
 
-import CopyButton from './CopyButton'
+import CopyButton from './CopyButton.vue';
 
 export default {
   name: 'AWSDeploy',
   data: function () {
     return {
-      databaseTab: 'Cloud Formation'
-    }
+      databaseTab: 'Cloud Formation',
+    };
   },
   computed: {
     cfBashLines: function () {
-      return cloudFormationCode(this.version.version).trim().split('\n')
-    }
+      return cloudFormationCode(this.version.version).trim().split('\n');
+    },
   },
   components: {
     'yb-header': YBHeader,
     'terraform-form': TerraformForm,
     'cloud-managed-k8s': CloudManagedK8s,
-    'copy-button': CopyButton
+    'copy-button': CopyButton,
   },
   props: ['version'],
   methods: {
     sendAnalytics: function (service) {
-      this.$gtag.event('click', {
-        'event_category': 'Install-Page',
-        'value': `click.aws.${service}`,
-        'event_label': `User clicked AWS ${service} section button`
-      })
-    }
-  }
-}
+      event('click', {
+        event_category: 'Install-Page',
+        value: `click.aws.${service}`,
+        event_label: `User clicked AWS ${service} section button`,
+      });
+    },
+  },
+};
 </script>

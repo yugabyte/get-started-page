@@ -1,29 +1,35 @@
 <template>
-  <q-btn :class="copyClicked ? 'copy-code-btn active' : 'copy-code-btn'" flat :label="copyClicked ? null: 'Copy'" :icon="copyClicked ? 'check' : undefined" @click="copyText(text)"/>
+  <q-btn
+    :class="copyClicked ? 'copy-code-btn active' : 'copy-code-btn'"
+    flat
+    :label="copyClicked ? null : 'Copy'"
+    :icon="copyClicked ? 'check' : undefined"
+    @click="copyText(text)"
+  />
 </template>
 
 <script>
-import { copyToClipboard } from './helpers'
+import { copyToClipboard } from './helpers';
 
 export default {
-  name: 'CopyButton',
+  name: 'CopyButton.vue',
   data: function () {
     return {
-      copyClicked: false
-    }
+      copyClicked: false,
+    };
   },
   props: ['text'],
 
   methods: {
     copyText: function (str) {
-      this.copyClicked = true
-      copyToClipboard(typeof str === 'string' ? str : str.join('\n'))
+      this.copyClicked = true;
+      copyToClipboard(typeof str === 'string' ? str : str.join('\n'));
       setTimeout(() => {
-        this.copyClicked = false
-      }, 1500)
-    }
-  }
-}
+        this.copyClicked = false;
+      }, 1500);
+    },
+  },
+};
 </script>
 
 <style>
@@ -34,14 +40,14 @@ export default {
   z-index: 100;
   visibility: visible;
   background-color: #fff;
-  color: #F75821;
+  color: #f75821;
   font-family: 'Rubik', Helvetica, Arial, sans-serif;
   width: 72px;
 }
 
 .copy-code-btn:hover {
   color: white;
-  background-color: #F75821;
+  background-color: #f75821;
 }
 
 .copy-code-btn.active {

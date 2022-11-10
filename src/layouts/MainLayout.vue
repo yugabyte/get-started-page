@@ -5,136 +5,228 @@
         <q-toolbar-title>
           <div class="logo-container">
             <a href="https://www.yugabyte.com" target="_blank" rel="noopener">
-              <img id="yb-logo-symbol" width="240" height="40" alt="YugabyteDB Logo" src="../assets/ybdocs-color.png" />
+              <img
+                id="yb-logo-symbol"
+                width="240"
+                height="40"
+                alt="YugabyteDB Logo"
+                src="../assets/ybdocs-color.png"
+              />
             </a>
           </div>
         </q-toolbar-title>
         <div id="yb-main-navbar">
-          <q-btn-dropdown color="primary" :label="currentVersion.display" class="version-dropdown" ref="versionDropdown">
+          <q-btn-dropdown
+            color="primary"
+            :label="currentVersion.display"
+            class="version-dropdown"
+            ref="versionDropdown"
+          >
             <q-list>
-              <q-item v-for="v in versionList" v-bind:key="v.name" clickable @click="() => handleVersionSwitch(v.name)">
+              <q-item
+                v-for="v in versionList"
+                v-bind:key="v.name"
+                clickable
+                @click="() => handleVersionSwitch(v.name)"
+              >
                 <q-item-section :data-version="v.name">
                   <q-item-label>{{ v.display }}</q-item-label>
                 </q-item-section>
               </q-item>
             </q-list>
           </q-btn-dropdown>
-          <a href="https://docs.yugabyte.com/" class="yb-nav-links" target="_blank" rel="noopener" style="color: #202951">
-            <q-btn class="yb-nav-links" flat label="Docs" color="#202951"/>
+          <a
+            href="https://docs.yugabyte.com/"
+            class="yb-nav-links"
+            target="_blank"
+            rel="noopener"
+            style="color: #202951"
+          >
+            <q-btn class="yb-nav-links" flat label="Docs" color="#202951" />
           </a>
-          <a href="https://blog.yugabyte.com/" class="yb-nav-links" target="_blank" rel="noopener" style="color: #202951">
-            <q-btn class="yb-nav-links" flat label="Blog" color="#202951"/>
+          <a
+            href="https://blog.yugabyte.com/"
+            class="yb-nav-links"
+            target="_blank"
+            rel="noopener"
+            style="color: #202951"
+          >
+            <q-btn class="yb-nav-links" flat label="Blog" color="#202951" />
           </a>
-          <a href="/" class="yb-nav-links" rel="noopener" style="color: #ff4200">
-            <q-btn class="yb-nav-links" flat label="Download" color="#202951"/>
+          <a
+            href="/"
+            class="yb-nav-links"
+            rel="noopener"
+            style="color: #ff4200"
+          >
+            <q-btn class="yb-nav-links" flat label="Download" color="#202951" />
           </a>
         </div>
-        <q-btn id="side-menu-btn" aria-label="Side Menu button" flat round icon="menu" @click="rightDrawerOpen = !rightDrawerOpen" />
+        <q-btn
+          id="side-menu-btn"
+          aria-label="Side Menu button"
+          flat
+          round
+          icon="menu"
+          @click="rightDrawerOpen = !rightDrawerOpen"
+        />
       </q-toolbar>
     </q-header>
     <q-drawer v-model="rightDrawerOpen" side="right" bordered>
       <side-menu></side-menu>
     </q-drawer>
 
-    <q-page-container id="page-content-container">
+    <q-page-container id="page-content-container" style="padding-top: 75px">
       <router-view :onScroll="handleScroll" :version="currentVersion" />
     </q-page-container>
-      <q-footer>
-        <footer class="footer">
-          <a href="https://www.yugabyte.com/slack" class="help-footer-btn">
-            <img width="28" src="../assets/slack-mark-white.svg" />
-            <div class="cta-community-link">Join us on Slack</div>
-          </a>
-          <div class="container-fluid">
-            <ul class="footer-nav">
-              <li class="footer-items" >
-                <div class="logo-white">
-                  <img width="50px" height="30px" alt="YugabyteDB logo" src="../assets/ybsymbol-white.svg" />
-                  <div class="copyright">
-                    <div style="margin-bottom: 3px">© {{(new Date()).getFullYear()}} Yugabyte, Inc.</div>
-                    <a href="https://www.yugabyte.com/privacy-policy/">Privacy Policy</a>
+    <q-footer>
+      <footer class="footer">
+        <a href="https://www.yugabyte.com/slack" class="help-footer-btn">
+          <img width="28" src="../assets/slack-mark-white.svg" />
+          <div class="cta-community-link">Join us on Slack</div>
+        </a>
+        <div class="container-fluid">
+          <ul class="footer-nav">
+            <li class="footer-items">
+              <div class="logo-white">
+                <img
+                  width="50px"
+                  height="30px"
+                  alt="YugabyteDB logo"
+                  src="../assets/ybsymbol-white.svg"
+                />
+                <div class="copyright">
+                  <div style="margin-bottom: 3px">
+                    © {{ new Date().getFullYear() }} Yugabyte, Inc.
                   </div>
+                  <a href="https://www.yugabyte.com/privacy-policy/"
+                    >Privacy Policy</a
+                  >
                 </div>
-              </li>
-              <li class="footer-items" data-footer="community-links">
-                <a target="_blank" class="footer-link" href="https://www.yugabyte.com/about" rel="noopener">About</a>
-              </li>
-              <li class="footer-items" data-footer="community-links">
-                <a target="_blank" class="footer-link" href="https://www.yugabyte.com/yugabytedb" rel="noopener">Open Source</a>
-              </li>
-              <li class="footer-items" data-footer="community-links">
-                <a target="_blank" class="footer-link" href="https://github.com/yugabyte/yugabyte-db" rel="noopener">GitHub</a>
-              </li>
-              <li class="footer-items" data-footer="address">
-                <div class="footer-title">Address</div>
-                <a href="https://goo.gl/maps/SJ7TCYKbA6jezdfM6" target="_blank" rel="noopener" id="office-map">
-                  100 S. Murphy Avenue, Suite 200<br class="hidden-xs hidden-sm">
-                  Sunnyvale, CA 94086 <br class="hidden-xs hidden-sm">
-                  United States
-                </a>
-              </li>
-              <li class="footer-items" >
-                <div class="footer-title">Follow Us</div>
-                <div class="footer-social">
-                  <a target="_blank" rel="noopener" href="https://github.com/yugabyte/yugabyte-db" id="github"><img src="../assets/github-small.svg" alt="Github link"></a>
-                  <a target="_blank" rel="noopener" href="https://www.twitter.com/yugabyte" id="twitter"><img src="../assets/twitter-small.svg" alt="Twitter link"></a>
-                  <a target="_blank" rel="noopener" href="https://www.linkedin.com/company/yugabyte" id="linkedin"><img src="../assets/linkedin-small.svg" alt="LinkedIn link"></a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </footer>
-      </q-footer>
+              </div>
+            </li>
+            <li class="footer-items" data-footer="community-links">
+              <a
+                target="_blank"
+                class="footer-link"
+                href="https://www.yugabyte.com/about"
+                rel="noopener"
+                >About</a
+              >
+            </li>
+            <li class="footer-items" data-footer="community-links">
+              <a
+                target="_blank"
+                class="footer-link"
+                href="https://www.yugabyte.com/yugabytedb"
+                rel="noopener"
+                >Open Source</a
+              >
+            </li>
+            <li class="footer-items" data-footer="community-links">
+              <a
+                target="_blank"
+                class="footer-link"
+                href="https://github.com/yugabyte/yugabyte-db"
+                rel="noopener"
+                >GitHub</a
+              >
+            </li>
+            <li class="footer-items" data-footer="address">
+              <div class="footer-title">Address</div>
+              <a
+                href="https://goo.gl/maps/SJ7TCYKbA6jezdfM6"
+                target="_blank"
+                rel="noopener"
+                id="office-map"
+              >
+                100 S. Murphy Avenue, Suite 200<br
+                  class="hidden-xs hidden-sm"
+                />
+                Sunnyvale, CA 94086 <br class="hidden-xs hidden-sm" />
+                United States
+              </a>
+            </li>
+            <li class="footer-items">
+              <div class="footer-title">Follow Us</div>
+              <div class="footer-social">
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://github.com/yugabyte/yugabyte-db"
+                  id="github"
+                  ><img src="../assets/github-small.svg" alt="Github link"
+                /></a>
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.twitter.com/yugabyte"
+                  id="twitter"
+                  ><img src="../assets/twitter-small.svg" alt="Twitter link"
+                /></a>
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.linkedin.com/company/yugabyte"
+                  id="linkedin"
+                  ><img src="../assets/linkedin-small.svg" alt="LinkedIn link"
+                /></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </q-footer>
   </q-layout>
 </template>
 
 <script>
-import versionList from '../components/snippets/version.json'
-import SideMenu from './SideMenu'
+import versionList from '../components/snippets/version.json';
+import SideMenu from './SideMenu.vue';
 
 export default {
   name: 'MainLayout',
-  data () {
+  data() {
     return {
       versionList: versionList,
       currentVersion: versionList[0],
       rightDrawerOpen: false,
       pageScrolled: false,
       hoverResourcesLink: false,
-      navLinks: [false, false, false, false]
-    }
+      navLinks: [false, false, false, false],
+    };
   },
   methods: {
     handleScroll: function () {
-      this.pageScrolled = window.scrollY > 0 || window.pageYOffset !== 0
+      this.pageScrolled = window.scrollY > 0 || window.pageYOffset !== 0;
     },
     handleResizeWidth: function (e) {
       if (e.target.outerWidth > 650) {
-        this.rightDrawerOpen = false
+        this.rightDrawerOpen = false;
       }
     },
     handleHoverResources: function () {
-      this.hoverResourcesLink = true
+      this.hoverResourcesLink = true;
     },
     handleHideMenu: function () {
-      this.hoverResourcesLink = false
+      this.hoverResourcesLink = false;
     },
     handleVersionSwitch: function (version) {
-      const newVersion = versionList.find(v => v.name === version)
-      this.currentVersion = newVersion
-      this.$refs.versionDropdown.hide()
-    }
+      const newVersion = versionList.find((v) => v.name === version);
+      this.currentVersion = newVersion;
+      this.$refs.versionDropdown.hide();
+    },
   },
-  created () {
-    window.addEventListener('resize', this.handleResizeWidth)
+  created() {
+    window.addEventListener('resize', this.handleResizeWidth);
   },
-  beforeDestroy () {
-    window.addEventListener('resize', this.handleResizeWidth)
+  beforeUnmount() {
+    window.addEventListener('resize', this.handleResizeWidth);
   },
   components: {
-    'side-menu': SideMenu
-  }
-}
+    'side-menu': SideMenu,
+  },
+};
 </script>
 
 <style>
@@ -142,14 +234,20 @@ body {
   background-color: #fff;
   min-height: 100%;
 }
-body, input {
+body,
+input {
   font-family: 'Inter', sans-serif;
 }
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: 'Rubik', sans-serif;
   font-weight: 500;
 }
-pre, code {
+pre,
+code {
   font-family: 'Inconsolata', 'Courier New', 'Courier', monospace;
 }
 .header {
@@ -271,17 +369,20 @@ a {
   margin-left: auto;
 }
 @media (min-width: 768px) {
-  .overview-container, .service-options {
+  .overview-container,
+  .service-options {
     width: 750px;
   }
 }
 @media (min-width: 992px) {
-  .overview-container, .service-options {
-      width: 850px;
+  .overview-container,
+  .service-options {
+    width: 850px;
   }
 }
 @media (min-width: 1200px) {
-  .overview-container, .service-options {
+  .overview-container,
+  .service-options {
     width: 1050px;
   }
 }
@@ -374,7 +475,8 @@ h3.overview-statement {
   #dropdown-options-container {
     display: block;
   }
-  .os-selection-container, #cloud-cluster-content .cloud-selection-container {
+  .os-selection-container,
+  #cloud-cluster-content .cloud-selection-container {
     display: none;
   }
   .service-tabs-container {

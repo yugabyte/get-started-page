@@ -4,7 +4,7 @@ git clone https://github.com/yugabyte/azure-resource-manager.git
 cd azure-resource-manager
 az group create --name yb-demo -l <region>
 az group deployment create --resource-group yb-demo --template-file yugabyte_deployment.json --parameters ClusterName='yb-demo' SshUser='centos' YBVersion='${version}' SshKeypair='<contents of yugabyte-key.pub>'
-`
+`;
 
 export const aksServerCode = (version) => `
 az login
@@ -35,4 +35,4 @@ helm install yb-demo -n yb-demo yugabytedb/yugabyte \
 --set resource.tserver.limits.memory=1Gi \
 --set Image.tag=${version} \
 --timeout=15m
-`
+`;

@@ -1,40 +1,40 @@
 {
-  "name": "vue-install-page",
+  "name": "get-started",
   "version": "0.0.1",
   "description": "Open-source, cloud-native, high-performance distributed SQL database for global, internet-scale apps.",
-  "productName": "Download | YugabyteDB",
-  "cordovaId": "org.cordova.quasar.app",
+  "productName": "Yugabyte Getting Started Page",
   "author": "Andrew Cai <andrew@yugabyte.com>",
   "private": true,
   "scripts": {
-    "dev": "quasar dev",
+    "start": "quasar dev",
+    "lint": "eslint --ext .js,.ts,.vue ./",
     "build": "quasar build && cp _redirects dist/spa/",
     "publish": "npm run build && aws s3 sync dist/spa s3://install.yugabyte.com",
-    "lint": "eslint --ext .js,.vue src",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "1.10.7",
-    "eslint-loader": "^4.0.2",
-    "quasar": "1.15.20",
-    "vue-gtag": "1.16.1"
+    "@quasar/extras": "^1.0.0",
+    "quasar": "^2.6.0",
+    "vue": "^3.0.0",
+    "vue-gtag": "^2.0.1",
+    "vue-router": "^4.0.0"
   },
   "devDependencies": {
-    "@quasar/app": "1.9.6",
-    "@vue/eslint-config-standard": "4.0.0",
-    "babel-eslint": "10.1.0",
-    "eslint": "5.10.0",
-    "eslint-plugin-vue": "5.2.3",
-    "mini-css-extract-plugin": "0.8.2",
-    "resource-hints-webpack-plugin": "0.0.2",
-    "vue-svg-loader": "0.16.0"
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "eslint": "^8.10.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "eslint-config-prettier": "^8.1.0",
+    "prettier": "^2.5.1",
+    "@types/node": "^12.20.21",
+    "@quasar/app-vite": "^1.0.0",
+    "autoprefixer": "^10.4.2",
+    "typescript": "^4.5.4"
   },
   "engines": {
-    "node": ">= 12.18.3",
-    "npm": ">= 6.14.11",
-    "yarn": ">= 1.22.5"
-  },
-  "browserslist": [
-    "last 1 version, not dead, ie >= 11"
-  ]
+    "node": "^18 || ^16 || ^14.19",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
 }

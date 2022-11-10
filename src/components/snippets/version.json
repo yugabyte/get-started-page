@@ -1,23 +1,23 @@
 [
-    {
-        "name": "latest",
-        "display": "v2.15 (Preview)",
-        "version": "2.15.3.2",
-        "versionShort": "2.15.3",
-        "appVersion": "2.15.3.2-b1"
-    },
-    {
-        "name": "stable",
-        "display": "v2.14 (Stable)",
-        "version": "2.14.4.0",
-        "versionShort": "2.14.4",
-        "appVersion": "2.14.4.0-b26"
-      },
-    {
-        "name": "v2.12 (Earlier)",
-        "display": "v2.12",
-        "version": "2.12.10.0",
-        "versionShort": "2.12.10",
-        "appVersion": "2.12.10.0-b41"
-    }
+  {
+    "name": "latest",
+    "display": "v2.15 (Preview)",
+    "version": "2.15.3.2",
+    "versionShort": "2.15.3",
+    "appVersion": "2.15.3.2-b1"
+  },
+  {
+    "name": "stable",
+    "display": "v2.14 (Stable)",
+    "version": "2.14.4.0",
+    "versionShort": "2.14.4",
+    "appVersion": "2.14.4.0-b26"
+  },
+  {
+    "name": "v2.12 (Earlier)",
+    "display": "v2.12",
+    "version": "2.12.10.0",
+    "versionShort": "2.12.10",
+    "appVersion": "2.12.10.0-b41"
+  }
 ]

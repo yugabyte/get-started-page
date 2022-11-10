@@ -9,13 +9,19 @@ export const generateAwsConfig = (
   vpcId = 'VPC_ID_HERE',
   subnetIds = '"SUBNET_ID_HERE"'
 ) => {
-  const subnetIdStr = subnetIds.split(',').map(x => {
-    let trimmed = x.trim()
-    if (trimmed.charAt(0) !== '"' || trimmed.charAt(trimmed.length - 1) !== '"') {
-      return `"${trimmed}"`
-    }
-    return trimmed
-  }).join(',')
+  const subnetIdStr = subnetIds
+    .split(',')
+    .map((x) => {
+      let trimmed = x.trim();
+      if (
+        trimmed.charAt(0) !== '"' ||
+        trimmed.charAt(trimmed.length - 1) !== '"'
+      ) {
+        return `"${trimmed}"`;
+      }
+      return trimmed;
+    })
+    .join(',');
   return `provider "aws" {
   # Configure your AWS account credentials here.
   access_key = "${accessKey}"
@@ -51,8 +57,8 @@ module "yugabyte-db-cluster" {
 
   # The number of nodes in the cluster, this cannot be lower than the replication factor.
   num_instances = "3"
-}`
-}
+}`;
+};
 
 export const generateAzureConfig = (
   subId = 'AZURE_SUBSCRIPTION_ID',
@@ -73,7 +79,7 @@ export const generateAzureConfig = (
   }
 
   module "yugabyte-db-cluster" {
-    source = "github.com/YugaByte/terraform-azure-yugabyte.git"
+    source = "github.com/yugabyte/terraform-azure-yugabyte.git"
     
     # The name of the cluster to be created.
     cluster_name = "test-yugabyte"
@@ -94,8 +100,8 @@ export const generateAzureConfig = (
     
     # The number of nodes in the cluster, this cannot be lower than the replication factor.
     node_count = "3"
-  }`
-}
+  }`;
+};
 
 export const generateGCPConfig = (
   credentialFile = 'FILE_NAME',
@@ -113,7 +119,7 @@ export const generateGCPConfig = (
   }
 
   module "yugabyte-db-cluster" {
-    source = "github.com/YugaByte/terraform-gcp-yugabyte.git"
+    source = "github.com/yugabyte/terraform-gcp-yugabyte.git"
     
     # The name of the cluster to be created.
     cluster_name = "test-yugabyte"
@@ -131,8 +137,8 @@ export const generateGCPConfig = (
     
     # The number of nodes in the cluster, this cannot be lower than the replication factor.
     node_count = "3"
-  }`
-}
+  }`;
+};
 
 export const generateEKSCreateNode = (
   regionInput = 'AWS_REGION_HERE',
@@ -152,15 +158,18 @@ export const generateEKSCreateNode = (
 --nodes-min 1 \
 --nodes-max 4 \
 --managed
-  `
-}
+  `;
+};
 
 export const generateEKSStorageYaml = (
   nodePrefix = 'standard',
   regionInput = 'us-east-1a,us-east-1b,us-east-1c',
   storageType = 'gp2'
 ) => {
-  return regionInput.split(',').map(zone => `
+  return regionInput
+    .split(',')
+    .map(
+      (zone) => `
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
@@ -169,12 +178,14 @@ provisioner: kubernetes.io/aws-ebs
 parameters:
   type: ${storageType}
   zone: ${zone}
-`).join('\n---\n')
-}
+`
+    )
+    .join('\n---\n');
+};
 
 const code = `
 terraform init
 terraform apply
-`
+`;
 
-export default code
+export default code;
