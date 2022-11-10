@@ -118,7 +118,7 @@
             () => handleSelectSection(this.platformOptions[3])
           "
         >
-          <img src="../assets/docker-icon.png" />
+          <img src="../assets/docker-icon.png" width="32" height="32" />
         </yb-button>
       </div>
 
