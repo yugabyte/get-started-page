@@ -133,19 +133,14 @@
               >
             </li>
             <li class="footer-items" data-footer="address">
-              <div class="footer-title">Address</div>
               <a
-                href="https://goo.gl/maps/SJ7TCYKbA6jezdfM6"
                 target="_blank"
+                class="footer-link"
+                href="https://www.yugabyte.com/contact/"
                 rel="noopener"
-                id="office-map"
+                >Contact</a
               >
-                100 S. Murphy Avenue, Suite 200<br
-                  class="hidden-xs hidden-sm"
-                />
-                Sunnyvale, CA 94086 <br class="hidden-xs hidden-sm" />
-                United States
-              </a>
+
             </li>
             <li class="footer-items">
               <div class="footer-title">Follow Us</div>
