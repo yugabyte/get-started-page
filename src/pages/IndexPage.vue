@@ -82,7 +82,7 @@
           "
           @click="clickServiceTab(2)"
         >
-          <h3>Fully-Managed Cloud</h3>
+          <h3>YugabyteDB Managed</h3>
           <h2>Sign Up</h2>
         </div>
         <div
@@ -93,7 +93,7 @@
           "
           @click="clickServiceTab(3)"
         >
-          <h3>YugabyteDB </h3>
+          <h3>YugabyteDB Voyager</h3>
           <h2>Migrate</h2>
         </div>
       </div>
