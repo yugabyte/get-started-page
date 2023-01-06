@@ -274,7 +274,7 @@
       id="migrate-voyager-content"
       class="content"
     >
-      <div class="os-selection-container">
+      <div class="migrate-voyager-container">
         <yb-button
           label="Linux"
           :active="selectedMigrate.value === 'linux'"
@@ -309,7 +309,7 @@
             () => handleSelectSection(this.migrateOptions[3])
           "
         >
-          <img src="../assets/macos-icon.svg" width="32" height="32" />
+          <img src="../assets/link-slash.svg" width="32" height="32" />
         </yb-button>
         <yb-button
           label="Github"

@@ -453,7 +453,8 @@ h3.overview-statement {
 .service-tabs-container {
   width: 100%;
 }
-#cloud-cluster-content .cloud-selection-container {
+#cloud-cluster-content .cloud-selection-container,
+#migrate-voyager-content .migrate-voyager-container {
   display: flex;
   justify-content: space-between;
   max-width: 1080px;
@@ -462,7 +463,8 @@ h3.overview-statement {
   padding-top: 10px;
 }
 @media (max-width: 1150px) {
-  #cloud-cluster-content .cloud-selection-container {
+  #cloud-cluster-content .cloud-selection-container,
+  #migrate-voyager-content .migrate-voyager-container {
     overflow-x: scroll;
   }
 }
@@ -471,6 +473,7 @@ h3.overview-statement {
     display: block;
   }
   .os-selection-container,
+  #migrate-voyager-content .migrate-voyager-container,
   #cloud-cluster-content .cloud-selection-container {
     display: none;
   }
