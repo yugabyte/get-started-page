@@ -13,21 +13,21 @@
         <q-tab
           name="Cloud Deployment"
           label="Cloud Deployment"
-          icon="img:src/assets/clouddeployment-logo.svg"
+          icon="img:/src/assets/clouddeployment-logo.svg"
           class="option-tabs"
           v-on:click="sendAnalytics('cloud-deployment')"
         />
         <q-tab
           name="Terraform"
           label="Terraform"
-          icon="img:src/assets/terraform-logo.png"
+          icon="img:/src/assets/terraform-logo.png"
           class="option-tabs"
           v-on:click="sendAnalytics('terraform')"
         />
         <q-tab
           name="GKE"
           label="Google Kubernetes Engine"
-          icon="img:src/assets/gke.png"
+          icon="img:/src/assets/gke.png"
           class="option-tabs wide"
           v-on:click="sendAnalytics('gke')"
         />

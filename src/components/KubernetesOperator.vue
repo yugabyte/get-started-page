@@ -13,14 +13,14 @@
         <q-tab
           name="YugabyteDB Operator"
           label="Yugabyte Kubernetes Operator"
-          icon="img:src/assets/yugabyte-logo-dark.png"
+          icon="img:/src/assets/yugabyte-logo-dark.png"
           class="option-tabs k8s-op-tab"
           v-on:click="sendAnalytics('yb-k8s-operator')"
         />
         <q-tab
           name="Operator Hub"
           label="Operator Hub"
-          icon="img:src/assets/openshift-logo.png"
+          icon="img:/src/assets/openshift-logo.png"
           class="option-tabs k8s-op-tab"
           v-on:click="sendAnalytics('operator-hub')"
         />

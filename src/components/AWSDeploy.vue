@@ -13,21 +13,21 @@
         <q-tab
           name="Cloud Formation"
           label="Cloud Formation"
-          icon="img:src/assets/cloudformation-logo.png"
+          icon="img:/src/assets/cloudformation-logo.png"
           class="option-tabs"
           v-on:click="sendAnalytics('cloud-formation')"
         />
         <q-tab
           name="Terraform"
           label="Terraform"
-          icon="img:src/assets/terraform-logo.png"
+          icon="img:/src/assets/terraform-logo.png"
           class="option-tabs"
           v-on:click="sendAnalytics('terraform')"
         />
         <q-tab
           name="EKS"
           label="Elastic Kubernetes Service "
-          icon="img:src/assets/amazon-eks.png"
+          icon="img:/src/assets/amazon-eks.png"
           class="option-tabs wide"
           v-on:click="sendAnalytics('eks')"
         />
