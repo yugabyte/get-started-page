@@ -24,18 +24,28 @@
         </q-tab>
         <q-tab
           name="Terraform"
-          label="Terraform"
-          icon="img:/src/assets/terraform-logo.png"
           class="option-tabs"
           v-on:click="sendAnalytics('terraform')"
-        />
+        >
+          <img
+            width="24"
+            style="margin-bottom: 5px"
+            src="../assets/terraform-logo.png"
+          />
+          Terraform
+        </q-tab>
         <q-tab
           name="AKS"
-          label="Azure Kubernetes Service"
-          icon="img:/src/assets/aks.svg"
           class="option-tabs wide"
           v-on:click="sendAnalytics('AKS')"
-        />
+        >
+          <img
+            width="24"
+            style="margin-bottom: 5px"
+            src="../assets/aks.svg"
+          />
+          Azure Kubernetes Service
+        </q-tab>
         <q-space />
         <div class="quickstart-container">
           <a
