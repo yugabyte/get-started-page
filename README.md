@@ -1,6 +1,6 @@
 # Yugabyte Getting Started Page (get-started)
 
-Open-source, cloud-native, high-performance distributed SQL database for global, internet-scale apps.
+Open-source, cloud-native, high-performance [distributed SQL](https://www.yugabyte.com/tech/distributed-sql/) database for global, internet-scale apps.
 
 ## Install the dependencies
 
