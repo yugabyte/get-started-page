@@ -1,5 +1,5 @@
-export const installYBVoyager = `brew install yb-voyager`;
+export const installYBVoyager = 'brew install yb-voyager';
 
-export const tabYugabyte = `brew tap yugabyte/yugabytedb`;
+export const tabYugabyte = 'brew tap yugabyte/yugabytedb';
 
-export const voyagerVersion = `yb-voyager version`;
+export const voyagerVersion = 'yb-voyager version';

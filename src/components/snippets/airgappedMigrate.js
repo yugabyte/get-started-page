@@ -13,4 +13,4 @@ sudo yum install *`;
 export const installRpmUbuntu = `// For Ubuntu
 sudo apt-get install ./*.deb`;
 
-export const voyagerVersion = `yb-voyager version`;
+export const voyagerVersion = 'yb-voyager version';
