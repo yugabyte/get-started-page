@@ -1,54 +1,51 @@
 <template>
   <div class="migrate-container">
-    <div class="airgapped-section">
-      <p>You can perform an airgapped installation on RHEL 7/8, CentOS 7/8, and Ubuntu OS.</p>
-
-      <p>For airgapped installations, you need to download the tarball containing all the rpm files that are necessary for installing and running <code>yb-voyager</code> on a machine with an internet connection. Transfer the downloaded files to your airgapped machine and proceed with the installation using the following steps:</p>
+    <div class="source-section">
+      <p>Perform the following steps to install <code>yb_voyager</code> using an installer script:</p>
 
       <ol>
         <li>
-          <p>Download the tarball containing all the rpm files on a machine with internet connection using the following command:</p>
+          <p>Clone the yb-voyager repository.</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
-              <copy-button :text="snippets.DownloadTarball7"></copy-button>
-              <code class="pre-helper">{{ snippets.DownloadTarball7 }}</code>
-            </pre>
-          </div>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.DownloadTarball8"></copy-button>
-              <code class="pre-helper">{{ snippets.DownloadTarball8 }}</code>
-            </pre>
-          </div>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.DownloadTarballUbuntu"></copy-button>
-              <code class="pre-helper">{{ snippets.DownloadTarballUbuntu }}</code>
+              <copy-button :text="snippets.cloneVoyager"></copy-button>
+              <code class="pre-helper">{{ snippets.cloneVoyager }}</code>
             </pre>
           </div>
         </li>
 
         <li>
-          <p>Transfer the tarball to your airgapped machine.</p>
+          <p>Change the directory to <code>yb-voyager/installer_scripts</code>.</p>
+
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.changeDir"></copy-button>
+              <code class="pre-helper">{{ snippets.changeDir }}</code>
+            </pre>
+          </div>
         </li>
 
         <li>
-          <p>Unzip the folder on your airgapped machine. Change directory to the unzipped folder and install the rpm files using the following command:</p>
+          <p>Install yb-voyager using the following script:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
-              <copy-button :text="snippets.installRpm"></copy-button>
-              <code class="pre-helper">{{ snippets.installRpm }}</code>
+              <copy-button :text="snippets.installVoyager"></copy-button>
+              <code class="pre-helper">{{ snippets.installVoyager }}</code>
             </pre>
           </div>
 
+          <p>It is safe to execute the script multiple times. If the script fails, check the <code>/tmp/install-yb-voyager.log</code> file.</p>
+        </li>
+
+        <li>
+          <p>The script generates a <code>.yb-voyager.rc</code> file in the home directory. Source the file to ensure that the environment variables are set using the following command:</p>
+
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
-              <copy-button :text="snippets.installRpmUbuntu"></copy-button>
-              <code class="pre-helper">{{ snippets.installRpmUbuntu }}</code>
+              <copy-button :text="snippets.generateVoyagerFile"></copy-button>
+              <code class="pre-helper">{{ snippets.generateVoyagerFile }}</code>
             </pre>
           </div>
         </li>
@@ -70,11 +67,11 @@
   </div>
 </template>
 <script>
-import * as snippets from './snippets/airgappedMigrate';
+import * as snippets from './snippets/sourceMigrate';
 import CopyButton from './CopyButton.vue';
 
 export default {
-  name: 'AirgappedMigrate.vue',
+  name: 'SourceMigrate.vue',
   data: function () {
     return {
       snippets,

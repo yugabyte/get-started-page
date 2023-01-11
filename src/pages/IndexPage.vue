@@ -276,13 +276,13 @@
     >
       <div class="migrate-voyager-container">
         <yb-button
-          label="Linux"
-          :active="selectedMigrate.value === 'linux'"
+          label="RHEL"
+          :active="selectedMigrate.value === 'rhel'"
           v-bind:handleClick="
             () => handleSelectSection(this.migrateOptions[0])
           "
         >
-          <img src="../assets/linux-icon.svg" />
+          <img src="../assets/redhat-icon.svg" />
         </yb-button>
         <yb-button
           label="Ubuntu"
@@ -312,21 +312,30 @@
           <img src="../assets/link-slash.svg" width="32" height="32" />
         </yb-button>
         <yb-button
-          label="Github"
-          :active="selectedMigrate.value === 'github'"
+          label="Docker"
+          :active="selectedMigrate.value === 'docker'"
           v-bind:handleClick="
             () => handleSelectSection(this.migrateOptions[4])
+          "
+        >
+          <img src="../assets/docker-icon.png" width="32" height="32" />
+        </yb-button>
+        <yb-button
+          label="Source"
+          :active="selectedMigrate.value === 'source'"
+          v-bind:handleClick="
+            () => handleSelectSection(this.migrateOptions[5])
           "
         >
           <img src="../assets/github-icon.svg" width="32" height="32" />
         </yb-button>
       </div>
 
-      <div class="os-install-content">
-        <linux-migrate
-          v-if="selectedMigrate.value === 'linux'"
+      <div class="migrate-content">
+        <rhel-migrate
+          v-if="selectedMigrate.value === 'rhel'"
           :version="version"
-        ></linux-migrate>
+        ></rhel-migrate>
         <ubuntu-migrate
           v-if="selectedMigrate.value === 'ubuntu'"
           :version="version"
@@ -339,10 +348,14 @@
           v-if="selectedMigrate.value === 'airgapped'"
           :version="version"
         ></airgapped-migrate>
-        <github-migrate
-          v-if="selectedMigrate.value === 'github'"
+        <docker-migrate
+          v-if="selectedMigrate.value === 'docker'"
           :version="version"
-        ></github-migrate>
+        ></docker-migrate>
+        <source-migrate
+          v-if="selectedMigrate.value === 'source'"
+          :version="version"
+        ></source-migrate>
       </div>
     </div>
   </q-page>
@@ -358,11 +371,12 @@ import AWSDeploy from 'components/AWSDeploy.vue';
 import GCPDeploy from 'components/GCPDeploy.vue';
 import AzureDeploy from 'components/AzureDeploy.vue';
 import KubernetesOperator from 'components/KubernetesOperator.vue';
-import LinuxMigrate from 'components/LinuxMigrate.vue';
+import RhelMigrate from 'components/RhelMigrate.vue';
 import UbuntuMigrate from 'components/UbuntuMigrate.vue';
 import MacMigrate from 'components/MacMigrate.vue';
 import AirgappedMigrate from 'components/AirgappedMigrate.vue';
-import GithubMigrate from 'components/GithubMigrate.vue';
+import DockerMigrate from 'components/DockerMigrate.vue';
+import SourceMigrate from 'components/SourceMigrate.vue';
 import YBButton from 'components/YBButton.vue';
 
 export default {
@@ -424,8 +438,8 @@ export default {
     ];
     const migrateOptions = [
       {
-        label: 'Linux',
-        value: 'linux',
+        label: 'RHEL',
+        value: 'rhel',
       },
       {
         label: 'Ubuntu',
@@ -440,8 +454,12 @@ export default {
         value: 'airgapped',
       },
       {
-        label: 'Github',
-        value: 'github',
+        label: 'Docker',
+        value: 'docker',
+      },
+      {
+        label: 'Source',
+        value: 'source',
       },
     ];
     let selectedService = serviceOptions[0];
@@ -471,13 +489,13 @@ export default {
           selectedPlatform = platformOptions[0];
           break;
         case '#linux':
-          selectedMigrate = migrateOptions[0];
           selectedPlatform = platformOptions[1];
           break;
         case '#kubernetes':
           selectedPlatform = platformOptions[2];
           break;
         case '#docker':
+          selectedMigrate = migrateOptions[4];
           selectedPlatform = platformOptions[3];
           break;
         case '#aws':
@@ -492,14 +510,17 @@ export default {
         case '#k8s-operator':
           selectedDeploy = deployOptions[3];
           break;
+        case '#rhel':
+          selectedMigrate = migrateOptions[0];
+          break;
         case '#ubuntu':
           selectedMigrate = migrateOptions[1];
           break;
         case '#airgapped':
           selectedMigrate = migrateOptions[3];
           break;
-        case '#github':
-          selectedMigrate = migrateOptions[4];
+        case '#source':
+          selectedMigrate = migrateOptions[5];
           break;
         default:
           break;
@@ -531,11 +552,12 @@ export default {
     'gcp-deploy': GCPDeploy,
     'azure-deploy': AzureDeploy,
     'kubernetes-operator': KubernetesOperator,
-    'linux-migrate': LinuxMigrate,
+    'rhel-migrate': RhelMigrate,
     'ubuntu-migrate': UbuntuMigrate,
     'mac-migrate': MacMigrate,
     'airgapped-migrate': AirgappedMigrate,
-    'github-migrate': GithubMigrate,
+    'docker-migrate': DockerMigrate,
+    'source-migrate': SourceMigrate,
   },
   props: ['onScroll', 'version'],
   methods: {

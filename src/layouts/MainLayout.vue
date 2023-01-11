@@ -487,6 +487,7 @@ h3.overview-statement {
     display: none;
   }
 }
+.migrate-content,
 .os-install-content {
   max-width: 1080px;
   margin-left: auto;
