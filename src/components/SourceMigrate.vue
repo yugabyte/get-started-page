@@ -87,7 +87,7 @@ export default {
 .migrate-container {
   text-align: left;
 }
-.rhel-section {
+.source-section {
   margin-bottom: 80px;
   position: relative;
 }

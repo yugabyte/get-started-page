@@ -90,7 +90,7 @@ export default {
 .migrate-container {
   text-align: left;
 }
-.rhel-section {
+.airgapped-section {
   margin-bottom: 80px;
   position: relative;
 }

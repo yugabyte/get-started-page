@@ -65,7 +65,7 @@ export default {
 .migrate-container {
   text-align: left;
 }
-.rhel-section {
+.ubuntu-section {
   margin-bottom: 80px;
   position: relative;
 }

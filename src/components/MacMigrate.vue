@@ -13,6 +13,8 @@
               <code class="pre-helper">{{ snippets.tabYugabyte }}</code>
             </pre>
           </div>
+
+          <p>The repository contains the formula to build and install <code>yb-voyager</code> on your MacOS device.</p>
         </li>
 
         <li>
@@ -24,8 +26,6 @@
               <code class="pre-helper">{{ snippets.installYBVoyager }}</code>
             </pre>
           </div>
-
-          <p>The repository contains the formula to build and install <code>yb-voyager</code> on your MacOS device.</p>
         </li>
 
         <li>
@@ -65,7 +65,7 @@ export default {
 .migrate-container {
   text-align: left;
 }
-.rhel-section {
+.mac-section {
   margin-bottom: 80px;
   position: relative;
 }

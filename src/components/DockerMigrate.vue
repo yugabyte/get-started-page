@@ -81,7 +81,7 @@ export default {
 .migrate-container {
   text-align: left;
 }
-.rhel-section {
+.docker-section {
   margin-bottom: 80px;
   position: relative;
 }
