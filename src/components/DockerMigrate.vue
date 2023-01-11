@@ -127,6 +127,12 @@ export default {
   top: 20px;
   left: 15px;
 }
+@media (max-width: 767px) {
+  .migrate-container ol,
+  .migrate-container ul {
+    padding-left: 10px;
+  }
+}
 ul {
   list-style: disc;
 }

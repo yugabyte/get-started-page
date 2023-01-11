@@ -110,6 +110,12 @@ export default {
   -ms-user-select: none;
   user-select: none;
 }
+@media (max-width: 767px) {
+  .migrate-container ol,
+  .migrate-container ul {
+    padding-left: 10px;
+  }
+}
 ul {
   list-style: disc;
 }
