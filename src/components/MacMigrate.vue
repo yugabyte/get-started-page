@@ -1,6 +1,12 @@
 <template>
   <div class="migrate-container">
     <div class="mac-section">
+      <div class="admonition note">
+        <p><strong>Note on migrating from MySQL/Oracle on macOS</strong></p>
+
+        <p>To migrate from MySQL/Oracle source databases on macOS to YugabyteDB, install yb-voyager using docker-based instructions.</p>
+      </div>
+
       <p>Perform the following steps to install yb-voyager using brew for MacOS:</p>
 
       <ol>
@@ -39,8 +45,6 @@
           </div>
         </li>
       </ol>
-
-      <p>To learn more about yb-voyager, refer to <a href="https://docs.yugabyte.com/preview/migrate/yb-voyager-cli/" title="YugabyteDB Voyager CLI">YugabyteDB Voyager CLI</a>.</p>
     </div>
   </div>
 </template>

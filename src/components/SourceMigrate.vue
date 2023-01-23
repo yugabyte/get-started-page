@@ -61,8 +61,6 @@
           </div>
         </li>
       </ol>
-
-      <p>To learn more about yb-voyager, refer to <a href="https://docs.yugabyte.com/preview/migrate/yb-voyager-cli/" title="YugabyteDB Voyager CLI">YugabyteDB Voyager CLI</a>.</p>
     </div>
   </div>
 </template>
