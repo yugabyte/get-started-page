@@ -1,13 +1,11 @@
-export const dockerImage = `docker pull yugabytedb/yb-voyager
+export const dockerImageAndWrapper = `docker pull yugabytedb/yb-voyager
 docker save -o yb-voyager-image.tar yugabytedb/yb-voyager:latest
-gzip yb-voyager-image.tar`;
+gzip yb-voyager-image.tar
+wget -O ./yb-voyager https://raw.githubusercontent.com/yugabyte/yb-voyager/main/docker/yb-voyager-docker`;
 
-export const dockerWrapper = 'wget -O ./yb-voyager https://raw.githubusercontent.com/yugabyte/yb-voyager/main/docker/yb-voyager-docker';
-
-export const dockerLoad = `gunzip yb-voyager-image.tar.gz
-docker load --input yb-voyager-image.tar`;
-
-export const dockerExecutable = `chmod +x yb-voyager
+export const dockerLoadAndExecutable = `gunzip yb-voyager-image.tar.gz
+docker load --input yb-voyager-image.tar
+chmod +x yb-voyager
 sudo mv yb-voyager /usr/local/bin
 yb-voyager version`;
 
@@ -23,9 +21,8 @@ sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noa
 
 export const yumInstallPostgreSQL = 'sudo yum install pgdg-redhat-repo oracle-instant-clients-repo';
 
-export const yumDisablePostgreSQL = 'sudo dnf -qy module disable postgresql';
-
-export const yumDownloadPerlOpen = 'sudo yum install --downloadonly --downloaddir=<path_to_directory> perl-open.noarch';
+export const yumDisablePostgreSQLAndDownloadPerlOpen = `sudo dnf -qy module disable postgresql
+sudo yum install --downloadonly --downloaddir=<path_to_directory> perl-open.noarch`;
 
 export const yumDownloadVoyager = 'sudo yum install --downloadonly --downloaddir=<path_to_directory> yb-voyager';
 

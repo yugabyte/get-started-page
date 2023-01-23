@@ -1,7 +1,7 @@
 <template>
   <div class="migrate-container">
     <div class="airgapped-section">
-      <p>You can perform an airgapped installation on RHEL 7/8 and CentOS 7/8.</p>
+      <p>You can perform an airgapped installation on <strong>RHEL 7/8 and CentOS 7/8</strong>.</p>
 
       <q-tabs
         v-model="tab"
@@ -31,23 +31,12 @@
 
           <ol>
             <li>
-              <p>From a machine connected to the internet, run the following commands to pull and save the latest yb-voyager docker image (Pull the version from docker.io):</p>
+              <p>Run the following commands from a machine connected to the internet:</p>
 
               <div class="bg-grey-3 q-tab-panel code-relative">
                 <pre class="code-container">
-                  <copy-button :text="snippets.dockerImage"></copy-button>
-                  <code class="pre-helper">{{ snippets.dockerImage }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Download the yb-voyager wrapper script on the same machine using the following command:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.dockerWrapper"></copy-button>
-                  <code class="pre-helper">{{ snippets.dockerWrapper }}</code>
+                  <copy-button :text="snippets.dockerImageAndWrapper"></copy-button>
+                  <code class="pre-helper">{{ snippets.dockerImageAndWrapper }}</code>
                 </pre>
               </div>
             </li>
@@ -57,23 +46,12 @@
             </li>
 
             <li>
-              <p>Load the docker image using the following command:</p>
+              <p>Run the following commands on the airgapped machine:</p>
 
               <div class="bg-grey-3 q-tab-panel code-relative">
                 <pre class="code-container">
-                  <copy-button :text="snippets.dockerLoad"></copy-button>
-                  <code class="pre-helper">{{ snippets.dockerLoad }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Make the wrapper script executable, move it to the <code>bin</code> directory, and verify the installation using the following commands:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.dockerExecutable"></copy-button>
-                  <code class="pre-helper">{{ snippets.dockerExecutable }}</code>
+                  <copy-button :text="snippets.dockerLoadAndExecutable"></copy-button>
+                  <code class="pre-helper">{{ snippets.dockerLoadAndExecutable }}</code>
                 </pre>
               </div>
             </li>
@@ -91,25 +69,19 @@
 
           <ol>
             <li>
-              <p>Download rpm files for <code>yb-voyager</code> and its dependencies on a machine with internet connection using the following steps:</p>
+              <p>Run the following commands from a machine connected to the internet:</p>
 
-              <ol>
+              <ul>
                 <li>
-                  <p>Install the <code>yugabyte</code> yum repository on your machine using the following command:</p>
-
                   <div class="bg-grey-3 q-tab-panel code-relative">
                     <pre class="code-container">
                       <copy-button :text="snippets.yumInstallYB"></copy-button>
                       <code class="pre-helper">{{ snippets.yumInstallYB }}</code>
                     </pre>
                   </div>
-
-                  <p>This repository contains the yb-voyager rpm and other dependencies required to run <code>yb-voyager</code>.</p>
                 </li>
 
                 <li>
-                  <p>Install the <code>epel-release</code> repository using the following command:</p>
-
                   <div class="bg-grey-3 q-tab-panel code-relative">
                     <pre class="code-container">
                       <copy-button :text="snippets.yumInstallEpel7"></copy-button>
@@ -126,49 +98,28 @@
                 </li>
 
                 <li>
-                  <p>Install the PostgreSQL and Oracle instant clients repositories using the following command:</p>
-
                   <div class="bg-grey-3 q-tab-panel code-relative">
                     <pre class="code-container">
                       <copy-button :text="snippets.yumInstallPostgreSQL"></copy-button>
                       <code class="pre-helper">{{ snippets.yumInstallPostgreSQL }}</code>
                     </pre>
                   </div>
-
-                  <p>These repositories contain the rest of the dependencies required to run <code>yb-voyager</code>.</p>
                 </li>
 
-                <li>
-                  <p>If you're using <strong>RHEL 8</strong> or <strong>CentOS 8</strong>, do the following:</p>
+                <p>For <strong>RHEL 8</strong> or <strong>CentOS 8</strong> only:</p>
 
-                  <ul>
-                    <li>
-                      <p>Disable the default <code>PostgreSQL</code> yum module on your machine using the following command:</p>
-
-                      <div class="bg-grey-3 q-tab-panel code-relative">
-                        <pre class="code-container">
-                          <copy-button :text="snippets.yumDisablePostgreSQL"></copy-button>
-                          <code class="pre-helper">{{ snippets.yumDisablePostgreSQL }}</code>
-                        </pre>
-                      </div>
-                    </li>
-
-                    <li>
-                      <p>Download rpm files for <code>perl-open</code> on your machine using the following command:</p>
-
-                      <div class="bg-grey-3 q-tab-panel code-relative">
-                        <pre class="code-container">
-                          <copy-button :text="snippets.yumDownloadPerlOpen"></copy-button>
-                          <code class="pre-helper">{{ snippets.yumDownloadPerlOpen }}</code>
-                        </pre>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
+                <ul>
+                  <li>
+                    <div class="bg-grey-3 q-tab-panel code-relative">
+                      <pre class="code-container">
+                        <copy-button :text="snippets.yumDisablePostgreSQLAndDownloadPerlOpen"></copy-button>
+                        <code class="pre-helper">{{ snippets.yumDisablePostgreSQLAndDownloadPerlOpen }}</code>
+                      </pre>
+                    </div>
+                  </li>
+                </ul>
 
                 <li>
-                  <p>Download the rpm files for <code>yb-voyager</code> and its dependencies using the following command:</p>
-
                   <div class="bg-grey-3 q-tab-panel code-relative">
                     <pre class="code-container">
                       <copy-button :text="snippets.yumDownloadVoyager"></copy-button>
@@ -176,15 +127,15 @@
                     </pre>
                   </div>
                 </li>
-              </ol>
+              </ul>
             </li>
 
             <li>
-              <p>Transfer the downloaded files to your airgapped machine.</p>
+              Transfer the downloaded files to the airgapped machine.
             </li>
 
             <li>
-              <p>Navigate to the folder containing all the files, install the rpm files, and verify the installation using the following command:</p>
+              <p>Run the following commands on the airgapped machine:</p>
 
               <div class="bg-grey-3 q-tab-panel code-relative">
                 <pre class="code-container">
