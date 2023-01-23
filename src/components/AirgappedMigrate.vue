@@ -31,7 +31,7 @@
 
           <ol>
             <li>
-              <p>Run the following commands from a machine connected to the internet:</p>
+              <p>Run the following commands on a machine connected to the internet:</p>
 
               <div class="bg-grey-3 q-tab-panel code-relative">
                 <pre class="code-container">
@@ -64,49 +64,41 @@
 
             <p>To resolve package dependencies, yum takes into account the list of packages (and their versions) already installed on a machine.</p>
 
-            <p>For yum to download <i>all</i> the required dependencies, ensure that the list of all packages (and their versions) already installed on the airgapped machine and the connected machine are <i>exactly the same</i>. For example, it will not work if you prepare the installer bundle on RHEL 7.5 and try to install it on RHEL 7.2.</p>
+            <p>For yum to download <em>all</em> the required dependencies, ensure that the list of all packages (and their versions) already installed on the airgapped machine and the connected machine are <em>exactly the same</em>. For example, it will not work if you prepare the installer bundle on RHEL 7.5 and try to install it on RHEL 7.2.</p>
           </div>
 
           <ol>
             <li>
-              <p>Run the following commands from a machine connected to the internet:</p>
+              <p>Run the following commands on a machine <strong>connected to the internet</strong>:</p>
 
-              <ul>
-                <li>
-                  <div class="bg-grey-3 q-tab-panel code-relative">
-                    <pre class="code-container">
-                      <copy-button :text="snippets.yumInstallYB"></copy-button>
-                      <code class="pre-helper">{{ snippets.yumInstallYB }}</code>
-                    </pre>
-                  </div>
-                </li>
+              <div class="bg-grey-3 q-tab-panel code-relative">
+                <pre class="code-container">
+                  <copy-button :text="snippets.yumInstallYB"></copy-button>
+                  <code class="pre-helper">{{ snippets.yumInstallYB }}</code>
+                </pre>
+              </div>
+              <div class="bg-grey-3 q-tab-panel code-relative">
+                <pre class="code-container">
+                  <copy-button :text="snippets.yumInstallEpel7"></copy-button>
+                  <code class="pre-helper">{{ snippets.yumInstallEpel7 }}</code>
+                </pre>
+              </div>
+              <div class="bg-grey-3 q-tab-panel code-relative">
+                <pre class="code-container">
+                  <copy-button :text="snippets.yumInstallEpel8"></copy-button>
+                  <code class="pre-helper">{{ snippets.yumInstallEpel8 }}</code>
+                </pre>
+              </div>
+              <div class="bg-grey-3 q-tab-panel code-relative">
+                <pre class="code-container">
+                  <copy-button :text="snippets.yumInstallPostgreSQL"></copy-button>
+                  <code class="pre-helper">{{ snippets.yumInstallPostgreSQL }}</code>
+                </pre>
+              </div>
+            </li>
 
-                <li>
-                  <div class="bg-grey-3 q-tab-panel code-relative">
-                    <pre class="code-container">
-                      <copy-button :text="snippets.yumInstallEpel7"></copy-button>
-                      <code class="pre-helper">{{ snippets.yumInstallEpel7 }}</code>
-                    </pre>
-                  </div>
-
-                  <div class="bg-grey-3 q-tab-panel code-relative">
-                    <pre class="code-container">
-                      <copy-button :text="snippets.yumInstallEpel8"></copy-button>
-                      <code class="pre-helper">{{ snippets.yumInstallEpel8 }}</code>
-                    </pre>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="bg-grey-3 q-tab-panel code-relative">
-                    <pre class="code-container">
-                      <copy-button :text="snippets.yumInstallPostgreSQL"></copy-button>
-                      <code class="pre-helper">{{ snippets.yumInstallPostgreSQL }}</code>
-                    </pre>
-                  </div>
-                </li>
-
-                <p>For <strong>RHEL 8</strong> or <strong>CentOS 8</strong> only:</p>
+            <li>
+              <p>If the internet-connected machine is running <strong>RHEL 8</strong> or <strong>CentOS 8</strong>:</p>
 
                 <ul>
                   <li>
@@ -118,24 +110,24 @@
                     </div>
                   </li>
                 </ul>
+            </li>
+            <li>
+              <p>For <strong>all</strong> internet-connected machines:</p>
 
-                <li>
-                  <div class="bg-grey-3 q-tab-panel code-relative">
-                    <pre class="code-container">
-                      <copy-button :text="snippets.yumDownloadVoyager"></copy-button>
-                      <code class="pre-helper">{{ snippets.yumDownloadVoyager }}</code>
-                    </pre>
-                  </div>
-                </li>
-              </ul>
+              <div class="bg-grey-3 q-tab-panel code-relative">
+                <pre class="code-container">
+                  <copy-button :text="snippets.yumDownloadVoyager"></copy-button>
+                  <code class="pre-helper">{{ snippets.yumDownloadVoyager }}</code>
+                </pre>
+              </div>
             </li>
 
             <li>
-              Transfer the downloaded files to the airgapped machine.
+              <p>Transfer the downloaded files to the airgapped machine.</p>
             </li>
 
             <li>
-              <p>Run the following commands on the airgapped machine:</p>
+              <p>Run the following commands on the <strong>airgapped machine</strong>:</p>
 
               <div class="bg-grey-3 q-tab-panel code-relative">
                 <pre class="code-container">
