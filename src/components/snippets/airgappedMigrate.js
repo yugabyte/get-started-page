@@ -8,7 +8,8 @@ export const dockerLoad = `gunzip yb-voyager-image.tar.gz
 docker load --input yb-voyager-image.tar`;
 
 export const dockerExecutable = `chmod +x yb-voyager
-sudo mv yb-voyager /usr/local/bin`;
+sudo mv yb-voyager /usr/local/bin
+yb-voyager version`;
 
 export const yumInstallYB = 'sudo yum install https://s3.us-west-2.amazonaws.com/downloads.yugabyte.com/repos/reporpms/yb-yum-repo-1.1-0.noarch.rpm';
 
@@ -28,6 +29,6 @@ export const yumDownloadPerlOpen = 'sudo yum install --downloadonly --downloaddi
 
 export const yumDownloadVoyager = 'sudo yum install --downloadonly --downloaddir=<path_to_directory> yb-voyager';
 
-export const yumInstall = 'sudo yum install *';
+export const yumInstall = `sudo yum install *
+yb-voyager version`;
 
-export const voyagerVersion = 'yb-voyager version';

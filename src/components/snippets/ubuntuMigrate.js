@@ -4,6 +4,5 @@ sudo apt-get install ./yb-apt-repo_1.0.0_all.deb`;
 export const cleanCache = `sudo apt-get clean
 sudo apt-get update`;
 
-export const installYBVoyager = 'sudo apt-get install yb-voyager';
-
-export const voyagerVersion = 'yb-voyager version';
+export const installYBVoyager = `sudo apt-get install yb-voyager
+yb-voyager version`;

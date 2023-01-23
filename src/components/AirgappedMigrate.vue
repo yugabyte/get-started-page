@@ -28,7 +28,6 @@
 
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="docker">
-          <p>Install yb-voyager using a Docker image in an airgapped environment using the following steps:</p>
 
           <ol>
             <li>
@@ -69,23 +68,12 @@
             </li>
 
             <li>
-              <p>Make the wrapper script executable and move it to the <code>bin</code> directory using the following commands:</p>
+              <p>Make the wrapper script executable, move it to the <code>bin</code> directory, and verify the installation using the following commands:</p>
 
               <div class="bg-grey-3 q-tab-panel code-relative">
                 <pre class="code-container">
                   <copy-button :text="snippets.dockerExecutable"></copy-button>
                   <code class="pre-helper">{{ snippets.dockerExecutable }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Check that yb-voyager is installed using the following command:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.voyagerVersion"></copy-button>
-                  <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
                 </pre>
               </div>
             </li>
@@ -196,23 +184,12 @@
             </li>
 
             <li>
-              <p>Navigate to the folder containing all the files and install the rpm files using the following command:</p>
+              <p>Navigate to the folder containing all the files, install the rpm files, and verify the installation using the following command:</p>
 
               <div class="bg-grey-3 q-tab-panel code-relative">
                 <pre class="code-container">
                   <copy-button :text="snippets.yumInstall"></copy-button>
                   <code class="pre-helper">{{ snippets.yumInstall }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Check that yb-voyager is installed using the following command:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.voyagerVersion"></copy-button>
-                  <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
                 </pre>
               </div>
             </li>

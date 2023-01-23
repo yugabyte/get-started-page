@@ -23,22 +23,9 @@
 
       <q-separator />
 
-      <p>Perform the following steps to install yb-voyager using yum for RHEL 7/8 and CentOS 7/8:</p>
-
       <ol>
         <li>
-          <p>Update the yum package manager, and all the packages and repositories installed on your machine using the following command:</p>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.yumUpdate"></copy-button>
-              <code class="pre-helper">{{ snippets.yumUpdate }}</code>
-            </pre>
-          </div>
-        </li>
-
-        <li>
-          <p>Install the <code>yugabyte</code> yum repository using the following command:</p>
+          <p>Update the yum package manager, and install the <code>yugabyte</code> yum repository using the following commands:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -46,7 +33,6 @@
               <code class="pre-helper">{{ snippets.installYB }}</code>
             </pre>
           </div>
-
           <p>This repository contains the yb-voyager rpm and other dependencies required to run <code>yb-voyager</code>.</p>
         </li>
 
@@ -110,34 +96,12 @@
         </li>
 
         <li>
-          <p>Update the yum package manager and all the packages and repositories installed on your machine using the following command:</p>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.yumUpdate"></copy-button>
-              <code class="pre-helper">{{ snippets.yumUpdate }}</code>
-            </pre>
-          </div>
-        </li>
-
-        <li>
-          <p>Install <code>yb-voyager</code> and its dependencies using the following command:</p>
+          <p>Update the yum package manager, install <code>yb-voyager</code> and its dependencies, and verify the installation using the following commands:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
               <copy-button :text="snippets.installYBVoyager"></copy-button>
               <code class="pre-helper">{{ snippets.installYBVoyager }}</code>
-            </pre>
-          </div>
-        </li>
-
-        <li>
-          <p>Check that yb-voyager is installed using the following command:</p>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.voyagerVersion"></copy-button>
-              <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
             </pre>
           </div>
         </li>

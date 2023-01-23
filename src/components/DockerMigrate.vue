@@ -23,8 +23,6 @@
 
       <q-separator />
 
-      <p>Before installing yb-voyager, ensure that you have the <a href="https://docs.docker.com/get-docker/" title="Docker" target="_blank" rel="noopener">Docker</a> runtime installed on your machine.</p>
-
       <ol>
         <li>
           <p>Pull the docker image from YugabyteDB's docker hub (Pull the version from docker.io) as follows:</p>
@@ -38,23 +36,12 @@
         </li>
 
         <li>
-          <p>Download the script to run yb-voyager using the docker image from yb-voyager's GitHub repository, and move it to your machine's bin directory using the following commands:</p>
+          <p>Download the script to run yb-voyager using the docker image from yb-voyager's GitHub repository, move it to your machine's bin directory, and verify the installation using the following commands:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
               <copy-button :text="snippets.runVoyager"></copy-button>
               <code class="pre-helper">{{ snippets.runVoyager }}</code>
-            </pre>
-          </div>
-        </li>
-
-        <li>
-          <p>Check that yb-voyager is installed using the following command:</p>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.voyagerVersion"></copy-button>
-              <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
             </pre>
           </div>
         </li>

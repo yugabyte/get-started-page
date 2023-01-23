@@ -23,8 +23,6 @@
 
       <q-separator />
 
-      <p>Perform the following steps to install yb-voyager using apt for Ubuntu:</p>
-
       <ol>
         <li>
           <p>Install the Yugabyte apt repository on your machine using the following command:</p>
@@ -51,21 +49,12 @@
         </li>
 
         <li>
-          <p>Install yb-voyager and its dependencies using the following command:</p>
+          <p>Install yb-voyager and its dependencies, and verify the installation using the following commands:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
               <copy-button :text="snippets.installYBVoyager"></copy-button>
               <code class="pre-helper">{{ snippets.installYBVoyager }}</code>
-            </pre>
-          </div>
-        </li>
-        <li>
-          <p>Check that yb-voyager is installed using the following command:</p>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.voyagerVersion"></copy-button>
               <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
             </pre>
           </div>
