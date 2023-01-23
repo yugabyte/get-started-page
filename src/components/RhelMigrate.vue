@@ -1,6 +1,28 @@
 <template>
   <div class="migrate-container">
     <div class="rhel-section">
+      <q-tabs
+        v-model="databaseTab"
+        dense
+        class="text-grey"
+        active-color="primary"
+        indicator-color="primary"
+        align="justify"
+      >
+        <q-space />
+        <div class="quickstart-container">
+          <a
+            target="_blank"
+            rel="noopener"
+            id="macos-quickstart-link"
+            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
+            >Complete Docs</a
+          >
+        </div>
+      </q-tabs>
+
+      <q-separator />
+
       <p>Perform the following steps to install yb-voyager using yum for RHEL 7/8 and CentOS 7/8:</p>
 
       <ol>
@@ -212,5 +234,18 @@ ul li {
 }
 p a {
   color: #f7601d;
+}
+.docs-container {
+  margin-right: 15px;
+}
+.docs-container .complete-docs-link {
+  color: #322965;
+  width: 150px;
+  text-decoration: none;
+}
+.docs-container .complete-docs-link::after {
+  content: '\203a';
+  font-size: 20px;
+  margin-left: 4px;
 }
 </style>

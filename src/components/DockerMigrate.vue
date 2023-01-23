@@ -1,6 +1,28 @@
 <template>
   <div class="migrate-container">
     <div class="docker-section">
+      <q-tabs
+        v-model="databaseTab"
+        dense
+        class="text-grey"
+        active-color="primary"
+        indicator-color="primary"
+        align="justify"
+      >
+        <q-space />
+        <div class="quickstart-container">
+          <a
+            target="_blank"
+            rel="noopener"
+            id="macos-quickstart-link"
+            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
+            >Complete Docs</a
+          >
+        </div>
+      </q-tabs>
+
+      <q-separator />
+
       <p>Before installing yb-voyager, ensure that you have the <a href="https://docs.docker.com/get-docker/" title="Docker" target="_blank" rel="noopener">Docker</a> runtime installed on your machine.</p>
 
       <ol>
@@ -104,5 +126,18 @@ ul li {
 }
 p a {
   color: #f7601d;
+}
+.docs-container {
+  margin-right: 15px;
+}
+.docs-container .complete-docs-link {
+  color: #322965;
+  width: 150px;
+  text-decoration: none;
+}
+.docs-container .complete-docs-link::after {
+  content: '\203a';
+  font-size: 20px;
+  margin-left: 4px;
 }
 </style>

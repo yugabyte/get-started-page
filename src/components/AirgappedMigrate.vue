@@ -12,6 +12,16 @@
       >
         <q-tab name="docker" label="Docker" />
         <q-tab name="yum" label="Yum" />
+        <q-space />
+        <div class="docs-container">
+          <a
+            target="_blank"
+            rel="noopener"
+            class="complete-docs-link"
+            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
+            >Complete Docs</a
+          >
+        </div>
       </q-tabs>
 
       <q-separator />
@@ -236,6 +246,9 @@ export default {
 </script>
 
 <style>
+.q-panel > div {
+  max-width: 100%;
+}
 .migrate-container {
   text-align: left;
 }
@@ -307,5 +320,18 @@ ul li {
 }
 p a {
   color: #f7601d;
+}
+.docs-container {
+  margin-right: 15px;
+}
+.docs-container .complete-docs-link {
+  color: #322965;
+  width: 150px;
+  text-decoration: none;
+}
+.docs-container .complete-docs-link::after {
+  content: '\203a';
+  font-size: 20px;
+  margin-left: 4px;
 }
 </style>
