@@ -60,6 +60,16 @@
             </pre>
           </div>
         </li>
+        <li>
+          <p>Check that yb-voyager is installed using the following command:</p>
+
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.voyagerVersion"></copy-button>
+              <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
+            </pre>
+          </div>
+        </li>
       </ol>
     </div>
   </div>
