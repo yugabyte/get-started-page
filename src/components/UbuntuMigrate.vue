@@ -25,7 +25,7 @@
 
       <ol>
         <li>
-          <p>Install the Yugabyte apt repository on your machine using the following command:</p>
+          <p>Install the Yugabyte apt repository:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -33,12 +33,10 @@
               <code class="pre-helper">{{ snippets.installYB }}</code>
             </pre>
           </div>
-
-          <p>This repository contains the <code>yb-voyager</code> debian package and the dependencies required to run <code>yb-voyager</code>.</p>
         </li>
 
         <li>
-          <p>Clean out the temporary cache of <code>apt-get</code> and update the package lists of <code>apt-get</code> on your machine using the following commands:</p>
+          <p>Clean out apt-get's temporary cache and update its package lists:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -49,7 +47,7 @@
         </li>
 
         <li>
-          <p>Install yb-voyager and its dependencies, and verify the installation using the following commands:</p>
+          <p>Install yb-voyager and its dependencies, and verify the installation:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">

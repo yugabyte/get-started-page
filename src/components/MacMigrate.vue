@@ -24,16 +24,14 @@
       <q-separator />
 
       <div class="admonition note">
-        <p><strong>Note on migrating from MySQL/Oracle on macOS</strong></p>
+        <p><strong>Migrating from MySQL/Oracle</strong></p>
 
-        <p>To migrate from MySQL/Oracle source databases on macOS to YugabyteDB, install yb-voyager using docker-based instructions.</p>
+        <p>To migrate from a MySQL or Oracle source database on macOS to YugabyteDB, install yb-voyager using the Docker-based instructions.</p>
       </div>
-
-      <p>Perform the following steps to install yb-voyager using brew for MacOS:</p>
 
       <ol>
         <li>
-          <p><a href="https://docs.brew.sh/Taps" title="Tap" target="_blank" rel="noopener">Tap</a> to the <code>yugabyte</code> brew repository using the following command:</p>
+          <p><a href="https://docs.brew.sh/Taps" title="Tap" target="_blank" rel="noopener">Tap</a> the <code>yugabyte</code> brew repository:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -41,12 +39,10 @@
               <code class="pre-helper">{{ snippets.tabYugabyte }}</code>
             </pre>
           </div>
-
-          <p>The repository contains the formula to build and install <code>yb-voyager</code> on your MacOS device.</p>
         </li>
 
         <li>
-          <p>Install <code>yb-voyager</code> and its dependencies, and verify the installation using the following commands:</p>
+          <p>Install <code>yb-voyager</code> and its dependencies, and verify the installation:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
