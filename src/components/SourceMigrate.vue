@@ -25,7 +25,7 @@
 
       <ol>
         <li>
-          <p>Clone the yb-voyager repository and install yb-voyager using the following commands:</p>
+          <p>Clone the yb-voyager repository and install yb-voyager:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -33,11 +33,11 @@
               <code class="pre-helper">{{ snippets.cloneVoyager }}</code>
             </pre>
           </div>
-          <p>It is safe to execute the script multiple times. If the script fails, check the <code>/tmp/install-yb-voyager.log</code> file.</p>
+          <p>(It's safe to run the script multiple times. If the script fails, check the <code>/tmp/install-yb-voyager.log</code> file.)</p>
         </li>
 
         <li>
-          <p>The script generates a <code>.yb-voyager.rc</code> file in the home directory. Source the file and verify the installation using the following commands:</p>
+          <p>The script generates a <code>.yb-voyager.rc</code> file in the home directory. Source the file and verify the installation:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">

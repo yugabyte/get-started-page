@@ -25,7 +25,7 @@
 
       <ol>
         <li>
-          <p>Pull the docker image from YugabyteDB's docker hub (Pull the version from docker.io) as follows:</p>
+          <p>Pull the docker image from YugabyteDB's docker hub:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -34,9 +34,8 @@
             </pre>
           </div>
         </li>
-
         <li>
-          <p>Download the script to run yb-voyager using the docker image from yb-voyager's GitHub repository, move it to your machine's bin directory, and verify the installation using the following commands:</p>
+          <p>Download the control script, move it to the <code>bin</code> directory, and verify the installation:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
