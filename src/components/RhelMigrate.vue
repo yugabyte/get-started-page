@@ -25,7 +25,7 @@
 
       <ol>
         <li>
-          <p>Update the yum package manager, and install the <code>yugabyte</code> yum repository using the following commands:</p>
+          <p>Update the yum package manager, and install the <code>yugabyte</code> yum repository:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -33,11 +33,10 @@
               <code class="pre-helper">{{ snippets.installYB }}</code>
             </pre>
           </div>
-          <p>This repository contains the yb-voyager rpm and other dependencies required to run <code>yb-voyager</code>.</p>
         </li>
 
         <li>
-          <p>Install the <code>epel-release</code> repository using the following command:</p>
+          <p>Install the <code>epel-release</code> repository:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -55,7 +54,7 @@
         </li>
 
         <li>
-          <p>Install the PostgreSQL and Oracle instant clients repositories using the following command:</p>
+          <p>Install the PostgreSQL and Oracle instant client repositories:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -64,39 +63,20 @@
             </pre>
           </div>
 
-          <p>These repositories contain the rest of the dependencies required to run <code>yb-voyager</code>.</p>
-
           <div class="admonition note">
-            <p>Note that if you're using <strong>RHEL 8</strong> or <strong>CentOS 8</strong>, perform the following two steps before proceeding to step 5.</p>
+            <p>If you're using <strong>RHEL 8</strong> or <strong>CentOS 8</strong>, perform the following two steps before moving to the next step.</p>
 
-            <ul>
-              <li>
-                <p>Disable the default <code>PostgreSQL</code> yum module on your machine using the following command:</p>
-
-                <div class="bg-grey-3 q-tab-panel code-relative">
-                  <pre class="code-container">
-                    <copy-button :text="snippets.disablePostgreSQL"></copy-button>
-                    <code class="pre-helper">{{ snippets.disablePostgreSQL }}</code>
-                  </pre>
-                </div>
-              </li>
-
-              <li>
-                <p>Install <code>perl-open</code> on your machine using the following command:</p>
-
-                <div class="bg-grey-3 q-tab-panel code-relative">
-                  <pre class="code-container">
-                    <copy-button :text="snippets.installPerlOpen"></copy-button>
-                    <code class="pre-helper">{{ snippets.installPerlOpen }}</code>
-                  </pre>
-                </div>
-              </li>
-            </ul>
+            <div class="bg-grey-3 q-tab-panel code-relative">
+              <pre class="code-container">
+                <copy-button :text="snippets.disablePostgreSQLAndInstallPerlOpen"></copy-button>
+                <code class="pre-helper">{{ snippets.disablePostgreSQLAndInstallPerlOpen }}</code>
+              </pre>
+            </div>
           </div>
         </li>
 
         <li>
-          <p>Update the yum package manager, install <code>yb-voyager</code> and its dependencies, and verify the installation using the following commands:</p>
+          <p>Update the yum package manager, install <code>yb-voyager</code> and its dependencies, and verify the installation:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
