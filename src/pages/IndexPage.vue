@@ -40,6 +40,15 @@
           :options="deployOptions"
         />
       </li>
+      <li v-else-if="selectedService.value === 'migrate'">
+        <q-select
+          style="width: 300px"
+          filled
+          label="Migration service"
+          v-model="selectedMigrate"
+          :options="migrateOptions"
+        />
+      </li>
     </ul>
     <div class="service-tabs-container">
       <div class="service-options">
@@ -73,8 +82,19 @@
           "
           @click="clickServiceTab(2)"
         >
-          <h3>Fully-Managed Cloud</h3>
+          <h3>YugabyteDB Managed</h3>
           <h2>Sign Up</h2>
+        </div>
+        <div
+          :class="
+            selectedService.value === 'migrate'
+              ? 'service-cluster-option active'
+              : 'service-cluster-option'
+          "
+          @click="clickServiceTab(3)"
+        >
+          <h3>YugabyteDB Voyager</h3>
+          <h2>Migrate</h2>
         </div>
       </div>
     </div>
@@ -225,7 +245,10 @@
         ></kubernetes-operator>
       </div>
     </div>
-    <div v-else id="managed-cluster-content" class="content">
+    <div v-else-if="selectedService.value === 'managed'"
+      id="managed-cluster-content"
+      class="content"
+    >
       <div class="managed-cluster-container">
         <div>
           <p>
@@ -246,6 +269,95 @@
         </a>
       </div>
     </div>
+    <div
+      v-else-if="selectedService.value === 'migrate'"
+      id="migrate-voyager-content"
+      class="content"
+    >
+      <div class="migrate-voyager-container">
+        <yb-button
+          label="RHEL"
+          :active="selectedMigrate.value === 'rhel'"
+          v-bind:handleClick="
+            () => handleSelectSection(this.migrateOptions[0])
+          "
+        >
+          <img src="../assets/redhat-icon.svg" />
+        </yb-button>
+        <yb-button
+          label="Ubuntu"
+          :active="selectedMigrate.value === 'ubuntu'"
+          v-bind:handleClick="
+            () => handleSelectSection(this.migrateOptions[1])
+          "
+        >
+          <img src="../assets/ubuntu-icon.svg" width="32" height="32" />
+        </yb-button>
+        <yb-button
+          label="macOS"
+          :active="selectedMigrate.value === 'macos'"
+          v-bind:handleClick="
+            () => handleSelectSection(this.migrateOptions[2])
+          "
+        >
+          <img src="../assets/macos-icon.svg" />
+        </yb-button>
+        <yb-button
+          label="Airgapped"
+          :active="selectedMigrate.value === 'airgapped'"
+          v-bind:handleClick="
+            () => handleSelectSection(this.migrateOptions[3])
+          "
+        >
+          <img src="../assets/link-slash.svg" width="32" height="32" />
+        </yb-button>
+        <yb-button
+          label="Docker"
+          :active="selectedMigrate.value === 'docker'"
+          v-bind:handleClick="
+            () => handleSelectSection(this.migrateOptions[4])
+          "
+        >
+          <img src="../assets/docker-icon.png" width="32" height="32" />
+        </yb-button>
+        <yb-button
+          label="Source"
+          :active="selectedMigrate.value === 'source'"
+          v-bind:handleClick="
+            () => handleSelectSection(this.migrateOptions[5])
+          "
+        >
+          <img src="../assets/github-icon.svg" width="32" height="32" />
+        </yb-button>
+      </div>
+
+      <div class="migrate-content">
+        <rhel-migrate
+          v-if="selectedMigrate.value === 'rhel'"
+          :version="version"
+        ></rhel-migrate>
+        <ubuntu-migrate
+          v-if="selectedMigrate.value === 'ubuntu'"
+          :version="version"
+        ></ubuntu-migrate>
+        <mac-migrate
+          v-if="selectedMigrate.value === 'macos'"
+          :version="version"
+        ></mac-migrate>
+        <airgapped-migrate
+          v-if="selectedMigrate.value === 'airgapped'"
+          :version="version"
+        ></airgapped-migrate>
+        <docker-migrate
+          v-if="selectedMigrate.value === 'docker'"
+          :version="version"
+        ></docker-migrate>
+        <source-migrate
+          v-if="selectedMigrate.value === 'source'"
+          :version="version"
+        ></source-migrate>
+      </div>
+    </div>
   </q-page>
 </template>
 
@@ -259,6 +371,12 @@ import AWSDeploy from 'components/AWSDeploy.vue';
 import GCPDeploy from 'components/GCPDeploy.vue';
 import AzureDeploy from 'components/AzureDeploy.vue';
 import KubernetesOperator from 'components/KubernetesOperator.vue';
+import RhelMigrate from 'components/RhelMigrate.vue';
+import UbuntuMigrate from 'components/UbuntuMigrate.vue';
+import MacMigrate from 'components/MacMigrate.vue';
+import AirgappedMigrate from 'components/AirgappedMigrate.vue';
+import DockerMigrate from 'components/DockerMigrate.vue';
+import SourceMigrate from 'components/SourceMigrate.vue';
 import YBButton from 'components/YBButton.vue';
 
 export default {
@@ -274,8 +392,12 @@ export default {
         value: 'cloud',
       },
       {
-        label: 'Fully-Managed Cloud',
+        label: 'YugabyteDB Managed',
         value: 'managed',
+      },
+      {
+        label: 'YugabyteDB Voyager',
+        value: 'migrate',
       },
     ];
     const platformOptions = [
@@ -314,9 +436,36 @@ export default {
         value: 'k8s-operator',
       },
     ];
+    const migrateOptions = [
+      {
+        label: 'RHEL',
+        value: 'rhel',
+      },
+      {
+        label: 'Ubuntu',
+        value: 'ubuntu',
+      },
+        {
+        label: 'macOS',
+        value: 'macos',
+      },
+      {
+        label: 'Airgapped',
+        value: 'airgapped',
+      },
+      {
+        label: 'Docker',
+        value: 'docker',
+      },
+      {
+        label: 'Source',
+        value: 'source',
+      },
+    ];
     let selectedService = serviceOptions[0];
     let selectedPlatform = platformOptions[0];
     let selectedDeploy = deployOptions[0];
+    let selectedMigrate = migrateOptions[0];
 
     if (this.$route.params.service) {
       switch (this.$route.params.service) {
@@ -326,6 +475,9 @@ export default {
         case 'managed':
           selectedService = serviceOptions[2];
           break;
+        case 'migrate':
+          selectedService = serviceOptions[3];
+          break;
         default:
           selectedService = serviceOptions[0];
       }
@@ -333,6 +485,7 @@ export default {
     if (this.$route.hash) {
       switch (this.$route.hash) {
         case '#macos':
+          selectedMigrate = migrateOptions[2];
           selectedPlatform = platformOptions[0];
           break;
         case '#linux':
@@ -342,6 +495,7 @@ export default {
           selectedPlatform = platformOptions[2];
           break;
         case '#docker':
+          selectedMigrate = migrateOptions[4];
           selectedPlatform = platformOptions[3];
           break;
         case '#aws':
@@ -356,6 +510,18 @@ export default {
         case '#k8s-operator':
           selectedDeploy = deployOptions[3];
           break;
+        case '#rhel':
+          selectedMigrate = migrateOptions[0];
+          break;
+        case '#ubuntu':
+          selectedMigrate = migrateOptions[1];
+          break;
+        case '#airgapped':
+          selectedMigrate = migrateOptions[3];
+          break;
+        case '#source':
+          selectedMigrate = migrateOptions[5];
+          break;
         default:
           break;
       }
@@ -368,6 +534,8 @@ export default {
       platformOptions,
       selectedDeploy,
       deployOptions,
+      selectedMigrate,
+      migrateOptions,
 
       // Dirty means a tab or button was clicked
       dirty: false,
@@ -384,14 +552,22 @@ export default {
     'gcp-deploy': GCPDeploy,
     'azure-deploy': AzureDeploy,
     'kubernetes-operator': KubernetesOperator,
+    'rhel-migrate': RhelMigrate,
+    'ubuntu-migrate': UbuntuMigrate,
+    'mac-migrate': MacMigrate,
+    'airgapped-migrate': AirgappedMigrate,
+    'docker-migrate': DockerMigrate,
+    'source-migrate': SourceMigrate,
   },
   props: ['onScroll', 'version'],
   methods: {
     handleSelectSection: function (section) {
       if (this.selectedService.value === 'local') {
         this.selectedPlatform = section;
-      } else {
+      } else if (this.selectedService.value === 'cloud'){
         this.selectedDeploy = section;
+      } else {
+        this.selectedMigrate = section;
       }
       window.history.pushState(
         'platform',
@@ -428,6 +604,12 @@ export default {
             event_category: 'Install-Page',
             value: `click.cloud.${this.selectedDeploy.value}`,
             event_label: `User clicked ${this.selectedDeploy.value} section button`,
+          });
+        } else if (this.selectedService.value === 'migrate') {
+          event('click', {
+            event_category: 'Install-Page',
+            value: `click.migrate.${this.selectedMigrate.value}`,
+            event_label: `User clicked ${this.selectedMigrate.value} section button`,
           });
         }
         this.scrolled = true;
