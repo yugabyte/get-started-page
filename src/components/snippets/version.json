@@ -16,9 +16,9 @@
   {
     "name": "v2.14",
     "display": "v2.14 (LTS)",
-    "version": "2.14.6.0",
+    "version": "2.14.6.1",
     "versionShort": "2.14.6",
-    "appVersion": "2.14.6.0-b30"
+    "appVersion": "2.14.6.1-b4"
   },
   {
     "name": "v2.12",
