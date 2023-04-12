@@ -10,7 +10,7 @@
                 width="240"
                 height="40"
                 alt="YugabyteDB Logo"
-                src="../assets/ybdocs-color.png"
+                src="../assets/ybdocs-color.svg"
               />
             </a>
           </div>

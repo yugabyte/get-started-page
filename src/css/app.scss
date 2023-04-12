@@ -246,3 +246,17 @@
 .sign-up-btn {
   width: 300px;
 }
+
+
+@media(max-width : 900px ) and (min-width:650px){
+  #yb-main-navbar .version-dropdown{
+    margin-right: 0!important;
+  }
+  .logo-container {
+    padding: 0!important;
+    max-width: 110px;
+  }
+  img#yb-logo-symbol {
+    max-width: 170px;
+  }
+}
