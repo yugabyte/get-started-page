@@ -378,6 +378,7 @@ import AirgappedMigrate from 'components/AirgappedMigrate.vue';
 import DockerMigrate from 'components/DockerMigrate.vue';
 import SourceMigrate from 'components/SourceMigrate.vue';
 import YBButton from 'components/YBButton.vue';
+import { useMeta } from 'quasar';
 
 export default {
   name: 'PageIndex',
@@ -631,5 +632,30 @@ export default {
   beforeUnmount() {
     window.removeEventListener('scroll', this.scrollContent);
   },
+  setup () {
+    let pageTitle = 'Download';
+    let pageDescription = 'Get started with YugabyteDB by downloading';
+
+    if (window.location.pathname.indexOf('/cloud') === 0) {
+      pageTitle = 'Deploy';
+      pageDescription = 'Get started with YugabyteDB by deploying in the cloud';
+    } else if (window.location.pathname.indexOf('/managed') === 0) {
+      pageTitle = 'Sign up';
+      pageDescription = 'Get started with YugabyteDB by signing up on YugabyteDB Managed';
+    } else if (window.location.pathname.indexOf('/migrate') === 0) {
+      pageTitle = 'Migrate';
+      pageDescription = 'Get started with YugabyteDB by migrating using Voyager';
+    }
+
+    useMeta({
+      title: `${pageTitle}`,
+      meta: {
+        description: {
+          name: 'description',
+          content: `${pageDescription}`
+        }
+      }
+    });
+  }
 };
 </script>
