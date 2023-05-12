@@ -7,6 +7,13 @@
     "appVersion": "2.17.3.0-b152"
   },
   {
+    "name": "v2.18",
+    "display": "v2.18 (STS)",
+    "version": "2.18.0.0",
+    "versionShort": "2.18.0",
+    "appVersion": "2.18.0.0-b63"
+  },
+  {
     "name": "v2.16",
     "display": "v2.16 (STS)",
     "version": "2.16.4.0",
