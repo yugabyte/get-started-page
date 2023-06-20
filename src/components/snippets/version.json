@@ -1,17 +1,17 @@
 [
-    {
+  {
+    "name": "latest",
+    "display": "v2.19 (Preview)",
+    "version": "2.19.0.0",
+    "versionShort": "2.19.0",
+    "appVersion": "2.19.0.0-b190"
+  },
+  {
     "name": "v2.18",
     "display": "v2.18 (STS)",
     "version": "2.18.0.1",
     "versionShort": "2.18.0",
     "appVersion": "2.18.0.1-b4"
-  },
-  {
-    "name": "latest",
-    "display": "v2.17 (Preview)",
-    "version": "2.17.3.0",
-    "versionShort": "2.17.3",
-    "appVersion": "2.17.3.0-b152"
   },
   {
     "name": "v2.16",
