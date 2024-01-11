@@ -2,7 +2,7 @@ export const dbServerCode = (version) => `
 docker pull yugabytedb/yugabyte:${version}
 docker run -d --name yugabyte -p7000:7000 -p9000:9000 -p15433:15433 -p5433:5433 -p9042:9042 \
  yugabytedb/yugabyte:${version} bin/yugabyted start \
- --background=true
+ --background=false
 `;
 
 export const sqlShellCode = `
