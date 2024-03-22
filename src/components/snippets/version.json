@@ -2,9 +2,9 @@
   {
     "name": "v2.20",
     "display": "v2.20 (LTS)",
-    "version": "2.20.2.0",
+    "version": "2.20.2.1",
     "versionShort": "2.20.2",
-    "appVersion": "2.20.2.0-b145"
+    "appVersion": "2.20.2.1-b3"
   },
   {
     "name": "latest",
