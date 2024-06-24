@@ -82,7 +82,7 @@
           "
           @click="clickServiceTab(2)"
         >
-          <h3>YugabyteDB Managed</h3>
+          <h3>YugabyteDB Aeon</h3>
           <h2>Sign Up</h2>
         </div>
         <div
@@ -641,7 +641,7 @@ export default {
       pageDescription = 'Get started with YugabyteDB by deploying in the cloud';
     } else if (window.location.pathname.indexOf('/managed') === 0) {
       pageTitle = 'Sign up';
-      pageDescription = 'Get started with YugabyteDB by signing up on YugabyteDB Managed';
+      pageDescription = 'Get started with YugabyteDB by signing up on YugabyteDB Aeon';
     } else if (window.location.pathname.indexOf('/migrate') === 0) {
       pageTitle = 'Migrate';
       pageDescription = 'Get started with YugabyteDB by migrating using Voyager';
