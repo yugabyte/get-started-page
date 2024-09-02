@@ -49,6 +49,7 @@ module.exports = configure(function (/* ctx */) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
       env: {
+        RUDDERSTACK_API_KEY: process.env.RUDDERSTACK_API_KEY,
         SEGMENT_API_KEY: process.env.SEGMENT_API_KEY
       },
       target: {
