@@ -10,7 +10,7 @@ sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noa
 export const installRedhatRepo = 'sudo yum install pgdg-redhat-repo oracle-instant-clients-repo';
 
 export const installYB = `sudo yum update
-sudo yum install https://s3.us-west-2.amazonaws.com/downloads.yugabyte.com/repos/reporpms/yb-yum-repo-1.1-0.noarch.rpm`;
+sudo yum install https://software.yugabyte.com/repos/reporpms/yb-yum-repo-1.1-0.noarch.rpm`;
 
 export const installYBVoyager = `sudo yum update
 sudo yum install yb-voyager
