@@ -1,12 +1,12 @@
 export const dbServerCode = (version, appVersion) => `
-wget https://downloads.yugabyte.com/releases/${version}/yugabyte-${appVersion}-linux-x86_64.tar.gz
+wget https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-linux-x86_64.tar.gz
 tar xvfz yugabyte-${appVersion}-linux-x86_64.tar.gz && cd yugabyte-${version}/
 ./bin/post_install.sh
 ./bin/yugabyted start
 `;
 
 export const dbAarch64Code = (version, appVersion) => `
-wget https://downloads.yugabyte.com/releases/${version}/yugabyte-${appVersion}-el8-aarch64.tar.gz
+wget https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-el8-aarch64.tar.gz
 tar xvfz yugabyte-${appVersion}-el8-aarch64.tar.gz && cd yugabyte-${version}/
 ./bin/post_install.sh
 ./bin/yugabyted start
