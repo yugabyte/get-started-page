@@ -9,7 +9,7 @@ chmod +x yb-voyager
 sudo mv yb-voyager /usr/local/bin
 yb-voyager version`;
 
-export const yumInstallYB = 'sudo yum install https://software.yugabyte.com/repos/reporpms/yb-yum-repo-1.1-0.noarch.rpm';
+export const yumInstallYB = 'sudo yum install https://downloads.yugabyte.com/repos/reporpms/yb-yum-repo-1.1-0.noarch.rpm';
 
 // export const yumInstall = 'sudo yum install https://s3.us-west-2.amazonaws.com/downloads.yugabyte.com/repos/reporpms/yb-yum-repo-1.1-0.noarch.rpm';
 
