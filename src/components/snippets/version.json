@@ -1,10 +1,10 @@
 [
   {
     "name": "latest",
-    "display": "v2024.2 (LTS)",
-    "version": "2024.2.4.0",
-    "versionShort": "2024.2.4",
-    "appVersion": "2024.2.4.0-b89"
+    "display": "v2025.1 (LTS)",
+    "version": "2025.1.0.0",
+    "versionShort": "2025.1.0",
+    "appVersion": "2025.1.0.0-b168"
   },
   {
     "name": "v2.25",
@@ -12,6 +12,13 @@
     "version": "2.25.2.0",
     "versionShort": "2.25.2",
     "appVersion": "2.25.2.0-b359"
+  },
+    {
+    "name": "v2024.2",
+    "display": "v2024.2 (LTS)",
+    "version": "2024.2.4.0",
+    "versionShort": "2024.2.4",
+    "appVersion": "2024.2.4.0-b89"
   },
   {
     "name": "v2024.1",
