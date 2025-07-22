@@ -14,11 +14,11 @@
     "appVersion": "2.25.2.0-b359"
   },
   {
-    "name": "v2024.1",
+    "name": "v2024.1.6",
     "display": "v2024.1 (STS)",
-    "version": "2024.1.6.0",
+    "version": "2024.1.6.1",
     "versionShort": "2024.1.6",
-    "appVersion": "2024.1.6.0-b53"
+    "appVersion": "2024.1.6.1-b2"
   },
   {
     "name": "v2.20",
