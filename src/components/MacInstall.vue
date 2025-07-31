@@ -11,6 +11,7 @@
         align="justify"
       >
         <q-tab name="x64" label="X64" class="option-tabs" />
+        <q-tab name="aarch64" label="AARCH64" class="option-tabs" />
         <q-space />
         <div class="quickstart-container">
           <a
@@ -29,6 +30,12 @@
           <pre class="code-container">
             <copy-button :text="dbBashLines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbBashLines" v-bind:key="`mac-db-${index}`">{{ line }}</code>
+          </pre>
+        </q-tab-panel>
+        <q-tab-panel name="aarch64" class="bg-grey-3">
+          <pre class="code-container">
+            <copy-button :text="dbAarch64Lines"></copy-button>
+            <code class="pre-helper pre-helper--shell" v-for="(line, index) in dbAarch64Lines" v-bind:key="`mac-db-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
       </q-tab-panels>
@@ -148,6 +155,7 @@
 <script>
 import {
   dbServerCode,
+  dbAarch64Code,
   sqlShellCode,
   pgCommands,
   ybDemoCommands,
@@ -173,6 +181,11 @@ export default {
   computed: {
     dbBashLines: function () {
       return dbServerCode(this.version.version, this.version.appVersion)
+        .trim()
+        .split('\n');
+    },
+    dbAarch64Lines: function () {
+      return dbAarch64Code(this.version.version, this.version.appVersion)
         .trim()
         .split('\n');
     },
