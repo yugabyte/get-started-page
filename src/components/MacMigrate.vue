@@ -24,14 +24,16 @@
       <q-separator />
 
       <div class="admonition note">
-        <p><strong>Migrating from MySQL/Oracle</strong></p>
+        <p><strong>Migrating from MySQL/Oracle on macOS</strong></p>
 
-        <p>To migrate from a MySQL or Oracle source database on macOS to YugabyteDB, install yb-voyager using the Docker-based instructions.</p>
+        <p>The brew install on macOS does not support installing ora2pg, which is required for MySQL/Oracle database schema export. If you are planning to migrate MySQL or Oracle source databases on macOS, install yb-voyager using Docker instead.</p>
       </div>
+
+      <p>Perform the following steps to install yb-voyager using brew for macOS:</p>
 
       <ol>
         <li>
-          <p><a href="https://docs.brew.sh/Taps" title="Tap" target="_blank" rel="noopener">Tap</a> the <code>yugabyte</code> brew repository:</p>
+          <p><a href="https://docs.brew.sh/Taps" title="Tap" target="_blank" rel="noopener">Tap</a> the <code>yugabyte</code> Homebrew repository using the following command:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -39,15 +41,52 @@
               <code class="pre-helper">{{ snippets.tabYugabyte }}</code>
             </pre>
           </div>
+
+          <p>The repository contains the formula to build and install <code>yb-voyager</code> on your macOS device.</p>
+
+          <p>Note that the tap <code>yugabyte/yugabytedb</code> has been updated to <code>yugabyte/tap</code>. If you have previously installed yb-voyager using the tap <code>yugabyte/yugabytedb</code>, untap the entry using <code>brew untap yugabyte/yugabytedb</code>, and then tap using the preceding command.</p>
         </li>
 
         <li>
-          <p>Install <code>yb-voyager</code> and its dependencies, and verify the installation:</p>
+          <p>Install the <code>postgresql@16</code> package to access <code>pg_dump</code> or <code>pg_restore</code> using the following command:</p>
+
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.installpostgreSQL16"></copy-button>
+              <code class="pre-helper">{{ snippets.installpostgreSQL16 }}</code>
+            </pre>
+          </div>
+        </li>
+
+        <li>
+          <p>Install <code>yb-voyager</code> and its dependencies using the following command:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
               <copy-button :text="snippets.installYBVoyager"></copy-button>
               <code class="pre-helper">{{ snippets.installYBVoyager }}</code>
+            </pre>
+          </div>
+
+          <div class="admonition note">
+            <p>Install a specific version of <code>yb-voyager</code> using the following command:</p>
+
+            <div class="bg-grey-3 q-tab-panel code-relative">
+              <pre class="code-container">
+                <copy-button :text="snippets.installYBVoyagerSpecificVersion"></copy-button>
+                <code class="pre-helper">{{ snippets.installYBVoyagerSpecificVersion }}</code>
+              </pre>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <p>Check that yb-voyager is installed using the following command:</p>
+
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.ybVoyagerVersion"></copy-button>
+              <code class="pre-helper">{{ snippets.ybVoyagerVersion }}</code>
             </pre>
           </div>
         </li>
