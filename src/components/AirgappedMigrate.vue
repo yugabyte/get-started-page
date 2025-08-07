@@ -323,32 +323,6 @@ export default {
   -ms-user-select: none;
   user-select: none;
 }
-.admonition {
-  background: rgba(229,237,255,.5);
-  border: 1px solid rgba(203,219,255,.8);
-  border-radius: 8px;
-  padding: 20px 20px 20px 40px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 22px;
-  color: #25323d;
-  position: relative;
-  margin: 1em 0;
-  font-family: inherit;
-  width: 98%;
-}
-.admonition.note::before {
-  content: "";
-  width: 18px;
-  height: 18px;
-  background-image: url(../assets/admonition-note.svg);
-  background-repeat: no-repeat;
-  background-size: 19px 20px;
-  position: absolute;
-  top: 20px;
-  left: 15px;
-}
 @media (max-width: 767px) {
   .migrate-container ol,
   .migrate-container ul {
