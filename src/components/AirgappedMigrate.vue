@@ -90,7 +90,7 @@
         </q-tab-panel>
 
         <q-tab-panel name="yum" class="bg-form">
-          <p>You can perform an airgapped installation on <strong>RHEL 7/8 and CentOS 7/8</strong>.</p>
+          <p>You can perform an airgapped installation on RHEL 8/9 and CentOS 8/9.</p>
 
           <ol>
             <li>
