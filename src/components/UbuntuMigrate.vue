@@ -11,13 +11,7 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a
-            target="_blank"
-            rel="noopener"
-            id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
-            >Complete Docs</a
-          >
+          <a class="complete-docs" href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager" title="Complete Docs" target="_blank" rel="noopener">Complete Docs</a>
         </div>
       </q-tabs>
 
@@ -71,8 +65,8 @@
           <p>Install <code>yb-voyager</code> and its dependencies using the following command:</p>
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
-              <copy-button :text="snippets.installYBVoyager"></copy-button>
-              <code class="pre-helper">{{ snippets.installYBVoyager }}</code>
+              <copy-button :text="snippets.installVoyager"></copy-button>
+              <code class="pre-helper">{{ snippets.installVoyager }}</code>
             </pre>
           </div>
 
@@ -95,8 +89,8 @@
           <p>Then try installing yb-voyager using the following command:</p>
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
-              <copy-button :text="snippets.installYBVoyager"></copy-button>
-              <code class="pre-helper">{{ snippets.installYBVoyager }}</code>
+              <copy-button :text="snippets.installVoyager"></copy-button>
+              <code class="pre-helper">{{ snippets.installVoyager }}</code>
             </pre>
           </div>
         </li>
@@ -132,8 +126,8 @@
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
-          <copy-button :text="snippets.updateYBVoyager"></copy-button>
-          <code class="pre-helper">{{ snippets.updateYBVoyager }}</code>
+          <copy-button :text="snippets.updateVoyager"></copy-button>
+          <code class="pre-helper">{{ snippets.updateVoyager }}</code>
         </pre>
       </div>
     </div>

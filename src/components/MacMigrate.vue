@@ -11,13 +11,7 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a
-            target="_blank"
-            rel="noopener"
-            id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
-            >Complete Docs</a
-          >
+          <a class="complete-docs" href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager" title="Complete Docs" target="_blank" rel="noopener">Complete Docs</a>
         </div>
       </q-tabs>
 
@@ -85,8 +79,8 @@
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
-              <copy-button :text="snippets.ybVoyagerVersion"></copy-button>
-              <code class="pre-helper">{{ snippets.ybVoyagerVersion }}</code>
+              <copy-button :text="snippets.voyagerVersion"></copy-button>
+              <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
             </pre>
           </div>
         </li>

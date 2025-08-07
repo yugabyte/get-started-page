@@ -2,105 +2,50 @@
   <div class="migrate-container">
     <div class="rhel-section">
       <q-tabs
-        v-model="databaseTab"
+        v-model="tab"
         dense
         class="text-grey"
         active-color="primary"
         indicator-color="primary"
         align="justify"
       >
-        <q-tab
-          name="RHEL 8"
-          class="option-tabs"
-          v-on:click="sendAnalytics('rhel8')"
-        >
-          RHEL 8
-        </q-tab>
-        <q-tab
-          name="RHEL 9"
-          class="option-tabs"
-          v-on:click="sendAnalytics('rhel9')"
-        >
-          RHEL 9
-        </q-tab>
+        <q-tab name="rhel8" label="RHEL 8" />
+        <q-tab name="rhel9" label="RHEL 9" />
         <q-space />
         <div class="quickstart-container">
-          <a
-            v-if="databaseTab === 'RHEL 8'"
-            target="_blank"
-            rel="noopener"
-            id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
-            >Complete Docs</a
-          >
-          <a
-            v-else-if="databaseTab === 'RHEL 9'"
-            target="_blank"
-            rel="noopener"
-            id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
-            >Complete Docs</a
-          >
+          <a class="complete-docs" href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager" title="Complete Docs" target="_blank" rel="noopener">Complete Docs</a>
         </div>
       </q-tabs>
       <q-separator />
 
-      <q-tab-panels v-model="databaseTab" animated>
-        <q-tab-panel name="RHEL 8" class="bg-form">
-          <rhel8-migrate code="azurerm" providerName="Azure"></rhel8-migrate>
+      <q-tab-panels v-model="tab" animated>
+        <q-tab-panel name="rhel8" class="bg-form">
+          <rhel8-migrate></rhel8-migrate>
         </q-tab-panel>
-        <q-tab-panel name="RHEL 9" class="bg-form">
-          <rhel9-migrate code="azurerm" providerName="Azure"></rhel9-migrate>
+        <q-tab-panel name="rhel9" class="bg-form">
+          <rhel9-migrate></rhel9-migrate>
         </q-tab-panel>
       </q-tab-panels>
-      <div class="quickstart-container mobile-view">
-        <a
-          v-if="databaseTab === 'RHEL 8'"
-          target="_blank"
-          rel="noopener"
-          id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/yugabyte-voyager/install-yb-voyager/#install-yb-voyager"
-          >Complete Docs</a
-        >
-        <a
-          v-else-if="databaseTab === 'RHEL 9'"
-          target="_blank"
-          rel="noopener"
-          id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/yugabyte-voyager/install-yb-voyager/#install-yb-voyager"
-          >Complete Docs</a
-        >
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { event } from 'vue-gtag';
+import { ref } from 'vue';
 import Rhel8Migrate from './Rhel8Migrate.vue';
 import Rhel9Migrate from './Rhel9Migrate.vue';
 
 export default {
-  name: 'RhelMigrate',
-  data: function () {
-    return {
-      databaseTab: 'RHEL 8',
-    };
-  },
+  name: 'RhelMigrate.vue',
   components: {
     'rhel8-migrate': Rhel8Migrate,
     'rhel9-migrate': Rhel9Migrate,
   },
-  props: ['version'],
-  methods: {
-    sendAnalytics: function (service) {
-      event('click', {
-        event_category: 'Migrate Page',
-        value: `click.azure.${service}`,
-        event_label: `User clicked RHEL ${service} section button`,
-      });
-    },
-  },
+  setup () {
+    return {
+      tab: ref('rhel8')
+    }
+  }
 };
 </script>
 

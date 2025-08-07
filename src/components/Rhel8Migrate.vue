@@ -99,8 +99,8 @@
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
-          <copy-button :text="snippets.installYBVoyager"></copy-button>
-          <code class="pre-helper">{{ snippets.installYBVoyager }}</code>
+          <copy-button :text="snippets.installVoyager"></copy-button>
+          <code class="pre-helper">{{ snippets.installVoyager }}</code>
         </pre>
       </div>
 
@@ -108,8 +108,8 @@
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
-          <copy-button :text="snippets.installYBVoyagerSpecificVersion"></copy-button>
-          <code class="pre-helper">{{ snippets.installYBVoyagerSpecificVersion }}</code>
+          <copy-button :text="snippets.installVoyagerSpecificVersion"></copy-button>
+          <code class="pre-helper">{{ snippets.installVoyagerSpecificVersion }}</code>
         </pre>
       </div>
     </li>
@@ -119,8 +119,8 @@
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
-          <copy-button :text="snippets.checkYBVersion"></copy-button>
-          <code class="pre-helper">{{ snippets.checkYBVersion }}</code>
+          <copy-button :text="snippets.voyagerVersion"></copy-button>
+          <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
         </pre>
       </div>
     </li>
@@ -132,8 +132,8 @@
 
   <div class="bg-grey-3 q-tab-panel code-relative">
     <pre class="code-container">
-      <copy-button :text="snippets.updateYBVoyager"></copy-button>
-      <code class="pre-helper">{{ snippets.updateYBVoyager }}</code>
+      <copy-button :text="snippets.updateVoyager"></copy-button>
+      <code class="pre-helper">{{ snippets.updateVoyager }}</code>
     </pre>
   </div>
 </template>
