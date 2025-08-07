@@ -5,7 +5,7 @@ tar xvfz yugabyte-${appVersion}-darwin-x86_64.tar.gz && cd yugabyte-${version}/
 `;
 
 export const dbAarch64Code = (version, appVersion) => `
-wget https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-darwin-arm64.tar.gz
+curl -OL https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-darwin-arm64.tar.gz
 tar xvfz yugabyte-${appVersion}-darwin-arm64.tar.gz && cd yugabyte-${version}/
 ./bin/yugabyted start
 `;

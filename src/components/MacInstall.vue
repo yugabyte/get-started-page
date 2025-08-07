@@ -59,7 +59,7 @@
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="x64" label="X64" class="option-tabs" />
+        <q-tab name="x64" label="ALL ARCHITECTURES" class="option-tabs" />
         <q-space />
         <div class="quickstart-container">
           <a
