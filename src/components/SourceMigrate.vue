@@ -11,21 +11,17 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a
-            target="_blank"
-            rel="noopener"
-            id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
-            >Complete Docs</a
-          >
+          <a class="complete-docs" href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager" title="Complete Docs" target="_blank" rel="noopener">Complete Docs</a>
         </div>
       </q-tabs>
 
       <q-separator />
 
+      <p>Perform the following steps to install <code>yb_voyager</code> using an installer script:</p>
+
       <ol>
         <li>
-          <p>Clone the yb-voyager repository and install yb-voyager:</p>
+          <p>Clone the <code>yb-voyager</code> repository.</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -33,16 +29,59 @@
               <code class="pre-helper">{{ snippets.cloneVoyager }}</code>
             </pre>
           </div>
-          <p>(It's safe to run the script multiple times. If the script fails, check the <code>/tmp/install-yb-voyager.log</code> file.)</p>
         </li>
 
         <li>
-          <p>The script generates a <code>.yb-voyager.rc</code> file in the home directory. Source the file and verify the installation:</p>
+          <p>Change the directory to <code>yb-voyager/installer_scripts</code>.</p>
+
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.changeDirectory"></copy-button>
+              <code class="pre-helper">{{ snippets.changeDirectory }}</code>
+            </pre>
+          </div>
+        </li>
+
+        <li>
+          <p>Install yb-voyager using the following script:</p>
+
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.installVoyager"></copy-button>
+              <code class="pre-helper">{{ snippets.installVoyager }}</code>
+            </pre>
+          </div>
+
+          <p>To install a specific version of <code>yb-voyager</code> on your machine, use the following command:</p>
+
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.installVoyagerSpecificVersion"></copy-button>
+              <code class="pre-helper">{{ snippets.installVoyagerSpecificVersion }}</code>
+            </pre>
+          </div>
+
+          <p>It is safe to execute the script multiple times. If the script fails, check the <code>/tmp/install-yb-voyager.log</code> file.</p>
+        </li>
+
+        <li>
+          <p>The script generates a <code>.yb-voyager.rc</code> file in the home directory. Source the file to ensure that the environment variables are set using the following command:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
               <copy-button :text="snippets.generateVoyagerFile"></copy-button>
               <code class="pre-helper">{{ snippets.generateVoyagerFile }}</code>
+            </pre>
+          </div>
+        </li>
+
+        <li>
+          <p>Check that yb-voyager is installed using the following command:</p>
+
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.voyagerVersion"></copy-button>
+              <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
             </pre>
           </div>
         </li>

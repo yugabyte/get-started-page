@@ -14,6 +14,110 @@
   color: inherit;
 }
 
+main hr + p {
+  margin-top: 1em;
+}
+
+.complete-docs {
+  color: #322965;
+  width: 150px;
+  text-decoration: none;
+}
+.complete-docs::after {
+  content: '\203a';
+  font-size: 20px;
+  margin-left: 4px;
+}
+
+.admonition {
+  background: rgba(229, 237, 255, 0.5);
+  border: 1px solid rgba(203, 219, 255, 0.8);
+  border-radius: 8px;
+  padding: 20px 20px 20px 40px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 22px;
+  color: #25323d;
+  position: relative;
+  margin: 1em 0;
+  font-family: inherit;
+  width: 98%;
+}
+
+.admonition::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background-image: url(../assets/admonition-note.svg);
+  background-repeat: no-repeat;
+  background-size: 19px 20px;
+  position: absolute;
+  top: 20px;
+  left: 15px;
+}
+
+.admonition.warning {
+  background: rgba(255, 238, 200, 0.6);
+  border: 1px solid rgba(255, 211, 131, 0.5);
+}
+
+.admonition.warning::before {
+  background-image: url(../assets/admonition-warning.svg);
+}
+
+.table-responsive {
+  margin: 0 0 24px;
+  overflow-x: auto;
+}
+
+.table-responsive th {
+  text-transform: uppercase;
+}
+
+.table-responsive th,
+.table-responsive td {
+  padding: 10px 20px;
+  border: 1px solid #dbdbdb;
+}
+
+.table-responsive tr:nth-child(even) td {
+  background: #fbfcfd;
+}
+
+.table-responsive th:not(:last-child),
+.table-responsive td:not(:last-child) {
+  border-right-color:transparent
+}
+
+.table-responsive tr:last-child th,
+.table-responsive tr:not(:last-child) td {
+  border-bottom-color: transparent
+}
+
+.table-responsive table {
+  border-spacing: 0;
+  min-width: 450px;
+}
+
+.table-responsive thead tr:first-child th:first-child,
+.table-responsive tbody:first-child tr:first-child td:first-child {
+  border-top-left-radius: 3px;
+}
+
+.table-responsive thead tr:first-child th:last-child,
+.table-responsive tbody:first-child tr:first-child td:last-child {
+  border-top-right-radius: 3px;
+}
+.table-responsive thead:only-child tr:last-child th:first-child,
+.table-responsive tr:last-child td:first-child {
+  border-bottom-left-radius: 3px;
+}
+.table-responsive thead:only-child tr:last-child th:last-child,
+.table-responsive tr:last-child td:last-child {
+  border-bottom-right-radius: 3px;
+}
+
 .footer {
   text-align: left;
   width: 100%;

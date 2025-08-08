@@ -2,107 +2,50 @@
   <div class="migrate-container">
     <div class="rhel-section">
       <q-tabs
-        v-model="databaseTab"
+        v-model="tab"
         dense
         class="text-grey"
         active-color="primary"
         indicator-color="primary"
         align="justify"
       >
+        <q-tab name="rhel8" label="RHEL 8" />
+        <q-tab name="rhel9" label="RHEL 9" />
         <q-space />
         <div class="quickstart-container">
-          <a
-            target="_blank"
-            rel="noopener"
-            id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
-            >Complete Docs</a
-          >
+          <a class="complete-docs" href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager" title="Complete Docs" target="_blank" rel="noopener">Complete Docs</a>
         </div>
       </q-tabs>
-
       <q-separator />
 
-      <ol>
-        <li>
-          <p>Update the yum package manager, and install the <code>yugabyte</code> yum repository:</p>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.installYB"></copy-button>
-              <code class="pre-helper">{{ snippets.installYB }}</code>
-            </pre>
-          </div>
-        </li>
-
-        <li>
-          <p>Install the <code>epel-release</code> repository:</p>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.installEpelRelease7"></copy-button>
-              <code class="pre-helper">{{ snippets.installEpelRelease7 }}</code>
-            </pre>
-          </div>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.installEpelRelease8"></copy-button>
-              <code class="pre-helper">{{ snippets.installEpelRelease8 }}</code>
-            </pre>
-          </div>
-        </li>
-
-        <li>
-          <p>Install the PostgreSQL and Oracle instant client repositories:</p>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.installRedhatRepo"></copy-button>
-              <code class="pre-helper">{{ snippets.installRedhatRepo }}</code>
-            </pre>
-          </div>
-
-          <div class="admonition note">
-            <p>If you're using <strong>RHEL 8</strong> or <strong>CentOS 8</strong>, perform the following two steps before moving to the next step.</p>
-
-            <div class="bg-grey-3 q-tab-panel code-relative">
-              <pre class="code-container">
-                <copy-button :text="snippets.disablePostgreSQLAndInstallPerlOpen"></copy-button>
-                <code class="pre-helper">{{ snippets.disablePostgreSQLAndInstallPerlOpen }}</code>
-              </pre>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <p>Update the yum package manager, install <code>yb-voyager</code> and its dependencies, and verify the installation:</p>
-
-          <div class="bg-grey-3 q-tab-panel code-relative">
-            <pre class="code-container">
-              <copy-button :text="snippets.installYBVoyager"></copy-button>
-              <code class="pre-helper">{{ snippets.installYBVoyager }}</code>
-            </pre>
-          </div>
-        </li>
-      </ol>
+      <q-tab-panels v-model="tab" animated>
+        <q-tab-panel name="rhel8" class="bg-form">
+          <rhel8 />
+        </q-tab-panel>
+        <q-tab-panel name="rhel9" class="bg-form">
+          <rhel9 />
+        </q-tab-panel>
+      </q-tab-panels>
     </div>
   </div>
 </template>
+
 <script>
-import * as snippets from './snippets/rhelMigrate';
-import CopyButton from './CopyButton.vue';
+import { ref } from 'vue';
+import Rhel8Migrate from './migrate/rhel/rhel8.vue';
+import Rhel9Migrate from './migrate/rhel/rhel9.vue';
 
 export default {
-  name: 'RhelMigrate.vue',
-  data: function () {
-    return {
-      snippets,
-    };
-  },
+  name: 'RhelMigrate',
   components: {
-    'copy-button': CopyButton,
+    'rhel8': Rhel8Migrate,
+    'rhel9': Rhel9Migrate,
   },
+  setup () {
+    return {
+      tab: ref('rhel8')
+    }
+  }
 };
 </script>
 
@@ -129,32 +72,6 @@ export default {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-.admonition {
-  background: rgba(229,237,255,.5);
-  border: 1px solid rgba(203,219,255,.8);
-  border-radius: 8px;
-  padding: 20px 20px 20px 40px;
-  font-family: inter;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 22px;
-  color: #25323d;
-  position: relative;
-  margin: 1em 0;
-  font-family: inherit;
-}
-.admonition.note::before {
-  content: "";
-  width: 18px;
-  height: 18px;
-  background-image: url(../assets/admonition-note.svg);
-  background-repeat: no-repeat;
-  background-size: 19px 20px;
-  position: absolute;
-  top: 20px;
-  left: 15px;
 }
 @media (max-width: 767px) {
   .migrate-container ol,

@@ -1,4 +1,7 @@
-export const installYBVoyager = `brew install yb-voyager
-yb-voyager version`;
+export const installpostgreSQL16 = 'brew install postgresql@16';
+export const installYBVoyager = 'brew install yb-voyager';
+export const installYBVoyagerSpecificVersion = 'brew install yb-voyager@<VERSION>';
 
-export const tabYugabyte = 'brew tap yugabyte/yugabytedb';
+export const tabYugabyte = 'brew tap yugabyte/tap';
+
+export const voyagerVersion = 'yb-voyager version';

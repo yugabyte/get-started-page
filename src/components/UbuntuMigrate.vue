@@ -11,21 +11,23 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a
-            target="_blank"
-            rel="noopener"
-            id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
-            >Complete Docs</a
-          >
+          <a class="complete-docs" href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager" title="Complete Docs" target="_blank" rel="noopener">Complete Docs</a>
         </div>
       </q-tabs>
 
       <q-separator />
 
+      <p>Perform the following steps to install yb-voyager using apt for Ubuntu:</p>
+
+      <div class="admonition note">
+        <p><strong>Note</strong></p>
+
+        <p><code>apt</code> installation is only supported for Ubuntu 22. For other versions such as 18 and 20, use the install script via the Source installation option.</p>
+      </div>
+
       <ol>
         <li>
-          <p>Install the Yugabyte apt repository:</p>
+          <p>Install the Yugabyte apt repository on your machine using the following command:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -33,10 +35,23 @@
               <code class="pre-helper">{{ snippets.installYB }}</code>
             </pre>
           </div>
+
+          <p>This repository contains the <code>yb-voyager</code> Debian package and the dependencies required to run <code>yb-voyager</code>.</p>
         </li>
 
         <li>
-          <p>Clean out apt-get's temporary cache and update its package lists:</p>
+          <p>Install the <code>postgresql-common</code> repository to fetch PostgreSQL 16 using the following commands:</p>
+
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.installPostgreSQLCommon"></copy-button>
+              <code class="pre-helper">{{ snippets.installPostgreSQLCommon }}</code>
+            </pre>
+          </div>
+        </li>
+
+        <li>
+          <p>Clean the <code>apt-get</code> cache and package lists using the following commands:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -47,17 +62,73 @@
         </li>
 
         <li>
-          <p>Install yb-voyager and its dependencies, and verify the installation:</p>
+          <p>Install <code>yb-voyager</code> and its dependencies using the following command:</p>
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.installVoyager"></copy-button>
+              <code class="pre-helper">{{ snippets.installVoyager }}</code>
+            </pre>
+          </div>
+
+          <p>Note: If you see a failure in the install step similar to the following:</p>
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <code class="pre-helper">{{ snippets.ora2pgFailure }}</code>
+            </pre>
+          </div>
+
+          <p>Try installing ora2pg using the following command:</p>
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.ora2pgInstalling"></copy-button>
+              <code class="pre-helper">{{ snippets.ora2pgInstalling }}</code>
+            </pre>
+          </div>
+
+          <p>Then try installing yb-voyager using the following command:</p>
+          <div class="bg-grey-3 q-tab-panel code-relative">
+            <pre class="code-container">
+              <copy-button :text="snippets.installVoyager"></copy-button>
+              <code class="pre-helper">{{ snippets.installVoyager }}</code>
+            </pre>
+          </div>
+        </li>
+
+        <li>
+          <p>Check that <code>yb-voyager</code> is installed using the following command:</p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
-              <copy-button :text="snippets.installYBVoyager"></copy-button>
-              <code class="pre-helper">{{ snippets.installYBVoyager }}</code>
-              <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
+              <copy-button :text="snippets.ybVoyagerVersion"></copy-button>
+              <code class="pre-helper">{{ snippets.ybVoyagerVersion }}</code>
             </pre>
           </div>
         </li>
       </ol>
+
+      <h4>Upgrade yb-voyager</h4>
+
+      <div class="admonition note">
+        <p><strong>Note</strong></p>
+
+        <p>If you are upgrading Voyager from version 1.8.0 or earlier, you need to install the postgresql-common repository before the upgrade as follows:</p>
+
+        <div class="bg-grey-3 q-tab-panel code-relative">
+          <pre class="code-container">
+            <copy-button :text="snippets.installPostgreSQLCommon"></copy-button>
+            <code class="pre-helper">{{ snippets.installPostgreSQLCommon }}</code>
+          </pre>
+        </div>
+      </div>
+
+      <p>Upgrade yb-voyager using the following command:</p>
+
+      <div class="bg-grey-3 q-tab-panel code-relative">
+        <pre class="code-container">
+          <copy-button :text="snippets.updateVoyager"></copy-button>
+          <code class="pre-helper">{{ snippets.updateVoyager }}</code>
+        </pre>
+      </div>
     </div>
   </div>
 </template>
