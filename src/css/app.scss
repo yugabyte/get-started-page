@@ -14,8 +14,8 @@
   color: inherit;
 }
 
-hr.q-separator.q-separator--horizontal {
-  margin: 0 0 1em;
+main hr + p {
+  margin-top: 1em;
 }
 
 .complete-docs {
