@@ -32,11 +32,11 @@
 
 <script>
 import { ref } from 'vue';
-import Rhel8Migrate from './migrate/rhel/Rhel8.vue';
-import Rhel9Migrate from './migrate/rhel/Rhel9.vue';
+import Rhel8Migrate from './migrate/rhel/rhel8.vue';
+import Rhel9Migrate from './migrate/rhel/rhel9.vue';
 
 export default {
-  name: 'RhelMigrate.vue',
+  name: 'RhelMigrate',
   components: {
     'rhel8': Rhel8Migrate,
     'rhel9': Rhel9Migrate,
