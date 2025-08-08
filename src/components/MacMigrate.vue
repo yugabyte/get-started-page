@@ -67,7 +67,6 @@
 
             <div class="bg-grey-3 q-tab-panel code-relative">
               <pre class="code-container">
-                <copy-button :text="snippets.installYBVoyagerSpecificVersion"></copy-button>
                 <code class="pre-helper">{{ snippets.installYBVoyagerSpecificVersion }}</code>
               </pre>
             </div>

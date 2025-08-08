@@ -22,252 +22,15 @@
 
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="docker" class="bg-form">
-
-          <p>You can perform an airgapped installation on Docker.</p>
-
-          <p>Install yb-voyager using a Docker image in an airgapped environment using the following steps:</p>
-
-          <ol>
-            <li>
-              <p>From a machine connected to the internet, run the following commands to pull and save the latest yb-voyager docker image (Pull the version from docker.io):</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.dockerImage"></copy-button>
-                  <code class="pre-helper">{{ snippets.dockerImage }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Download the yb-voyager wrapper script on the same machine using the following command:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.dockerWrapper"></copy-button>
-                  <code class="pre-helper">{{ snippets.dockerWrapper }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Copy the yb-voyager-image.tar.gz and yb-voyager files to the airgapped machine.</p>
-            </li>
-
-            <li>
-              <p>Load the docker image using the following command:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.dockerLoadAndExecutable"></copy-button>
-                  <code class="pre-helper">{{ snippets.dockerLoadAndExecutable }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Make the wrapper script executable and move it to the bin directory using the following commands:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.dockerMoveScript"></copy-button>
-                  <code class="pre-helper">{{ snippets.dockerMoveScript }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Check that yb-voyager is installed using the following command:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.voyagerVersion"></copy-button>
-                  <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
-                </pre>
-              </div>
-            </li>
-          </ol>
+          <docker />
         </q-tab-panel>
 
         <q-tab-panel name="yum" class="bg-form">
-          <p>You can perform an airgapped installation on RHEL 8/9 and CentOS 8/9.</p>
-
-          <ol>
-            <li>
-              <p>Download the airgapped bundle:</p>
-
-              <ol>
-                <li>
-                  <p>For RHEL8:</p>
-
-                  <div class="bg-grey-3 q-tab-panel code-relative">
-                    <pre class="code-container">
-                      <copy-button :text="snippets.yumRHEL8"></copy-button>
-                      <code class="pre-helper">{{ snippets.yumRHEL8 }}</code>
-                    </pre>
-                  </div>
-                </li>
-
-                <li>
-                  <p>For RHEL9:</p>
-
-                  <div class="bg-grey-3 q-tab-panel code-relative">
-                    <pre class="code-container">
-                      <copy-button :text="snippets.yumRHEL9"></copy-button>
-                      <code class="pre-helper">{{ snippets.yumRHEL9 }}</code>
-                    </pre>
-                  </div>
-                </li>
-              </ol>
-            </li>
-
-            <li>
-              <p>Extract the bundle.</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.airgappedBundleExtract"></copy-button>
-                  <code class="pre-helper">{{ snippets.airgappedBundleExtract }}</code>
-                </pre>
-              </div>
-
-              <p>It contains three packages - debezium, ora2pg, and yb-voyager.</p>
-            </li>
-
-            <li>
-              <p>Download the airgapped installation script into the extracted bundle directory:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.airgappedInstallationScript"></copy-button>
-                  <code class="pre-helper">{{ snippets.airgappedInstallationScript }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Make the script executable:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.airgappedExecutableScript"></copy-button>
-                  <code class="pre-helper">{{ snippets.airgappedExecutableScript }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Transfer the folder (which contains the 3 packages and the installer script) to the airgapped machine.</p>
-            </li>
-
-            <li>
-              <p>Install all the <a href="https://docs.yugabyte.com/preview/yugabyte-voyager/install-yb-voyager/#dependencies-for-ubuntu" target="_blank" rel="noopener">dependencies</a> on the airgapped machine.</p>
-            </li>
-
-            <li>
-              <p>Run the <a href="https://docs.yugabyte.com/preview/yugabyte-voyager/install-yb-voyager/#install-script" target="_blank" rel="noopener">installer script</a> on the airgapped machine to check the dependencies and install voyager:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.airgappedInstallScript"></copy-button>
-                  <code class="pre-helper">{{ snippets.airgappedInstallScript }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Check that yb-voyager is installed using the following command:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.voyagerVersion"></copy-button>
-                  <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
-                </pre>
-              </div>
-            </li>
-          </ol>
+          <yum />
         </q-tab-panel>
 
         <q-tab-panel name="ubuntu" class="bg-form">
-          <p>You can perform an airgapped installation on Ubuntu 22 and later.</p>
-
-          <ol>
-            <li>
-              <p>Download the airgapped bundle:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.ubuntuBundle"></copy-button>
-                  <code class="pre-helper">{{ snippets.ubuntuBundle }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Extract the bundle.</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.airgappedBundleExtract"></copy-button>
-                  <code class="pre-helper">{{ snippets.airgappedBundleExtract }}</code>
-                </pre>
-              </div>
-
-              <p>It contains three packages - debezium, ora2pg, and yb-voyager.</p>
-            </li>
-
-            <li>
-              <p>Download the airgapped installation script into the extracted bundle directory:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.airgappedInstallationScript"></copy-button>
-                  <code class="pre-helper">{{ snippets.airgappedInstallationScript }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Make the script executable:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.airgappedExecutableScript"></copy-button>
-                  <code class="pre-helper">{{ snippets.airgappedExecutableScript }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Transfer the folder (which contains the 3 packages and the installer script) to the airgapped machine.</p>
-            </li>
-
-            <li>
-              <p>Install all the <a href="https://docs.yugabyte.com/preview/yugabyte-voyager/install-yb-voyager/#dependencies-for-ubuntu" target="_blank" rel="noopener">dependencies</a> on the airgapped machine.</p>
-            </li>
-
-            <li>
-              <p>Run the <a href="https://docs.yugabyte.com/preview/yugabyte-voyager/install-yb-voyager/#install-script" target="_blank" rel="noopener">install script</a> on the airgapped machine to check the dependencies and install voyager:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.airgappedInstallScript"></copy-button>
-                  <code class="pre-helper">{{ snippets.airgappedInstallScript }}</code>
-                </pre>
-              </div>
-            </li>
-
-            <li>
-              <p>Check that yb-voyager is installed using the following command:</p>
-
-              <div class="bg-grey-3 q-tab-panel code-relative">
-                <pre class="code-container">
-                  <copy-button :text="snippets.voyagerVersion"></copy-button>
-                  <code class="pre-helper">{{ snippets.voyagerVersion }}</code>
-                </pre>
-              </div>
-            </li>
-          </ol>
+          <ubuntu />
         </q-tab-panel>
       </q-tab-panels>
     </div>
@@ -275,18 +38,16 @@
 </template>
 <script>
 import { ref } from 'vue';
-import * as snippets from './snippets/airgappedMigrate';
-import CopyButton from './CopyButton.vue';
+import docker from './migrate/airgapped/docker.vue';
+import ubuntu from './migrate/airgapped/ubuntu.vue';
+import yum from './migrate/airgapped/yum.vue';
 
 export default {
-  name: 'AirgappedMigrate.vue',
-  data: function () {
-    return {
-      snippets,
-    };
-  },
+  name: 'AirgappedMigrate',
   components: {
-    'copy-button': CopyButton,
+    'docker': docker,
+    'ubuntu': ubuntu,
+    'yum': yum,
   },
   setup () {
     return {
@@ -348,15 +109,5 @@ p a {
 }
 .docs-container {
   margin-right: 15px;
-}
-.docs-container .complete-docs-link {
-  color: #322965;
-  width: 150px;
-  text-decoration: none;
-}
-.docs-container .complete-docs-link::after {
-  content: '\203a';
-  font-size: 20px;
-  margin-left: 4px;
 }
 </style>

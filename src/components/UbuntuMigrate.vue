@@ -73,7 +73,6 @@
           <p>Note: If you see a failure in the install step similar to the following:</p>
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
-              <copy-button :text="snippets.ora2pgFailure"></copy-button>
               <code class="pre-helper">{{ snippets.ora2pgFailure }}</code>
             </pre>
           </div>

@@ -20,10 +20,10 @@
 
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="rhel8" class="bg-form">
-          <rhel8-migrate></rhel8-migrate>
+          <rhel8 />
         </q-tab-panel>
         <q-tab-panel name="rhel9" class="bg-form">
-          <rhel9-migrate></rhel9-migrate>
+          <rhel9 />
         </q-tab-panel>
       </q-tab-panels>
     </div>
@@ -32,14 +32,14 @@
 
 <script>
 import { ref } from 'vue';
-import Rhel8Migrate from './Rhel8Migrate.vue';
-import Rhel9Migrate from './Rhel9Migrate.vue';
+import Rhel8Migrate from './migrate/rhel/Rhel8.vue';
+import Rhel9Migrate from './migrate/rhel/Rhel9.vue';
 
 export default {
   name: 'RhelMigrate.vue',
   components: {
-    'rhel8-migrate': Rhel8Migrate,
-    'rhel9-migrate': Rhel9Migrate,
+    'rhel8': Rhel8Migrate,
+    'rhel9': Rhel9Migrate,
   },
   setup () {
     return {

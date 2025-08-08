@@ -1,5 +1,5 @@
 <template>
-  <p>Perform the following steps to install <code>yb-voyager</code> using yum for RHEL 8 and CentOS 8:</p>
+  <p>Perform the following steps to install <code>yb-voyager</code> using yum for RHEL 9 and CentOS 9:</p>
 
   <ol>
     <li>
@@ -22,8 +22,6 @@
           <code class="pre-helper">{{ snippets.installYB }}</code>
         </pre>
       </div>
-
-      <p>This repository contains the <code>yb-voyager</code> rpm and other dependencies required to run <code>yb-voyager</code>.</p>
     </li>
 
     <li>
@@ -38,12 +36,12 @@
     </li>
 
     <li>
-      <p>Install the Oracle instant client repositories using the following command:</p>
+      <p>Install <code>mysql-community-release</code> repository using the following command:</p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
-          <copy-button :text="snippets.installOracleInstant"></copy-button>
-          <code class="pre-helper">{{ snippets.installOracleInstant }}</code>
+          <copy-button :text="snippets.installMysqlCommunityRelease"></copy-button>
+          <code class="pre-helper">{{ snippets.installMysqlCommunityRelease }}</code>
         </pre>
       </div>
     </li>
@@ -79,6 +77,17 @@
         <pre class="code-container">
           <copy-button :text="snippets.installPerlOpen"></copy-button>
           <code class="pre-helper">{{ snippets.installPerlOpen }}</code>
+        </pre>
+      </div>
+    </li>
+
+    <li>
+      <p>Install Oracle Instant Clients using the following command:</p>
+
+      <div class="bg-grey-3 q-tab-panel code-relative">
+        <pre class="code-container">
+          <copy-button :text="snippets.installOracleInstantClients"></copy-button>
+          <code class="pre-helper">{{ snippets.installOracleInstantClients }}</code>
         </pre>
       </div>
     </li>
@@ -139,11 +148,11 @@
 </template>
 
 <script>
-import * as snippets from './snippets/rhelMigrate8';
-import CopyButton from './CopyButton.vue';
+import * as snippets from '../../snippets/rhelMigrate9';
+import CopyButton from '../../CopyButton.vue';
 
 export default {
-  name: 'Rhel8Migrate',
+  name: 'Rhel9Migrate',
   data: function () {
     return {
       snippets,
