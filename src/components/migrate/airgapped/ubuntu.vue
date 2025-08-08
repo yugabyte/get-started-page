@@ -54,11 +54,11 @@
     </li>
 
     <li>
-      <p>Install all the <a href="https://docs.yugabyte.com/preview/yugabyte-voyager/install-yb-voyager/#dependencies-for-ubuntu" target="_blank" rel="noopener">dependencies</a> on the airgapped machine.</p>
+      <p>Install all the <a href="#dependencies-for-ubuntu">dependencies</a> on the airgapped machine.</p>
     </li>
 
     <li>
-      <p>Run the <a href="https://docs.yugabyte.com/preview/yugabyte-voyager/install-yb-voyager/#install-script" target="_blank" rel="noopener">install script</a> on the airgapped machine to check the dependencies and install voyager:</p>
+      <p>Run the <a href="#install-script">install script</a> on the airgapped machine to check the dependencies and install voyager:</p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -80,7 +80,7 @@
     </li>
   </ol>
 
-  <h3>Dependencies for Ubuntu</h3>
+  <h3 id="dependencies-for-ubuntu">Dependencies for Ubuntu</h3>
 
   <p>Binutils: Minimum version: 2.25</p>
 
@@ -109,7 +109,7 @@
     <li>oracle-instantclient-sqlplus with exact version 21.5.0.0.0</li>
   </ul>
 
-  <h3>Install script</h3>
+  <h3 id="install-script">Install script</h3>
 
   <p>The script by default checks what dependencies are installed on the system and throws an error mentioning the missing dependencies. If all the dependencies are found to be installed, it proceeds with the installation of ora2pg, debezium, and yb-voyager.</p>
 
