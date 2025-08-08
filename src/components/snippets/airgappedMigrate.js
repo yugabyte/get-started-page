@@ -25,3 +25,5 @@ export const airgappedInstallationScript = 'wget -P </path/to/directory> raw.git
 export const airgappedExecutableScript = 'chmod +x /path/to/directory/install-voyager-airgapped.sh';
 
 export const airgappedInstallScript = './install-voyager-airgapped.sh';
+
+export const airgappedInstallScriptOptions = './install-voyager-airgapped.sh [options]';

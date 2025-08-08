@@ -497,7 +497,7 @@ h3.overview-statement {
 /* YBHeader styles */
 h3 {
   font-size: 19px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #f75821;
   margin: 0 0 10px;
   line-height: 1.2;
@@ -508,5 +508,12 @@ h3 img {
   max-height: 40px;
   vertical-align: middle;
   margin-right: 10px;
+}
+
+h4 {
+  font-size: 17px;
+  color: #f75821;
+  margin: 20px 0;
+  line-height: 1.2;
 }
 </style>

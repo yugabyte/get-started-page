@@ -126,7 +126,7 @@
     </li>
   </ol>
 
-  <h4>Upgrade yb-voyager</h4>
+  <h3>Upgrade yb-voyager</h3>
 
   <p>Upgrade yb-voyager using the following command:</p>
 
