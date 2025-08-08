@@ -163,25 +163,25 @@
 
   <p>You can only specify one of <code>--pg-only</code>, <code>--oracle-only</code>, or <code>--mysql-only</code>. If none are provided, the script checks and installs dependencies for all database types. When one of the flags is specified, <code>--help</code> and <code>--check-dependencies-only</code> are specific to the selected database.</p>
 
-  <h3>Oracle Instant Client installation help for Centos/RHEL</h3>
+  <h3>Oracle Instant Client installation help for Ubuntu</h3>
 
-  <p>You can download the oracle instant client rpms from the following links:</p>
+  <p>You can download the oracle instant client RPM packages from the following links:</p>
 
   <ul>
     <li>
-      <p><a href="https://download.oracle.com/otn_software/linux/instantclient/215000/oracle-instantclient-tools-21.5.0.0.0-1.x86_64.rpm" title="oracle-instantclient-tools" target="_blank" rel="noopener">oracle-instantclient-tools</a></p>
+      <p><a href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-tools_21.5.0.0.0-1_amd64.deb" title="oracle-instantclient-tools" target="_blank" rel="noopener">oracle-instantclient-tools</a></p>
     </li>
     <li>
-      <p><a href="https://download.oracle.com/otn_software/linux/instantclient/215000/oracle-instantclient-basic-21.5.0.0.0-1.x86_64.rpm" title="oracle-instantclient-basic" target="_blank" rel="noopener">oracle-instantclient-basic</a></p>
+      <p><a href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-basic_21.5.0.0.0-1_amd64.deb" title="oracle-instantclient-basic" target="_blank" rel="noopener">oracle-instantclient-basic</a></p>
     </li>
     <li>
-      <p><a href="https://download.oracle.com/otn_software/linux/instantclient/215000/oracle-instantclient-devel-21.5.0.0.0-1.x86_64.rpm" title="oracle-instantclient-devel" target="_blank" rel="noopener">oracle-instantclient-devel</a></p>
+      <p><a href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-devel_21.5.0.0.0-1_amd64.deb" title="oracle-instantclient-devel" target="_blank" rel="noopener">oracle-instantclient-devel</a></p>
     </li>
     <li>
-      <p><a href="https://download.oracle.com/otn_software/linux/instantclient/215000/oracle-instantclient-jdbc-21.5.0.0.0-1.x86_64.rpm" title="oracle-instantclient-jdbc" target="_blank" rel="noopener">oracle-instantclient-jdbc</a></p>
+      <p><a href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-jdbc_21.5.0.0.0-1_amd64.deb" title="oracle-instantclient-jdbc" target="_blank" rel="noopener">oracle-instantclient-jdbc</a></p>
     </li>
     <li>
-      <p><a href="https://download.oracle.com/otn_software/linux/instantclient/215000/oracle-instantclient-sqlplus-21.5.0.0.0-1.x86_64.rpm" title="oracle-instantclient-sqlplus" target="_blank" rel="noopener">oracle-instantclient-sqlplus</a></p>
+      <p><a href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-sqlplus_21.5.0.0.0-1_amd64.deb" title="oracle-instantclient-sqlplus" target="_blank" rel="noopener">oracle-instantclient-sqlplus</a></p>
     </li>
   </ul>
 </template>
