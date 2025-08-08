@@ -68,6 +68,7 @@ main hr + p {
 
 .table-responsive {
   margin: 0 0 24px;
+  overflow-x: auto;
 }
 
 .table-responsive th {
@@ -96,6 +97,7 @@ main hr + p {
 
 .table-responsive table {
   border-spacing: 0;
+  min-width: 450px;
 }
 
 .table-responsive thead tr:first-child th:first-child,
