@@ -44,7 +44,7 @@ export default configure(function (/* ctx */) {
       },
 
       target: {
-        browser: 'baseline-widely-available',
+        browser: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
         node: 'node22',
       },
 
