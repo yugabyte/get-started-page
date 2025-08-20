@@ -46,7 +46,7 @@ main hr + p {
 }
 
 .admonition::before {
-  content: "";
+  content: '';
   width: 18px;
   height: 18px;
   background-image: url(../assets/admonition-note.svg);
@@ -87,12 +87,12 @@ main hr + p {
 
 .table-responsive th:not(:last-child),
 .table-responsive td:not(:last-child) {
-  border-right-color:transparent
+  border-right-color: transparent;
 }
 
 .table-responsive tr:last-child th,
 .table-responsive tr:not(:last-child) td {
-  border-bottom-color: transparent
+  border-bottom-color: transparent;
 }
 
 .table-responsive table {
@@ -351,13 +351,12 @@ main hr + p {
   width: 300px;
 }
 
-
-@media(max-width : 900px ) and (min-width:650px){
-  #yb-main-navbar .version-dropdown{
-    margin-right: 0!important;
+@media (max-width: 900px) and (min-width: 650px) {
+  #yb-main-navbar .version-dropdown {
+    margin-right: 0 !important;
   }
   .logo-container {
-    padding: 0!important;
+    padding: 0 !important;
     max-width: 110px;
   }
   img#yb-logo-symbol {

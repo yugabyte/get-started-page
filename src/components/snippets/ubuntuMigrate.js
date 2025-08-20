@@ -7,7 +7,8 @@ export const installVoyager = 'sudo apt-get install yb-voyager';
 export const installYB = `wget https://downloads.yugabyte.com/repos/reporpms/yb-apt-repo_1.0.0_all.deb
 sudo apt-get install ./yb-apt-repo_1.0.0_all.deb`;
 
-export const ora2pgFailure = 'Depends: ora2pg (= 23.2-yb.2) but 24.3-1.pgdg22.04+1 is to be installed';
+export const ora2pgFailure =
+  'Depends: ora2pg (= 23.2-yb.2) but 24.3-1.pgdg22.04+1 is to be installed';
 export const ora2pgInstalling = 'sudo apt-get install ora2pg=23.2-yb.2';
 
 export const updateVoyager = 'sudo apt-get upgrade yb-voyager';

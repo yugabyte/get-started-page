@@ -45,10 +45,22 @@ a.download-nav-btn {
   border-radius: 0.3em;
   font-size: 17px;
   margin: 0 1.5em;
-  -webkit-transition: color 0.3s, border-color 0.3s, -webkit-box-shadow 0.3s;
-  transition: color 0.3s, border-color 0.3s, -webkit-box-shadow 0.3s;
-  transition: color 0.3s, box-shadow 0.3s, border-color 0.3s;
-  transition: color 0.3s, box-shadow 0.3s, border-color 0.3s,
+  -webkit-transition:
+    color 0.3s,
+    border-color 0.3s,
+    -webkit-box-shadow 0.3s;
+  transition:
+    color 0.3s,
+    border-color 0.3s,
+    -webkit-box-shadow 0.3s;
+  transition:
+    color 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s;
+  transition:
+    color 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s,
     -webkit-box-shadow 0.3s;
   padding: 25px 0;
   min-width: 130px;

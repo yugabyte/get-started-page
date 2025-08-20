@@ -1,9 +1,15 @@
 <template>
-  <p>Perform the following steps to install <code>yb-voyager</code> using yum for RHEL 9 and CentOS 9:</p>
+  <p>
+    Perform the following steps to install <code>yb-voyager</code> using yum for
+    RHEL 9 and CentOS 9:
+  </p>
 
   <ol>
     <li>
-      <p>Update the yum package manager, and all the packages and repositories installed on your machine using the following command:</p>
+      <p>
+        Update the yum package manager, and all the packages and repositories
+        installed on your machine using the following command:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -14,7 +20,10 @@
     </li>
 
     <li>
-      <p>Install the <code>yugabyte</code> yum repository using the following command:</p>
+      <p>
+        Install the <code>yugabyte</code> yum repository using the following
+        command:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -25,7 +34,10 @@
     </li>
 
     <li>
-      <p>Install the <code>epel-release</code> repository using the following command:</p>
+      <p>
+        Install the <code>epel-release</code> repository using the following
+        command:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -36,7 +48,10 @@
     </li>
 
     <li>
-      <p>Install <code>mysql-community-release</code> repository using the following command:</p>
+      <p>
+        Install <code>mysql-community-release</code> repository using the
+        following command:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -56,11 +71,17 @@
         </pre>
       </div>
 
-      <p>These repositories contain the rest of the dependencies required to run <code>yb-voyager</code>.</p>
+      <p>
+        These repositories contain the rest of the dependencies required to run
+        <code>yb-voyager</code>.
+      </p>
     </li>
 
     <li>
-      <p>Disable the default <code>PostgreSQL</code> yum module on your machine using the following command:</p>
+      <p>
+        Disable the default <code>PostgreSQL</code> yum module on your machine
+        using the following command:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -71,7 +92,10 @@
     </li>
 
     <li>
-      <p>Install <code>perl-open</code> on your machine using the following command:</p>
+      <p>
+        Install <code>perl-open</code> on your machine using the following
+        command:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -93,7 +117,10 @@
     </li>
 
     <li>
-      <p>Update the yum package manager and all the packages and repositories installed on your machine using the following command:</p>
+      <p>
+        Update the yum package manager and all the packages and repositories
+        installed on your machine using the following command:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -104,7 +131,10 @@
     </li>
 
     <li>
-      <p>Install <code>yb-voyager</code> and its dependencies using the following command:</p>
+      <p>
+        Install <code>yb-voyager</code> and its dependencies using the following
+        command:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -113,7 +143,10 @@
         </pre>
       </div>
 
-      <p>To install a specific version of <code>yb-voyager</code> on your machine, use the following command:</p>
+      <p>
+        To install a specific version of <code>yb-voyager</code> on your
+        machine, use the following command:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">

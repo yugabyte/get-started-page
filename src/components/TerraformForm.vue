@@ -190,7 +190,7 @@ export default {
           this.sshKeyPathInput,
           this.securityGroupIdInput,
           this.vpcIdInput,
-          this.subnetIdsInput
+          this.subnetIdsInput,
         );
       } else if (this.code === 'azurerm') {
         this.sampleConfigFile = generateAzureConfig(
@@ -201,7 +201,7 @@ export default {
           this.sshPubInput,
           this.sshPrivateInput,
           this.sshUserInput,
-          this.vpcRegionInput
+          this.vpcRegionInput,
         );
       } else if (this.code === 'google') {
         this.sampleConfigFile = generateGCPConfig(
@@ -209,7 +209,7 @@ export default {
           this.sshPubInput,
           this.sshPrivateInput,
           this.sshUserInput,
-          this.vpcRegionInput
+          this.vpcRegionInput,
         );
       }
     },

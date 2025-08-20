@@ -1,11 +1,18 @@
 <template>
   <p>You can perform an airgapped installation on Docker.</p>
 
-  <p>Install yb-voyager using a Docker image in an airgapped environment using the following steps:</p>
+  <p>
+    Install yb-voyager using a Docker image in an airgapped environment using
+    the following steps:
+  </p>
 
   <ol>
     <li>
-      <p>From a machine connected to the internet, run the following commands to pull and save the latest yb-voyager docker image (Pull the version from docker.io):</p>
+      <p>
+        From a machine connected to the internet, run the following commands to
+        pull and save the latest yb-voyager docker image (Pull the version from
+        docker.io):
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -16,7 +23,10 @@
     </li>
 
     <li>
-      <p>Download the yb-voyager wrapper script on the same machine using the following command:</p>
+      <p>
+        Download the yb-voyager wrapper script on the same machine using the
+        following command:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -27,7 +37,10 @@
     </li>
 
     <li>
-      <p>Copy the yb-voyager-image.tar.gz and yb-voyager files to the airgapped machine.</p>
+      <p>
+        Copy the yb-voyager-image.tar.gz and yb-voyager files to the airgapped
+        machine.
+      </p>
     </li>
 
     <li>
@@ -42,7 +55,10 @@
     </li>
 
     <li>
-      <p>Make the wrapper script executable and move it to the bin directory using the following commands:</p>
+      <p>
+        Make the wrapper script executable and move it to the bin directory
+        using the following commands:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">

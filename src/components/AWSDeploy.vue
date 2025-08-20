@@ -20,7 +20,7 @@
             style="margin-bottom: 5px"
             src="../assets/cloudformation-logo.png"
           />
-         Cloud Formation
+          Cloud Formation
         </q-tab>
         <q-tab
           name="Terraform"

@@ -14,7 +14,14 @@
         <q-tab name="ubuntu" label="Ubuntu" />
         <q-space />
         <div class="docs-container">
-          <a class="complete-docs" href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager" title="Complete Docs" target="_blank" rel="noopener">Complete Docs</a>
+          <a
+            class="complete-docs"
+            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
+            title="Complete Docs"
+            target="_blank"
+            rel="noopener"
+            >Complete Docs</a
+          >
         </div>
       </q-tabs>
 
@@ -45,15 +52,15 @@ import yum from './migrate/airgapped/yum.vue';
 export default {
   name: 'AirgappedMigrate',
   components: {
-    'docker': docker,
-    'ubuntu': ubuntu,
-    'yum': yum,
+    docker: docker,
+    ubuntu: ubuntu,
+    yum: yum,
   },
-  setup () {
+  setup() {
     return {
-      tab: ref('docker')
-    }
-  }
+      tab: ref('docker'),
+    };
+  },
 };
 </script>
 

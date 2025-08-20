@@ -1,16 +1,6 @@
-/* eslint-env node */
+import { configure } from 'quasar/wrappers';
 
-/*
- * This file runs in a Node context (it's NOT transpiled by Babel), so use only
- * the ES6 features that are supported by your Node version. https://node.green/
- */
-
-// Configuration for your app
-// https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
-
-const { configure } = require('quasar/wrappers');
-
-module.exports = configure(function (/* ctx */) {
+export default configure(function (/* ctx */) {
   return {
     eslint: {
       // fix: true,
@@ -48,13 +38,14 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
-      env: {
-        RUDDERSTACK_API_KEY: process.env.RUDDERSTACK_API_KEY,
-        SEGMENT_API_KEY: process.env.SEGMENT_API_KEY
+      define: {
+        RUDDERSTACK_API_KEY: JSON.stringify(process.env.RUDDERSTACK_API_KEY),
+        SEGMENT_API_KEY: JSON.stringify(process.env.SEGMENT_API_KEY),
       },
+
       target: {
-        browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
-        node: 'node16',
+        browser: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
+        node: 'node22',
       },
 
       vueRouterMode: 'hash', // available values: 'hash', 'history'
@@ -102,9 +93,7 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [
-        'Meta'
-      ],
+      plugins: ['Meta'],
     },
 
     // animations: 'all', // --- includes all animations

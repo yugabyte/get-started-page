@@ -4,7 +4,7 @@ aws cloudformation create-stack --stack-name <stack-name> --template-body file:/
 `;
 
 export const eksInstallYBCode = (
-  version
+  version,
 ) => `helm repo add yugabytedb https://charts.yugabyte.com
 helm repo update
 kubectl create namespace yb-demo

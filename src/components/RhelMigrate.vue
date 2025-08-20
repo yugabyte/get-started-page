@@ -13,7 +13,14 @@
         <q-tab name="rhel9" label="RHEL 9" />
         <q-space />
         <div class="quickstart-container">
-          <a class="complete-docs" href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager" title="Complete Docs" target="_blank" rel="noopener">Complete Docs</a>
+          <a
+            class="complete-docs"
+            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
+            title="Complete Docs"
+            target="_blank"
+            rel="noopener"
+            >Complete Docs</a
+          >
         </div>
       </q-tabs>
       <q-separator />
@@ -38,14 +45,14 @@ import Rhel9Migrate from './migrate/rhel/rhel9.vue';
 export default {
   name: 'RhelMigrate',
   components: {
-    'rhel8': Rhel8Migrate,
-    'rhel9': Rhel9Migrate,
+    rhel8: Rhel8Migrate,
+    rhel9: Rhel9Migrate,
   },
-  setup () {
+  setup() {
     return {
-      tab: ref('rhel8')
-    }
-  }
+      tab: ref('rhel8'),
+    };
+  },
 };
 </script>
 
