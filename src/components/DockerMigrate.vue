@@ -11,17 +11,36 @@
       >
         <q-space />
         <div class="quickstart-container">
-          <a class="complete-docs" href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager" title="Complete Docs" target="_blank" rel="noopener">Complete Docs</a>
+          <a
+            class="complete-docs"
+            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
+            title="Complete Docs"
+            target="_blank"
+            rel="noopener"
+            >Complete Docs</a
+          >
         </div>
       </q-tabs>
 
       <q-separator />
 
-      <p>Before installing yb-voyager, ensure that you have the <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">Docker</a> runtime installed on your machine.</p>
+      <p>
+        Before installing yb-voyager, ensure that you have the
+        <a
+          href="https://docs.docker.com/get-docker/"
+          target="_blank"
+          rel="noopener"
+          >Docker</a
+        >
+        runtime installed on your machine.
+      </p>
 
       <ol>
         <li>
-          <p>Pull the docker image from YugabyteDB's docker hub (Pull the version from docker.io) as follows:</p>
+          <p>
+            Pull the docker image from YugabyteDB's docker hub (Pull the version
+            from docker.io) as follows:
+          </p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -32,7 +51,11 @@
         </li>
 
         <li>
-          <p>Download the script to run yb-voyager using the docker image from yb-voyager's GitHub repository, and move it to your machine's bin directory using the following commands:</p>
+          <p>
+            Download the script to run yb-voyager using the docker image from
+            yb-voyager's GitHub repository, and move it to your machine's bin
+            directory using the following commands:
+          </p>
 
           <div class="bg-grey-3 q-tab-panel code-relative">
             <pre class="code-container">
@@ -42,7 +65,18 @@
           </div>
 
           <div class="admonition warning">
-            <p>Use yb-voyager docker script without <code>sudo</code> to run Voyager commands. To do this you need to reconfigure docker on your system to run without sudo. Refer to <a href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user" target="_blank" rel="noopener">Manage Docker as a non-root user</a> in the Docker documentation.</p>
+            <p>
+              Use yb-voyager docker script without <code>sudo</code> to run
+              Voyager commands. To do this you need to reconfigure docker on
+              your system to run without sudo. Refer to
+              <a
+                href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user"
+                target="_blank"
+                rel="noopener"
+                >Manage Docker as a non-root user</a
+              >
+              in the Docker documentation.
+            </p>
           </div>
         </li>
 

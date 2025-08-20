@@ -140,7 +140,6 @@
                 rel="noopener"
                 >Contact</a
               >
-
             </li>
             <li class="footer-items">
               <div class="footer-title">Follow Us</div>

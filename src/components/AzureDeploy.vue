@@ -39,11 +39,7 @@
           class="option-tabs wide"
           v-on:click="sendAnalytics('AKS')"
         >
-          <img
-            width="24"
-            style="margin-bottom: 5px"
-            src="../assets/aks.svg"
-          />
+          <img width="24" style="margin-bottom: 5px" src="../assets/aks.svg" />
           Azure Kubernetes Service
         </q-tab>
         <q-space />

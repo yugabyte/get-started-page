@@ -7,7 +7,7 @@ export const generateAwsConfig = (
   sshKeyPath = 'SSH_KEY_PATH_HERE',
   securityGroupId = 'SECURITY_GROUP_HERE',
   vpcId = 'VPC_ID_HERE',
-  subnetIds = '"SUBNET_ID_HERE"'
+  subnetIds = '"SUBNET_ID_HERE"',
 ) => {
   const subnetIdStr = subnetIds
     .split(',')
@@ -68,7 +68,7 @@ export const generateAzureConfig = (
   sshPublic = 'SSH_PUBLIC_KEY_HERE',
   sshPrivate = 'SSH_PRIVATE_KEY_HERE',
   sshUser = 'SSH_USER_NAME_HERE',
-  vpcRegion = 'YOUR_VPC_REGION'
+  vpcRegion = 'YOUR_VPC_REGION',
 ) => {
   return `provider "azurerm" {
     # Provide your Azure Creadentilals 
@@ -108,7 +108,7 @@ export const generateGCPConfig = (
   sshPublic = 'SSH_PUBLIC_KEY_HERE',
   sshPrivate = 'SSH_PRIVATE_KEY_HERE',
   sshUser = 'SSH_USER_NAME_HERE',
-  vpcRegion = 'YOUR_VPC_REGION'
+  vpcRegion = 'YOUR_VPC_REGION',
 ) => {
   return `provider "google" {
     # Provide your GCP Creadentilals 
@@ -144,7 +144,7 @@ export const generateEKSCreateNode = (
   regionInput = 'AWS_REGION_HERE',
   zoneListInput = 'ZONE_1A,ZONE_1B,ZONE_1C',
   nodeGroup = 'AWS_NODE_GROUP_HERE',
-  machineType = 'YOUR_MACHINE_TYPE'
+  machineType = 'YOUR_MACHINE_TYPE',
 ) => {
   return `
     eksctl create cluster \
@@ -164,7 +164,7 @@ export const generateEKSCreateNode = (
 export const generateEKSStorageYaml = (
   nodePrefix = 'standard',
   regionInput = 'us-east-1a,us-east-1b,us-east-1c',
-  storageType = 'gp2'
+  storageType = 'gp2',
 ) => {
   return regionInput
     .split(',')
@@ -178,7 +178,7 @@ provisioner: kubernetes.io/aws-ebs
 parameters:
   type: ${storageType}
   zone: ${zone}
-`
+`,
     )
     .join('\n---\n');
 };

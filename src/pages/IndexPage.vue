@@ -245,7 +245,8 @@
         ></kubernetes-operator>
       </div>
     </div>
-    <div v-else-if="selectedService.value === 'managed'"
+    <div
+      v-else-if="selectedService.value === 'managed'"
       id="managed-cluster-content"
       class="content"
     >
@@ -278,54 +279,42 @@
         <yb-button
           label="RHEL"
           :active="selectedMigrate.value === 'rhel'"
-          v-bind:handleClick="
-            () => handleSelectSection(this.migrateOptions[0])
-          "
+          v-bind:handleClick="() => handleSelectSection(this.migrateOptions[0])"
         >
           <img src="../assets/redhat-icon.svg" />
         </yb-button>
         <yb-button
           label="Ubuntu"
           :active="selectedMigrate.value === 'ubuntu'"
-          v-bind:handleClick="
-            () => handleSelectSection(this.migrateOptions[1])
-          "
+          v-bind:handleClick="() => handleSelectSection(this.migrateOptions[1])"
         >
           <img src="../assets/ubuntu-icon.svg" width="32" height="32" />
         </yb-button>
         <yb-button
           label="macOS"
           :active="selectedMigrate.value === 'macos'"
-          v-bind:handleClick="
-            () => handleSelectSection(this.migrateOptions[2])
-          "
+          v-bind:handleClick="() => handleSelectSection(this.migrateOptions[2])"
         >
           <img src="../assets/macos-icon.svg" />
         </yb-button>
         <yb-button
           label="Airgapped"
           :active="selectedMigrate.value === 'airgapped'"
-          v-bind:handleClick="
-            () => handleSelectSection(this.migrateOptions[3])
-          "
+          v-bind:handleClick="() => handleSelectSection(this.migrateOptions[3])"
         >
           <img src="../assets/link-slash.svg" width="32" height="32" />
         </yb-button>
         <yb-button
           label="Docker"
           :active="selectedMigrate.value === 'docker'"
-          v-bind:handleClick="
-            () => handleSelectSection(this.migrateOptions[4])
-          "
+          v-bind:handleClick="() => handleSelectSection(this.migrateOptions[4])"
         >
           <img src="../assets/docker-icon.png" width="32" height="32" />
         </yb-button>
         <yb-button
           label="Source"
           :active="selectedMigrate.value === 'source'"
-          v-bind:handleClick="
-            () => handleSelectSection(this.migrateOptions[5])
-          "
+          v-bind:handleClick="() => handleSelectSection(this.migrateOptions[5])"
         >
           <img src="../assets/github-icon.svg" width="32" height="32" />
         </yb-button>
@@ -446,7 +435,7 @@ export default {
         label: 'Ubuntu',
         value: 'ubuntu',
       },
-        {
+      {
         label: 'macOS',
         value: 'macos',
       },
@@ -565,7 +554,7 @@ export default {
     handleSelectSection: function (section) {
       if (this.selectedService.value === 'local') {
         this.selectedPlatform = section;
-      } else if (this.selectedService.value === 'cloud'){
+      } else if (this.selectedService.value === 'cloud') {
         this.selectedDeploy = section;
       } else {
         this.selectedMigrate = section;
@@ -573,7 +562,7 @@ export default {
       window.history.pushState(
         'platform',
         '',
-        `${window.location.pathname}#${section.value}`
+        `${window.location.pathname}#${section.value}`,
       );
       this.dirty = true;
       event('click', {
@@ -632,7 +621,7 @@ export default {
   beforeUnmount() {
     window.removeEventListener('scroll', this.scrollContent);
   },
-  setup () {
+  setup() {
     let pageTitle = 'Download';
     let pageDescription = 'Get started with YugabyteDB by downloading';
 
@@ -641,10 +630,12 @@ export default {
       pageDescription = 'Get started with YugabyteDB by deploying in the cloud';
     } else if (window.location.pathname.indexOf('/managed') === 0) {
       pageTitle = 'Sign up';
-      pageDescription = 'Get started with YugabyteDB by signing up on YugabyteDB Aeon';
+      pageDescription =
+        'Get started with YugabyteDB by signing up on YugabyteDB Aeon';
     } else if (window.location.pathname.indexOf('/migrate') === 0) {
       pageTitle = 'Migrate';
-      pageDescription = 'Get started with YugabyteDB by migrating using Voyager';
+      pageDescription =
+        'Get started with YugabyteDB by migrating using Voyager';
     }
 
     useMeta({
@@ -652,10 +643,10 @@ export default {
       meta: {
         description: {
           name: 'description',
-          content: `${pageDescription}`
-        }
-      }
+          content: `${pageDescription}`,
+        },
+      },
     });
-  }
+  },
 };
 </script>

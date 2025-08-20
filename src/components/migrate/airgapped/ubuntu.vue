@@ -1,5 +1,4 @@
 <template>
-
   <p>You can perform an airgapped installation on Ubuntu 22 and later.</p>
 
   <ol>
@@ -28,7 +27,10 @@
     </li>
 
     <li>
-      <p>Download the airgapped installation script into the extracted bundle directory:</p>
+      <p>
+        Download the airgapped installation script into the extracted bundle
+        directory:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -50,15 +52,24 @@
     </li>
 
     <li>
-      <p>Transfer the folder (which contains the 3 packages and the installer script) to the airgapped machine.</p>
+      <p>
+        Transfer the folder (which contains the 3 packages and the installer
+        script) to the airgapped machine.
+      </p>
     </li>
 
     <li>
-      <p>Install all the <a href="#dependencies-for-ubuntu">dependencies</a> on the airgapped machine.</p>
+      <p>
+        Install all the <a href="#dependencies-for-ubuntu">dependencies</a> on
+        the airgapped machine.
+      </p>
     </li>
 
     <li>
-      <p>Run the <a href="#install-script">install script</a> on the airgapped machine to check the dependencies and install voyager:</p>
+      <p>
+        Run the <a href="#install-script">install script</a> on the airgapped
+        machine to check the dependencies and install voyager:
+      </p>
 
       <div class="bg-grey-3 q-tab-panel code-relative">
         <pre class="code-container">
@@ -111,7 +122,12 @@
 
   <h3 id="install-script">Install script</h3>
 
-  <p>The script by default checks what dependencies are installed on the system and throws an error mentioning the missing dependencies. If all the dependencies are found to be installed, it proceeds with the installation of ora2pg, debezium, and yb-voyager.</p>
+  <p>
+    The script by default checks what dependencies are installed on the system
+    and throws an error mentioning the missing dependencies. If all the
+    dependencies are found to be installed, it proceeds with the installation of
+    ora2pg, debezium, and yb-voyager.
+  </p>
 
   <p>Usage:</p>
 
@@ -143,15 +159,22 @@
         </tr>
         <tr>
           <td>-p, --pg-only</td>
-          <td>Check and install only PostgreSQL source-related voyager dependencies.</td>
+          <td>
+            Check and install only PostgreSQL source-related voyager
+            dependencies.
+          </td>
         </tr>
         <tr>
           <td>-m, --mysql-only</td>
-          <td>Check and install only MySQL source-related voyager dependencies.</td>
+          <td>
+            Check and install only MySQL source-related voyager dependencies.
+          </td>
         </tr>
         <tr>
           <td>-o, --oracle-only</td>
-          <td>Check and install only Oracle source-related voyager dependencies.</td>
+          <td>
+            Check and install only Oracle source-related voyager dependencies.
+          </td>
         </tr>
         <tr>
           <td>-h, --help</td>
@@ -161,27 +184,77 @@
     </table>
   </div>
 
-  <p>You can only specify one of <code>--pg-only</code>, <code>--oracle-only</code>, or <code>--mysql-only</code>. If none are provided, the script checks and installs dependencies for all database types. When one of the flags is specified, <code>--help</code> and <code>--check-dependencies-only</code> are specific to the selected database.</p>
+  <p>
+    You can only specify one of <code>--pg-only</code>,
+    <code>--oracle-only</code>, or <code>--mysql-only</code>. If none are
+    provided, the script checks and installs dependencies for all database
+    types. When one of the flags is specified, <code>--help</code> and
+    <code>--check-dependencies-only</code> are specific to the selected
+    database.
+  </p>
 
   <h3>Oracle Instant Client installation help for Ubuntu</h3>
 
-  <p>You can download the oracle instant client RPM packages from the following links:</p>
+  <p>
+    You can download the oracle instant client RPM packages from the following
+    links:
+  </p>
 
   <ul>
     <li>
-      <p><a href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-tools_21.5.0.0.0-1_amd64.deb" title="oracle-instantclient-tools" target="_blank" rel="noopener">oracle-instantclient-tools</a></p>
+      <p>
+        <a
+          href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-tools_21.5.0.0.0-1_amd64.deb"
+          title="oracle-instantclient-tools"
+          target="_blank"
+          rel="noopener"
+          >oracle-instantclient-tools</a
+        >
+      </p>
     </li>
     <li>
-      <p><a href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-basic_21.5.0.0.0-1_amd64.deb" title="oracle-instantclient-basic" target="_blank" rel="noopener">oracle-instantclient-basic</a></p>
+      <p>
+        <a
+          href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-basic_21.5.0.0.0-1_amd64.deb"
+          title="oracle-instantclient-basic"
+          target="_blank"
+          rel="noopener"
+          >oracle-instantclient-basic</a
+        >
+      </p>
     </li>
     <li>
-      <p><a href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-devel_21.5.0.0.0-1_amd64.deb" title="oracle-instantclient-devel" target="_blank" rel="noopener">oracle-instantclient-devel</a></p>
+      <p>
+        <a
+          href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-devel_21.5.0.0.0-1_amd64.deb"
+          title="oracle-instantclient-devel"
+          target="_blank"
+          rel="noopener"
+          >oracle-instantclient-devel</a
+        >
+      </p>
     </li>
     <li>
-      <p><a href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-jdbc_21.5.0.0.0-1_amd64.deb" title="oracle-instantclient-jdbc" target="_blank" rel="noopener">oracle-instantclient-jdbc</a></p>
+      <p>
+        <a
+          href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-jdbc_21.5.0.0.0-1_amd64.deb"
+          title="oracle-instantclient-jdbc"
+          target="_blank"
+          rel="noopener"
+          >oracle-instantclient-jdbc</a
+        >
+      </p>
     </li>
     <li>
-      <p><a href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-sqlplus_21.5.0.0.0-1_amd64.deb" title="oracle-instantclient-sqlplus" target="_blank" rel="noopener">oracle-instantclient-sqlplus</a></p>
+      <p>
+        <a
+          href="https://downloads.yugabyte.com/repos/apt/pool/main/oracle-instantclient-sqlplus_21.5.0.0.0-1_amd64.deb"
+          title="oracle-instantclient-sqlplus"
+          target="_blank"
+          rel="noopener"
+          >oracle-instantclient-sqlplus</a
+        >
+      </p>
     </li>
   </ul>
 </template>

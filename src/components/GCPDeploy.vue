@@ -39,11 +39,7 @@
           class="option-tabs wide"
           v-on:click="sendAnalytics('gke')"
         >
-          <img
-            width="24"
-            style="margin-bottom: 5px"
-            src="../assets/gke.png"
-          />
+          <img width="24" style="margin-bottom: 5px" src="../assets/gke.png" />
           Google Kubernetes Engine
         </q-tab>
         <q-space />
