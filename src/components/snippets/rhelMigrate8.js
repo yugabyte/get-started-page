@@ -12,7 +12,7 @@ export const installVoyager = 'sudo yum install yb-voyager';
 export const installVoyagerSpecificVersion =
   'sudo yum install yb-voyager-<VERSION>';
 export const installYB =
-  'sudo yum install https://downloads.yugabyte.com/repos/reporpms/yb-yum-repo-1.1-0.noarch.rpm';
+  'sudo yum install https://software.yugabyte.com/repos/reporpms/yb-yum-repo-1.1-0.noarch.rpm?os=rhel-8';
 
 export const updateVoyager = 'sudo yum update yb-voyager';
 export const updateYum = 'sudo yum update';
