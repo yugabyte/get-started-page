@@ -4,7 +4,7 @@ sudo apt-get update`;
 export const installPostgreSQLCommon = `sudo apt install -y postgresql-common
 sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh`;
 export const installVoyager = 'sudo apt-get install yb-voyager';
-export const installYB = `wget https://downloads.yugabyte.com/repos/reporpms/yb-apt-repo_1.0.0_all.deb
+export const installYB = `wget https://software.yugabyte.com/repos/reporpms/yb-apt-repo_1.0.0_all.deb
 sudo apt-get install ./yb-apt-repo_1.0.0_all.deb`;
 
 export const ora2pgFailure =
