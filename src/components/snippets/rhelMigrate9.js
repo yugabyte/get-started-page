@@ -19,7 +19,7 @@ export const installVoyager = 'sudo dnf install yb-voyager';
 export const installVoyagerSpecificVersion =
   'sudo dnf install yb-voyager-<VERSION>';
 export const installYB =
-  'sudo dnf install https://software.yugabyte.com/repos/reporpms/yb-yum-repo-1.1-0.noarch.rpm?os=rhel-9 -y';
+  'sudo dnf install https://software.yugabyte.com/repos/reporpms/rhel-9/yb-yum-repo-1.1-0.noarch.rpm -y';
 
 export const updateVoyager = 'sudo yum update yb-voyager';
 export const updateYum = 'sudo dnf update';
