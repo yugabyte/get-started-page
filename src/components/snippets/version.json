@@ -1,17 +1,17 @@
 [
   {
     "name": "latest",
+    "display": "v2025.2 (LTS)",
+    "version": "2025.2.0.0",
+    "versionShort": "2025.2.0",
+    "appVersion": "2025.2.0.0-b131"
+  },
+  {
+    "name": "v2025.1",
     "display": "v2025.1 (STS)",
     "version": "2025.1.2.1",
     "versionShort": "2025.1.2",
     "appVersion": "2025.1.2.1-b4"
-  },
-  {
-    "name": "v2.25",
-    "display": "v2.25 (Preview)",
-    "version": "2.25.2.0",
-    "versionShort": "2.25.2",
-    "appVersion": "2.25.2.0-b359"
   },
   {
     "name": "v2024.2",
