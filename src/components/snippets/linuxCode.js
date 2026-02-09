@@ -1,5 +1,6 @@
 export const dbServerCode = (version, appVersion) => `
 wget https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-linux-x86_64.tar.gz
+echo "$(curl -L https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-linux-x86_64.tar.gz.sha) *yugabyte-${appVersion}-linux-x86_64.tar.gz" | shasum --check && \
 tar xvfz yugabyte-${appVersion}-linux-x86_64.tar.gz && cd yugabyte-${version}/
 ./bin/post_install.sh
 ./bin/yugabyted start
@@ -7,6 +8,7 @@ tar xvfz yugabyte-${appVersion}-linux-x86_64.tar.gz && cd yugabyte-${version}/
 
 export const dbAarch64Code = (version, appVersion) => `
 wget https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-el8-aarch64.tar.gz
+echo "$(curl -L https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-el8-aarch64.tar.gz.sha) *yugabyte-${appVersion}-el8-aarch64.tar.gz" | shasum --check && \
 tar xvfz yugabyte-${appVersion}-el8-aarch64.tar.gz && cd yugabyte-${version}/
 ./bin/post_install.sh
 ./bin/yugabyted start
