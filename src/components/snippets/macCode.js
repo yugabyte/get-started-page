@@ -1,12 +1,12 @@
 export const dbServerCode = (version, appVersion) => `
-curl -OL https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-darwin-x86_64.tar.gz
-tar xvfz yugabyte-${appVersion}-darwin-x86_64.tar.gz && cd yugabyte-${version}/
+wget https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-darwin-x86_64.tar.gz
+echo "$(curl -L https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-darwin-x86_64.tar.gz.sha) *yugabyte-${appVersion}-darwin-x86_64.tar.gz" | shasum --check && \\\ntar xvfz yugabyte-${appVersion}-darwin-x86_64.tar.gz && cd yugabyte-${version}/
 ./bin/yugabyted start
 `;
 
 export const dbAarch64Code = (version, appVersion) => `
-curl -OL https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-darwin-arm64.tar.gz
-tar xvfz yugabyte-${appVersion}-darwin-arm64.tar.gz && cd yugabyte-${version}/
+wget https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-darwin-arm64.tar.gz
+echo "$(curl -L https://software.yugabyte.com/releases/${version}/yugabyte-${appVersion}-darwin-arm64.tar.gz.sha) *yugabyte-${appVersion}-darwin-arm64.tar.gz" | shasum --check && \\\ntar xvfz yugabyte-${appVersion}-darwin-arm64.tar.gz && cd yugabyte-${version}/
 ./bin/yugabyted start
 `;
 
