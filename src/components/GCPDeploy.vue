@@ -23,18 +23,6 @@
           Cloud Deployment
         </q-tab>
         <q-tab
-          name="Terraform"
-          class="option-tabs"
-          v-on:click="sendAnalytics('terraform')"
-        >
-          <img
-            width="24"
-            style="margin-bottom: 5px"
-            src="../assets/terraform-logo.png"
-          />
-          Terraform
-        </q-tab>
-        <q-tab
           name="GKE"
           class="option-tabs wide"
           v-on:click="sendAnalytics('gke')"
@@ -45,19 +33,11 @@
         <q-space />
         <div class="quickstart-container">
           <a
-            v-if="databaseTab === 'Terraform'"
+            v-if="databaseTab === 'GKE'"
             target="_blank"
             rel="noopener"
             id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/terraform/"
-            >Complete Docs</a
-          >
-          <a
-            v-else-if="databaseTab === 'GKE'"
-            target="_blank"
-            rel="noopener"
-            id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/gke/helm-chart/"
+            href="https://docs.yugabyte.com/stable/deploy/kubernetes/multi-zone/gke/helm-chart/"
             >Complete Docs</a
           >
           <a
@@ -65,7 +45,7 @@
             target="_blank"
             rel="noopener"
             id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/"
+            href="https://docs.yugabyte.com/stable/deploy/public-clouds/gcp/gcp-deployment-manager/"
             >Complete Docs</a
           >
         </div>
@@ -79,31 +59,17 @@
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in cloudDeploymentCode" v-bind:key="`gcp-dm-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
-        <q-tab-panel name="Terraform" class="bg-form">
-          <terraform-form
-            code="google"
-            providerName="Google Cloud Platform"
-          ></terraform-form>
-        </q-tab-panel>
         <q-tab-panel name="GKE" class="bg-form">
           <cloud-managed-k8s code="gke" :version="version"></cloud-managed-k8s>
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a
-          v-if="databaseTab === 'Terraform'"
+          v-if="databaseTab === 'GKE'"
           target="_blank"
           rel="noopener"
           id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/terraform/"
-          >Complete Docs</a
-        >
-        <a
-          v-else-if="databaseTab === 'GKE'"
-          target="_blank"
-          rel="noopener"
-          id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/gke/helm-chart/"
+          href="https://docs.yugabyte.com/stable/deploy/kubernetes/multi-zone/gke/helm-chart/"
           >Complete Docs</a
         >
         <a
@@ -111,7 +77,7 @@
           target="_blank"
           rel="noopener"
           id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/deploy/public-clouds/gcp/gcp-deployment-manager/"
+          href="https://docs.yugabyte.com/stable/deploy/public-clouds/gcp/gcp-deployment-manager/"
           >Complete Docs</a
         >
       </div>
@@ -122,7 +88,6 @@
 <script>
 import { event } from 'vue-gtag';
 import YBHeader from './YBHeader.vue';
-import TerraformForm from './TerraformForm.vue';
 import CloudManagedK8s from './CloudManagedK8s.vue';
 import { deploymentManagerCode } from './snippets/gcpCDDeploy';
 import CopyButton from './CopyButton.vue';
@@ -137,7 +102,6 @@ export default {
   },
   components: {
     'yb-header': YBHeader,
-    'terraform-form': TerraformForm,
     'cloud-managed-k8s': CloudManagedK8s,
     'copy-button': CopyButton,
   },

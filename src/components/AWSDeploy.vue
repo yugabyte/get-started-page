@@ -23,18 +23,6 @@
           Cloud Formation
         </q-tab>
         <q-tab
-          name="Terraform"
-          class="option-tabs"
-          v-on:click="sendAnalytics('terraform')"
-        >
-          <img
-            width="24"
-            style="margin-bottom: 5px"
-            src="../assets/terraform-logo.png"
-          />
-          Terraform
-        </q-tab>
-        <q-tab
           name="EKS"
           class="option-tabs wide"
           v-on:click="sendAnalytics('eks')"
@@ -49,19 +37,11 @@
         <q-space />
         <div class="quickstart-container">
           <a
-            v-if="databaseTab === 'Terraform'"
+            v-if="databaseTab === 'EKS'"
             target="_blank"
             rel="noopener"
             id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/terraform/"
-            >Complete Docs</a
-          >
-          <a
-            v-else-if="databaseTab === 'EKS'"
-            target="_blank"
-            rel="noopener"
-            id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/eks/helm-chart/"
+            href="https://docs.yugabyte.com/stable/deploy/kubernetes/multi-zone/eks/helm-chart/"
             >Complete Docs</a
           >
           <a
@@ -69,7 +49,7 @@
             target="_blank"
             rel="noopener"
             id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/cloudformation/"
+            href="https://docs.yugabyte.com/stable/deploy/public-clouds/aws/cloudformation/"
             >Complete Docs</a
           >
         </div>
@@ -83,32 +63,17 @@
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in cfBashLines" v-bind:key="`aws-cf-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
-        <q-tab-panel name="Terraform" class="bg-form">
-          <terraform-form
-            code="aws"
-            providerName="AWS"
-            :version="version"
-          ></terraform-form>
-        </q-tab-panel>
         <q-tab-panel name="EKS" class="bg-form">
           <cloud-managed-k8s code="eks" :version="version"></cloud-managed-k8s>
         </q-tab-panel>
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a
-          v-if="databaseTab === 'Terraform'"
+          v-if="databaseTab === 'EKS'"
           target="_blank"
           rel="noopener"
           id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/terraform/"
-          >Complete Docs</a
-        >
-        <a
-          v-else-if="databaseTab === 'EKS'"
-          target="_blank"
-          rel="noopener"
-          id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/deploy/kubernetes/multi-zone/eks/helm-chart/"
+          href="https://docs.yugabyte.com/stable/deploy/kubernetes/multi-zone/eks/helm-chart/"
           >Complete Docs</a
         >
         <a
@@ -116,7 +81,7 @@
           target="_blank"
           rel="noopener"
           id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/deploy/public-clouds/aws/cloudformation/"
+          href="https://docs.yugabyte.com/stable/deploy/public-clouds/aws/cloudformation/"
           >Complete Docs</a
         >
       </div>
@@ -127,7 +92,6 @@
 <script>
 import { event } from 'vue-gtag';
 import YBHeader from './YBHeader.vue';
-import TerraformForm from './TerraformForm.vue';
 import CloudManagedK8s from './CloudManagedK8s.vue';
 import { cloudFormationCode } from './snippets/awsCFDeploy';
 
@@ -147,7 +111,6 @@ export default {
   },
   components: {
     'yb-header': YBHeader,
-    'terraform-form': TerraformForm,
     'cloud-managed-k8s': CloudManagedK8s,
     'copy-button': CopyButton,
   },

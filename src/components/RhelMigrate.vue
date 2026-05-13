@@ -15,7 +15,7 @@
         <div class="quickstart-container">
           <a
             class="complete-docs"
-            href="https://docs.yugabyte.com/preview/migrate/install-yb-voyager/#install-yb-voyager"
+            href="https://docs.yugabyte.com/stable/migrate/install-yb-voyager/#install-yb-voyager"
             title="Complete Docs"
             target="_blank"
             rel="noopener"
