@@ -22,6 +22,7 @@
           />
           Yugabyte Kubernetes Operator
         </q-tab>
+        <!--
         <q-tab
           name="Operator Hub"
           class="option-tabs k8s-op-tab"
@@ -34,22 +35,14 @@
           />
           Operator Hub
         </q-tab>
+        -->
         <q-space />
         <div class="quickstart-container">
           <a
-            v-if="databaseTab === 'YugabyteDB Operator'"
             target="_blank"
             rel="noopener"
             id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/oss/yugabyte-operator/"
-            >Complete Docs</a
-          >
-          <a
-            v-else
-            target="_blank"
-            rel="noopener"
-            id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/oss/operator-hub/"
+            href="https://docs.yugabyte.com/stable/deploy/kubernetes/single-zone/oss/yugabyte-operator/"
             >Complete Docs</a
           >
         </div>
@@ -64,28 +57,21 @@
           </pre>
         </q-tab-panel>
 
+        <!--
         <q-tab-panel name="Operator Hub" class="bg-grey-3">
           <pre class="code-container">
             <copy-button :text="opHubLines"></copy-button>
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in opHubLines" v-bind:key="`k8s-op-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
+        -->
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a
-          v-if="databaseTab === 'YugabyteDB Operator'"
           target="_blank"
           rel="noopener"
           id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/oss/yugabyte-operator/"
-          >Complete Docs</a
-        >
-        <a
-          v-else
-          target="_blank"
-          rel="noopener"
-          id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/oss/operator-hub/"
+          href="https://docs.yugabyte.com/stable/deploy/kubernetes/single-zone/oss/yugabyte-operator/"
           >Complete Docs</a
         >
       </div>
@@ -96,7 +82,7 @@
 <script>
 import { event } from 'vue-gtag';
 import YBHeader from './YBHeader.vue';
-import { k8sOpServerCode, opHubServerCode } from './snippets/k8sOperatorDeploy';
+import { k8sOpServerCode } from './snippets/k8sOperatorDeploy';
 
 import CopyButton from './CopyButton.vue';
 
@@ -111,9 +97,9 @@ export default {
     dbK8sOperator: function () {
       return k8sOpServerCode(this.version.appVersion).trim().split('\n');
     },
-    opHubLines: function () {
-      return opHubServerCode(this.version.appVersion).trim().split('\n');
-    },
+    // opHubLines: function () {
+    //   return opHubServerCode(this.version.appVersion).trim().split('\n');
+    // },
   },
   props: ['version'],
   components: {

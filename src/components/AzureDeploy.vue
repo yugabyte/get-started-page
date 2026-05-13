@@ -23,18 +23,6 @@
           Resource Manager
         </q-tab>
         <q-tab
-          name="Terraform"
-          class="option-tabs"
-          v-on:click="sendAnalytics('terraform')"
-        >
-          <img
-            width="24"
-            style="margin-bottom: 5px"
-            src="../assets/terraform-logo.png"
-          />
-          Terraform
-        </q-tab>
-        <q-tab
           name="AKS"
           class="option-tabs wide"
           v-on:click="sendAnalytics('AKS')"
@@ -45,19 +33,11 @@
         <q-space />
         <div class="quickstart-container">
           <a
-            v-if="databaseTab === 'Terraform'"
+            v-if="databaseTab === 'Resource Manager'"
             target="_blank"
             rel="noopener"
             id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/terraform/"
-            >Complete Docs</a
-          >
-          <a
-            v-else-if="databaseTab === 'Resource Manager'"
-            target="_blank"
-            rel="noopener"
-            id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/"
+            href="https://docs.yugabyte.com/stable/deploy/public-clouds/azure/azure-arm"
             >Complete Docs</a
           >
           <a
@@ -65,7 +45,7 @@
             target="_blank"
             rel="noopener"
             id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/aks/helm-chart/"
+            href="https://docs.yugabyte.com/stable/deploy/kubernetes/single-zone/aks/helm-chart/"
             >Complete Docs</a
           >
         </div>
@@ -79,9 +59,6 @@
             <code class="pre-helper pre-helper--shell" v-for="(line, index) in rmBashLines" v-bind:key="`azure-rm-${index}`">{{ line }}</code>
           </pre>
         </q-tab-panel>
-        <q-tab-panel name="Terraform" class="bg-form">
-          <terraform-form code="azurerm" providerName="Azure"></terraform-form>
-        </q-tab-panel>
         <q-tab-panel name="AKS" class="bg-grey-3">
           <pre class="code-container">
             <copy-button :text="aksBashLines"></copy-button>
@@ -91,19 +68,11 @@
       </q-tab-panels>
       <div class="quickstart-container mobile-view">
         <a
-          v-if="databaseTab === 'Terraform'"
+          v-if="databaseTab === 'Resource Manager'"
           target="_blank"
           rel="noopener"
           id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/terraform/"
-          >Complete Docs</a
-        >
-        <a
-          v-else-if="databaseTab === 'Resource Manager'"
-          target="_blank"
-          rel="noopener"
-          id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/deploy/public-clouds/azure/"
+          href="https://docs.yugabyte.com/stable/deploy/public-clouds/azure/azure-arm"
           >Complete Docs</a
         >
         <a
@@ -111,7 +80,7 @@
           target="_blank"
           rel="noopener"
           id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/deploy/kubernetes/single-zone/aks/helm-chart/"
+          href="https://docs.yugabyte.com/stable/deploy/kubernetes/single-zone/aks/helm-chart/"
           >Complete Docs</a
         >
       </div>
@@ -123,7 +92,6 @@
 import { event } from 'vue-gtag';
 import YBHeader from './YBHeader.vue';
 import { resourceManagerCode, aksServerCode } from './snippets/azureRMDeploy';
-import TerraformForm from './TerraformForm.vue';
 import CopyButton from './CopyButton.vue';
 
 export default {
@@ -143,7 +111,6 @@ export default {
   },
   components: {
     'yb-header': YBHeader,
-    'terraform-form': TerraformForm,
     'copy-button': CopyButton,
   },
   props: ['version'],

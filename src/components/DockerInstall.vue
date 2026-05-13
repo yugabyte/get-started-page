@@ -16,7 +16,7 @@
             target="_blank"
             rel="noopener"
             id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/quick-start/docker/"
+            href="https://docs.yugabyte.com/stable/quick-start/docker/"
             >Complete Docs</a
           >
         </div>
@@ -36,7 +36,7 @@
           target="_blank"
           rel="noopener"
           id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/quick-start/docker/"
+          href="https://docs.yugabyte.com/stable/quick-start/docker/"
           >Complete Docs</a
         >
       </div>
@@ -57,7 +57,7 @@
             target="_blank"
             rel="noopener"
             id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/admin/ysqlsh/"
+            href="https://docs.yugabyte.com/stable/admin/ysqlsh/"
             >Complete Docs</a
           >
         </div>
@@ -77,7 +77,7 @@
           target="_blank"
           rel="noopener"
           id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/admin/ysqlsh/"
+          href="https://docs.yugabyte.com/stable/admin/ysqlsh/"
           >Complete Docs</a
         >
       </div>
@@ -98,7 +98,7 @@
             target="_blank"
             rel="noopener"
             id="macos-quickstart-link"
-            href="https://docs.yugabyte.com/preview/sample-data/retail-analytics/"
+            href="https://docs.yugabyte.com/stable/develop/sample-data/retail-analytics/"
             >Complete Docs</a
           >
         </div>
@@ -136,7 +136,7 @@
           target="_blank"
           rel="noopener"
           id="macos-quickstart-link"
-          href="https://docs.yugabyte.com/preview/develop/build-apps/"
+          href="https://docs.yugabyte.com/stable/develop/build-apps/"
           >Complete Docs</a
         >
       </div>
