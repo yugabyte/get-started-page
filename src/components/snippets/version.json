@@ -26,19 +26,5 @@
     "version": "2024.2.9.1",
     "versionShort": "2024.2.9",
     "appVersion": "2024.2.9.1-b8"
-  },
-  {
-    "name": "v2024.1",
-    "display": "v2024.1 (STS)",
-    "version": "2024.1.6.1",
-    "versionShort": "2024.1.6",
-    "appVersion": "2024.1.6.1-b2"
-  },
-  {
-    "name": "v2.20",
-    "display": "v2.20 (LTS)",
-    "version": "2.20.12.0",
-    "versionShort": "2.20.12",
-    "appVersion": "2.20.12.0-b30"
   }
 ]
