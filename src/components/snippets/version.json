@@ -2,9 +2,9 @@
   {
     "name": "latest",
     "display": "v2026.1 (STS)",
-    "version": "2026.1.0.0",
+    "version": "2026.1.0.1",
     "versionShort": "2026.1.0",
-    "appVersion": "2026.1.0.0-b118"
+    "appVersion": "2026.1.0.1-b1"
   },
   {
     "name": "v2025.2",
