@@ -39,6 +39,7 @@ export default configure(function (/* ctx */) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
       define: {
+        ONETRUST_API_KEY: JSON.stringify(process.env.ONETRUST_API_KEY),
         RUDDERSTACK_API_KEY: JSON.stringify(process.env.RUDDERSTACK_API_KEY),
         SEGMENT_API_KEY: JSON.stringify(process.env.SEGMENT_API_KEY),
       },
