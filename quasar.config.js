@@ -2,6 +2,12 @@ import { configure } from 'quasar/wrappers';
 
 export default configure(function (/* ctx */) {
   return {
+    htmlVariables: {
+      RUDDERSTACK_API_KEY: process.env.RUDDERSTACK_API_KEY || '',
+      SEGMENT_API_KEY: process.env.SEGMENT_API_KEY || '',
+      ONETRUST_API_KEY: process.env.ONETRUST_API_KEY || ''
+    },
+
     eslint: {
       // fix: true,
       // include = [],
@@ -38,12 +44,6 @@ export default configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
-      define: {
-        ONETRUST_API_KEY: JSON.stringify(process.env.ONETRUST_API_KEY),
-        RUDDERSTACK_API_KEY: JSON.stringify(process.env.RUDDERSTACK_API_KEY),
-        SEGMENT_API_KEY: JSON.stringify(process.env.SEGMENT_API_KEY),
-      },
-
       target: {
         browser: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
         node: 'node22',
