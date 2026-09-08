@@ -17,10 +17,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" type="image/ico" href="favicon.ico" />
 
-    <% if (htmlVariables.ONETRUST_API_KEY) { %>
+    <% if (ONETRUST_API_KEY) { %>
       <!-- OneTrust Cookies Consent Notice start -->
-      <script src="https://cdn.cookielaw.org/consent/<%= process.env.ONETRUST_API_KEY %>/OtAutoBlock.js"></script>
-      <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" charset="UTF-8" data-domain-script="<%= process.env.ONETRUST_API_KEY %>"></script>
+      <script src="https://cdn.cookielaw.org/consent/<%= ONETRUST_API_KEY %>/OtAutoBlock.js"></script>
+      <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" charset="UTF-8" data-domain-script="<%= ONETRUST_API_KEY %>"></script>
       <script>
       function OptanonWrapper() {
         var activeGroups = window.OnetrustActiveGroups || '';
@@ -44,7 +44,7 @@
       <!-- OneTrust Cookies Consent Notice end -->
     <% } %>
 
-    <% if (htmlVariables.RUDDERSTACK_API_KEY) { %>
+    <% if (RUDDERSTACK_API_KEY) { %>
       <script type="text/plain" class="optanon-category-C0002">
         !(function () {
           'use strict';
@@ -135,7 +135,7 @@
                         .concat(window.rudderAnalyticsBuildType, '/')
                         .concat(sdkName),
                       'data-rsa-write-key',
-                      window.atob('<%= process.env.RUDDERSTACK_API_KEY %>'),
+                      window.atob('<%= RUDDERSTACK_API_KEY %>'),
                     ));
                 }),
                 'undefined' == typeof Promise || 'undefined' == typeof globalThis
@@ -145,7 +145,7 @@
                   : window.rudderAnalyticsMount());
               var loadOptions = {};
               rudderanalytics.load(
-                window.atob('<%= process.env.RUDDERSTACK_API_KEY %>'),
+                window.atob('<%= RUDDERSTACK_API_KEY %>'),
                 'https://yugabyteklhgka.dataplane.rudderstack.com',
                 loadOptions,
               );

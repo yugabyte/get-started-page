@@ -4,7 +4,6 @@ export default configure(function (/* ctx */) {
   return {
     htmlVariables: {
       RUDDERSTACK_API_KEY: process.env.RUDDERSTACK_API_KEY || '',
-      SEGMENT_API_KEY: process.env.SEGMENT_API_KEY || '',
       ONETRUST_API_KEY: process.env.ONETRUST_API_KEY || ''
     },
 
