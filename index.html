@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" type="image/ico" href="favicon.ico" />
 
-    <% if (process.env.ONETRUST_API_KEY) { %>
+    <% if (ONETRUST_API_KEY) { %>
       <!-- OneTrust Cookies Consent Notice start -->
       <script>
       window.dataLayer = window.dataLayer || [];
@@ -229,7 +229,7 @@
                         .concat(window.rudderAnalyticsBuildType, '/')
                         .concat(sdkName),
                       'data-rsa-write-key',
-                      window.atob('<%= process.env.RUDDERSTACK_API_KEY %>'),
+                      window.atob('<%= RUDDERSTACK_API_KEY %>'),
                     ));
                 }),
                 'undefined' == typeof Promise || 'undefined' == typeof globalThis
@@ -239,7 +239,7 @@
                   : window.rudderAnalyticsMount());
               var loadOptions = {};
               rudderanalytics.load(
-                window.atob('<%= process.env.RUDDERSTACK_API_KEY %>'),
+                window.atob('<%= RUDDERSTACK_API_KEY %>'),
                 'https://yugabyteklhgka.dataplane.rudderstack.com',
                 loadOptions,
               );
