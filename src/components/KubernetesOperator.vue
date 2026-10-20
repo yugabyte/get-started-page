@@ -13,7 +13,6 @@
         <q-tab
           name="YugabyteDB Operator"
           class="option-tabs k8s-op-tab"
-          v-on:click="sendAnalytics('yb-k8s-operator')"
         >
           <img
             width="24"
@@ -26,7 +25,6 @@
         <q-tab
           name="Operator Hub"
           class="option-tabs k8s-op-tab"
-          v-on:click="sendAnalytics('operator-hub')"
         >
           <img
             width="24"
@@ -80,7 +78,6 @@
 </template>
 
 <script>
-import { event } from 'vue-gtag';
 import YBHeader from './YBHeader.vue';
 import { k8sOpServerCode } from './snippets/k8sOperatorDeploy';
 
@@ -105,15 +102,6 @@ export default {
   components: {
     'yb-header': YBHeader,
     'copy-button': CopyButton,
-  },
-  methods: {
-    sendAnalytics: function (service) {
-      event('click', {
-        event_category: 'Install-Page',
-        value: `click.k8s-operator.${service}`,
-        event_label: `User clicked K8s Operator ${service} section button`,
-      });
-    },
   },
 };
 </script>
