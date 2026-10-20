@@ -13,7 +13,6 @@
         <q-tab
           name="Cloud Formation"
           class="option-tabs"
-          v-on:click="sendAnalytics('cloud-formation')"
         >
           <img
             width="24"
@@ -25,7 +24,6 @@
         <q-tab
           name="EKS"
           class="option-tabs wide"
-          v-on:click="sendAnalytics('eks')"
         >
           <img
             width="24"
@@ -90,7 +88,6 @@
 </template>
 
 <script>
-import { event } from 'vue-gtag';
 import YBHeader from './YBHeader.vue';
 import CloudManagedK8s from './CloudManagedK8s.vue';
 import { cloudFormationCode } from './snippets/awsCFDeploy';
@@ -115,14 +112,5 @@ export default {
     'copy-button': CopyButton,
   },
   props: ['version'],
-  methods: {
-    sendAnalytics: function (service) {
-      event('click', {
-        event_category: 'Install-Page',
-        value: `click.aws.${service}`,
-        event_label: `User clicked AWS ${service} section button`,
-      });
-    },
-  },
 };
 </script>

@@ -13,7 +13,6 @@
         <q-tab
           name="Resource Manager"
           class="option-tabs"
-          v-on:click="sendAnalytics('resource-manager')"
         >
           <img
             width="24"
@@ -25,7 +24,6 @@
         <q-tab
           name="AKS"
           class="option-tabs wide"
-          v-on:click="sendAnalytics('AKS')"
         >
           <img width="24" style="margin-bottom: 5px" src="../assets/aks.svg" />
           Azure Kubernetes Service
@@ -89,7 +87,6 @@
 </template>
 
 <script>
-import { event } from 'vue-gtag';
 import YBHeader from './YBHeader.vue';
 import { resourceManagerCode, aksServerCode } from './snippets/azureRMDeploy';
 import CopyButton from './CopyButton.vue';
@@ -114,14 +111,5 @@ export default {
     'copy-button': CopyButton,
   },
   props: ['version'],
-  methods: {
-    sendAnalytics: function (service) {
-      event('click', {
-        event_category: 'Install-Page',
-        value: `click.azure.${service}`,
-        event_label: `User clicked Azure ${service} section button`,
-      });
-    },
-  },
 };
 </script>
