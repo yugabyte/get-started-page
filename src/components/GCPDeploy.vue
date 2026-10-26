@@ -13,7 +13,6 @@
         <q-tab
           name="Cloud Deployment"
           class="option-tabs"
-          v-on:click="sendAnalytics('cloud-deployment')"
         >
           <img
             width="24"
@@ -25,7 +24,6 @@
         <q-tab
           name="GKE"
           class="option-tabs wide"
-          v-on:click="sendAnalytics('gke')"
         >
           <img width="24" style="margin-bottom: 5px" src="../assets/gke.png" />
           Google Kubernetes Engine
@@ -86,7 +84,6 @@
 </template>
 
 <script>
-import { event } from 'vue-gtag';
 import YBHeader from './YBHeader.vue';
 import CloudManagedK8s from './CloudManagedK8s.vue';
 import { deploymentManagerCode } from './snippets/gcpCDDeploy';
@@ -106,14 +103,5 @@ export default {
     'copy-button': CopyButton,
   },
   props: ['version'],
-  methods: {
-    sendAnalytics: function (service) {
-      event('click', {
-        event_category: 'Install-Page',
-        value: `click.gcp.${service}`,
-        event_label: `User clicked GCP ${service} section button`,
-      });
-    },
-  },
 };
 </script>

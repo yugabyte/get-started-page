@@ -351,7 +351,6 @@
 </template>
 
 <script>
-import { event, pageview } from 'vue-gtag';
 import MacInstall from 'components/MacInstall.vue';
 import LinuxInstall from 'components/LinuxInstall.vue';
 import DockerInstall from 'components/DockerInstall.vue';
@@ -565,43 +564,14 @@ export default {
         `${window.location.pathname}#${section.value}`,
       );
       this.dirty = true;
-      event('click', {
-        event_category: 'Install-Page',
-        value: `click.${this.selectedService.value}.${section.value}`,
-        event_label: `User clicked ${section.value} section button`,
-      });
     },
     clickServiceTab: function (index) {
       this.selectedService = this.serviceOptions[index];
       window.history.pushState('service', '', this.selectedService.value);
       this.dirty = true;
-      event('click', {
-        event_category: 'Install-Page',
-        value: `click.${this.selectedService.value}.tab`,
-        event_label: `User clicked ${this.selectedService.label}`,
-      });
     },
     scrollContent: function () {
       if (!this.dirty && !this.scrolled) {
-        if (this.selectedService.value === 'local') {
-          event('click', {
-            event_category: 'Install-Page',
-            value: `click.local.${this.selectedPlatform.value}`,
-            event_label: `User clicked ${this.selectedPlatform.value} section button`,
-          });
-        } else if (this.selectedService.value === 'cloud') {
-          event('click', {
-            event_category: 'Install-Page',
-            value: `click.cloud.${this.selectedDeploy.value}`,
-            event_label: `User clicked ${this.selectedDeploy.value} section button`,
-          });
-        } else if (this.selectedService.value === 'migrate') {
-          event('click', {
-            event_category: 'Install-Page',
-            value: `click.migrate.${this.selectedMigrate.value}`,
-            event_label: `User clicked ${this.selectedMigrate.value} section button`,
-          });
-        }
         this.scrolled = true;
       }
       if (this.onScroll) {
@@ -609,11 +579,6 @@ export default {
         this.onScroll();
       }
     },
-  },
-  mounted: function () {
-    pageview({
-      page_path: '/',
-    }); // Send pageview stat to Google Analytics
   },
   beforeMount() {
     window.addEventListener('scroll', this.scrollContent);
